@@ -2,11 +2,20 @@
 
 The plan for the first game in the series. It follows the five-stage approach from [CLAUDE.md](../../CLAUDE.md): each stage is derived from the one above it, and nothing exists in a lower stage that isn't demanded by a higher one. The chain for a game reads: player stories → player experience → scene map → data structure → systems.
 
-Stages 1–5 stay empty until [the story](../story.md) is written — the demo's chapter of the story is what the player stories are derived from.
+The demo tells the "Tapley Junction" chapter of [the story](../story.md): Wren versus District Steward Voss, ending with the impounded boats freed and the Charter's wax stamp revealed.
 
 ## 1. Player Stories
 
-*Every feature expressed as: as a player, I want X, so that Y. The full set defines the demo's scope — nothing more, nothing less. Derived from the demo's chapter of the story.*
+Every feature expressed as: as a player, I want X, so that Y. This set defines the demo's scope — nothing more, nothing less. Each story traces to the Tapley Junction chapter.
+
+1. As a player, I want to pilot *Last Orders* along the Cut — steering, mooring, and working locks — so that travelling the water is itself the play.
+2. As a player, I want to step off the boat and explore Tapley Junction on foot, so that the world is a place and not a corridor.
+3. As a player, I want to take missions from Maud and the junction folk, so that the story advances through work I choose to do.
+4. As a player, I want to earn money from odd jobs and challenges — cargo runs, breakdown rescues, time trials through the locks — so that progress comes from living on the water.
+5. As a player, I want to spend my earnings doing up *Last Orders* — paint, engine, fittings — so that the boat reflects my time in the world.
+6. As a player, I want to run sabotage and heist missions against Voss's stewards, so that vigilante justice is something I do, not something I watch.
+7. As a player, I want the junction community to respond to what I've done for them, so that belonging is earned and visible.
+8. As a player, I want to finish the chapter — Voss ruined, the boats freed, the wax stamp found — so that the demo tells a complete story and promises a bigger one.
 
 ## 2. Player Experience
 

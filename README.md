@@ -4,7 +4,7 @@ The master repository for the Shallow Water game series. Series-wide story, worl
 
 ## The Series
 
-Shallow Water is a series of 3D games built in Unity. The story and world documentation is the single source of truth for every game in the series — see [docs/story.md](docs/story.md).
+Shallow Water is a series of open-world 3D games built in Unity, set on the canals of Varana — a modern island nation whose waterways are run by a corrupt private consortium, the Charter, and lived on by the people it calls bandits. The player is Wren, a lone narrowboater drawn into vigilante justice on behalf of the community that took him in. The story documentation is the single source of truth for every game in the series — see [docs/story.md](docs/story.md).
 
 | Game | Status | Location |
 | --- | --- | --- |
