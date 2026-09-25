@@ -24,7 +24,8 @@ namespace ShallowWater.Unity.World
         private static FollowCamera Camera()
         {
             var camera = UnityEngine.Camera.main;
-            if (camera == null) camera = new GameObject("Helm camera").AddComponent<UnityEngine.Camera>();
+            var hasNoCamera = camera == null;
+            if (hasNoCamera) camera = new GameObject("Helm camera").AddComponent<UnityEngine.Camera>();
             camera.tag = "MainCamera";
             return camera.gameObject.AddComponent<FollowCamera>();
         }

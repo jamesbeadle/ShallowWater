@@ -27,7 +27,8 @@ namespace ShallowWater.Game.Pound
         public bool Holds(WaterPosition position)
         {
             var isWithinLength = position.Along >= NorthEndAlong && position.Along <= SouthEndAlong;
-            var isWithinBanks = Math.Abs(position.Across) <= HalfWidth;
+            var distanceFromCentre = Math.Abs(position.Across);
+            var isWithinBanks = distanceFromCentre <= HalfWidth;
             return isWithinLength && isWithinBanks;
         }
 

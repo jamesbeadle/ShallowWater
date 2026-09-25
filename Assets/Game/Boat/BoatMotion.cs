@@ -39,7 +39,8 @@ namespace ShallowWater.Game.Boat
 
         private double TurnRate()
         {
-            var hasSteerage = Math.Abs(SpeedMetresPerSecond) > BoatHandling.SteerageSpeedMetresPerSecond;
+            var speedThroughWater = Math.Abs(SpeedMetresPerSecond);
+            var hasSteerage = speedThroughWater > BoatHandling.SteerageSpeedMetresPerSecond;
             if (!hasSteerage) return 0;
             var isGoingAstern = SpeedMetresPerSecond < 0;
             if (isGoingAstern) return -BoatHandling.RudderTurnRadiansPerSecond;
