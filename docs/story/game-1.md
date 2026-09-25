@@ -1,4 +1,4 @@
-# The Cut: Game 1
+# The Grand Union: Game 2
 
 The junctions are open. The story follows the guns from Fazeley to the sea, and the map opens in the order the guns travel. Water the player opens stays open; Game 1 ends with everything from Lichfield to Limehouse in play, and that is the series' map from then on.
 
@@ -14,7 +14,7 @@ The junctions are open. The story follows the guns from Fazeley to the sea, and 
 | 6 | Warwick to Braunston | The agent who thinks he is a patriot | Napton, the Oxford summit, Braunston: the hub of the whole system, where every boat family passes |
 | 7 | Braunston to Tring | The Grand Junction | Blisworth tunnel, Stoke Bruerne, the long climb to the summit |
 | 8 | Tring to Paddington | The city's other end | Down through Hertfordshire, Bulls Bridge depot where the Grand Union keeps its fleet, the Paddington arm |
-| 9 | Regent's Canal to Limehouse | The ship | Camden, Islington tunnel, the docks, the tideway. The end |
+| 9 | Regent's Canal to Limehouse | Seen from Paddington, not opened | The tideway is Game 3, *The Tidal Thames* |
 
 Fradley and the Trent and Mersey north are seen from Huddlesford and not opened; they are Game 2.
 
@@ -32,6 +32,6 @@ The BCN and the Grand Union are the sandbox. Bounty: deserters from the depots a
 
 ## Ending
 
-Limehouse. The ship sails. Askew can stop the last lorry, or the agent, or nothing, and none of it stops the trade. The letter with the Officer's name goes in the locker with the pistol and the rifle that does not exist. *Sparrow* turns at the basin and heads back up the cut. Sixteen days to Hopwas.
+Paddington. The guns go down onto the tideway where a canal boat has no business, and Askew can stop the last lorry, or the agent, or nothing, and none of it stops the trade. The letter with the Officer's name goes in the locker with the pistol and the rifle that does not exist. *Sparrow* turns at the basin and heads back up the cut. Sixteen days to Hopwas.
 
 *One true thing about the war*, found not told: the pistol in the locker is a German officer's, and Askew did not take it from a German.

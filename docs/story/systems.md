@@ -15,7 +15,11 @@ There are two directions and three miles an hour. Nobody escapes on the water, s
 
 Heat drops with time, distance, a favour spent, or a boat family speaking for the player. It never drops by outrunning anyone. A shot fired raises it two levels at once on the whole pound. The boat families are a modifier on everything: a player they like is warned; a player they do not is reported.
 
-In the demo, heat has nowhere to go. Vokes at Fazeley and the pickets at Hopwas make the seven miles a room, and that is the pressure of *The Pound*.
+In the demo, heat has nowhere to go. Vokes at Fazeley and the pickets at Hopwas make the seven miles a room, and that is the pressure of *Locked*.
+
+## The gun
+
+The player is unarmed by default and looks it. The rifle is in three pieces in a hide on the boat, and the world never sees it. Assembling it is a story beat, not a button: the player chooses to take the pieces out, and from then until it is apart again every eye on the towpath is a risk. Mooring is a choice with the same weight. Outside a village, under trees, nobody remembers the boat. Tied up by the pub, everyone does.
 
 ## The vantage point
 

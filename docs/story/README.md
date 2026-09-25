@@ -1,6 +1,6 @@
 # Shallow Water — the story bible
 
-This folder is the source of truth for the story of Shallow Water. Every game in the series is a chapter of one story, and every chapter is written from these pages. The design brief (working title *The Cut*) fixed the time, the place and the man; these pages expand inside that fence and never move it.
+This folder is the source of truth for the story of Shallow Water. Every game in the series is a chapter of one story, and every chapter is written from these pages. The design brief (working title *The Grand Union*) fixed the time, the place and the man; these pages expand inside that fence and never move it.
 
 | Page | What it holds |
 | --- | --- |
@@ -10,8 +10,8 @@ This folder is the source of truth for the story of Shallow Water. Every game in
 | [characters.md](characters.md) | The cast of the home pound, and the ones who outlive a single game |
 | [the-long-story.md](the-long-story.md) | The story across the chapters, from the strike to the last boat |
 | [opening.md](opening.md) | The cold open, written as it plays |
-| [demo.md](demo.md) | *The Pound*: the demo, mission by mission |
-| [game-1.md](game-1.md) | *The Cut*: Game 1, the junctions open, the order the map unlocks |
+| [demo.md](demo.md) | *Locked*: the demo, mission by mission |
+| [game-1.md](game-1.md) | *The Grand Union*: Game 2, the junctions open, the order the map unlocks |
 | [systems.md](systems.md) | Heat on a linear canal, the boat, tone, art and sound references |
 
 ## The fence

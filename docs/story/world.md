@@ -38,7 +38,7 @@ Everyone has a theory about why the company is not settling. Askew will learn th
 
 ## The home pound
 
-**Hopwas** is the village: the Red Lion and the Tame Otter on the water, a shop, a chapel, the bridge, the boat moored on the village side with its chimney going. **Hopwas Hays Wood** is the hill behind: the range butts, the red flags on their poles, the firing point, the paths only the range staff and Askew walk. One home. The village is where he is seen. The wood is where he is not.
+**Hopwas** is the village: the Red Lion and the Tame Otter on the water, a shop, a chapel, the bridge, the boat moored a quarter mile beyond the last house, under the wood, its chimney the only sign of it. **Hopwas Hays Wood** is the hill behind: the range butts, the red flags on their poles, the firing point, the paths only the range staff and Askew walk. One home. The village is where he is seen. The wood is where he is not.
 
 **Whittington** is off the cut and up the road: the barracks gate, the guardroom, the sergeants' mess he can no longer enter, the depot armoury, the village beyond.
 
