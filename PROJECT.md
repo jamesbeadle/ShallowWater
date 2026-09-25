@@ -9,3 +9,9 @@ The project-process kit writes this file once and never touches it again, and `C
 Shallow Water is a canal-based game. The story is being written from scratch; nothing from earlier versions of it carries forward.
 
 It must be playable on every platform: web, PC, Xbox and PlayStation.
+
+## Engine
+
+Unity 6 LTS, targeting WebGPU for the web build. It reaches every platform above from one project.
+
+The game logic lives in plain C# classes that know nothing about Unity. Unity scripts only connect that logic to scenes, input and rendering. That boundary keeps a later move to Unreal a translation of the Unity layer, not a rewrite of the game.
