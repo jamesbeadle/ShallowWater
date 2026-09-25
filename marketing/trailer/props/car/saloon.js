@@ -6,7 +6,7 @@ import { buildWheel, mountWheels } from './saloonWheels.js';
 
 function saloonFinishes() {
     return {
-        paint: new MeshPhysicalMaterial({ color: srgb(0.012, 0.012, 0.014), roughness: 0.32, metalness: 0.2, clearcoat: 1, clearcoatRoughness: 0.05 }),
+        paint: new MeshPhysicalMaterial({ color: srgb(0.004, 0.004, 0.005), roughness: 0.4, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.04 }),
         chrome: new MeshStandardMaterial({ color: srgb(0.86, 0.86, 0.88), roughness: 0.12, metalness: 1 }),
         glass: new MeshStandardMaterial({ color: srgb(0.015, 0.018, 0.022), roughness: 0.05, metalness: 0.7 }),
         rubber: new MeshStandardMaterial({ color: srgb(0.025, 0.025, 0.025), roughness: 0.85 }),

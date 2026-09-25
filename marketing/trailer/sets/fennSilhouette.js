@@ -7,9 +7,11 @@ import { Proportions } from '../props/figure/proportions.js';
 import { srgb } from '../world/colours.js';
 
 const Holder = { length: 0.26, radius: 0.0045, tilt: 0.5 };
-const Ember = { radius: 0.009, glow: srgb(1.0, 0.35, 0.08).multiplyScalar(6) };
-const Pose = { lookUp: -0.06, turnHead: 0.32, upperArm: [-0.22, 0, -0.32], forearm: [-2.35, 0, 0], otherUpperArm: [-0.3, 0, 0.42], otherForearm: [-1.35, 0, 0.9] };
-const Stature = { scale: 0.96 };
+const Ember = { radius: 0.013, glow: srgb(1.0, 0.4, 0.1).multiplyScalar(14) };
+const Pose = {
+    lookUp: -0.08, turnHead: -0.35, upperArm: [-0.45, 0, 0.62], forearm: [-2.05, 0, -0.35], otherUpperArm: [-0.25, 0, -0.3], otherForearm: [-1.45, 0, -0.7],
+};
+const Stature = { height: 0.97, slimness: 0.84 };
 const ladyAtHome = { ...Wardrobe.lady, hasHat: false };
 
 function bobbedHair(neck, material) {
@@ -52,7 +54,7 @@ export function standMrsFenn(place, heading) {
     const ember = holderInHand(rig.rightWrist);
     placeFigure(rig, place, heading);
     const { root } = rig;
-    root.scale.setScalar(Stature.scale);
+    root.scale.set(Stature.height * Stature.slimness, Stature.height, Stature.height * Stature.slimness);
     root.updateMatrixWorld(true);
     return { figure: root, ember: ember.getWorldPosition(new Vector3()) };
 }

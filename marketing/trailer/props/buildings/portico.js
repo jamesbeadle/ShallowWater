@@ -3,11 +3,11 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { srgb } from '../../world/colours.js';
 import { Georgian } from './georgianPlan.js';
 
-const Porch = { width: 6.6, depth: 2.75, columnHeight: 4.0, entablature: 0.65, pedimentRise: 1.25, columnZ: 2.3 };
-const columnXs = [-2.75, -0.95, 0.95, 2.75];
+const Porch = { width: 4.6, depth: 2.6, columnHeight: 4.0, entablature: 0.6, pedimentRise: 1.1, columnZ: 2.2 };
+const columnXs = [-1.95, -0.68, 0.68, 1.95];
 const columnProfile = [[0, 0], [0.34, 0], [0.34, 0.12], [0.3, 0.14], [0.31, 0.2], [0.26, 0.24], [0.25, 0.3], [0.245, 1.6], [0.23, 3.0],
     [0.215, 3.62], [0.225, 3.64], [0.212, 3.7], [0.28, 3.8], [0.3, 3.86], [0, 3.86]];
-const Steps = [{ width: 7.0, forward: 3.0 }, { width: 7.6, forward: 3.35 }, { width: 8.2, forward: 3.7 }];
+const Steps = [{ width: 5.2, forward: 2.9 }, { width: 5.8, forward: 3.25 }, { width: 6.4, forward: 3.6 }];
 const Lantern = { colour: srgb(1.0, 0.7, 0.38), intensity: 5, reach: 12, height: 4.25, forward: 1.3 };
 
 function columnGeometry(x) {
@@ -53,7 +53,8 @@ function doorAndFanlight() {
 }
 
 function hangingLantern() {
-    const glass = new Mesh(new BoxGeometry(0.34, 0.5, 0.34), new MeshStandardMaterial({ color: srgb(0.2, 0.15, 0.1), emissive: Lantern.colour, emissiveIntensity: 4 }));
+    const glow = new MeshStandardMaterial({ color: srgb(0.2, 0.15, 0.1), emissive: Lantern.colour, emissiveIntensity: 4 });
+    const glass = new Mesh(new BoxGeometry(0.34, 0.5, 0.34), glow);
     glass.position.set(0, Lantern.height, Lantern.forward);
     const light = new PointLight(Lantern.colour, Lantern.intensity, Lantern.reach, 1.6);
     light.position.set(0, Lantern.height - 0.15, Lantern.forward);

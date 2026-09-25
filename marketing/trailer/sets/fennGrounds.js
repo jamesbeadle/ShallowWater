@@ -5,6 +5,8 @@ import { createTreeline } from '../world/treeline.js';
 
 const Lawn = { size: 700, detail: 1 };
 const PoolCount = 6;
+const poolStrength = 1.6;
+const poolReach = 4.6;
 
 const declarations = /* glsl */ `
     uniform vec3 gravelColour, lawnColour, poolColour;
@@ -27,7 +29,7 @@ const surface = /* glsl */ `
 const pooledLight = /* glsl */ `
     float pooled = 0.0;
     for (int index = 0; index < ${PoolCount}; index++) {
-        vec2 offset = (vWorldPosition.xz - pools[index].xz) * vec2(0.55, 0.3);
+        vec2 offset = (vWorldPosition.xz - pools[index].xz) * vec2(0.5, 0.24);
         pooled += exp(-dot(offset, offset)) * pools[index].y;
     }
     outgoingLight += poolColour * diffuseColor.rgb * pooled;
@@ -50,11 +52,11 @@ const Treelines = [
     { width: 150, height: 24, colour: srgb(0.018, 0.024, 0.03), seed: 5, trees: 15, place: [0, -40] },
     { width: 70, height: 20, colour: srgb(0.02, 0.026, 0.03), seed: 9, trees: 7, place: [-50, -6] },
     { width: 60, height: 19, colour: srgb(0.02, 0.026, 0.03), seed: 13, trees: 6, place: [52, -8] },
-    { width: 900, height: 16, colour: srgb(0.05, 0.055, 0.07), seed: 21, trees: 70, place: [0, -220], tallest: 0.8 },
+    { width: 900, height: 16, colour: srgb(0.05, 0.055, 0.07), seed: 21, trees: 110, place: [0, -220], tallest: 0.8, ground: 0.2 },
 ];
 
 export function plantTreelines() {
     return Treelines.map(createTreeline);
 }
 
-export const poolsBeforeWindows = (openings) => openings.map(({ x }) => new Vector3(x, 1, 3.2));
+export const poolsBeforeWindows = (openings) => openings.map(({ x }) => new Vector3(x, poolStrength, poolReach));

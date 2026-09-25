@@ -2,6 +2,7 @@ import { PerspectiveCamera, Vector3 } from 'three';
 import { blowlampAt, bulbGlowAt, flywheelAngleAt, shudderAt, startingSequenceOf } from '../props/engine/startingSequence.js';
 import { swingCabinLamp } from '../sets/cabinLampSwing.js';
 import { buildEngineHoleSet } from '../sets/engineHoleSet.js';
+import { kickTheFlywheel, kickTimingOf } from '../sets/flywheelKick.js';
 import { lookOf } from '../stage/looks.js';
 import { srgb } from '../world/colours.js';
 import { disposeScene } from '../world/disposal.js';
@@ -69,7 +70,8 @@ export function buildEngineHole(setting) {
     const sequence = startingSequenceOf(edit, shot);
     const time = { value: 0 };
     const set = buildEngineHoleSet({ renderer, sequence, time });
-    const { bolinder, blowlamp, cabinLamp, smoke, smokeLight } = set;
+    const { bolinder, blowlamp, cabinLamp, smoke, smokeLight, askewsArm } = set;
+    const kick = kickTimingOf(sequence);
     const moment = { focus: 1, burning: 1 };
     return {
         scene: set.scene,
@@ -79,6 +81,7 @@ export function buildEngineHole(setting) {
             const shudder = runEngine(set, sequence, shotTime);
             moment.burning = burnBlowlamp(blowlamp, sequence, shotTime);
             swingCabinLamp(cabinLamp, shotTime, sequence.beats);
+            kickTheFlywheel(askewsArm, sequence, kick, shotTime);
             frameCamera(camera, setting, shotTime, shudder);
             smoke.update(shotTime, camera, smokeLight);
             moment.focus = depthOf(camera, bolinder.bulbCentre);

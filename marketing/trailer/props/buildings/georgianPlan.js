@@ -24,7 +24,7 @@ export function storeyFloor(storeyIndex) {
     return Georgian.plinth + Georgian.storeys.slice(0, storeyIndex).reduce((total, storey) => total + storey.height, 0);
 }
 
-export function bayCentre(bayIndex) {
+function bayCentre(bayIndex) {
     return -Facade.width / 2 + (bayIndex + 0.5) * Georgian.bayWidth;
 }
 

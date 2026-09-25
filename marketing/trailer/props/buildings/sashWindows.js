@@ -34,7 +34,8 @@ function surroundOf({ x, bottom, width, height, storeyIndex }) {
         boxAt(width + Surround.width * 3, Surround.sillHeight, Surround.sillDepth, [x, bottom - Surround.sillHeight / 2, Surround.sillDepth / 2]),
     ];
     const hasHood = storeyIndex === 1;
-    const hood = hasHood ? [boxAt(width + Surround.width * 4, Surround.hoodHeight, Surround.hoodDepth, [x, top + Surround.width * 1.6, Surround.hoodDepth / 2])] : [];
+    const hoodPlace = [x, top + Surround.width * 1.6, Surround.hoodDepth / 2];
+    const hood = hasHood ? [boxAt(width + Surround.width * 4, Surround.hoodHeight, Surround.hoodDepth, hoodPlace)] : [];
     return [...pieces, ...hood];
 }
 

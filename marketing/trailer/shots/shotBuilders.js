@@ -17,19 +17,22 @@ import { buildNightRoof } from './nightRoof.js';
 import { buildLorriesOnTheBridge } from './lorriesOnTheBridge.js';
 import { buildVokesLantern } from './vokesLantern.js';
 import { buildPeelsWharf } from './peelsWharf.js';
+import { buildEngineHole } from './engineHole.js';
+import { buildClientFenn } from './clientFenn.js';
+import { buildAskewProfile } from './askewProfile.js';
 
 export const shotBuilders = {
     blackOpen: buildBlackTake,
     runningTheRide: buildRunningTheRide,
     mapHeOwns: buildMapHeOwns,
-    engineHole: buildBlackTake,
+    engineHole: buildEngineHole,
     bowThroughMist: buildBowThroughMist,
     redFlags: buildRedFlags,
     picketAtTheBridge: buildPicketAtTheBridge,
-    clientFenn: buildBlackTake,
+    clientFenn: buildClientFenn,
     clientOrme: buildClientOrme,
     clientHolland: buildClientHolland,
-    askewProfile: buildBlackTake,
+    askewProfile: buildAskewProfile,
     millRoofByDay: buildMillRoofByDay,
     cardFindIt: buildBlackTake,
     peelsWharf: buildPeelsWharf,

@@ -3,7 +3,7 @@ import { srgb } from './colours.js';
 import { shaderNoise } from './shaderNoise.js';
 
 const Dome = { radius: 3000, widthSegments: 48, heightSegments: 24 };
-export const Dusk = {
+const Dusk = {
     zenith: srgb(0.035, 0.06, 0.16),
     middle: srgb(0.12, 0.2, 0.38),
     horizon: srgb(0.52, 0.46, 0.5),

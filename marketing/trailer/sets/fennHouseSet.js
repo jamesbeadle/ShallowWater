@@ -14,8 +14,8 @@ import { standMrsFenn } from './fennSilhouette.js';
 const Evening = { skyFill: srgb(0.3, 0.4, 0.68), groundFill: srgb(0.04, 0.045, 0.05), fillIntensity: 0.55, haze: srgb(0.3, 0.3, 0.38), fog: 0.004 };
 const Moonrise = { colour: srgb(0.55, 0.65, 0.95), intensity: 0.35, direction: new Vector3(-0.45, 0.6, 0.65), focus: new Vector3(3, 0, 8), span: 22 };
 const Parking = { place: new Vector3(7.2, 0, 12.6), heading: -2.35 };
-const Reflections = { intensity: 1.0, skyScale: 0.04 };
-const fennStands = { along: -0.08, behindGlass: -0.78, heading: -0.12 };
+const Reflections = { intensity: 0.5, skyScale: 0.04 };
+const fennStands = { along: -0.12, behindGlass: -0.8, heading: 0.55 };
 
 function moonrise() {
     const moon = new DirectionalLight(Moonrise.colour, Moonrise.intensity);

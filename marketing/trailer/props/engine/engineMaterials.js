@@ -34,7 +34,7 @@ function withOilSheen(material) {
     return material;
 }
 
-export function createGrimyMetal({ colour, roughness, metalness, worn = srgb(0.5, 0.48, 0.44), grimeScale = 9 }) {
+function createGrimyMetal({ colour, roughness, metalness, worn = srgb(0.5, 0.48, 0.44), grimeScale = 9 }) {
     const material = new MeshStandardMaterial({ color: colour, roughness, metalness });
     const uniforms = { oilColour: { value: srgb(0.012, 0.011, 0.009) }, wornColour: { value: worn }, grimeScale: { value: grimeScale } };
     return withOilSheen(patchMaterial(material, { uniforms, declarations, colour: grime }));

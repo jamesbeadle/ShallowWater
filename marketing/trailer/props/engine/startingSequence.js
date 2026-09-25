@@ -5,8 +5,8 @@ const Push = { angle: 1.1 };
 const Rolling = { startSpeed: 2.6, acceleration: 3.4 };
 const Running = { turnsPerBeat: 1, surge: 0.22 };
 const Shudder = { cough: 0.45, beat: 1, decay: 7, frequency: 55 };
-const Blowlamp = { dying: 0.22, withdrawing: 0.9, reach: 0.55 };
-const Glow = { cold: 0.6, hot: 0.82, fireFlare: 0.22, flareDecay: 3.5 };
+const Blowlamp = { dying: 0.22, withdrawing: 0.55, reach: 0.85 };
+const Glow = { cold: 0.6, hot: 0.82, fireFlare: 0.12, flareDecay: 3.5 };
 
 export function startingSequenceOf(edit, shot) {
     const isWithinShot = (time) => time >= shot.start && time < shot.end;

@@ -3,7 +3,7 @@ import { buildHurricaneLamp, LampHang } from '../props/hurricaneLamp.js';
 import { srgb } from '../world/colours.js';
 
 const Chain = { length: 0.2, thickness: 0.004 };
-const Light = { colour: srgb(1.0, 0.64, 0.3), intensity: 1.8, reach: 5, decay: 1.6 };
+const Light = { colour: srgb(1.0, 0.64, 0.3), intensity: 2.3, reach: 5, decay: 1.6 };
 const Swing = { amplitude: 0.17, period: 2.9, phase: 0.8, beatKick: 0.05, kickDecay: 1.4 };
 
 export function hangCabinLamp(pivot) {

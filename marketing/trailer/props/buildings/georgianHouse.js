@@ -29,7 +29,9 @@ function hipRoof(base) {
     const ridgeHalf = halfWidth - (front - back) / 2;
     const ridgeZ = (front + back) / 2;
     const top = base + Georgian.roofRise;
-    const corners = { frontLeft: [-halfWidth, base, front], frontRight: [halfWidth, base, front], backRight: [halfWidth, base, back], backLeft: [-halfWidth, base, back] };
+    const corners = {
+        frontLeft: [-halfWidth, base, front], frontRight: [halfWidth, base, front], backRight: [halfWidth, base, back], backLeft: [-halfWidth, base, back],
+    };
     const ridge = { left: [-ridgeHalf, top, ridgeZ], right: [ridgeHalf, top, ridgeZ] };
     const faces = [
         [corners.frontLeft, corners.frontRight, ridge.right], [corners.frontLeft, ridge.right, ridge.left],
@@ -48,7 +50,8 @@ function bodyGeometry() {
     const top = Facade.height + Georgian.cornice + Georgian.parapet;
     const sides = [-1, 1].map((side) => boxAt([wall, top, Georgian.depth - wall], [side * (Facade.width / 2 - wall / 2), top / 2, -halfDepth - wall / 2]));
     const back = boxAt([Facade.width, top, wall], [0, top / 2, -Georgian.depth + wall / 2]);
-    const stacks = Chimney.placements.map(([x, z]) => boxAt([Chimney.width, Chimney.height + Georgian.roofRise, Chimney.depth], [x, top + Chimney.height / 2, z]));
+    const stackSize = [Chimney.width, Chimney.height + Georgian.roofRise, Chimney.depth];
+    const stacks = Chimney.placements.map(([x, z]) => boxAt(stackSize, [x, top + Chimney.height / 2, z]));
     return mergeGeometries([...sides, back, ...stacks]);
 }
 

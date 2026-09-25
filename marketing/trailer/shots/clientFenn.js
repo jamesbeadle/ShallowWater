@@ -7,9 +7,9 @@ import { disposeScene } from '../world/disposal.js';
 import { createRandom } from '../world/random.js';
 import { easeInOut, glide, progressOf } from './cameraMoves.js';
 
-const Lens = { widest: 30, tightest: 15, near: 0.5, far: 4000 };
+const Lens = { widest: 30, tightest: 13, near: 0.5, far: 4000 };
 const Approach = {
-    from: new Vector3(-2.5, 1.75, 38), to: new Vector3(2.2, 2.4, 25), lookFrom: new Vector3(2.0, 5.9, 0), lookTo: new Vector3(5.7, 6.4, -0.6),
+    from: new Vector3(-6.5, 1.75, 40), to: new Vector3(4.2, 2.8, 25), lookFrom: new Vector3(-6.0, 6.2, 0), lookTo: new Vector3(7.4, 7.0, -0.6),
 };
 const Smoke = { every: 0.3, lead: 3, drift: new Vector3(0.02, 0.16, 0.01), size: [0.03, 0.2], life: 3.2, opacity: 0.35, colour: srgb(0.42, 0.38, 0.34) };
 
@@ -22,8 +22,13 @@ function cigaretteSmoke(ember, shot) {
     return createDriftingSmoke(puffs, Smoke.colour);
 }
 
+function steadyCreep(progress) {
+    const clamped = Math.min(Math.max(progress, 0), 1);
+    return (clamped + easeInOut(clamped)) / 2;
+}
+
 function zoomIn(camera, progress) {
-    camera.fov = Lens.widest + (Lens.tightest - Lens.widest) * easeInOut(progress);
+    camera.fov = Lens.widest + (Lens.tightest - Lens.widest) * steadyCreep(progress);
     camera.updateProjectionMatrix();
 }
 
@@ -46,7 +51,7 @@ export function buildClientFenn(setting) {
         camera,
         update: (shotTime) => {
             const progress = progressOf(setting, shotTime);
-            glide(camera, { ...Approach, easing: easeInOut }, progress);
+            glide(camera, { ...Approach, easing: steadyCreep }, progress);
             zoomIn(camera, progress);
             smoke.update(shotTime, camera);
         },

@@ -5,8 +5,8 @@ import { selectFrames } from './frameSelection.js';
 import { framesDirectory } from './paths.js';
 import { serveStage } from './stageServer.js';
 
-const port = 8765;
-const optionTypes = { shots: { type: 'string' }, times: { type: 'string' }, step: { type: 'string' }, workers: { type: 'string' } };
+const defaultPort = '8765';
+const optionTypes = { shots: { type: 'string' }, times: { type: 'string' }, step: { type: 'string' }, workers: { type: 'string' }, port: { type: 'string' } };
 
 function shareOut(frames, workerCount) {
     const shareSize = Math.ceil(frames.length / workerCount);
@@ -23,7 +23,7 @@ function progressReporter(total) {
     };
 }
 
-async function renderShare(frames, report) {
+async function renderShare(frames, port, report) {
     const { browser, page } = await openStage(`http://localhost:${port}/stage/index.html`);
     await deliverFrames(page, frames, report);
     await browser.close();
@@ -33,10 +33,11 @@ async function main() {
     const { values: options } = parseArgs({ options: optionTypes });
     const frames = await selectFrames(options);
     await mkdir(framesDirectory, { recursive: true });
+    const port = Number(options.port ?? defaultPort);
     const server = await serveStage(port);
     const report = progressReporter(frames.length);
     const shares = shareOut(frames, Number(options.workers ?? 1));
-    await Promise.all(shares.map((share) => renderShare(share, report)));
+    await Promise.all(shares.map((share) => renderShare(share, port, report)));
     server.close();
 }
 

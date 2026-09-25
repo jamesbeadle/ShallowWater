@@ -14,7 +14,7 @@ const Pieces = {
 const Cloth = {
     skin: { colour: srgb(0.42, 0.28, 0.22), roughness: 0.5, rimShare: 1 },
     tweed: { colour: srgb(0.15, 0.13, 0.11), roughness: 0.95, rimShare: 0.6 },
-    wool: { colour: srgb(0.04, 0.038, 0.04), roughness: 0.9, rimShare: 0.12 },
+    wool: { colour: srgb(0.022, 0.021, 0.023), roughness: 1, rimShare: 0.12 },
 };
 const earPlace = new Vector3(0.012, -0.004, 0);
 const Turn = { awayFromCamera: -0.15 };

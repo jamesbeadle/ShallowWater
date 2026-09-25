@@ -19,7 +19,7 @@ function cabinWall() {
     boards.repeat.set(Wall.width / 0.8, Wall.height / 0.8);
     const wall = new Mesh(new PlaneGeometry(Wall.width, Wall.height), new MeshStandardMaterial({ map: boards, roughness: 0.55, metalness: 0.05 }));
     wall.position.set(-0.4, 0, Wall.z);
-    const shelf = new Mesh(new BoxGeometry(1.6, 0.03, 0.34), new MeshStandardMaterial({ color: srgb(0.14, 0.08, 0.05), roughness: 0.5 }));
+    const shelf = new Mesh(new BoxGeometry(1.6, 0.03, 0.34), new MeshStandardMaterial({ color: srgb(0.06, 0.035, 0.022), roughness: 0.6 }));
     shelf.position.set(lampStand.x, lampStand.y - 0.015, lampStand.z);
     return [wall, shelf];
 }

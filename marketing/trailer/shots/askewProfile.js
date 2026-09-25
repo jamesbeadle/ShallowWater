@@ -18,6 +18,7 @@ const Breathing = { period: 4.6, rise: 0.0022 };
 const Flicker = { speed: 7, depth: 0.12, dipAt: 3.35, dipDepth: 0.35, dipLength: 0.16 };
 const Speech = { speaker: 'ASKEW', everyWord: 0.62, tail: 0.45, drift: new Vector3(-0.2, 0.05, 0.04), size: [0.03, 0.22], life: 2.4, opacity: 0.45 };
 const VapourLight = { strength: 1.1, reach: 0.9 };
+const Chimney = { rise: new Vector3(0.012, 0.09, 0), above: 0.16, every: 0.45, lead: 4, size: [0.02, 0.15], life: 4.5, opacity: 0.16 };
 const Lensing = { aperture: 0.04, maximumBlur: 0.01, focusBehindCheek: 0.02 };
 
 function spokenPuffs(edit, shot) {
@@ -30,6 +31,15 @@ function spokenPuffs(edit, shot) {
     return words.flatMap((bornAt) => [0, 0.08, 0.16].map((lag) => puffFrom({
         bornAt: bornAt + lag, origin: Mouth, velocity: Speech.drift, random, size: Speech.size, life: Speech.life, opacity: Speech.opacity,
     })));
+}
+
+function lampSmoke(shot) {
+    const random = createRandom(7);
+    const origin = LampFlame.clone().add(new Vector3(0, Chimney.above, 0));
+    const count = Math.ceil((shot.end - shot.start + Chimney.lead) / Chimney.every);
+    return Array.from({ length: count }, (unused, index) => puffFrom({
+        bornAt: index * Chimney.every - Chimney.lead, origin, velocity: Chimney.rise, random, size: Chimney.size, life: Chimney.life, opacity: Chimney.opacity,
+    }));
 }
 
 function lampFlickerAt(shotTime) {
@@ -54,7 +64,7 @@ export function buildAskewProfile(setting) {
     const scene = new Scene();
     const bust = buildProfileBust(Rim);
     const cabin = buildLampLitCabin({ time, headCentre: new Vector3() });
-    const vapour = createDriftingSmoke(spokenPuffs(edit, shot), srgb(0.01, 0.01, 0.012), AdditiveBlending);
+    const vapour = createDriftingSmoke([...spokenPuffs(edit, shot), ...lampSmoke(shot)], srgb(0.01, 0.01, 0.012), AdditiveBlending);
     const { lampLight, baseIntensity } = cabin;
     const vapourLight = glowFromLights([lampLight], VapourLight);
     scene.add(bust, ...cabin.parts, vapour.smoke);

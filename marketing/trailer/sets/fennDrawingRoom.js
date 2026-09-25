@@ -4,7 +4,10 @@ import { paintTexture } from '../textures/canvasTexture.js';
 import { srgb } from '../world/colours.js';
 
 const Room = { halfWidth: 2.3, depth: 4.8, height: 3.9, front: -0.5 };
-const Lamplit = { backWall: srgb(1.25, 0.95, 0.66), sideWall: srgb(0.8, 0.58, 0.38), ceiling: srgb(0.55, 0.4, 0.28), floor: srgb(0.12, 0.07, 0.04), shade: srgb(3.2, 2.2, 1.3) };
+const Lamplit = {
+    backWall: srgb(1.25, 0.95, 0.66), sideWall: srgb(0.8, 0.58, 0.38), ceiling: srgb(0.55, 0.4, 0.28),
+    floor: srgb(0.12, 0.07, 0.04), shade: srgb(3.2, 2.2, 1.3),
+};
 const Drape = { width: 0.75, folds: 5, swing: 0.06, thickness: 0.05, colour: srgb(0.22, 0.035, 0.03) };
 const Sash = { bar: 0.035, frame: 0.07, depth: 0.05, colour: srgb(0.1, 0.1, 0.12) };
 
