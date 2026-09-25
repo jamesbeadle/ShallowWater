@@ -6,7 +6,7 @@ The project-process kit writes this file once and never touches it again, and `C
 
 ## The game
 
-Shallow Water is a canal-based game. The story is being written from scratch; nothing from earlier versions of it carries forward.
+Shallow Water is a canal-based game. The story is being written from scratch; nothing from earlier versions of it carries forward. The story bible is `docs/story/`, starting at `docs/story/README.md`: it is the source of truth for the series title, the world, the protagonist, the demo and every chapter after it.
 
 It must be playable on every platform: web, PC, Xbox and PlayStation.
 
