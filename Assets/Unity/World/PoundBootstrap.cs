@@ -25,9 +25,15 @@ namespace ShallowWater.Unity.World
         {
             var camera = UnityEngine.Camera.main;
             var hasNoCamera = camera == null;
-            if (hasNoCamera) camera = new GameObject("Helm camera").AddComponent<UnityEngine.Camera>();
-            camera.tag = "MainCamera";
+            if (hasNoCamera) camera = HelmCamera();
             return camera.gameObject.AddComponent<FollowCamera>();
+        }
+
+        private static UnityEngine.Camera HelmCamera()
+        {
+            var camera = new GameObject("Helm camera").AddComponent<UnityEngine.Camera>();
+            camera.tag = "MainCamera";
+            return camera;
         }
     }
 }
