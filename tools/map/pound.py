@@ -1,71 +1,45 @@
-"""The pound Sparrow steers: the canal from Huddlesford Junction to Fazeley Junction as one line, north to south,
-found as the shortest way along the canal between the two places where three canals meet.
+"""The pound Sparrow steers: the canal from Huddlesford Junction to Fazeley Junction as one line, north to south, and
+the rest of the canals in the box as the water beyond it, so the two never lie on top of each other.
 """
 from __future__ import annotations
 
-import heapq
-import math
-from collections import defaultdict
-
-from .elements import pointOf, placesOf
+from .canal_network import CanalNetwork
+from .elements import flatPoints, placesOf
 from .ground import groundPoint
+from .layer_files import lineRecord
 
 HUDDLESFORD_JUNCTION = groundPoint(-1.776, 52.684)
 FAZELEY_JUNCTION = groundPoint(-1.699, 52.615)
-JUNCTION_SEARCH_METRES = 1000.0
-CANALS_AT_A_JUNCTION = 3
+CANAL_KIND = "canal"
 
 
-class CanalNetwork:
+def runsOffTheRoute(way: dict, routeEdges: set[frozenset[int]]) -> list[list[dict]]:
+    nodes, places = way["nodes"], placesOf(way)
+    runs = [[]]
+    for index, edge in enumerate(zip(nodes, nodes[1:])):
+        if frozenset(edge) in routeEdges:
+            runs.append([])
+            continue
+        runs[-1] = runs[-1] or [places[index]]
+        runs[-1].append(places[index + 1])
+    return [run for run in runs if run]
+
+
+class PoundRoute:
     def __init__(self, canalWays: list[dict]):
-        self.positions: dict[int, tuple[float, float]] = {}
-        self.neighbours: dict[int, set[int]] = defaultdict(set)
-        for way in canalWays:
-            self.addWay(way["nodes"], placesOf(way))
+        self.canalWays = canalWays
+        self.network = CanalNetwork(canalWays)
+        start = self.network.junctionNear(HUDDLESFORD_JUNCTION)
+        end = self.network.junctionNear(FAZELEY_JUNCTION)
+        self.nodes = self.network.shortestRoute(start, end)
 
-    def addWay(self, nodes: list[int], places: list[dict]) -> None:
-        for node, place in zip(nodes, places):
-            self.positions[node] = pointOf(place)
-        for first, second in zip(nodes, nodes[1:]):
-            self.neighbours[first].add(second)
-            self.neighbours[second].add(first)
+    def points(self) -> list[tuple[float, float]]:
+        return [self.network.positions[node] for node in self.nodes]
 
-    def distanceTo(self, node: int, point: tuple[float, float]) -> float:
-        return math.dist(self.positions[node], point)
+    def line(self) -> dict:
+        return lineRecord(CANAL_KIND, [coordinate for point in self.points() for coordinate in point])
 
-    def junctionNear(self, point: tuple[float, float]) -> int:
-        nearby = [node for node in self.neighbours if self.distanceTo(node, point) <= JUNCTION_SEARCH_METRES]
-        junctions = [node for node in nearby if len(self.neighbours[node]) >= CANALS_AT_A_JUNCTION]
-        candidates = junctions or list(self.neighbours)
-        return min(candidates, key=lambda node: self.distanceTo(node, point))
-
-    def shortestRoute(self, start: int, end: int) -> list[int]:
-        distances = {start: 0.0}
-        previous: dict[int, int] = {}
-        frontier = [(0.0, start)]
-        while frontier:
-            distance, node = heapq.heappop(frontier)
-            for neighbour in self.neighbours[node]:
-                reached = distance + math.dist(self.positions[node], self.positions[neighbour])
-                if reached < distances.get(neighbour, math.inf):
-                    distances[neighbour] = reached
-                    previous[neighbour] = node
-                    heapq.heappush(frontier, (reached, neighbour))
-        return routeBack(previous, start, end)
-
-
-def routeBack(previous: dict[int, int], start: int, end: int) -> list[int]:
-    if end not in previous:
-        raise SystemExit("No canal joins Huddlesford Junction to Fazeley Junction in the Overpass answer.")
-    route = [end]
-    while route[-1] != start:
-        route.append(previous[route[-1]])
-    return list(reversed(route))
-
-
-def poundLine(canalWays: list[dict]) -> dict:
-    network = CanalNetwork(canalWays)
-    start = network.junctionNear(HUDDLESFORD_JUNCTION)
-    end = network.junctionNear(FAZELEY_JUNCTION)
-    route = network.shortestRoute(start, end)
-    return {"kind": "canal", "points": [coordinate for node in route for coordinate in network.positions[node]]}
+    def canalsBeyond(self) -> list[dict]:
+        routeEdges = {frozenset(edge) for edge in zip(self.nodes, self.nodes[1:])}
+        runs = [run for way in self.canalWays for run in runsOffTheRoute(way, routeEdges)]
+        return [lineRecord(CANAL_KIND, flatPoints(run)) for run in runs]

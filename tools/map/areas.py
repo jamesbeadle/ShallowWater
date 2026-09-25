@@ -4,6 +4,7 @@ relations whose outer and inner rings are joined back together from the ways the
 from __future__ import annotations
 
 from .elements import flatPoints, isRelation, isWay, placesOf, tagsOf
+from .layer_files import areaRecord
 
 OUTER_ROLES = ("outer", "")
 INNER_ROLES = ("inner",)
@@ -28,7 +29,7 @@ def ringPoints(places: list[dict]) -> list[float]:
 
 
 def areaFeature(outline: list[dict], holes: list[list[dict]]) -> dict:
-    return {"outline": ringPoints(outline), "holes": [{"points": ringPoints(hole)} for hole in holes]}
+    return areaRecord(ringPoints(outline), [ringPoints(hole) for hole in holes])
 
 
 def nextSegment(end: dict, remaining: list[list[dict]]) -> list[dict] | None:

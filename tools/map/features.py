@@ -5,11 +5,12 @@ from __future__ import annotations
 
 from .areas import areaFeatures, isBuilding, isWood
 from .elements import flatPoints, isWay, placesOf, tagsOf
+from .layer_files import lineRecord
 from .overpass import ROAD_CLASSES
-from .pound import poundLine
+from .pound import PoundRoute
 
+CANALS = ("waterway", ("canal",))
 LINE_LAYERS = {
-    "canal": ("waterway", ("canal",)),
     "river": ("waterway", ("river",)),
     "railway": ("railway", ("rail",)),
     "roads": ("highway", ROAD_CLASSES),
@@ -17,24 +18,26 @@ LINE_LAYERS = {
 AREA_LAYERS = {"woods": isWood, "buildings": isBuilding}
 
 
-def kindIn(way: dict, layer: str) -> str | None:
-    key, kinds = LINE_LAYERS[layer]
+def kindIn(way: dict, rule: tuple[str, tuple[str, ...]]) -> str | None:
+    key, kinds = rule
     kind = tagsOf(way).get(key)
     return kind if kind in kinds else None
 
 
-def waysIn(ways: list[dict], layer: str) -> list[dict]:
-    return [way for way in ways if kindIn(way, layer)]
+def waysIn(ways: list[dict], rule: tuple[str, tuple[str, ...]]) -> list[dict]:
+    return [way for way in ways if kindIn(way, rule)]
 
 
-def lineFeatures(ways: list[dict], layer: str) -> list[dict]:
-    return [{"kind": kindIn(way, layer), "points": flatPoints(placesOf(way))} for way in waysIn(ways, layer)]
+def lineFeatures(ways: list[dict], rule: tuple[str, tuple[str, ...]]) -> list[dict]:
+    return [lineRecord(kindIn(way, rule), flatPoints(placesOf(way))) for way in waysIn(ways, rule)]
 
 
 def layers(elements: list[dict]) -> dict[str, tuple[str, list[dict]]]:
     ways = [element for element in elements if isWay(element)]
-    content = {layer: ("lines", lineFeatures(ways, layer)) for layer in LINE_LAYERS}
-    content["pound"] = ("lines", [poundLine(waysIn(ways, "canal"))])
+    pound = PoundRoute(waysIn(ways, CANALS))
+    content = {"pound": ("lines", [pound.line()]), "canal": ("lines", pound.canalsBeyond())}
+    for layer, rule in LINE_LAYERS.items():
+        content[layer] = ("lines", lineFeatures(ways, rule))
     for layer, belongs in AREA_LAYERS.items():
         content[layer] = ("areas", areaFeatures(elements, belongs))
     return content
