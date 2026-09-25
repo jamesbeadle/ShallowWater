@@ -19,7 +19,7 @@ The words are not decoration. A pound is a stretch of water held between two loc
 
 Shallow water is three things at once and every chapter should be able to point at all three.
 
-1. **The literal water.** A neglected canal silts. Unattended locks leak, pounds drain, boats ground on the mud. In 1936 the cut is losing to the road and the water is getting shallower, year by year, all the way to the closures of the 1960s. The series is the long slow draining of the system, and Askew ages with it.
+1. **The literal water.** A neglected canal silts. Unattended locks leak, pounds drain, boats ground on the mud. In 1938 the cut is losing to the road and the water is getting shallower, year by year, all the way to the closures of the 1960s. The series is the long slow draining of the system, and Askew ages with it.
 2. **The work.** Bounty and recovery sit in the margin between the law and the crime. You can wade it. You cannot see the bottom.
 3. **The man.** Askew keeps himself shallow on purpose. He gives nobody depth. The war is down there somewhere and he does not look.
 
