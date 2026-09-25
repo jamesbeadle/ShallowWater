@@ -1,0 +1,21 @@
+{
+  "name": "shallow-water-trailer",
+  "private": true,
+  "type": "module",
+  "description": "Renders the announcement trailer for Shallow Water: The Pound, shot by shot, from the edit in edit.json.",
+  "scripts": {
+    "sound": "python3 -m sound",
+    "frames": "node render/renderFrames.js",
+    "video": "node render/encodeVideo.js"
+  },
+  "dependencies": {
+    "@fontsource/alfa-slab-one": "5.3.0",
+    "@fontsource/oswald": "5.3.0",
+    "@fontsource/playfair-display": "5.3.0",
+    "@fontsource/special-elite": "5.3.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
