@@ -10,7 +10,7 @@ const trailer = join(outputDirectory, 'shallow-water-the-pound-trailer.mp4');
 const framesPerSecond = '30';
 
 const pictureSettings = [
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '14', '-tune', 'film', '-pix_fmt', 'yuv420p',
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-maxrate', '16M', '-bufsize', '32M', '-tune', 'film', '-pix_fmt', 'yuv420p',
     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-movflags', '+faststart',
 ];
 const soundSettings = ['-c:a', 'aac', '-b:a', '320k', '-ar', '48000'];
