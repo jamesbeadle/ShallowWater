@@ -17,6 +17,10 @@ Heat drops with time, distance, a favour spent, or a boat family speaking for th
 
 In the demo, heat has nowhere to go. Vokes at Fazeley and the pickets at Hopwas make the seven miles a room, and that is the pressure of *The Pound*.
 
+## The vantage point
+
+The trade is a loop the player learns in the demo and uses in every chapter. **Find it on foot by day**: a roof, a parapet, a bank, a tower, anywhere with the range, the light behind and a way down. **Measure it**: distance, wind, where the man will stand, where the sound will go. **Use it once**, at the hour the client wanted, in the way the client wanted it to look. **Leave by water**, no lamps, before the word gets to the bridges. Every vantage point is a real place on the map and the player can find ones the writers did not.
+
 ## The boat
 
 *Halcyon* is the player's car and it is a bad one on purpose. Single-cylinder Bolinder: started with a blowlamp, run at one beat a second, no reverse gear, reversed by stopping the engine and restarting it backwards. The engine is a character. Breakdowns, a fouled propeller, a cold morning that will not start. Fuel is diesel and diesel is money.
@@ -32,7 +36,7 @@ Not cosy heritage. Not gangster. Cramped, smoky, proud, slightly doomed. The wor
 ## Art references
 
 - FMC Josher motors, 1912 to 1925, with the Bolinder, in FMC's dark green and red, under twenty years of coal dust.
-- The GUCCC Star, Town and Royalty classes, 1934 to 1937, in new paint, the villains' boats and the future.
+- The GUCCC Star, Town and Royalty classes, 1934 to 1938, in new paint, the villains' boats and the future.
 - Working cabins: roses and castles, brass, lace, the range, the stove pipe.
 - Hopwas Hays Wood in October: oak, the range butts, red flags, the firing point.
 - Whittington Barracks: the 1880s red brick, the keep, the guardroom, the gate.
@@ -44,6 +48,7 @@ Not cosy heritage. Not gangster. Cramped, smoky, proud, slightly doomed. The wor
 ## Sound references
 
 - The single beat of a Bolinder, slow and heavy. The whole game keeps time to it.
+- A man breathing out, slowly, on a roof. Then nothing for a second. Then the whole town.
 - Rifle fire coming down a hill, flat, with the delay.
 - Dance bands and the BBC on a wireless with a bad valve. The news read in received pronunciation and turned off.
 - Lorries on Watling Street through the night.

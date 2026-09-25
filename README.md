@@ -1,6 +1,6 @@
 # SHALLOW WATER
 
-**1936. Seven miles of canal. One man, one boat, one long gun, and a strike that has locked the water shut.**
+**1938. Seven miles of canal. One man, one boat, one long gun, and a strike that has locked the water shut.**
 
 An open world you cross at three miles an hour, where the whole country is waiting behind a chain, and everything you do is remembered by somebody standing on the bank.
 
@@ -8,7 +8,7 @@ An open world you cross at three miles an hour, where the whole country is waiti
 
 ## The pitch
 
-You are Askew. Great War rifleman, musketry instructor, discharged on a pension that covers the diesel or the food but not both. You live on *Halcyon*, a tired old working boat with an engine you start with a blowlamp, moored at Hopwas on the village side, where you can see the red flags on the firing range you spent ten years teaching boys to shoot on.
+You are Askew. Great War hero at twenty-five, twenty years on and fitter than the cadets he used to train, discharged on a pension that would not keep a dog. So you are a gun for hire. You find a vantage point, you use it once, and you leave by water before the word reaches the bridges. Whoever has the money can hire you, and in 1938 every side has money. You live on *Halcyon*, a tired old working boat with an engine you start with a blowlamp, moored at Hopwas on the village side, where you can see the red flags on the firing range you spent ten years teaching boys to shoot on.
 
 You are not a copper. You are not a gang. You are the man people come to when the thing they need done sits in the water between the two.
 
@@ -16,10 +16,11 @@ You are not a copper. You are not a gang. You are the man people come to when th
 - **A load dumped off the range track.** The boat family that lost it cannot go to the police and will not forget who helped.
 - **A man last seen leaving the Tame Otter with the takings.** Follow the towpath south. Watch a wharf at two in the morning. See what comes off the water and onto the lorries.
 - **A man who needs persuading to leave a pound.** How you persuade him is your business. The seven miles hear it either way.
+- **Three clients, three sides, one town.** A Blackshirt's purse, a Party doctor, a mill board. Each wants a man dead and each thinks they are the only one who knows your name.
 
 ## The world
 
-The working cut in the last decade it worked. Coal under the sheets, roses and castles under the soot, jazz on a wireless with a bad valve. Dole on the bank. Mills running short weeks. Lorries on Watling Street all night, cheaper than any boat, and everyone on the water knows it.
+The last year before the war, with the war on every wireless and nobody on the water doing anything about it. The working cut in the last decade it worked. Coal under the sheets, roses and castles under the soot, jazz on a wireless with a bad valve. Dole on the bank. Mills running short weeks. Lorries on Watling Street all night, cheaper than any boat, and everyone on the water knows it.
 
 The lock-keepers have walked out. Unattended locks leak. Pounds are draining across the county and boats are sitting on the mud, so the company has dropped the planks and chained the junctions to hold what water is left. Between Huddlesford and Fazeley the cut has no locks, which makes it the only deep water for thirty miles, and the only place still moving.
 
@@ -41,9 +42,9 @@ Shallow Water is one story told across many games, each one a self-contained job
 
 | Chapter | Title | Ground |
 | --- | --- | --- |
-| Demo | *The Pound* | Huddlesford to Fazeley. Seven miles. The strike. Autumn 1936 |
+| Demo | *The Pound* | Huddlesford to Fazeley. Seven miles. The strike. Autumn 1938 |
 | Game 1 | *The Cut* | The chain comes off. Birmingham's black water, then the Grand Union all the way to London |
-| Game 2 | *The Flight* | North. The Potteries, the tunnels, the boats being sunk for their iron |
+| Game 2 | *The Flight* | North. War declared on a Sunday. The Potteries, the tunnels, the boats being sunk for their iron |
 | Game 3 | *The Blackout* | The war comes to the water, and the one thing Askew will not talk about comes with it |
 | Game 4 | *The Tideway* | The state owns the cut now. The Thames. The report that decides which canals live |
 | After | *The Summit*, *The Tunnel*, *The Winding Hole*, *The Last Boat* | As far as the water goes |
@@ -52,7 +53,7 @@ The map only ever grows. Water opened once stays open. Time moves, people age, t
 
 ## The man
 
-He speaks little. He drinks in the Tame Otter, one seat, back to the wall. He watches hands, exits and the water level. He is polite to boat families and short with clerks and silent with officers. He owns three guns in a locker the size of a cupboard, and one of them, according to the depot's book, never existed.
+He runs the wood before the flags go up and can lie still on a wet bank for six hours. He speaks little. He drinks in the Tame Otter, one seat, back to the wall. He watches hands, exits and the water level. He is polite to boat families and short with clerks and silent with officers. He owns three guns in a locker the size of a cupboard, and one of them, according to the depot's book, never existed.
 
 He would tell you he takes the work for the money. He takes it because on the cut he is a man who is good at something.
 

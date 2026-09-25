@@ -1,6 +1,6 @@
 # The Pound: the demo
 
-Autumn 1936, sixth week of the strike. Seven miles of water, one man, one boat, one boy who ran. Six missions, each a job with a client and a fee, together the story of why the pound is shut. Played in order; the water between them is open to roam.
+Autumn 1938, sixth week of the strike. Seven miles of water, one man, one boat, one cadet who ran, and three people with money who each want a man dead in the one place Askew never works. Six missions, each a job with a client and a fee, together the story of why the pound is shut. Played in order; the water between them is open to roam.
 
 ## 1. Red Flags
 
@@ -24,13 +24,13 @@ The Skerritts' coal was dumped off the range track two nights ago by a man they 
 
 Ends with one crate opened on *Halcyon*'s cabin floor. Service rifles, depot stamped, grease still soft.
 
-## 4. The Man from the Tame Otter
+## 4. The Vantage Point
 
-*Client: Nell Cobbett. Fee: a paid slate and a room's worth of listening.*
+*Client: one of three. Fee: the real money.*
 
-A man drank in the Otter for three nights, paid in new notes, and left with her takings on the fourth. Last seen walking the towpath south. Watch the towpath at night; follow him to Fazeley. This is the town hub opening: Tench at the toll house, who denies the man and knows him; Holland at the mill, who has a job of his own; Peel's Wharf at two in the morning, where a company motor with no lamps ties up and Dunmore's lorry backs down to the water. The man is Dunmore's, and the takings were a bribe he was meant to give Ansell and drank instead.
+Three offers arrive in one week, each by a different route and each breaking his rule. Mrs Fenn wants Dr Orme dead before he funds another month of the strike. Dr Orme wants Dunmore's yard foreman, the man breaking the pickets. Holland at the mill wants Ansell, the strike leader, and will pay double. The player takes one, or none, and the other two remember. Then the trade itself: walk Fazeley by day and find the place. Tolson's mill roof, the roving bridge parapet, the reeds below the toll house, the church tower. Measure the wind off the Tame. Leave by water at night with no lamps. This is the town hub opening: Tench at the toll house, who sees everything; Peel's Wharf at two in the morning, where a company motor ties up and Dunmore's lorry backs down to the water with the crates.
 
-Ends with the player having seen the crates cross from water to road, and Sergeant Vokes on the A5 bridge above, seeing the player.
+Ends with a shot, or a job refused, and Sergeant Vokes on the A5 bridge above, adding a line to his file.
 
 ## 5. The Dead Arm
 
@@ -53,4 +53,5 @@ Last shot: the chain across the junction, cut, sinking. Cut to the trailer for *
 - Water: Huddlesford Junction to Fazeley Junction only. Walkable: the Hays, the barracks approach, Fazeley's streets to the A5.
 - The obstructions are things: a chain, stop-planks, a pair of boats tied across. The player can look at them, touch them, and in mission 6, remove one.
 - Heat is local: see [systems.md](systems.md). There is nowhere to run to, which is the point.
-- Every mission can be finished without a shot. Every mission is quicker with one, and the pound hears it.
+- Every mission but one can be finished without a shot. Every mission is quicker with one, and the pound hears it.
+- The vantage point is the trade: find it on foot by day, use it once, leave by water. A place used twice is a place Vokes is waiting.

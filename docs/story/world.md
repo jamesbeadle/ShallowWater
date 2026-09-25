@@ -1,8 +1,10 @@
-# The world: 1936 on the cut
+# The world: 1938 on the cut
 
 ## The year
 
-The old King died in January. The dole queues have not moved. Jarrow is marching south on the wireless. Spain has gone to war with itself and the papers argue about who is sending what. In Fazeley the mills run short weeks. On the A5 the lorries run all night. On the cut the boats still carry coal, and everybody carrying it knows the lorries are cheaper.
+Twenty years since the Armistice. Chamberlain has been to Munich and come back with a piece of paper, gas masks have been handed out in Tamworth, and trenches are being dug in the parks of Birmingham. On the cut nobody does anything about any of it. The dole queues have not moved. Spain is still at war with itself and the papers still argue about who is sending what. The Blackshirts march in the city, the Communists sell their paper outside the mills, and the men who own the mills pay both to keep the other quiet. In Fazeley the mills run short weeks. On the A5 the lorries run all night. On the cut the boats still carry coal, and everybody carrying it knows the lorries are cheaper.
+
+The country is as it was. Nobody in this story knows what is coming, and the series does not wink at it.
 
 ## The water
 
@@ -12,7 +14,7 @@ At **Huddlesford Junction** the dying arm of the Wyrley and Essington branches w
 
 At **Fazeley Junction** the Birmingham and Fazeley comes down from the city under a roving bridge, past the toll house and Peel's Wharf, with Tolson's mill standing over it and the A5 crossing a hundred yards on. Tamworth is next door. This is the town.
 
-Between them: Hopwas, the wood, the barracks road, the River Tame running close beside the cut and lower than it, seven miles of water with no locks, which is why in October 1936 it is the only water for thirty miles that still has any depth.
+Between them: Hopwas, the wood, the barracks road, the River Tame running close beside the cut and lower than it, seven miles of water with no locks, which is why in October 1938 it is the only water for thirty miles that still has any depth.
 
 ## The strike
 
@@ -31,6 +33,7 @@ Everyone has a theory about why the company is not settling. Askew will learn th
 | **Bank-siders** | Mill agents, coal merchants, Fazeley clerks, the toll house | Someone deniable to do what a clerk cannot |
 | **Road haulage** | Dunmore Motors of Tamworth and every firm like it, on the A5 all night | Nothing. They are winning without him |
 | **County police** | Weak on the water, strong on the A5 and in Tamworth; one sergeant who works the bridges | Him out of the county |
+| **The moneyed** | Not a faction but every faction's purse: the British Union's backers, the Communist Party's, the mill boards, the Ministry men. Each side has money, a motive and a man it wants gone | A vantage point, a clean shot, and never to have met him |
 | **Boat families** | Not a faction. The memory of the cut. Wives, children, grandmothers, the ones who know every face | Respect. A word in the right order. Payment in kind |
 
 ## The home pound

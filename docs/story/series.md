@@ -6,9 +6,9 @@ The series is **Shallow Water**. Each chapter takes its own title from the vocab
 
 | Chapter | Title | Ground |
 | --- | --- | --- |
-| Demo | *Shallow Water: The Pound* | Huddlesford to Fazeley, the strike, autumn 1936 |
-| Game 1 | *Shallow Water: The Cut* | Birmingham and the Grand Union to London, 1936 to 1937 |
-| Game 2 | *Shallow Water: The Flight* | The northern lines, the Trent and Mersey, 1938 |
+| Demo | *Shallow Water: The Pound* | Huddlesford to Fazeley, the strike, autumn 1938 |
+| Game 1 | *Shallow Water: The Cut* | Birmingham and the Grand Union to London, 1938 to 1939 |
+| Game 2 | *Shallow Water: The Flight* | The northern lines, the Trent and Mersey, 1939, the war declared on a Sunday |
 | Game 3 | *Shallow Water: The Blackout* | The war on the water, 1940 to 1944 |
 | Game 4 | *Shallow Water: The Tideway* | Nationalisation and the Thames, 1948 |
 | Later | *The Summit*, *The Tunnel*, *The Winding Hole*, *The Arm*, *The Last Boat* | As far as the water goes |
@@ -19,7 +19,7 @@ The words are not decoration. A pound is a stretch of water held between two loc
 
 Shallow water is three things at once and every chapter should be able to point at all three.
 
-1. **The literal water.** A neglected canal silts. Unattended locks leak, pounds drain, boats ground on the mud. In 1936 the cut is losing to the road and the water is getting shallower, year by year, all the way to the closures of the 1960s. The series is the long slow draining of the system, and Askew ages with it.
+1. **The literal water.** A neglected canal silts. Unattended locks leak, pounds drain, boats ground on the mud. In 1938 the cut is losing to the road and the water is getting shallower, year by year, all the way to the closures of the 1960s. The series is the long slow draining of the system, and Askew ages with it.
 2. **The work.** Bounty and recovery sit in the margin between the law and the crime. You can wade it. You cannot see the bottom.
 3. **The man.** Askew keeps himself shallow on purpose. He gives nobody depth. The war is down there somewhere and he does not look.
 
@@ -35,7 +35,8 @@ The model is a long-running book series, not a trilogy: one protagonist, one wor
 
 ## Rules every chapter keeps
 
-1. Askew is never rich, never in charge, never a hero to anyone who was not there. He ends every chapter back on the boat.
+1. Askew is never rich, never in charge, never a hero to anyone who was not there. He ends every chapter back on the boat, fit, and alone.
+8. He works for whoever pays: Blackshirt, Communist, boardroom, Ministry. The series never makes him pick a side, and the sides never meet him twice.
 2. Nobody explains the past. Anyone who tries is lying or selling.
 3. The road wins in the end and everyone on the water knows it. The story is about what people do with that knowledge.
 4. Violence is short, ugly, and costs a favour. A shot fired on the towpath is heard for seven miles.
