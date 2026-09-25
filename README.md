@@ -38,18 +38,17 @@ Shallow Water is one story told across many games, each one a self-contained job
 
 | Chapter | Title | Ground |
 | --- | --- | --- |
-| Demo | *The Pound* | Huddlesford to Fazeley. Seven miles. The strike. Autumn 1938 |
-| Game 1 | *The Cut* | The chain comes off. Birmingham's black water, then the Grand Union all the way to London |
-| Game 2 | *The Flight* | North. War declared on a Sunday. The Potteries, the tunnels, the boats being sunk for their iron |
-| Game 3 | *The Blackout* | The war comes to the water, and the one thing Askew will not talk about comes with it |
-| Game 4 | *The Tideway* | The state owns the cut now. The Thames. The report that decides which canals live |
-| After | *The Summit*, *The Tunnel*, *The Winding Hole*, *The Last Boat* | As far as the water goes |
+| Demo | *Locked* | Huddlesford to Fazeley. Seven miles. The strike. Autumn 1938 |
+| 2 | *The Grand Union* | The chain comes off. Birmingham's black water, then the Grand Union to the edge of London |
+| 3 | *The Tidal Thames* | A canal boat on a tidal river. The docks, the ship, the estuary, and war declared on a Sunday |
+| 4 | *Shallow Water 4* (working title) | The war comes to the water, and the one thing Askew will not talk about comes with it |
+| 5 and on | Working titles | The state owns the cut. The closures. The last boat |
 
 The map only ever grows. Water opened once stays open. Time moves, people age, the wireless says what year it is. Askew does not volunteer war stories, and neither does the series: one true thing per chapter, found and never told.
 
 ## The man
 
-He runs a wood before the flags go up and can lie still on a wet bank for six hours. He speaks little. When he drinks it is one seat, back to the wall, in a pub he will not be in tomorrow. He watches hands, exits and the water level. He is polite to boat families and short with clerks and silent with officers. He owns three guns in a locker the size of a cupboard, and one of them, according to the depot's book, never existed.
+Being forgettable is how he stays alive. Nothing flashy, nothing anyone would describe to a constable. He moors outside the villages, never in them, so nobody sees the boat for long and nobody sees the gun at all. It is in pieces, hidden, and he walks the towpath like any other man. He runs a wood before the flags go up and can lie still on a wet bank for six hours. He speaks little. When he drinks it is one seat, back to the wall, in a pub he will not be in tomorrow. He watches hands, exits and the water level. He is polite to boat families and short with clerks and silent with officers. He owns three guns in a locker the size of a cupboard, and one of them, according to the depot's book, never existed.
 
 He would tell you he takes the work for the money. He takes it because on the cut he is a man who is good at something.
 

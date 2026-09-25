@@ -1,10 +1,10 @@
 # The cold open
 
-*The Pound* opens like this. Black screen. A blowlamp roaring.
+*Locked* opens like this. Black screen. A blowlamp roaring.
 
 Before that, first light in the wood: a man running the ride below the butts, steady, not young, not slow, stopping at the top to look at the whole pound laid out below him like a map he owns. Then the engine hole of *Sparrow*. Askew's hands, the lamp playing on the hot-bulb of the Bolinder, the cabin lamp swinging. He counts under his breath. Kicks the flywheel. The engine catches, misses, catches, and settles into the slow single beat that will be the sound of the whole game. He wipes his hands. Climbs out.
 
-Morning on the cut at Hopwas. Mist on the water, the Tame low and brown beyond the towpath, the wood above the village a wall of turning oak. He looks up. Red flags on the poles. The range is live. The first shots come down the hill, flat and unhurried, a squad on the butts. He listens to them the way another man would listen to a clock.
+Morning on the cut beyond Hopwas, under the wood, the last house out of sight. Mist on the water, the Tame low and brown beyond the towpath, the wood above the village a wall of turning oak. He looks up. Red flags on the poles. The range is live. The first shots come down the hill, flat and unhurried, a squad on the butts. He listens to them the way another man would listen to a clock.
 
 The player has the tiller. The pound is theirs to the chain at Fazeley and the planks at Huddlesford. A picket on the towpath at Hopwas bridge raises a hand. Askew raises one back.
 
@@ -16,6 +16,6 @@ Askew asks which rifle.
 
 Garner says that is the thing. The book says it never existed.
 
-The flags come down. Askew walks back to the boat. On the cabin side, under the soot, the name *Sparrow* and the roses. In the locker, the scope. The engine is still running. He never turned it off.
+The flags come down. Askew walks back to the boat. On the cabin side, under the soot, the name *Sparrow* and the roses. In a place no search would find, the stock, the barrel and the scope, apart. The engine is still running. He never turned it off.
 
-Title card. **SHALLOW WATER.** Then, smaller: *The Pound.*
+Title card. **SHALLOW WATER.** Then, smaller: *Locked.*

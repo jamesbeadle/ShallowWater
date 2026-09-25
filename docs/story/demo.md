@@ -1,4 +1,4 @@
-# The Pound: the demo
+# Locked: the demo
 
 Autumn 1938, sixth week of the strike. Seven miles of water, one man, one boat, one cadet who ran, and three people with money who each want a man dead in the one place Askew never works. Six missions, each a job with a client and a fee, together the story of why the pound is shut. Played in order; the water between them is open to roam.
 
@@ -46,7 +46,7 @@ Ends with Askew in the cabin of the scuttled boat, finding Ansell's strike fund 
 
 The player knows: the strike was let run, the pound is a yard, the money is Dunmore's, the books are Tench's, the guns are the depot's and are going south. Garner is told, or is not. Ansell is told, and the strike breaks in a night, or is not, and the player takes a windlass to the stop-planks at Fazeley under Vokes's lamp. Either way *Sparrow* goes under the roving bridge at dawn with the crate under the coal and Rudd's rifle in the locker.
 
-Last shot: the chain across the junction, cut, sinking. Cut to the trailer for *The Cut*: Glascote's two locks, the black water of Birmingham, a Grand Union motor in new paint, the Thames.
+Last shot: the chain across the junction, cut, sinking. Cut to the trailer for *The Grand Union*: Glascote's two locks, the black water of Birmingham, a Grand Union motor in new paint, the Thames.
 
 ## The demo's fence
 

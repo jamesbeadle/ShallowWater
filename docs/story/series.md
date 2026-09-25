@@ -2,18 +2,17 @@
 
 ## The title
 
-The series is **Shallow Water**. Each chapter takes its own title from the vocabulary of the cut, so the shelf reads like a row of books by one author:
+The series is **Shallow Water**. The demo is *Locked*. The games after it are numbered, and each takes its title from the water it opens:
 
 | Chapter | Title | Ground |
 | --- | --- | --- |
-| Demo | *Shallow Water: The Pound* | Huddlesford to Fazeley, the strike, autumn 1938 |
-| Game 1 | *Shallow Water: The Cut* | Birmingham and the Grand Union to London, 1938 to 1939 |
-| Game 2 | *Shallow Water: The Flight* | The northern lines, the Trent and Mersey, 1939, the war declared on a Sunday |
-| Game 3 | *Shallow Water: The Blackout* | The war on the water, 1940 to 1944 |
-| Game 4 | *Shallow Water: The Tideway* | Nationalisation and the Thames, 1948 |
-| Later | *The Summit*, *The Tunnel*, *The Winding Hole*, *The Arm*, *The Last Boat* | As far as the water goes |
+| Demo | *Shallow Water: Locked* | Huddlesford to Fazeley, the strike, autumn 1938 |
+| 2 | *Shallow Water: The Grand Union* | Birmingham and the Grand Union to the edge of London, 1938 to 1939 |
+| 3 | *Shallow Water: The Tidal Thames* | A canal boat on a tidal river: the docks, the estuary, the war declared, 1939 |
+| 4 | *Shallow Water 4* (working title) | The war on the water |
+| 5 and on | *Shallow Water 5* (working title) and so on | As far as the water goes: nationalisation, the closures, the last boat |
 
-The words are not decoration. A pound is a stretch of water held between two locks; the demo is a man held in one. The cut is the whole system and a wound. A flight is a staircase of locks and an escape. The tideway is where the canal gives up and the river takes over. The list of canal words is long enough that the series never runs out of titles, and the titles never have to be numbered.
+A chapter is named when its water is known. Until then it carries a number.
 
 ## What the title means
 
@@ -35,7 +34,7 @@ The model is a long-running book series, not a trilogy: one protagonist, one wor
 
 ## Rules every chapter keeps
 
-1. Askew is never rich, never in charge, never a hero to anyone who was not there. He ends every chapter back on the boat, fit, and alone.
+1. Askew is never rich, never in charge, never a hero to anyone who was not there. He ends every chapter back on the boat, fit, alone, and forgotten by everyone he passed.
 8. He works for whoever pays: Blackshirt, Communist, boardroom, Ministry. The series never makes him pick a side, and the sides never meet him twice.
 2. Nobody explains the past. Anyone who tries is lying or selling.
 3. The road wins in the end and everyone on the water knows it. The story is about what people do with that knowledge.
