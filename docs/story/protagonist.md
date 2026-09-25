@@ -8,8 +8,8 @@
 - Twenty years after the war he is fitter than the cadets. He runs the wood before the flags go up, swims the Tame in October, and can lie still on a wet bank for six hours. He does not drink on the boat and does not smoke on a job. The body is the tool and he keeps it like the rifle.
 - He is a gun for hire. His trade is the vantage point: a mill roof, a bridge parapet, a wooded bank, a church tower, found on foot the day before, left by water the night after. He takes people out for money and he takes bounty, recovery and watching work when the money is thinner. He does not ask why. He asks where, when, and how the client wants it to look.
 - He moves about the country unseen. The cut is his road: two thousand miles of water nobody watches, through the back of every town in England, with a towpath for walking and a boat that draws no attention because it is old. He can be in Birmingham by Tuesday and nobody at Hopwas will have seen him leave.
-- Hopwas is home because it is the best cover in England for a man like him. He knows the wood better than the range staff, the flags give him a reason to be carrying a rifle, the gunfire gives him a reason for the sound, and the village has seen him every day for six years and thinks he is a quiet ex-sergeant who fishes.
-- The boat is *Halcyon*. A 1912 Josher motor with a single-cylinder Bolinder that has to be started with a blowlamp and reversed by stopping it and starting it backwards. He did not name her and has never painted the name out.
+- He keeps moving. A night here, two there, rarely the same mooring twice in a month and rarely a word to anyone. Most of his life is the towpath, not the job. Hopwas is the one place he comes back to, because it is the best cover in England for a man like him: he knows the wood better than the range staff, the flags give him a reason to carry a rifle, the gunfire gives him a reason for the sound, and the village has known his boat for six years without ever quite knowing him.
+- The boat is *Sparrow*. A 1912 Josher motor with a single-cylinder Bolinder that has to be started with a blowlamp and reversed by stopping it and starting it backwards. He did not name her and has never painted the name out.
 - He owns three guns. A service rifle he should not have. A sporting rifle with a scope that he bought legally and that every constable in the county has an opinion about. A pistol he does not talk about. All three live in a locker the size of a cupboard.
 
 ## Who pays him
@@ -20,7 +20,7 @@ He has one rule and it is not a moral one: he does not take a job in the seven m
 
 ## What he wants
 
-To be left alone on the boat between jobs. That is the whole of it, and he cannot afford it. He would tell you he takes the work for the money. He takes it because on a roof at four hundred yards he is the best in England at something, and in the village he is a man with a long gun and no wife.
+To keep moving and be left alone. That is the whole of it, and he cannot afford it. He would tell you he takes the work for the money. He takes it because on a roof at four hundred yards he is the best in England at something, and in the village he is a man with a long gun and no wife.
 
 ## What he will not say
 
@@ -33,7 +33,7 @@ What the writers know and the player does not: in the last month of the war he w
 - Speaks little. Complete sentences when he does. No slang he did not bring back from the army.
 - Watches hands, exits, rooflines and the water level.
 - Polite to boat families, women, and anyone in a uniform lower than sergeant. Short with clerks. Silent with officers. Courteous to clients and never seen with one twice.
-- Drinks in the Tame Otter, one seat, back to the wall.
+- Drinks in whatever pub is by the water that night, one seat, back to the wall. At Hopwas it is the Tame Otter.
 - Cabin: oil, wet wool, gun solvent, a wireless he keeps tuned to the dance bands and turns off when the news comes on. Roses and castles under the soot on the cabin doors, painted by a woman he never met for a family that sold up.
 
 ## What the player can and cannot make him do

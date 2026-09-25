@@ -32,6 +32,6 @@ The BCN and the Grand Union are the sandbox. Bounty: deserters from the depots a
 
 ## Ending
 
-Limehouse. The ship sails. Askew can stop the last lorry, or the agent, or nothing, and none of it stops the trade. The letter with the Officer's name goes in the locker with the pistol and the rifle that does not exist. *Halcyon* turns at the basin and heads back up the cut. Sixteen days to Hopwas.
+Limehouse. The ship sails. Askew can stop the last lorry, or the agent, or nothing, and none of it stops the trade. The letter with the Officer's name goes in the locker with the pistol and the rifle that does not exist. *Sparrow* turns at the basin and heads back up the cut. Sixteen days to Hopwas.
 
 *One true thing about the war*, found not told: the pistol in the locker is a German officer's, and Askew did not take it from a German.

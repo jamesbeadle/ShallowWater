@@ -8,15 +8,11 @@ An open world you cross at three miles an hour, where the whole country is waiti
 
 ## The pitch
 
-You are Askew. Great War hero at twenty-five, twenty years on and fitter than the cadets he used to train, discharged on a pension that would not keep a dog. So you are a gun for hire. You find a vantage point, you use it once, and you leave by water before the word reaches the bridges. Whoever has the money can hire you, and in 1938 every side has money. You live on *Halcyon*, a tired old working boat with an engine you start with a blowlamp, moored at Hopwas on the village side, where you can see the red flags on the firing range you spent ten years teaching boys to shoot on.
+You are Askew. You live on *Sparrow*, an old working boat, and you keep moving. A night here, two nights there, never long enough for anyone to learn your name. You do not talk much and nobody asks. Most days are the towpath: the engine, the water, the next bridge, the next pound, the stove lit at night with the doors shut.
 
-You are not a copper. You are not a gang. You are the man people come to when the thing they need done sits in the water between the two.
+Sometimes there is a job. Someone with money finds a way to reach you. You tie the boat up somewhere quiet, walk into a town, find a high place, and do what you were paid for. Then you are back on the water before the word reaches the bridges, and the boat that was there yesterday is gone.
 
-- **A deserter in the wood.** The army will pay to have him back in the guardroom by Sunday, and nothing in the county paper.
-- **A load dumped off the range track.** The boat family that lost it cannot go to the police and will not forget who helped.
-- **A man last seen leaving the Tame Otter with the takings.** Follow the towpath south. Watch a wharf at two in the morning. See what comes off the water and onto the lorries.
-- **A man who needs persuading to leave a pound.** How you persuade him is your business. The seven miles hear it either way.
-- **Three clients, three sides, one town.** A Blackshirt's purse, a Party doctor, a mill board. Each wants a man dead and each thinks they are the only one who knows your name.
+That is the whole life. The cut is two thousand miles of water nobody watches. It runs through the back of every town in England, and a man on an old boat is nobody.
 
 ## The world
 
@@ -53,7 +49,7 @@ The map only ever grows. Water opened once stays open. Time moves, people age, t
 
 ## The man
 
-He runs the wood before the flags go up and can lie still on a wet bank for six hours. He speaks little. He drinks in the Tame Otter, one seat, back to the wall. He watches hands, exits and the water level. He is polite to boat families and short with clerks and silent with officers. He owns three guns in a locker the size of a cupboard, and one of them, according to the depot's book, never existed.
+He runs a wood before the flags go up and can lie still on a wet bank for six hours. He speaks little. When he drinks it is one seat, back to the wall, in a pub he will not be in tomorrow. He watches hands, exits and the water level. He is polite to boat families and short with clerks and silent with officers. He owns three guns in a locker the size of a cupboard, and one of them, according to the depot's book, never existed.
 
 He would tell you he takes the work for the money. He takes it because on the cut he is a man who is good at something.
 

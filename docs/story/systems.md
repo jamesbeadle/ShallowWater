@@ -23,7 +23,7 @@ The trade is a loop the player learns in the demo and uses in every chapter. **F
 
 ## The boat
 
-*Halcyon* is the player's car and it is a bad one on purpose. Single-cylinder Bolinder: started with a blowlamp, run at one beat a second, no reverse gear, reversed by stopping the engine and restarting it backwards. The engine is a character. Breakdowns, a fouled propeller, a cold morning that will not start. Fuel is diesel and diesel is money.
+*Sparrow* is the player's car and it is a bad one on purpose. Single-cylinder Bolinder: started with a blowlamp, run at one beat a second, no reverse gear, reversed by stopping the engine and restarting it backwards. The engine is a character. Breakdowns, a fouled propeller, a cold morning that will not start. Fuel is diesel and diesel is money.
 
 Wash complaints are a social system, not a physics one: pass a moored family too fast and the cut hears. A butty, later, doubles the load and halves the handling. A horse boat is the poor option: quiet, slow, needs the towpath, and a Number One will lend one to a friend.
 
