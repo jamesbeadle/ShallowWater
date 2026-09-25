@@ -1,4 +1,6 @@
+using System.Linq;
 using ShallowWater.Game.Boat;
+using ShallowWater.Game.Ground;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.Map;
@@ -14,13 +16,20 @@ namespace ShallowWater.Unity.World
         private static void WakeAtHopwas()
         {
             GroundLayer.Lay();
-            var pound = Pound.HuddlesfordToFazeley();
-            PoundScenery.Build(pound);
-            var mooring = new WaterPosition(PoundLimits.HopwasMooringAlong, 0);
-            var motion = new BoatMotion(mooring, HeadingTowardsFazeley);
+            PoundScenery.Sun();
+            var centreline = MapLines.Read(MapLayers.Pound).First();
+            var pound = Pound.HuddlesfordToFazeley(centreline);
+            CanalLayer.Dig(centreline);
+            var motion = new BoatMotion(MooringAtHopwas(pound), HeadingTowardsFazeley);
             var boat = PoundScenery.Boat();
             boat.AddComponent<BoatController>().Launch(motion, pound);
             FollowingCamera().Follow(boat.transform);
+        }
+
+        private static WaterPosition MooringAtHopwas(Pound pound)
+        {
+            var bridge = pound.WaterPositionAt(GroundPoint.HopwasBridge);
+            return new WaterPosition(bridge.Along, 0);
         }
 
         private static FollowCamera FollowingCamera()

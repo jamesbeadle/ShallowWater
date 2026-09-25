@@ -7,8 +7,6 @@ namespace ShallowWater.Unity.Helm
 {
     public sealed class BoatController : MonoBehaviour
     {
-        private const float RadiansToDegrees = 180f / Mathf.PI;
-
         private BoatMotion motion;
         private Pound pound;
 
@@ -28,7 +26,7 @@ namespace ShallowWater.Unity.Helm
 
         private void KeepInsideThePound()
         {
-            var isAfloat = pound.Holds(motion.Position);
+            var isAfloat = pound.IsOnTheWater(motion.Position);
             if (isAfloat) return;
             motion.HoldAt(pound.Nearest(motion.Position));
         }
@@ -39,7 +37,7 @@ namespace ShallowWater.Unity.Helm
             var ground = pound.GroundPointAt(position);
             transform.position = new Vector3((float)ground.East, (float)Heights.WaterMetres, (float)ground.North);
             var bearing = pound.BearingAt(position.Along) + motion.HeadingRadians;
-            transform.rotation = Quaternion.Euler(0, (float)bearing * RadiansToDegrees, 0);
+            transform.rotation = Quaternion.Euler(0, (float)bearing * Mathf.Rad2Deg, 0);
         }
     }
 }
