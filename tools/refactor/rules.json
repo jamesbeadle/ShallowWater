@@ -73,6 +73,17 @@
     "maxWords": 5,
     "maxLength": 40
   },
+  "orphans": {
+    "entryPointNames": [
+      "main", "Main", "load", "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD", "fallback",
+      "handle", "handleError", "handleFetch", "reroute", "init", "entries",
+      "Configure", "ConfigureServices", "Dispose", "DisposeAsync", "BuildRenderTree", "ShouldRender",
+      "OnInitialized", "OnInitializedAsync", "OnParametersSet", "OnParametersSetAsync",
+      "OnAfterRender", "OnAfterRenderAsync", "Handle", "Invoke", "InvokeAsync", "Execute", "ExecuteAsync",
+      "ToString", "Equals", "GetHashCode", "Up", "Down",
+      "Awake", "Start", "Update", "LateUpdate", "FixedUpdate", "OnEnable", "OnDisable", "OnDestroy"
+    ]
+  },
   "areas": [
     {"name": "tests", "globs": ["**/*.test.*", "**/*.spec.*", "**/tests/**", "**/Tests/**", "**/*.Tests/**", "**/*Tests.cs"]},
     {"name": "docs", "globs": ["**/*.md", "docs/**"]},
