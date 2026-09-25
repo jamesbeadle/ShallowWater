@@ -8,5 +8,7 @@ namespace ShallowWater.Unity.Map
         public const string River = "river";
         public const string Railway = "railway";
         public const string Roads = "roads";
+        public const string Woods = "woods";
+        public const string Buildings = "buildings";
     }
 }

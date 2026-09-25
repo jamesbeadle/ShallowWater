@@ -4,24 +4,18 @@ namespace ShallowWater.Unity.Map
 {
     public static class Paint
     {
-        private static Material pipelineDefault;
-
         public static Material Of(Color colour)
         {
-            var material = new Material(PipelineDefault());
+            var material = new Material(Primitives.PipelineDefault());
             material.color = colour;
             return material;
         }
 
-        private static Material PipelineDefault()
+        public static Material InstancedOf(Color colour)
         {
-            var isKnown = pipelineDefault != null;
-            if (isKnown) return pipelineDefault;
-            var sample = GameObject.CreatePrimitive(PrimitiveType.Quad);
-            var renderer = sample.GetComponent<Renderer>();
-            pipelineDefault = renderer.sharedMaterial;
-            Object.Destroy(sample);
-            return pipelineDefault;
+            var material = Of(colour);
+            material.enableInstancing = true;
+            return material;
         }
     }
 }

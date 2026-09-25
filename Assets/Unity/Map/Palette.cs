@@ -14,6 +14,10 @@ namespace ShallowWater.Unity.Map
         public static readonly Color MainRoad = new Color(0.52f, 0.51f, 0.49f);
         public static readonly Color Road = new Color(0.61f, 0.58f, 0.52f);
         public static readonly Color Lane = new Color(0.66f, 0.58f, 0.44f);
+        public static readonly Color Wall = new Color(0.52f, 0.32f, 0.26f);
+        public static readonly Color Roof = new Color(0.30f, 0.29f, 0.31f);
+        public static readonly Color Trunk = new Color(0.33f, 0.26f, 0.18f);
+        public static readonly Color Crown = new Color(0.27f, 0.33f, 0.14f);
 
         private static readonly Dictionary<Surface, Color> BySurface = new Dictionary<Surface, Color>
         {
@@ -25,6 +29,8 @@ namespace ShallowWater.Unity.Map
             { Surface.MainRoad, MainRoad },
             { Surface.Road, Road },
             { Surface.Lane, Lane },
+            { Surface.Wall, Wall },
+            { Surface.Roof, Roof },
         };
 
         public static Color For(Surface surface)

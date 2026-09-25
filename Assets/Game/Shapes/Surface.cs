@@ -9,6 +9,8 @@ namespace ShallowWater.Game.Shapes
         Railway,
         MainRoad,
         Road,
-        Lane
+        Lane,
+        Wall,
+        Roof
     }
 }

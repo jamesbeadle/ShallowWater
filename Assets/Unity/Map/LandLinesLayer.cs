@@ -14,7 +14,7 @@ namespace ShallowWater.Unity.Map
 
         private static void AddLine(SurfaceShapes surfaces, LineRecord record)
         {
-            var line = record.Line();
+            var line = record.ToLine();
             if (!line.IsDrawable) return;
             surfaces.AddRibbon(line, LineBands.For(record.kind));
         }

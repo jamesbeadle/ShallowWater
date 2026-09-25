@@ -13,6 +13,7 @@ namespace ShallowWater.Game.Ground
             foreach (var place in places) AddUnlessRepeated(place);
         }
 
+        public IReadOnlyList<GroundPoint> Points => points;
         public int Count => points.Count;
         public int SegmentCount => points.Count - 1;
         public GroundPoint this[int index] => points[index];

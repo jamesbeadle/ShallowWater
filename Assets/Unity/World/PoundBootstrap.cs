@@ -4,6 +4,7 @@ using ShallowWater.Game.Ground;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.Map;
+using ShallowWater.Unity.Woods;
 using UnityEngine;
 
 namespace ShallowWater.Unity.World
@@ -19,6 +20,8 @@ namespace ShallowWater.Unity.World
             LandLinesLayer.Lay(MapLayers.River);
             LandLinesLayer.Lay(MapLayers.Railway);
             LandLinesLayer.Lay(MapLayers.Roads);
+            WoodsLayer.Plant();
+            BuildingsLayer.Raise();
             PoundScenery.Sun();
             var centreline = MapLines.Read(MapLayers.Pound).First();
             var pound = Pound.HuddlesfordToFazeley(centreline);

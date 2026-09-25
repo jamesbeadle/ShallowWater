@@ -9,7 +9,7 @@ namespace ShallowWater.Unity.Map
         public static List<GroundLine> Read(string layerName)
         {
             var records = Records(layerName);
-            return records.Select(record => record.Line()).Where(line => line.IsDrawable).ToList();
+            return records.Select(record => record.ToLine()).Where(line => line.IsDrawable).ToList();
         }
 
         public static LineRecord[] Records(string layerName)

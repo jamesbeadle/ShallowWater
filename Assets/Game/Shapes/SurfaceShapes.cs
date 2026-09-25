@@ -9,11 +9,16 @@ namespace ShallowWater.Game.Shapes
 
         public IReadOnlyDictionary<Surface, Shape> BySurface => shapes;
 
+        public void Add(Surface surface, Shape shape)
+        {
+            var isNewSurface = !shapes.ContainsKey(surface);
+            if (isNewSurface) shapes[surface] = new Shape();
+            shapes[surface].Append(shape);
+        }
+
         public void AddRibbon(GroundLine line, Band band)
         {
-            var isNewSurface = !shapes.ContainsKey(band.Surface);
-            if (isNewSurface) shapes[band.Surface] = new Shape();
-            shapes[band.Surface].Append(Ribbon.Along(line, band));
+            Add(band.Surface, Ribbon.Along(line, band));
         }
     }
 }

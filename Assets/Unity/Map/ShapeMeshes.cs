@@ -7,6 +7,8 @@ namespace ShallowWater.Unity.Map
 {
     public static class ShapeMeshes
     {
+        private const int WholeMesh = 0;
+
         public static GameObject Build(string name, Shape shape, Color colour)
         {
             var surface = new GameObject(name);
@@ -30,7 +32,7 @@ namespace ShallowWater.Unity.Map
             var mesh = new Mesh();
             mesh.indexFormat = IndexFormat.UInt32;
             mesh.SetVertices(Vertices(shape));
-            mesh.SetTriangles(new List<int>(shape.Triangles), 0);
+            mesh.SetTriangles(new List<int>(shape.Triangles), WholeMesh);
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
             return mesh;
