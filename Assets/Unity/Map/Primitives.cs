@@ -4,6 +4,8 @@ namespace ShallowWater.Unity.Map
 {
     public static class Primitives
     {
+        public const float CylinderHeightUnits = 2f;
+
         private static Material pipelineDefault;
 
         public static Mesh MeshOf(PrimitiveType type)

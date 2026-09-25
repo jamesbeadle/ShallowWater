@@ -22,18 +22,22 @@ namespace ShallowWater.Game.Pound
         public double HalfWidth { get; }
         public double LengthMetres => centreline.LengthMetres;
         public GroundLine Line => centreline.Line;
+        public double PlanksAlong => PoundLimits.PlanksFromHuddlesfordMetres;
+        public double ChainAlong => LengthMetres - PoundLimits.ChainFromFazeleyMetres;
+        private double NorthmostBoatAlong => PlanksAlong + BoatSize.HalfLengthMetres;
+        private double SouthmostBoatAlong => ChainAlong - BoatSize.HalfLengthMetres;
 
         public bool IsOnTheWater(WaterPosition position)
         {
-            var isWithinLength = position.Along >= 0 && position.Along <= LengthMetres;
+            var isBetweenPlanksAndChain = position.Along >= NorthmostBoatAlong && position.Along <= SouthmostBoatAlong;
             var distanceFromCentre = Math.Abs(position.Across);
             var isWithinBanks = distanceFromCentre <= HalfWidth;
-            return isWithinLength && isWithinBanks;
+            return isBetweenPlanksAndChain && isWithinBanks;
         }
 
         public WaterPosition Nearest(WaterPosition position)
         {
-            var along = Math.Clamp(position.Along, 0, LengthMetres);
+            var along = Math.Clamp(position.Along, NorthmostBoatAlong, SouthmostBoatAlong);
             var across = Math.Clamp(position.Across, -HalfWidth, HalfWidth);
             return new WaterPosition(along, across);
         }

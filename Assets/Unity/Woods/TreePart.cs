@@ -7,7 +7,6 @@ namespace ShallowWater.Unity.Woods
 {
     public sealed class TreePart
     {
-        private const float CylinderHeightUnits = 2f;
         private const int WholeMesh = 0;
 
         private readonly Mesh mesh;
@@ -28,7 +27,7 @@ namespace ShallowWater.Unity.Woods
             var height = (float)TreeForm.TrunkHeightMetres;
             var width = (float)TreeForm.TrunkWidthMetres;
             var centre = new Vector3(0, (float)Heights.GroundMetres + height / 2, 0);
-            return new TreePart(PrimitiveType.Cylinder, Palette.Trunk, centre, new Vector3(width, height / CylinderHeightUnits, width));
+            return new TreePart(PrimitiveType.Cylinder, Palette.Trunk, centre, new Vector3(width, height / Primitives.CylinderHeightUnits, width));
         }
 
         public static TreePart Crown()

@@ -26,6 +26,8 @@ namespace ShallowWater.Unity.World
             var centreline = MapLines.Read(MapLayers.Pound).First();
             var pound = Pound.HuddlesfordToFazeley(centreline);
             CanalLayer.Dig(centreline);
+            HuddlesfordPlanks.Drop(pound);
+            FazeleyChain.Hang(pound);
             var motion = new BoatMotion(MooringAtHopwas(pound), HeadingTowardsFazeley);
             var boat = PoundScenery.Boat();
             boat.AddComponent<BoatController>().Launch(motion, pound);

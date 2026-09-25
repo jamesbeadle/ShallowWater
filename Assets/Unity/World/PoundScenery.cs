@@ -1,3 +1,5 @@
+using ShallowWater.Game.Boat;
+using ShallowWater.Unity.Map;
 using UnityEngine;
 
 namespace ShallowWater.Unity.World
@@ -7,8 +9,8 @@ namespace ShallowWater.Unity.World
         private static readonly Color BoatColour = new Color(0.10f, 0.25f, 0.14f);
         private const float SunHeightDegrees = 35f;
         private const float SunBearingDegrees = 140f;
-        private const float BoatLengthMetres = 21f;
-        private const float BoatBeamMetres = 2.1f;
+        private const float BoatLengthMetres = (float)BoatSize.LengthMetres;
+        private const float BoatBeamMetres = (float)BoatSize.BeamMetres;
         private const float BoatHeightMetres = 1.6f;
         private const float CabinLengthMetres = 3f;
         private const float CabinSetBackMetres = 2f;
@@ -18,11 +20,11 @@ namespace ShallowWater.Unity.World
         {
             var hullSize = new Vector3(BoatBeamMetres, BoatHeightMetres, BoatLengthMetres);
             var cabinSize = new Vector3(BoatBeamMetres, BoatHeightMetres, CabinLengthMetres);
-            var boat = Slab("Sparrow", BoatColour, hullSize);
-            var cabin = Slab("Cabin", BoatColour * CabinShade, cabinSize);
+            var cabinPosition = new Vector3(0, BoatHeightMetres, -BoatLengthMetres / 2 + CabinSetBackMetres);
+            var boat = Slab("Sparrow", BoatColour, new Placement(Vector3.zero, hullSize, Quaternion.identity));
+            var cabin = Slab("Cabin", BoatColour * CabinShade, new Placement(cabinPosition, cabinSize, Quaternion.identity));
             var cabinPlacement = cabin.transform;
             cabinPlacement.SetParent(boat.transform);
-            cabinPlacement.localPosition = new Vector3(0, BoatHeightMetres, -BoatLengthMetres / 2 + CabinSetBackMetres);
             return boat;
         }
 
@@ -34,16 +36,9 @@ namespace ShallowWater.Unity.World
             sunPlacement.rotation = Quaternion.Euler(SunHeightDegrees, SunBearingDegrees, 0);
         }
 
-        private static GameObject Slab(string name, Color colour, Vector3 size)
+        private static GameObject Slab(string name, Color colour, Placement placement)
         {
-            var slab = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            slab.name = name;
-            var placement = slab.transform;
-            placement.localScale = size;
-            var renderer = slab.GetComponent<Renderer>();
-            var paint = renderer.material;
-            paint.color = colour;
-            return slab;
+            return Blocks.Place(PrimitiveType.Cube, name, Paint.Of(colour), placement);
         }
     }
 }

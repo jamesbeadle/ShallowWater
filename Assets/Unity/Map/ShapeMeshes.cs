@@ -41,7 +41,7 @@ namespace ShallowWater.Unity.Map
         private static List<Vector3> Vertices(Shape shape)
         {
             var vertices = new List<Vector3>(shape.PointCount);
-            foreach (var point in shape.Points) vertices.Add(new Vector3((float)point.East, (float)point.Height, (float)point.North));
+            foreach (var point in shape.Points) vertices.Add(WorldVectors.Of(point));
             return vertices;
         }
     }
