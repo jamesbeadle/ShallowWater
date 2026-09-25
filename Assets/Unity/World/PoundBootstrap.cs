@@ -10,7 +10,7 @@ namespace ShallowWater.Unity.World
         private const double HeadingSouth = 0;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        private static void WakeOnTheBoatAtHopwas()
+        private static void WakeAtHopwas()
         {
             var pound = Pound.HuddlesfordToFazeley();
             PoundScenery.Build(pound);
