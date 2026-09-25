@@ -4,34 +4,20 @@ import { buildGeorgianHouse } from '../props/buildings/georgianHouse.js';
 import { storeyFloor, windowOpenings } from '../props/buildings/georgianPlan.js';
 import { buildSaloon } from '../props/car/saloon.js';
 import { srgb } from '../world/colours.js';
-import { createDuskSky, Dusk } from '../world/duskSky.js';
+import { createDuskSky } from '../world/duskSky.js';
 import { bakeEnvironment } from '../world/environmentBake.js';
-import { plantForest } from '../world/forest.js';
 import { Mists, useHeightFog } from '../world/heightFog.js';
 import { buildDrawingRoom } from './fennDrawingRoom.js';
-import { buildLawnAndDrive, poolsBeforeWindows, treePlacements } from './fennGrounds.js';
+import { buildLawnAndDrive, plantTreelines, poolsBeforeWindows } from './fennGrounds.js';
 import { standMrsFenn } from './fennSilhouette.js';
 
-const Evening = { skyFill: srgb(0.3, 0.4, 0.68), groundFill: srgb(0.04, 0.045, 0.05), fillIntensity: 0.4, haze: srgb(0.3, 0.3, 0.38), fog: 0.004 };
-const Afterglow = { colour: srgb(1.0, 0.58, 0.36), intensity: 0.45 };
-const Moonrise = { colour: srgb(0.55, 0.65, 0.95), intensity: 0.3, direction: new Vector3(-0.45, 0.6, 0.65), focus: new Vector3(3, 0, 8), span: 22 };
+const Evening = { skyFill: srgb(0.3, 0.4, 0.68), groundFill: srgb(0.04, 0.045, 0.05), fillIntensity: 0.55, haze: srgb(0.3, 0.3, 0.38), fog: 0.004 };
+const Moonrise = { colour: srgb(0.55, 0.65, 0.95), intensity: 0.35, direction: new Vector3(-0.45, 0.6, 0.65), focus: new Vector3(3, 0, 8), span: 22 };
 const Parking = { place: new Vector3(7.2, 0, 12.6), heading: -2.35 };
-const Reflections = { intensity: 0.4, skyScale: 0.04 };
-const foliageShade = 0.35;
+const Reflections = { intensity: 1.0, skyScale: 0.04 };
 const fennStands = { along: -0.08, behindGlass: -0.78, heading: -0.12 };
 
-function inTheDusk(trees) {
-    const { instanceColor } = trees;
-    const colours = instanceColor ? instanceColor.array : [];
-    colours.forEach((channel, index) => {
-        colours[index] = channel * foliageShade;
-    });
-    trees.castShadow = false;
-    return trees;
-}
-
-function lightTheEvening() {
-    const fill = new HemisphereLight(Evening.skyFill, Evening.groundFill, Evening.fillIntensity);
+function moonrise() {
     const moon = new DirectionalLight(Moonrise.colour, Moonrise.intensity);
     moon.position.copy(Moonrise.direction).multiplyScalar(60).add(Moonrise.focus);
     const aim = moon.target;
@@ -42,9 +28,7 @@ function lightTheEvening() {
     const { camera } = shadow;
     Object.assign(camera, { left: -Moonrise.span, right: Moonrise.span, top: Moonrise.span, bottom: -Moonrise.span, near: 10, far: 140 });
     camera.updateProjectionMatrix();
-    const glow = new DirectionalLight(Afterglow.colour, Afterglow.intensity);
-    glow.position.copy(Dusk.afterglowDirection).multiplyScalar(80);
-    return [fill, moon, aim, glow];
+    return [new HemisphereLight(Evening.skyFill, Evening.groundFill, Evening.fillIntensity), moon, aim];
 }
 
 function eveningReflections() {
@@ -59,11 +43,18 @@ function eveningReflections() {
     return surroundings;
 }
 
+function parkTheSaloon(reflections) {
+    const saloon = buildSaloon();
+    saloon.position.copy(Parking.place);
+    saloon.rotation.set(0, Parking.heading, 0);
+    saloon.traverse((part) => Object.assign(part.material ?? {}, { envMap: reflections.texture, envMapIntensity: Reflections.intensity }));
+    return saloon;
+}
+
 function mrsFennAtHerWindow(watched) {
     const floor = storeyFloor(watched.storeyIndex);
-    const drawingRoom = buildDrawingRoom(watched, floor);
     const fenn = standMrsFenn(new Vector3(watched.x + fennStands.along, floor, fennStands.behindGlass), fennStands.heading);
-    return { parts: [drawingRoom.room, fenn.figure], roomLight: drawingRoom.light, ember: fenn.ember };
+    return { parts: [buildDrawingRoom(watched, floor), fenn.figure], ember: fenn.ember };
 }
 
 export function buildFennHouseSet({ renderer }) {
@@ -71,14 +62,9 @@ export function buildFennHouseSet({ renderer }) {
     const scene = new Scene();
     scene.fog = new FogExp2(Evening.haze, Evening.fog);
     const reflections = bakeEnvironment(renderer, eveningReflections());
-    Object.assign(scene, { environment: reflections.texture, environmentIntensity: Reflections.intensity });
     const { house, watched } = buildGeorgianHouse(createBuildingMaterials());
     const atTheWindow = mrsFennAtHerWindow(watched);
-    const saloon = buildSaloon();
-    saloon.position.copy(Parking.place);
-    saloon.rotation.set(0, Parking.heading, 0);
     const pools = poolsBeforeWindows(windowOpenings().filter((opening) => opening.storeyIndex === 0 && !opening.isDoorway));
-    const trees = plantForest(treePlacements(), { direction: Dusk.afterglowDirection, colour: Afterglow.colour }).map(inTheDusk);
-    scene.add(createDuskSky(), buildLawnAndDrive(pools), house, saloon, ...atTheWindow.parts, ...trees, ...lightTheEvening());
-    return { scene, reflections, roomLight: atTheWindow.roomLight, ember: atTheWindow.ember };
+    scene.add(createDuskSky(), buildLawnAndDrive(pools), house, parkTheSaloon(reflections), ...atTheWindow.parts, ...plantTreelines(), ...moonrise());
+    return { scene, reflections, ember: atTheWindow.ember };
 }

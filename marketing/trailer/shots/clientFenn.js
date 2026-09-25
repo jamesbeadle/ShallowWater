@@ -1,5 +1,5 @@
 import { PerspectiveCamera, Vector3 } from 'three';
-import { createDriftingSmoke, glowFromLights, puffFrom } from '../effects/driftingSmoke.js';
+import { createDriftingSmoke, puffFrom } from '../effects/driftingSmoke.js';
 import { buildFennHouseSet } from '../sets/fennHouseSet.js';
 import { lookOf } from '../stage/looks.js';
 import { srgb } from '../world/colours.js';
@@ -11,8 +11,7 @@ const Lens = { widest: 30, tightest: 15, near: 0.5, far: 4000 };
 const Approach = {
     from: new Vector3(-2.5, 1.75, 38), to: new Vector3(2.2, 2.4, 25), lookFrom: new Vector3(2.0, 5.9, 0), lookTo: new Vector3(5.7, 6.4, -0.6),
 };
-const Smoke = { every: 0.3, lead: 3, drift: new Vector3(0.02, 0.16, 0.01), size: [0.03, 0.2], life: 3.2, opacity: 0.35, colour: srgb(0.18, 0.18, 0.2) };
-const SmokeLight = { strength: 0.08, reach: 2.5 };
+const Smoke = { every: 0.3, lead: 3, drift: new Vector3(0.02, 0.16, 0.01), size: [0.03, 0.2], life: 3.2, opacity: 0.35, colour: srgb(0.42, 0.38, 0.34) };
 
 function cigaretteSmoke(ember, shot) {
     const random = createRandom(28);
@@ -41,7 +40,6 @@ export function buildClientFenn(setting) {
     const camera = new PerspectiveCamera(Lens.widest, aspect, Lens.near, Lens.far);
     const set = buildFennHouseSet({ renderer });
     const smoke = cigaretteSmoke(set.ember, shot);
-    const smokeLight = glowFromLights([set.roomLight], SmokeLight);
     set.scene.add(smoke.smoke);
     return {
         scene: set.scene,
@@ -50,7 +48,7 @@ export function buildClientFenn(setting) {
             const progress = progressOf(setting, shotTime);
             glide(camera, { ...Approach, easing: easeInOut }, progress);
             zoomIn(camera, progress);
-            smoke.update(shotTime, camera, smokeLight);
+            smoke.update(shotTime, camera);
         },
         look: eveningLook,
         dispose: () => {

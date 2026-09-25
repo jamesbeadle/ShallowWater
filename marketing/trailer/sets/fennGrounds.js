@@ -1,11 +1,10 @@
 import { Mesh, MeshStandardMaterial, PlaneGeometry, Vector3 } from 'three';
 import { srgb } from '../world/colours.js';
 import { patchMaterial } from '../world/materialPatches.js';
-import { between, createRandom } from '../world/random.js';
+import { createTreeline } from '../world/treeline.js';
 
 const Lawn = { size: 700, detail: 1 };
 const PoolCount = 6;
-const porticoClearance = 4.8;
 
 const declarations = /* glsl */ `
     uniform vec3 gravelColour, lawnColour, poolColour;
@@ -47,25 +46,15 @@ export function buildLawnAndDrive(poolPlaces) {
     return ground;
 }
 
-const Woods = [
-    { kind: 'oak', count: 12, x: [-40, 40], z: [-42, -20], scale: [1.4, 1.9] },
-    { kind: 'oak', count: 4, x: [-46, -22], z: [-16, 4], scale: [1.3, 1.7] },
-    { kind: 'pine', count: 2, x: [-30, -23], z: [-6, 2], scale: [1.5, 1.8] },
-    { kind: 'oak', count: 4, x: [24, 48], z: [-16, 2], scale: [1.3, 1.7] },
+const Treelines = [
+    { width: 150, height: 24, colour: srgb(0.018, 0.024, 0.03), seed: 5, trees: 15, place: [0, -40] },
+    { width: 70, height: 20, colour: srgb(0.02, 0.026, 0.03), seed: 9, trees: 7, place: [-50, -6] },
+    { width: 60, height: 19, colour: srgb(0.02, 0.026, 0.03), seed: 13, trees: 6, place: [52, -8] },
+    { width: 900, height: 16, colour: srgb(0.05, 0.055, 0.07), seed: 21, trees: 70, place: [0, -220], tallest: 0.8 },
 ];
 
-function clearOfThePortico(x) {
-    return Math.sign(x) * Math.max(Math.abs(x), porticoClearance);
-}
-
-export function treePlacements() {
-    const random = createRandom(1754);
-    return Woods.flatMap((wood) => Array.from({ length: wood.count }, () => {
-        const x = clearOfThePortico(between(random, wood.x[0], wood.x[1]));
-        const z = between(random, wood.z[0], wood.z[1]);
-        const scale = between(random, wood.scale[0], wood.scale[1]);
-        return { kind: wood.kind, detail: 'near', x, y: 0, z, scale, stretch: between(random, 0.9, 1.15), turn: random() * Math.PI * 2 };
-    }));
+export function plantTreelines() {
+    return Treelines.map(createTreeline);
 }
 
 export const poolsBeforeWindows = (openings) => openings.map(({ x }) => new Vector3(x, 1, 3.2));
