@@ -7,9 +7,9 @@ import { disposeScene } from '../world/disposal.js';
 import { createRandom } from '../world/random.js';
 import { easeInOut, glide, progressOf } from './cameraMoves.js';
 
-const Lens = { widest: 30, tightest: 23, near: 0.5, far: 4000 };
+const Lens = { widest: 30, tightest: 15, near: 0.5, far: 4000 };
 const Approach = {
-    from: new Vector3(-3.4, 1.75, 36), to: new Vector3(-2.0, 2.3, 28), lookFrom: new Vector3(1.4, 5.8, 0), lookTo: new Vector3(2.7, 6.5, -0.6),
+    from: new Vector3(-2.5, 1.75, 38), to: new Vector3(2.2, 2.4, 25), lookFrom: new Vector3(2.0, 5.9, 0), lookTo: new Vector3(5.7, 6.4, -0.6),
 };
 const Smoke = { every: 0.3, lead: 3, drift: new Vector3(0.02, 0.16, 0.01), size: [0.03, 0.2], life: 3.2, opacity: 0.35, colour: srgb(0.18, 0.18, 0.2) };
 const SmokeLight = { strength: 0.08, reach: 2.5 };

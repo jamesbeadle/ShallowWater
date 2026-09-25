@@ -8,8 +8,8 @@ import { createStucco } from './stuccoMaterial.js';
 
 const Lighting = {
     plan: [
-        ['bright', 'curtained', 'bright', 'door', 'bright', 'bright', 'curtained'],
-        ['dark', 'curtained', 'dark', 'bright', 'watched', 'dark', 'curtained'],
+        ['curtained', 'curtained', 'bright', 'door', 'bright', 'curtained', 'curtained'],
+        ['dark', 'curtained', 'dark', 'dark', 'curtained', 'watched', 'dark'],
         ['dark', 'dark', 'curtained', 'dark', 'dark', 'dark', 'dark'],
     ],
     watched: 'watched',

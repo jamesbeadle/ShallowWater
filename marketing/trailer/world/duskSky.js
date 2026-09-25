@@ -33,7 +33,7 @@ const fragmentShader = /* glsl */ `
         float streaks = fractalAt(vec3(streakPlace.x * 0.6, streakPlace.y * 2.6, 3.0));
         float cloud = smoothstep(0.55, 0.8, streaks) * smoothstep(0.03, 0.12, height) * (1.0 - smoothstep(0.25, 0.5, height));
         sky = mix(sky, horizon * 0.55 + afterglow * 0.25 * towardGlow, cloud * 0.55);
-        float star = step(0.9965, fractalAt(direction * 420.0)) * smoothstep(0.2, 0.6, height);
+        float star = step(0.9985, hashOf(floor(direction * 380.0))) * smoothstep(0.2, 0.6, height);
         gl_FragColor = vec4(sky + vec3(star * 0.6), 1.0);
     }`;
 

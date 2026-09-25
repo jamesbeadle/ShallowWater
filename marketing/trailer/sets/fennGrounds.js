@@ -19,7 +19,7 @@ const surface = /* glsl */ `
     float apron = (1.0 - smoothstep(3.6, 4.2, place.y)) * step(-1.0, place.y);
     float gravel = max(max(sweep, avenue), apron);
     float grit = noiseAt(vWorldPosition * 16.0);
-    float tufts = fractalAt(vWorldPosition * 0.6);
+    float tufts = noiseAt(vWorldPosition * 0.45);
     vec3 lawn = lawnColour * (0.65 + 0.6 * tufts);
     vec3 stones = gravelColour * (0.7 + 0.5 * grit);
     diffuseColor.rgb = mix(lawn, stones, gravel);
@@ -48,11 +48,10 @@ export function buildLawnAndDrive(poolPlaces) {
 }
 
 const Woods = [
-    { kind: 'oak', count: 16, x: [-45, 45], z: [-40, -18], scale: [1.3, 1.8] },
-    { kind: 'oak', count: 7, x: [-42, -17], z: [-14, 12], scale: [1.2, 1.7] },
-    { kind: 'pine', count: 3, x: [-30, -20], z: [-8, 6], scale: [1.4, 1.7] },
-    { kind: 'oak', count: 7, x: [17, 44], z: [-14, 10], scale: [1.2, 1.7] },
-    { kind: 'bush', count: 10, x: [-16, 16], z: [-1, 1.5], scale: [0.9, 1.3] },
+    { kind: 'oak', count: 12, x: [-40, 40], z: [-42, -20], scale: [1.4, 1.9] },
+    { kind: 'oak', count: 4, x: [-46, -22], z: [-16, 4], scale: [1.3, 1.7] },
+    { kind: 'pine', count: 2, x: [-30, -23], z: [-6, 2], scale: [1.5, 1.8] },
+    { kind: 'oak', count: 4, x: [24, 48], z: [-16, 2], scale: [1.3, 1.7] },
 ];
 
 function clearOfThePortico(x) {

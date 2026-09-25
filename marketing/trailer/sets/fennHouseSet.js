@@ -12,12 +12,23 @@ import { buildDrawingRoom } from './fennDrawingRoom.js';
 import { buildLawnAndDrive, poolsBeforeWindows, treePlacements } from './fennGrounds.js';
 import { standMrsFenn } from './fennSilhouette.js';
 
-const Evening = { skyFill: srgb(0.3, 0.4, 0.68), groundFill: srgb(0.04, 0.045, 0.05), fillIntensity: 0.7, haze: srgb(0.16, 0.18, 0.26), fog: 0.0045 };
+const Evening = { skyFill: srgb(0.3, 0.4, 0.68), groundFill: srgb(0.04, 0.045, 0.05), fillIntensity: 0.4, haze: srgb(0.3, 0.3, 0.38), fog: 0.004 };
 const Afterglow = { colour: srgb(1.0, 0.58, 0.36), intensity: 0.45 };
 const Moonrise = { colour: srgb(0.55, 0.65, 0.95), intensity: 0.3, direction: new Vector3(-0.45, 0.6, 0.65), focus: new Vector3(3, 0, 8), span: 22 };
-const Parking = { place: new Vector3(6.4, 0, 13.2), heading: 2.75 };
-const Reflections = { intensity: 0.7, skyScale: 0.04 };
-const fennStands = { along: 0.12, behindGlass: -1.35, heading: 0.18 };
+const Parking = { place: new Vector3(7.2, 0, 12.6), heading: -2.35 };
+const Reflections = { intensity: 0.4, skyScale: 0.04 };
+const foliageShade = 0.35;
+const fennStands = { along: -0.08, behindGlass: -0.78, heading: -0.12 };
+
+function inTheDusk(trees) {
+    const { instanceColor } = trees;
+    const colours = instanceColor ? instanceColor.array : [];
+    colours.forEach((channel, index) => {
+        colours[index] = channel * foliageShade;
+    });
+    trees.castShadow = false;
+    return trees;
+}
 
 function lightTheEvening() {
     const fill = new HemisphereLight(Evening.skyFill, Evening.groundFill, Evening.fillIntensity);
@@ -27,7 +38,7 @@ function lightTheEvening() {
     aim.position.copy(Moonrise.focus);
     moon.castShadow = true;
     const { shadow } = moon;
-    shadow.mapSize.set(2048, 2048);
+    shadow.mapSize.set(1024, 1024);
     const { camera } = shadow;
     Object.assign(camera, { left: -Moonrise.span, right: Moonrise.span, top: Moonrise.span, bottom: -Moonrise.span, near: 10, far: 140 });
     camera.updateProjectionMatrix();
@@ -67,7 +78,7 @@ export function buildFennHouseSet({ renderer }) {
     saloon.position.copy(Parking.place);
     saloon.rotation.set(0, Parking.heading, 0);
     const pools = poolsBeforeWindows(windowOpenings().filter((opening) => opening.storeyIndex === 0 && !opening.isDoorway));
-    const trees = plantForest(treePlacements(), { direction: Dusk.afterglowDirection, colour: Afterglow.colour });
+    const trees = plantForest(treePlacements(), { direction: Dusk.afterglowDirection, colour: Afterglow.colour }).map(inTheDusk);
     scene.add(createDuskSky(), buildLawnAndDrive(pools), house, saloon, ...atTheWindow.parts, ...trees, ...lightTheEvening());
     return { scene, reflections, roomLight: atTheWindow.roomLight, ember: atTheWindow.ember };
 }
