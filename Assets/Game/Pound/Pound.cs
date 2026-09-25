@@ -1,10 +1,13 @@
 using System;
 using ShallowWater.Game.Boat;
+using ShallowWater.Game.Ground;
 
 namespace ShallowWater.Game.Pound
 {
     public sealed class Pound
     {
+        private const double BearingSouthRadians = Math.PI;
+
         public double NorthEndAlong { get; }
         public double SouthEndAlong { get; }
         public double HalfWidth { get; }
@@ -37,6 +40,17 @@ namespace ShallowWater.Game.Pound
             var along = Math.Clamp(position.Along, NorthEndAlong, SouthEndAlong);
             var across = Math.Clamp(position.Across, -HalfWidth, HalfWidth);
             return new WaterPosition(along, across);
+        }
+
+        public GroundPoint GroundPointAt(WaterPosition position)
+        {
+            var southOfHopwasBridge = position.Along - PoundLimits.HopwasMooringAlong;
+            return new GroundPoint(-position.Across, -southOfHopwasBridge);
+        }
+
+        public double BearingAt(double along)
+        {
+            return BearingSouthRadians;
         }
     }
 }
