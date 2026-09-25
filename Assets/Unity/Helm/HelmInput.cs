@@ -1,4 +1,5 @@
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 namespace ShallowWater.Unity.Helm
 {
@@ -8,8 +9,8 @@ namespace ShallowWater.Unity.Helm
         {
             var keyboard = Keyboard.current;
             if (keyboard == null) return 0;
-            var ahead = keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed;
-            var astern = keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed;
+            var ahead = IsPressed(keyboard.wKey) || IsPressed(keyboard.upArrowKey);
+            var astern = IsPressed(keyboard.sKey) || IsPressed(keyboard.downArrowKey);
             return Axis(ahead, astern);
         }
 
@@ -17,9 +18,14 @@ namespace ShallowWater.Unity.Helm
         {
             var keyboard = Keyboard.current;
             if (keyboard == null) return 0;
-            var starboard = keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed;
-            var port = keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed;
+            var starboard = IsPressed(keyboard.dKey) || IsPressed(keyboard.rightArrowKey);
+            var port = IsPressed(keyboard.aKey) || IsPressed(keyboard.leftArrowKey);
             return Axis(starboard, port);
+        }
+
+        private static bool IsPressed(KeyControl key)
+        {
+            return key.isPressed;
         }
 
         private static double Axis(bool isPositive, bool isNegative)

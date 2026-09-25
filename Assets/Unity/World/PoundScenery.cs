@@ -9,9 +9,14 @@ namespace ShallowWater.Unity.World
         private static readonly Color BankColour = new Color(0.30f, 0.34f, 0.18f);
         private static readonly Color BoatColour = new Color(0.10f, 0.25f, 0.14f);
         private const float BankWidthMetres = 40f;
+        private const float SunHeightDegrees = 35f;
+        private const float SunBearingDegrees = 140f;
         private const float BoatLengthMetres = 21f;
         private const float BoatBeamMetres = 2.1f;
         private const float BoatHeightMetres = 1.6f;
+        private const float CabinLengthMetres = 3f;
+        private const float CabinSetBackMetres = 2f;
+        private const float CabinShade = 0.7f;
 
         public static void Build(Pound pound)
         {
@@ -27,9 +32,10 @@ namespace ShallowWater.Unity.World
         public static GameObject Boat()
         {
             var boat = Slab("Halcyon", BoatColour, Vector3.zero, new Vector3(BoatBeamMetres, BoatHeightMetres, BoatLengthMetres));
-            var cabin = Slab("Cabin", BoatColour * 0.7f, Vector3.zero, new Vector3(BoatBeamMetres, BoatHeightMetres, 3f));
-            cabin.transform.SetParent(boat.transform);
-            cabin.transform.localPosition = new Vector3(0, BoatHeightMetres, -BoatLengthMetres / 2 + 2f);
+            var cabin = Slab("Cabin", BoatColour * CabinShade, Vector3.zero, new Vector3(BoatBeamMetres, BoatHeightMetres, CabinLengthMetres));
+            var cabinPlacement = cabin.transform;
+            cabinPlacement.SetParent(boat.transform);
+            cabinPlacement.localPosition = new Vector3(0, BoatHeightMetres, -BoatLengthMetres / 2 + CabinSetBackMetres);
             return boat;
         }
 
@@ -37,9 +43,11 @@ namespace ShallowWater.Unity.World
         {
             var slab = GameObject.CreatePrimitive(PrimitiveType.Cube);
             slab.name = name;
-            slab.transform.position = position;
-            slab.transform.localScale = size;
-            slab.GetComponent<Renderer>().material.color = colour;
+            var placement = slab.transform;
+            placement.position = position;
+            placement.localScale = size;
+            var paint = slab.GetComponent<Renderer>();
+            paint.material.color = colour;
             return slab;
         }
 
@@ -47,7 +55,8 @@ namespace ShallowWater.Unity.World
         {
             var sun = new GameObject("October sun").AddComponent<UnityEngine.Light>();
             sun.type = LightType.Directional;
-            sun.transform.rotation = Quaternion.Euler(35f, 140f, 0);
+            var sunPlacement = sun.transform;
+            sunPlacement.rotation = Quaternion.Euler(SunHeightDegrees, SunBearingDegrees, 0);
         }
     }
 }
