@@ -1,0 +1,550 @@
+{
+  "generatedAt": "2026-09-25T17:16:31+00:00",
+  "kitVersion": "1.12.0",
+  "score": {
+    "overall": 84.8,
+    "groups": [
+      {
+        "group": "Standard baseline checks",
+        "score": 95.5,
+        "weight": 36
+      },
+      {
+        "group": "Design pattern file count",
+        "score": null,
+        "weight": 0
+      },
+      {
+        "group": "Prose",
+        "score": 57.1,
+        "weight": 14
+      },
+      {
+        "group": "Widget adoption",
+        "score": null,
+        "weight": 0
+      },
+      {
+        "group": "Input validation",
+        "score": null,
+        "weight": 0
+      }
+    ],
+    "elements": [
+      {
+        "key": "filesOverLimit",
+        "label": "Files over the line limit",
+        "group": "Standard baseline checks",
+        "weight": 10,
+        "zeroAt": 0.5,
+        "unit": "files",
+        "isMeasured": true,
+        "offenders": 0,
+        "measuredAgainst": 3,
+        "score": 100.0
+      },
+      {
+        "key": "worstFile",
+        "label": "Worst file, in limits over",
+        "group": "Standard baseline checks",
+        "weight": 5,
+        "zeroAt": 9,
+        "unit": "",
+        "isMeasured": true,
+        "offenders": 0.0,
+        "measuredAgainst": 1,
+        "score": 100.0
+      },
+      {
+        "key": "functionsOverLimit",
+        "label": "Functions over the line limit",
+        "group": "Standard baseline checks",
+        "weight": 8,
+        "zeroAt": 0.25,
+        "unit": "functions",
+        "isMeasured": false,
+        "offenders": 0,
+        "score": null
+      },
+      {
+        "key": "elseBlocks",
+        "label": "Else blocks",
+        "group": "Standard baseline checks",
+        "weight": 5,
+        "zeroAt": 0.5,
+        "unit": "branches",
+        "isMeasured": true,
+        "offenders": 0,
+        "measuredAgainst": 12,
+        "score": 100.0
+      },
+      {
+        "key": "duplication",
+        "label": "Duplication %",
+        "group": "Standard baseline checks",
+        "weight": 8,
+        "zeroAt": 20,
+        "unit": "",
+        "isMeasured": false,
+        "offenders": null,
+        "score": null
+      },
+      {
+        "key": "comments",
+        "label": "Explanatory comment lines",
+        "group": "Standard baseline checks",
+        "weight": 4,
+        "zeroAt": 50,
+        "unit": "thousand lines",
+        "isMeasured": true,
+        "offenders": 0,
+        "measuredAgainst": 0.17,
+        "score": 100.0
+      },
+      {
+        "key": "magicValues",
+        "label": "Inline magic values",
+        "group": "Standard baseline checks",
+        "weight": 4,
+        "zeroAt": 20,
+        "unit": "thousand lines",
+        "isMeasured": true,
+        "offenders": 0,
+        "measuredAgainst": 0.17,
+        "score": 100.0
+      },
+      {
+        "key": "orphans",
+        "label": "Orphan components and functions",
+        "group": "Standard baseline checks",
+        "weight": 4,
+        "zeroAt": 0.1,
+        "unit": "components and functions",
+        "isMeasured": false,
+        "offenders": 0,
+        "score": null
+      },
+      {
+        "key": "memberChains",
+        "label": "Long member chain lines",
+        "group": "Standard baseline checks",
+        "weight": 4,
+        "zeroAt": 30,
+        "unit": "thousand lines",
+        "isMeasured": true,
+        "offenders": 0,
+        "measuredAgainst": 0.17,
+        "score": 100.0
+      },
+      {
+        "key": "deepIndentation",
+        "label": "Deeply indented lines",
+        "group": "Standard baseline checks",
+        "weight": 4,
+        "zeroAt": 30,
+        "unit": "thousand lines",
+        "isMeasured": true,
+        "offenders": 2,
+        "measuredAgainst": 0.17,
+        "score": 59.8
+      },
+      {
+        "key": "functionNames",
+        "label": "Overlong function names",
+        "group": "Standard baseline checks",
+        "weight": 4,
+        "zeroAt": 0.1,
+        "unit": "functions",
+        "isMeasured": false,
+        "offenders": 0,
+        "score": null
+      },
+      {
+        "key": "predictedFiles",
+        "label": "Files the patterns predict but are missing",
+        "group": "Design pattern file count",
+        "weight": 10,
+        "zeroAt": 0.5,
+        "unit": "predicted files",
+        "isMeasured": false,
+        "offenders": 0,
+        "score": null
+      },
+      {
+        "key": "entityFileCounts",
+        "label": "Entities outside their expected file count",
+        "group": "Design pattern file count",
+        "weight": 10,
+        "zeroAt": 0.5,
+        "unit": "entities",
+        "isMeasured": false,
+        "offenders": 0,
+        "score": null
+      },
+      {
+        "key": "tangledConditions",
+        "label": "Conditions with calls tangled inside calls",
+        "group": "Prose",
+        "weight": 8,
+        "zeroAt": 0.25,
+        "unit": "branches",
+        "isMeasured": true,
+        "offenders": 0,
+        "measuredAgainst": 12,
+        "score": 100.0
+      },
+      {
+        "key": "literalComparisons",
+        "label": "Conditions compared to a raw literal",
+        "group": "Prose",
+        "weight": 6,
+        "zeroAt": 0.25,
+        "unit": "branches",
+        "isMeasured": true,
+        "offenders": 4,
+        "measuredAgainst": 12,
+        "score": 0.0
+      },
+      {
+        "key": "gluedAccessors",
+        "label": "Accessor names that want to be a property",
+        "group": "Prose",
+        "weight": 6,
+        "zeroAt": 0.1,
+        "unit": "functions",
+        "isMeasured": false,
+        "offenders": 0,
+        "score": null
+      },
+      {
+        "key": "handRolledWidgets",
+        "label": "Markup written by hand where a widget should be",
+        "group": "Widget adoption",
+        "weight": 8,
+        "zeroAt": 0.5,
+        "unit": "widget slots",
+        "isMeasured": false,
+        "offenders": null,
+        "score": null
+      },
+      {
+        "key": "unvalidatedWrites",
+        "label": "Doors that write without checking their input against the columns",
+        "group": "Input validation",
+        "weight": 8,
+        "zeroAt": 0.5,
+        "unit": "write doors",
+        "isMeasured": false,
+        "offenders": 0,
+        "score": null
+      }
+    ]
+  },
+  "summaries": {
+    "fileLength": {
+      "limit": 100,
+      "filesOverLimit": 0,
+      "totalFiles": 3,
+      "totalLines": 166,
+      "worstFileLines": 0,
+      "worstFileTimesOverLimit": 0.0
+    },
+    "functionShape": {
+      "limit": 30,
+      "functionsOverLimit": 0,
+      "totalFunctions": 0,
+      "elseBlocks": 0,
+      "ifBlocks": 12,
+      "measurementIsHeuristic": true
+    },
+    "functionNames": {
+      "overlongFunctionNames": 0,
+      "maxWords": 5,
+      "maxLength": 40
+    },
+    "accessorNames": {
+      "gluedAccessorNames": 0,
+      "measurementIsHeuristic": true
+    },
+    "duplication": {
+      "skipped": "jscpd is not installed (npm install -g jscpd)"
+    },
+    "naming": {
+      "bannedAbbreviationHits": 0,
+      "unprefixedBooleans": 0
+    },
+    "comments": {
+      "explanatoryCommentLines": 0,
+      "filesWithComments": 0,
+      "taskMarkers": 0
+    },
+    "magicValues": {
+      "inlineHexColours": 0,
+      "inlineStyleAttributes": 0,
+      "repeatedStringLiterals": 0
+    },
+    "prose": {
+      "longMemberChainLines": 0,
+      "deeplyIndentedLines": 2,
+      "overlongLines": 0,
+      "measurementIsHeuristic": true
+    },
+    "conditions": {
+      "tangledConditionLines": 0,
+      "literalComparisonLines": 4,
+      "measurementIsHeuristic": true
+    },
+    "orphans": {
+      "orphanFunctions": 0,
+      "functionsExamined": 0
+    },
+    "designPatterns": {
+      "roleFamilies": 0,
+      "predictedFiles": 0,
+      "predictedFilesMissing": 0,
+      "entities": 0,
+      "entitiesOutOfRange": 0,
+      "measurementIsHeuristic": true
+    },
+    "inventory": {
+      "pages": 0,
+      "components": 0,
+      "orphanComponents": 0,
+      "averagePageLines": 0
+    },
+    "siteDefinition": {
+      "skipped": "no siteDefinition catalogue in rules.json"
+    },
+    "inputValidation": {
+      "schemaTables": 0,
+      "limitedColumns": 0,
+      "writeDoors": 0,
+      "unvalidatedDoors": 0,
+      "looserLimits": 0
+    },
+    "fileAreas": {
+      "totalFiles": 8,
+      "docs": 5,
+      "infrastructure": 3
+    }
+  },
+  "details": {
+    "fileLength": {
+      "name": "fileLength",
+      "summary": {
+        "limit": 100,
+        "filesOverLimit": 0,
+        "totalFiles": 3,
+        "totalLines": 166,
+        "worstFileLines": 0,
+        "worstFileTimesOverLimit": 0.0
+      },
+      "offenders": []
+    },
+    "functionShape": {
+      "name": "functionShape",
+      "summary": {
+        "limit": 30,
+        "functionsOverLimit": 0,
+        "totalFunctions": 0,
+        "elseBlocks": 0,
+        "ifBlocks": 12,
+        "measurementIsHeuristic": true
+      },
+      "offenders": []
+    },
+    "functionNames": {
+      "name": "functionNames",
+      "summary": {
+        "overlongFunctionNames": 0,
+        "maxWords": 5,
+        "maxLength": 40
+      },
+      "offenders": []
+    },
+    "accessorNames": {
+      "name": "accessorNames",
+      "summary": {
+        "gluedAccessorNames": 0,
+        "measurementIsHeuristic": true
+      },
+      "offenders": []
+    },
+    "naming": {
+      "name": "naming",
+      "summary": {
+        "bannedAbbreviationHits": 0,
+        "unprefixedBooleans": 0
+      },
+      "offenders": {
+        "abbreviations": [],
+        "booleans": []
+      }
+    },
+    "comments": {
+      "name": "comments",
+      "summary": {
+        "explanatoryCommentLines": 0,
+        "filesWithComments": 0,
+        "taskMarkers": 0
+      },
+      "offenders": []
+    },
+    "magicValues": {
+      "name": "magicValues",
+      "summary": {
+        "inlineHexColours": 0,
+        "inlineStyleAttributes": 0,
+        "repeatedStringLiterals": 0
+      },
+      "offenders": {
+        "hexColours": [],
+        "inlineStyles": [],
+        "repeatedLiterals": []
+      }
+    },
+    "prose": {
+      "name": "prose",
+      "summary": {
+        "longMemberChainLines": 0,
+        "deeplyIndentedLines": 2,
+        "overlongLines": 0,
+        "measurementIsHeuristic": true
+      },
+      "offenders": {
+        "memberChains": [],
+        "deepIndentation": [
+          {
+            "file": "tools/mcp/run_process.py",
+            "line": 17
+          },
+          {
+            "file": "tools/mcp/server.py",
+            "line": 66
+          }
+        ],
+        "overlongLines": []
+      }
+    },
+    "conditions": {
+      "name": "conditions",
+      "summary": {
+        "tangledConditionLines": 0,
+        "literalComparisonLines": 4,
+        "measurementIsHeuristic": true
+      },
+      "offenders": {
+        "tangled": [],
+        "literalComparisons": [
+          {
+            "file": "tools/mcp/server.py",
+            "line": 64
+          },
+          {
+            "file": "tools/mcp/server.py",
+            "line": 68
+          },
+          {
+            "file": "tools/mcp/server.py",
+            "line": 71
+          },
+          {
+            "file": "tools/mcp/server.py",
+            "line": 86
+          }
+        ]
+      }
+    },
+    "orphans": {
+      "name": "orphans",
+      "summary": {
+        "orphanFunctions": 0,
+        "functionsExamined": 0
+      },
+      "offenders": []
+    },
+    "designPatterns": {
+      "name": "designPatterns",
+      "summary": {
+        "roleFamilies": 0,
+        "predictedFiles": 0,
+        "predictedFilesMissing": 0,
+        "entities": 0,
+        "entitiesOutOfRange": 0,
+        "measurementIsHeuristic": true
+      },
+      "offenders": {
+        "roleFamilies": {},
+        "patterns": [],
+        "missingPredictedFiles": [],
+        "entityFileCounts": []
+      }
+    },
+    "inventory": {
+      "name": "inventory",
+      "summary": {
+        "pages": 0,
+        "components": 0,
+        "orphanComponents": 0,
+        "averagePageLines": 0
+      },
+      "offenders": {
+        "pages": [],
+        "componentReuse": [],
+        "orphans": []
+      }
+    },
+    "siteDefinition": {
+      "name": "siteDefinition",
+      "summary": {
+        "skipped": "no siteDefinition catalogue in rules.json"
+      },
+      "offenders": {
+        "handRolled": []
+      }
+    },
+    "fileAreas": {
+      "name": "fileAreas",
+      "summary": {
+        "totalFiles": 8,
+        "docs": 5,
+        "infrastructure": 3
+      },
+      "offenders": [
+        {
+          "area": "docs",
+          "files": 5,
+          "sourceFiles": 0,
+          "sourceLines": 0
+        },
+        {
+          "area": "infrastructure",
+          "files": 3,
+          "sourceFiles": 0,
+          "sourceLines": 0
+        }
+      ]
+    },
+    "inputValidation": {
+      "name": "inputValidation",
+      "summary": {
+        "schemaTables": 0,
+        "limitedColumns": 0,
+        "writeDoors": 0,
+        "unvalidatedDoors": 0,
+        "looserLimits": 0
+      },
+      "offenders": {
+        "unvalidated": [],
+        "looserLimits": []
+      }
+    },
+    "duplication": {
+      "name": "duplication",
+      "summary": {
+        "skipped": "jscpd is not installed (npm install -g jscpd)"
+      },
+      "offenders": []
+    }
+  }
+}
