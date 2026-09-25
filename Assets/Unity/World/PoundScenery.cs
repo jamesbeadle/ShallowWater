@@ -31,7 +31,7 @@ namespace ShallowWater.Unity.World
 
         public static GameObject Boat()
         {
-            var boat = Slab("Halcyon", BoatColour, Vector3.zero, new Vector3(BoatBeamMetres, BoatHeightMetres, BoatLengthMetres));
+            var boat = Slab("Sparrow", BoatColour, Vector3.zero, new Vector3(BoatBeamMetres, BoatHeightMetres, BoatLengthMetres));
             var cabin = Slab("Cabin", BoatColour * CabinShade, Vector3.zero, new Vector3(BoatBeamMetres, BoatHeightMetres, CabinLengthMetres));
             var cabinPlacement = cabin.transform;
             cabinPlacement.SetParent(boat.transform);

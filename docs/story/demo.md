@@ -22,7 +22,7 @@ The choice: walk him back to the guardroom for the fee, put him on a north-road 
 
 The Skerritts' coal was dumped off the range track two nights ago by a man they hired to watch it. Recover it, and find him. The coal was hiding crates, which is why it was moved, and the crates are not there now. The man is in the Red Lion spending money he should not have. This mission teaches what the boat families are for: Lil knows the man's face, Ada knows his family, Reuben knows which lorry he was seen getting into. Bring the load back and the Skerritts are the player's; bring it back and keep a crate and Ada knows.
 
-Ends with one crate opened on *Halcyon*'s cabin floor. Service rifles, depot stamped, grease still soft.
+Ends with one crate opened on *Sparrow*'s cabin floor. Service rifles, depot stamped, grease still soft.
 
 ## 4. The Vantage Point
 
@@ -44,7 +44,7 @@ Ends with Askew in the cabin of the scuttled boat, finding Ansell's strike fund 
 
 *Client: Askew. Fee: the water.*
 
-The player knows: the strike was let run, the pound is a yard, the money is Dunmore's, the books are Tench's, the guns are the depot's and are going south. Garner is told, or is not. Ansell is told, and the strike breaks in a night, or is not, and the player takes a windlass to the stop-planks at Fazeley under Vokes's lamp. Either way *Halcyon* goes under the roving bridge at dawn with the crate under the coal and Rudd's rifle in the locker.
+The player knows: the strike was let run, the pound is a yard, the money is Dunmore's, the books are Tench's, the guns are the depot's and are going south. Garner is told, or is not. Ansell is told, and the strike breaks in a night, or is not, and the player takes a windlass to the stop-planks at Fazeley under Vokes's lamp. Either way *Sparrow* goes under the roving bridge at dawn with the crate under the coal and Rudd's rifle in the locker.
 
 Last shot: the chain across the junction, cut, sinking. Cut to the trailer for *The Cut*: Glascote's two locks, the black water of Birmingham, a Grand Union motor in new paint, the Thames.
 
