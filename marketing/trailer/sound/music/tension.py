@@ -14,7 +14,7 @@ PEDAL = ("D2", "A2", "D3")
 BUILD_CHORDS = (("D4", "F4", "A4"), ("D4", "F4", "Bb4"), ("C#4", "E4", "A4"))
 SUCK_BACK_SECONDS = 1.0
 QUAVER = 0.5
-BUILD_FROM = (-20.0, -2.0)
+BUILD_FROM = (-20.0, -7.0)
 BUILD_SWELL = (0.5, 1.0)
 ROLL_SECONDS = 2.5
 ROLL_NOTE = "A1"
@@ -27,7 +27,7 @@ class Balance:
     tick = -27.0
     tock = -30.0
     suck_back = 2.0
-    roll = -6.0
+    roll = -10.0
     room = {Rooms.hall: -6.0}
 
 
