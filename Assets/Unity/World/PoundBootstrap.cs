@@ -16,6 +16,9 @@ namespace ShallowWater.Unity.World
         private static void WakeAtHopwas()
         {
             GroundLayer.Lay();
+            LandLinesLayer.Lay(MapLayers.River);
+            LandLinesLayer.Lay(MapLayers.Railway);
+            LandLinesLayer.Lay(MapLayers.Roads);
             PoundScenery.Sun();
             var centreline = MapLines.Read(MapLayers.Pound).First();
             var pound = Pound.HuddlesfordToFazeley(centreline);

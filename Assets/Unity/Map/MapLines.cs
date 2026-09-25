@@ -8,9 +8,14 @@ namespace ShallowWater.Unity.Map
     {
         public static List<GroundLine> Read(string layerName)
         {
-            var record = MapFiles.Layer<LinesRecord>(layerName);
-            var lines = record.lines.Select(line => line.Line());
-            return lines.Where(line => line.IsDrawable).ToList();
+            var records = Records(layerName);
+            return records.Select(record => record.Line()).Where(line => line.IsDrawable).ToList();
+        }
+
+        public static LineRecord[] Records(string layerName)
+        {
+            var layer = MapFiles.Layer<LinesRecord>(layerName);
+            return layer.lines;
         }
     }
 }

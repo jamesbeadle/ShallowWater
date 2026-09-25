@@ -9,10 +9,11 @@ from .layer_files import lineRecord
 from .overpass import ROAD_CLASSES
 from .pound import PoundRoute
 
+RAILWAY = "railway"
 CANALS = ("waterway", ("canal",))
 LINE_LAYERS = {
     "river": ("waterway", ("river",)),
-    "railway": ("railway", ("rail",)),
+    RAILWAY: (RAILWAY, ("rail",)),
     "roads": ("highway", ROAD_CLASSES),
 }
 AREA_LAYERS = {"woods": isWood, "buildings": isBuilding}
