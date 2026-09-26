@@ -1,11 +1,13 @@
 """The map drawn by hand off the 1900 sheet, the game's own 1938 ground: each layer traced from the stitched map as
-pixels and kept in docs/map/traced, turned here into metres, with every line smoothed round its bends.
+pixels and kept in docs/map/traced, turned here into metres, with every line smoothed round its bends and every
+building block the sheet draws raised as the cottages standing on it.
 """
 from __future__ import annotations
 
 import json
 from pathlib import Path
 
+from .cottages import cottagesOn
 from .curves import smoothThrough
 from .ground import toDecimetres
 from .layer_files import areaRecord, lineRecord
@@ -14,6 +16,7 @@ from .period_map import pixelPoint
 TRACED_FOLDER = Path("docs") / "map" / "traced"
 LINES = "lines"
 AREAS = "areas"
+BLOCKS = "blocks"
 SPACING_METRES = 10
 
 
@@ -34,9 +37,15 @@ def tracedArea(feature: dict) -> dict:
     return areaRecord(flatDecimetres(metresOf(feature["pixels"])), [])
 
 
+def tracedCottages(feature: dict) -> list[dict]:
+    return [areaRecord(flatDecimetres(cottage), []) for cottage in cottagesOn(metresOf(feature["pixels"]))]
+
+
 def tracedLayer(tracing: dict) -> tuple[str, list[dict]]:
     if LINES in tracing:
         return LINES, [tracedLine(feature) for feature in tracing[LINES]]
+    if BLOCKS in tracing:
+        return AREAS, [cottage for feature in tracing[BLOCKS] for cottage in tracedCottages(feature)]
     return AREAS, [tracedArea(feature) for feature in tracing[AREAS]]
 
 
