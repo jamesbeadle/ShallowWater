@@ -8,6 +8,7 @@ namespace ShallowWater.Unity.Map
 
         public static void Raise()
         {
+            if (!OptionalLayer.IsPresent(MapLayers.Buildings)) return;
             var footprints = MapAreas.Read(MapLayers.Buildings);
             ShapeMeshes.BuildEach(LayerName, Buildings.Raised(footprints));
         }

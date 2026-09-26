@@ -7,6 +7,7 @@ namespace ShallowWater.Unity.Map
     {
         public static void Lay(string layerName)
         {
+            if (!OptionalLayer.IsPresent(layerName)) return;
             var surfaces = new SurfaceShapes();
             foreach (var record in MapLines.Records(layerName)) AddLine(surfaces, record);
             ShapeMeshes.BuildEach(layerName, surfaces);

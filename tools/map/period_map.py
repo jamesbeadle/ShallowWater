@@ -8,13 +8,14 @@ import shutil
 from pathlib import Path
 from typing import NamedTuple
 
-from .ground import metresEast, metresNorth, toDecimetres
+from .ground import groundPoint, metresEast, metresNorth, toDecimetres
 
 TILE_ZOOM = 15
 FIRST_TILE_COLUMN = 16220
 FIRST_TILE_ROW = 10720
 TILES_ACROSS = 16
 TILES_DOWN = 16
+TILE_PIXELS = 256
 FULL_TURN_DEGREES = 360.0
 HALF_TURN_DEGREES = 180.0
 SOURCE_IMAGE = Path("docs") / "map" / "one-inch-1900-huddlesford-to-fazeley.jpg"
@@ -47,6 +48,12 @@ def tileLongitude(column: float) -> float:
 def tileLatitude(row: float) -> float:
     mercatorNorthing = math.pi * (1 - 2 * row / tilesAroundTheWorld())
     return math.degrees(math.atan(math.sinh(mercatorNorthing)))
+
+
+def pixelPoint(x: float, y: float) -> tuple[float, float]:
+    longitude = tileLongitude(FIRST_TILE_COLUMN + x / TILE_PIXELS)
+    latitude = tileLatitude(FIRST_TILE_ROW + y / TILE_PIXELS)
+    return groundPoint(longitude, latitude)
 
 
 def periodMapBox() -> Box:
