@@ -11,11 +11,10 @@ import argparse
 import json
 import math
 from pathlib import Path
-from urllib.error import URLError
 
 from .features import layers
 from .layer_files import pointsOf, writeFeatures, writeRecord
-from .overpass import INTERPRETER_ADDRESS, fetch, query
+from .overpass import OverpassUnreachable, fetch, query
 from .period_map import copyImage, groundPlacement
 from .traced_pound import tracedPound
 
@@ -23,6 +22,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 MAP_FOLDER = REPOSITORY_ROOT / "Assets" / "StreamingAssets" / "map"
 POUND_LAYER = "pound"
 METRES_IN_A_KILOMETRE = 1000
+TURBO_ADDRESS = "https://overpass-turbo.eu"
 
 
 def writeGround() -> None:
@@ -31,9 +31,10 @@ def writeGround() -> None:
     writeRecord(MAP_FOLDER, "ground", groundPlacement())
 
 
-def unreachable(failure: URLError) -> str:
-    return (f"Could not reach {INTERPRETER_ADDRESS} ({failure}). The ground was written; the layers were not. "
-            f"Save the answer to this query and pass it with --answer:\n\n{query()}")
+def unreachable(failures: OverpassUnreachable) -> str:
+    return (f"No Overpass server answered in full:\n{failures}\n\nThe ground was written; the layers were not. "
+            f"Try again later, or paste the query below into {TURBO_ADDRESS}, run it, export the raw data and pass "
+            f"the downloaded file with --answer:\n\n{query()}")
 
 
 def overpassAnswer(savedAnswer: str | None) -> dict:
@@ -41,8 +42,8 @@ def overpassAnswer(savedAnswer: str | None) -> dict:
         return json.loads(Path(savedAnswer).read_text(encoding="utf-8"))
     try:
         return fetch()
-    except URLError as failure:
-        raise SystemExit(unreachable(failure))
+    except OverpassUnreachable as failures:
+        raise SystemExit(unreachable(failures))
 
 
 def lengthInKilometres(line: dict) -> float:
