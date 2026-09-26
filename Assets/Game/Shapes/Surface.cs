@@ -4,6 +4,10 @@ namespace ShallowWater.Game.Shapes
     {
         Water,
         Towpath,
+        PavedTowpath,
+        Coping,
+        Bollard,
+        Grass,
         Bank,
         River,
         Railway,

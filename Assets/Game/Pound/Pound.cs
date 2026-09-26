@@ -6,6 +6,8 @@ namespace ShallowWater.Game.Pound
 {
     public sealed class Pound
     {
+        private const double HuddlesfordAlong = 0;
+
         private readonly Centreline centreline;
 
         public Pound(Centreline centreline, double halfWidth)
@@ -55,6 +57,18 @@ namespace ShallowWater.Game.Pound
         public double BearingAt(double along)
         {
             return centreline.BearingAt(along);
+        }
+
+        public double AlongOf(Landmark landmark)
+        {
+            if (landmark == Landmark.HuddlesfordJunction) return HuddlesfordAlong;
+            if (landmark == Landmark.FazeleyJunction) return LengthMetres;
+            return WaterPositionAt(GroundPoint.HopwasBridge).Along;
+        }
+
+        public GroundLine LineAlong(Span span)
+        {
+            return CentrelinePiece.Between(centreline, span);
         }
     }
 }

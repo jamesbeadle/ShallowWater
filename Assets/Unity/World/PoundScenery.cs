@@ -7,6 +7,7 @@ namespace ShallowWater.Unity.World
     public static class PoundScenery
     {
         private static readonly Color BoatColour = new Color(0.10f, 0.25f, 0.14f);
+        private const string SunName = "October sun";
         private const float SunHeightDegrees = 35f;
         private const float SunBearingDegrees = 140f;
         private const float BoatLengthMetres = (float)BoatSize.LengthMetres;
@@ -30,10 +31,19 @@ namespace ShallowWater.Unity.World
 
         public static void Sun()
         {
-            var sun = new GameObject("October sun").AddComponent<Light>();
+            var sun = SunOfTheScene();
             sun.type = LightType.Directional;
             var sunPlacement = sun.transform;
             sunPlacement.rotation = Quaternion.Euler(SunHeightDegrees, SunBearingDegrees, 0);
+        }
+
+        private static Light SunOfTheScene()
+        {
+            var sceneLight = Object.FindFirstObjectByType<Light>();
+            var hasALight = sceneLight != null;
+            if (hasALight) return sceneLight;
+            var sun = new GameObject(SunName);
+            return sun.AddComponent<Light>();
         }
 
         private static GameObject Slab(string name, Color colour, Placement placement)

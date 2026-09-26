@@ -6,38 +6,73 @@ namespace ShallowWater.Game.Pound
 {
     public static class CanalSection
     {
-        private const double LipWidthMetres = 0.5;
-        private const double TowpathWidthMetres = 3;
-        private const double OffsideBankWidthMetres = 1.5;
-        private const double OuterSlopeWidthMetres = 1;
+        private const double SoftEdgeWidthMetres = 0.6;
+        private const double StoneFaceWidthMetres = 0;
+        private const double CopingWidthMetres = 0.5;
+        private const double DirtPathFromCentreMetres = 7.4;
+        private const double DirtPathWidthMetres = 1.8;
+        private const double PavedPathWidthMetres = 2.8;
+        private const double GrassFromCentreMetres = 13;
+        private const double OuterSlopeWidthMetres = 1.5;
+        private const double BothSides = 2;
 
-        public static IReadOnlyList<Band> OfThePound()
+        public static IReadOnlyList<Band> For(Stretch stretch)
         {
-            var water = PoundLimits.ChannelHalfWidthMetres;
-            var lip = water + LipWidthMetres;
-            var towpath = lip + TowpathWidthMetres;
-            var offsideBank = lip + OffsideBankWidthMetres;
-            return new[]
-            {
-                Rising(Surface.Bank, -towpath - OuterSlopeWidthMetres, Heights.GroundMetres, -towpath, Heights.BankTopMetres),
-                Rising(Surface.Towpath, -towpath, Heights.BankTopMetres, -lip, Heights.BankTopMetres),
-                Rising(Surface.Bank, -lip, Heights.BankTopMetres, -water, Heights.WaterMetres),
-                Rising(Surface.Water, -water, Heights.WaterMetres, water, Heights.WaterMetres),
-                Rising(Surface.Bank, water, Heights.WaterMetres, lip, Heights.BankTopMetres),
-                Rising(Surface.Bank, lip, Heights.BankTopMetres, offsideBank, Heights.BankTopMetres),
-                Rising(Surface.Bank, offsideBank, Heights.BankTopMetres, offsideBank + OuterSlopeWidthMetres, Heights.GroundMetres),
-            };
+            var water = Band.Flat(Surface.Water, PoundLimits.ChannelHalfWidthMetres * BothSides, Heights.WaterMetres);
+            var bands = new List<Band>(TowpathSide(stretch)) { water };
+            bands.AddRange(Offside());
+            return bands;
         }
 
         public static Band BeyondThePound()
         {
-            var width = PoundLimits.ChannelHalfWidthMetres * 2;
+            var width = PoundLimits.ChannelHalfWidthMetres * BothSides;
             return Band.Flat(Surface.Water, width, Heights.CanalsBeyondThePoundMetres);
         }
 
-        private static Band Rising(Surface surface, double fromOffset, double fromHeight, double toOffset, double toHeight)
+        private static IReadOnlyList<Band> TowpathSide(Stretch stretch)
         {
-            return new Band(surface, new BandEdge(fromOffset, fromHeight), new BandEdge(toOffset, toHeight));
+            var walk = BankWalk.OnTheTowpathSide();
+            WaterEdge(walk, stretch.HasHardEdge);
+            Path(walk, stretch.IsVillage);
+            GrassVerge(walk);
+            return walk.Bands;
+        }
+
+        private static IReadOnlyList<Band> Offside()
+        {
+            var walk = BankWalk.OnTheOffside();
+            walk.Step(Surface.Bank, SoftEdgeWidthMetres, Heights.BankTopMetres);
+            GrassVerge(walk);
+            return walk.Bands;
+        }
+
+        private static void WaterEdge(BankWalk walk, bool isHard)
+        {
+            if (!isHard)
+            {
+                walk.Step(Surface.Bank, SoftEdgeWidthMetres, Heights.BankTopMetres);
+                return;
+            }
+            walk.Step(Surface.Coping, StoneFaceWidthMetres, Heights.BankTopMetres);
+            walk.Step(Surface.Coping, CopingWidthMetres, Heights.BankTopMetres);
+        }
+
+        private static void Path(BankWalk walk, bool isPaved)
+        {
+            if (isPaved)
+            {
+                walk.Step(Surface.PavedTowpath, PavedPathWidthMetres, Heights.BankTopMetres);
+                return;
+            }
+            walk.StepOutTo(Surface.Grass, DirtPathFromCentreMetres, Heights.BankTopMetres);
+            walk.Step(Surface.Towpath, DirtPathWidthMetres, Heights.BankTopMetres);
+        }
+
+        private static void GrassVerge(BankWalk walk)
+        {
+            walk.StepOutTo(Surface.Grass, GrassFromCentreMetres, Heights.BankTopMetres);
+            walk.Step(Surface.Bank, OuterSlopeWidthMetres, Heights.GroundMetres);
         }
     }
 }
