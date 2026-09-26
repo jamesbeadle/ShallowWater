@@ -9,6 +9,7 @@ namespace ShallowWater.Unity.Woods
     {
         public static void Plant()
         {
+            if (!OptionalLayer.IsPresent(MapLayers.Woods)) return;
             var woods = MapAreas.Read(MapLayers.Woods);
             var trees = woods.SelectMany(TreeScatter.Within).ToList();
             var renderer = new GameObject("Woods").AddComponent<WoodsRenderer>();
