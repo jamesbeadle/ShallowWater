@@ -5,6 +5,6 @@ namespace ShallowWater.Game.Pound
         public const double ChannelHalfWidthMetres = 6;
         public const double TowpathSide = -1;
         public const double PlanksFromHuddlesfordMetres = 20;
-        public const double ChainFromFazeleyMetres = 8;
+        public const double LockGatesFromGlascoteMetres = 24;
     }
 }

@@ -20,6 +20,7 @@ namespace ShallowWater.Game.Pound
         {
             var water = Band.Flat(Surface.Water, PoundLimits.ChannelHalfWidthMetres * BothSides, Heights.WaterMetres);
             var bands = new List<Band>(TowpathSide(stretch)) { water };
+            if (stretch.IsAtAnArmMouth) return bands;
             bands.AddRange(Offside());
             return bands;
         }
