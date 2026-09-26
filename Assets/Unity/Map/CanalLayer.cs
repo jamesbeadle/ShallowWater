@@ -1,4 +1,3 @@
-using ShallowWater.Game.Ground;
 using ShallowWater.Game.Pound;
 using ShallowWater.Game.Shapes;
 
@@ -8,10 +7,9 @@ namespace ShallowWater.Unity.Map
     {
         private const string LayerName = "Canal";
 
-        public static void Dig(GroundLine pound)
+        public static void Dig(Pound pound)
         {
-            var surfaces = new SurfaceShapes();
-            foreach (var band in CanalSection.OfThePound()) surfaces.AddRibbon(pound, band);
+            var surfaces = PoundShapes.Of(pound);
             AddCanalsBeyond(surfaces);
             ShapeMeshes.BuildEach(LayerName, surfaces);
         }
