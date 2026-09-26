@@ -16,15 +16,15 @@ namespace ShallowWater.Unity.World
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void WakeAtHopwas()
         {
+            var centreline = MapLines.Read(MapLayers.Pound).First();
+            var pound = Pound.HuddlesfordToFazeley(centreline);
             GroundLayer.Lay();
             LandLinesLayer.Lay(MapLayers.River);
             LandLinesLayer.Lay(MapLayers.Railway);
-            LandLinesLayer.Lay(MapLayers.Roads);
+            RoadsLayer.Lay(pound);
             WoodsLayer.Plant();
             BuildingsLayer.Raise();
             PoundScenery.Sun();
-            var centreline = MapLines.Read(MapLayers.Pound).First();
-            var pound = Pound.HuddlesfordToFazeley(centreline);
             CanalLayer.Dig(pound);
             HuddlesfordPlanks.Drop(pound);
             GlascoteLock.CloseItsBottomGates(pound);

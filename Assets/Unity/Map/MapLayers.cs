@@ -10,5 +10,6 @@ namespace ShallowWater.Unity.Map
         public const string Roads = "roads";
         public const string Woods = "woods";
         public const string Buildings = "buildings";
+        public const string Villages = "villages";
     }
 }

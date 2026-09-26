@@ -1,4 +1,4 @@
-namespace ShallowWater.Game.Pound
+namespace ShallowWater.Game.Ground
 {
     public readonly struct Span
     {

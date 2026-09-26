@@ -18,6 +18,7 @@ namespace ShallowWater.Game.Ground
         public int SegmentCount => points.Count - 1;
         public GroundPoint this[int index] => points[index];
         public GroundPoint Start => points[0];
+        public GroundPoint End => points[points.Count - 1];
         public bool IsDrawable => points.Count >= FewestPointsOfALine;
 
         public GroundPoint Direction(int segment)

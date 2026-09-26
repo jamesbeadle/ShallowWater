@@ -1,8 +1,8 @@
 using System;
+using System.Collections.Generic;
 using ShallowWater.Game.Boat;
-using ShallowWater.Game.Ground;
 
-namespace ShallowWater.Game.Pound
+namespace ShallowWater.Game.Ground
 {
     public sealed class Centreline
     {
@@ -17,6 +17,7 @@ namespace ShallowWater.Game.Pound
         }
 
         public GroundLine Line { get; }
+        public IReadOnlyList<double> Distances => distances;
         public double LengthMetres => distances[distances.Length - 1];
 
         public double BearingAt(double along)

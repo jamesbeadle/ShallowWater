@@ -15,9 +15,15 @@ namespace ShallowWater.Unity.Map
         public static readonly Color Bank = new Color(0.27f, 0.37f, 0.16f);
         public static readonly Color River = new Color(0.20f, 0.29f, 0.33f);
         public static readonly Color Railway = new Color(0.27f, 0.23f, 0.21f);
-        public static readonly Color MainRoad = new Color(0.52f, 0.51f, 0.49f);
-        public static readonly Color Road = new Color(0.61f, 0.58f, 0.52f);
-        public static readonly Color Lane = new Color(0.66f, 0.58f, 0.44f);
+        public static readonly Color MainRoad = new Color(0.21f, 0.21f, 0.22f);
+        public static readonly Color Road = new Color(0.28f, 0.28f, 0.28f);
+        public static readonly Color Lane = new Color(0.62f, 0.57f, 0.47f);
+        public static readonly Color RoadLine = new Color(0.86f, 0.86f, 0.82f);
+        public static readonly Color Kerb = new Color(0.66f, 0.65f, 0.62f);
+        public static readonly Color Pavement = new Color(0.55f, 0.54f, 0.52f);
+        public static readonly Color Hedge = new Color(0.22f, 0.34f, 0.13f);
+        public static readonly Color GardenHedge = new Color(0.24f, 0.38f, 0.16f);
+        public static readonly Color TelegraphPole = new Color(0.24f, 0.18f, 0.12f);
         public static readonly Color Wall = new Color(0.52f, 0.32f, 0.26f);
         public static readonly Color Roof = new Color(0.30f, 0.29f, 0.31f);
         public static readonly Color Trunk = new Color(0.33f, 0.26f, 0.18f);
@@ -37,6 +43,12 @@ namespace ShallowWater.Unity.Map
             { Surface.MainRoad, MainRoad },
             { Surface.Road, Road },
             { Surface.Lane, Lane },
+            { Surface.RoadLine, RoadLine },
+            { Surface.Kerb, Kerb },
+            { Surface.Pavement, Pavement },
+            { Surface.Hedge, Hedge },
+            { Surface.GardenHedge, GardenHedge },
+            { Surface.TelegraphPole, TelegraphPole },
             { Surface.Wall, Wall },
             { Surface.Roof, Roof },
         };

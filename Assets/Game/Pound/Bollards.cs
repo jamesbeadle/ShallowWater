@@ -17,7 +17,6 @@ namespace ShallowWater.Game.Pound
         private const int FirstBollard = 0;
         private const int SpacesBesideTheFirst = 1;
         private const double Half = 0.5;
-        private const double FullTurnRadians = 2 * Math.PI;
 
         public static void StandAlong(SurfaceShapes surfaces, Pound pound, Stretch mooring)
         {
@@ -25,8 +24,7 @@ namespace ShallowWater.Game.Pound
             foreach (var along in PlacesAlong(mooring.Span))
             {
                 var footprint = FootprintAt(pound, along);
-                surfaces.Add(Surface.Bollard, Extrusion.Walls(footprint, Heights.BankTopMetres, top));
-                surfaces.Add(Surface.Bollard, Extrusion.Roof(footprint, top));
+                surfaces.AddSolid(Surface.Bollard, footprint, Heights.BankTopMetres, top);
             }
         }
 
@@ -41,14 +39,7 @@ namespace ShallowWater.Game.Pound
         {
             var across = PoundLimits.TowpathSide * (pound.HalfWidth + BackFromTheEdgeMetres);
             var centre = pound.GroundPointAt(new WaterPosition(along, across));
-            var corners = Enumerable.Range(FirstBollard, SidesOfEach).Select(corner => CornerAround(centre, corner));
-            return new GroundRing(corners);
-        }
-
-        private static GroundPoint CornerAround(GroundPoint centre, int corner)
-        {
-            var bearing = FullTurnRadians * corner / SidesOfEach;
-            return centre + GroundPoint.Facing(bearing) * RadiusMetres;
+            return Footprints.Round(centre, RadiusMetres, SidesOfEach);
         }
     }
 }
