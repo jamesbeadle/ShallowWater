@@ -6,7 +6,7 @@ Ordnance Survey one-inch to the mile, second edition, surveyed and revised aroun
 
 ## Georeferencing the tiles
 
-The tiles are Web Mercator, zoom 15, named `x_y.png`. They cover x 16220 to 16235 and y 10720 to 10735, which is roughly longitude -1.868 to -1.692 and latitude 52.567 to 52.685. Tile (16220, 10720) is the top-left corner. Each tile is 256 pixels and about 740 metres across at this latitude. To place a point, convert its longitude and latitude to zoom-15 tile coordinates the usual way and subtract the origin.
+The tiles are Web Mercator, zoom 15, named `x_y.png`. They cover x 16220 to 16235 and y 10720 to 10735, which is longitude -1.8018 to -1.6260 and latitude 52.5897 to 52.6964: from just west of Streethay to Amington, and from Drayton Bassett to Elford. Tile (16220, 10720) is the top-left corner. Each tile is 256 pixels and about 740 metres across at this latitude. To place a point, convert its longitude and latitude to zoom-15 tile coordinates the usual way and subtract the origin.
 
 ## Licence
 
@@ -19,3 +19,22 @@ The National Library of Scotland publishes these tiles under Creative Commons At
 - Drayton Manor, the Peel house west of Fazeley, was demolished in 1929. The park and lodges remain.
 - Watling Street is drawn as a country road. By 1938 it is the A5 and carries the lorries.
 - Tamworth has grown a little towards Fazeley along the Bonehill road.
+
+## The ground the game is built on
+
+The game is laid out in metres on flat ground: x east and z north of Hopwas bridge, where the Lichfield to Tamworth road crosses the canal (longitude -1.7373, latitude 52.6433), one metre to one Unity unit. Everything the game reads about the map is in these metres, in `Assets/StreamingAssets/map/`, and nothing in the game knows about latitude.
+
+Those files are generated, never edited by hand. From the repository root:
+
+```
+python3 -m tools.map                          # fetch from Overpass and write every layer
+python3 -m tools.map --answer overpass.json   # write every layer from a saved Overpass answer
+```
+
+`ground.json` says which rectangle of metres the stitched period map covers, worked out from the tiles above, and `period-map.jpg` is a copy of it for the game to load. The map is laid as one flat quad, so the Mercator rows sit up to four metres from where they belong in the middle of the sheet, round Hopwas; everything else is exact to the decimetre the layers are written to.
+
+The layers come from one Overpass request for the box longitude -1.868 to -1.692, latitude 52.567 to 52.685, widened to cover the whole period map: the canals and the rivers, railways, roads from primary down to unclassified, woods and forest, and the buildings within 900 metres of Hopwas, Whittington, Fazeley and Huddlesford. `pound.json` is the canal from Huddlesford Junction to Fazeley Junction as one line, north to south, the water Sparrow steers along, found as the shortest way along the canals between the two places where three of them meet; `canal.json` is the rest of the canals, the water beyond the two junctions. The script prints how many features each layer holds and how long the pound came out: about 11 kilometres is right. Trunk roads and motorways are left out: the A5 and A38 dual carriageways and the M6 Toll came after 1938.
+
+## OpenStreetMap
+
+The layers in `Assets/StreamingAssets/map/` other than `ground.json` and `period-map.jpg` are derived from OpenStreetMap: © OpenStreetMap contributors, available under the Open Database Licence (https://www.openstreetmap.org/copyright). The layers are a derived database and stay under the ODbL; the game that draws them is a produced work and must credit "© OpenStreetMap contributors" wherever it is shown or shipped.
