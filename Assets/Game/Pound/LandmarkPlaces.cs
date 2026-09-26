@@ -7,7 +7,7 @@ namespace ShallowWater.Game.Pound
     {
         private static readonly Dictionary<Landmark, GroundPoint> Places = new Dictionary<Landmark, GroundPoint>
         {
-            { Landmark.HopwasBridge, new GroundPoint(28.6, -25.4) },
+            { Landmark.HopwasBridge, new GroundPoint(-50.3, -41.6) },
             { Landmark.FazeleyJunction, new GroundPoint(2426.0, -3098.6) },
         };
 
