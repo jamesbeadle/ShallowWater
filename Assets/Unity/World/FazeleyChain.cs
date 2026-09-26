@@ -9,7 +9,7 @@ namespace ShallowWater.Unity.World
     public static class FazeleyChain
     {
         private static readonly Color Iron = new Color(0.14f, 0.14f, 0.15f);
-        private const double IntoTheArmMetres = 8;
+        private const double IntoTheArmMetres = 25;
         private const float PostHeightMetres = 1.4f;
         private const float PostWidthMetres = 0.25f;
         private const float PostsBackFromTheWaterMetres = 0.5f;
