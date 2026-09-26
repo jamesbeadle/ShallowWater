@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ShallowWater.Game.Boat;
 
 namespace ShallowWater.Game.Ground
@@ -16,6 +17,7 @@ namespace ShallowWater.Game.Ground
         }
 
         public GroundLine Line { get; }
+        public IReadOnlyList<double> Distances => distances;
         public double LengthMetres => distances[distances.Length - 1];
 
         public double BearingAt(double along)

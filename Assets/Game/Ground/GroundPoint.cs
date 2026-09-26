@@ -54,5 +54,15 @@ namespace ShallowWater.Game.Ground
         {
             return East == other.East && North == other.North;
         }
+
+        public double DistanceToSegment(GroundPoint from, GroundPoint to)
+        {
+            var run = to - from;
+            var lengthSquared = run.Dot(run);
+            var isAPoint = lengthSquared < double.Epsilon;
+            if (isAPoint) return DistanceTo(from);
+            var fraction = Math.Clamp((this - from).Dot(run) / lengthSquared, 0, 1);
+            return DistanceTo(from + run * fraction);
+        }
     }
 }

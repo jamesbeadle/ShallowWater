@@ -14,6 +14,12 @@ namespace ShallowWater.Game.Shapes
         MainRoad,
         Road,
         Lane,
+        RoadLine,
+        Kerb,
+        Pavement,
+        Hedge,
+        GardenHedge,
+        TelegraphPole,
         Wall,
         Roof
     }
