@@ -1,8 +1,7 @@
 using System;
 using ShallowWater.Game.Boat;
-using ShallowWater.Game.Ground;
 
-namespace ShallowWater.Game.Pound
+namespace ShallowWater.Game.Ground
 {
     public sealed class Centreline
     {

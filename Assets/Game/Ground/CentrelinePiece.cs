@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using ShallowWater.Game.Ground;
 
-namespace ShallowWater.Game.Pound
+namespace ShallowWater.Game.Ground
 {
     public static class CentrelinePiece
     {

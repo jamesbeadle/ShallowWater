@@ -16,6 +16,8 @@ namespace ShallowWater.Game.Pound
         private const double OuterSlopeWidthMetres = 1.5;
         private const double BothSides = 2;
 
+        public const double OuterReachMetres = GrassFromCentreMetres + OuterSlopeWidthMetres;
+
         public static IReadOnlyList<Band> For(Stretch stretch)
         {
             var water = Band.Flat(Surface.Water, PoundLimits.ChannelHalfWidthMetres * BothSides, Heights.WaterMetres);
@@ -31,9 +33,14 @@ namespace ShallowWater.Game.Pound
             return Band.Flat(Surface.Water, width, Heights.CanalsBeyondThePoundMetres);
         }
 
+        private static SectionWalk FromTheWater(double side)
+        {
+            return new SectionWalk(side, PoundLimits.ChannelHalfWidthMetres, Heights.WaterMetres);
+        }
+
         private static IReadOnlyList<Band> TowpathSide(Stretch stretch)
         {
-            var walk = BankWalk.OnTheTowpathSide();
+            var walk = FromTheWater(PoundLimits.TowpathSide);
             WaterEdge(walk, stretch.HasHardEdge);
             Path(walk, stretch.IsVillage);
             GrassVerge(walk);
@@ -42,13 +49,13 @@ namespace ShallowWater.Game.Pound
 
         private static IReadOnlyList<Band> Offside()
         {
-            var walk = BankWalk.OnTheOffside();
+            var walk = FromTheWater(-PoundLimits.TowpathSide);
             walk.Step(Surface.Bank, SoftEdgeWidthMetres, Heights.BankTopMetres);
             GrassVerge(walk);
             return walk.Bands;
         }
 
-        private static void WaterEdge(BankWalk walk, bool isHard)
+        private static void WaterEdge(SectionWalk walk, bool isHard)
         {
             if (!isHard)
             {
@@ -59,7 +66,7 @@ namespace ShallowWater.Game.Pound
             walk.Step(Surface.Coping, CopingWidthMetres, Heights.BankTopMetres);
         }
 
-        private static void Path(BankWalk walk, bool isPaved)
+        private static void Path(SectionWalk walk, bool isPaved)
         {
             if (isPaved)
             {
@@ -70,7 +77,7 @@ namespace ShallowWater.Game.Pound
             walk.Step(Surface.Towpath, DirtPathWidthMetres, Heights.BankTopMetres);
         }
 
-        private static void GrassVerge(BankWalk walk)
+        private static void GrassVerge(SectionWalk walk)
         {
             walk.StepOutTo(Surface.Grass, GrassFromCentreMetres, Heights.BankTopMetres);
             walk.Step(Surface.Bank, OuterSlopeWidthMetres, Heights.GroundMetres);
