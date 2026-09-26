@@ -3,6 +3,7 @@ OpenStreetMap. Nobody edits those files by hand; run this from the repository ro
 
     python3 -m tools.map                          fetch from Overpass and write every layer
     python3 -m tools.map --answer overpass.json   write every layer from a saved Overpass answer
+    python3 -m tools.map --traced                 write only the pound, traced by hand from the period map
 """
 from __future__ import annotations
 
@@ -16,6 +17,7 @@ from .features import layers
 from .layer_files import pointsOf, writeFeatures, writeRecord
 from .overpass import INTERPRETER_ADDRESS, fetch, query
 from .period_map import copyImage, groundPlacement
+from .traced_pound import tracedPound
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 MAP_FOLDER = REPOSITORY_ROOT / "Assets" / "StreamingAssets" / "map"
@@ -55,13 +57,20 @@ def report(layer: str, features: list[dict]) -> None:
         print(f"  the pound runs {lengthInKilometres(features[0]):.1f} km from Huddlesford Junction to Fazeley Junction")
 
 
+def chosenLayers(arguments: argparse.Namespace) -> dict[str, tuple[str, list[dict]]]:
+    if arguments.traced:
+        return {POUND_LAYER: ("lines", [tracedPound(REPOSITORY_ROOT)])}
+    answer = overpassAnswer(arguments.answer)
+    return layers(answer["elements"])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--answer", help="a saved Overpass answer to write the layers from instead of fetching")
+    parser.add_argument("--traced", action="store_true", help="write only the pound, traced from the period map")
     arguments = parser.parse_args()
     writeGround()
-    answer = overpassAnswer(arguments.answer)
-    for layer, (key, features) in layers(answer["elements"]).items():
+    for layer, (key, features) in chosenLayers(arguments).items():
         writeFeatures(MAP_FOLDER, layer, key, features)
         report(layer, features)
 

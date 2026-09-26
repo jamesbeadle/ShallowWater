@@ -29,11 +29,14 @@ Those files are generated, never edited by hand. From the repository root:
 ```
 python3 -m tools.map                          # fetch from Overpass and write every layer
 python3 -m tools.map --answer overpass.json   # write every layer from a saved Overpass answer
+python3 -m tools.map --traced                 # write only the pound, traced by hand from the period map
 ```
 
 `ground.json` says which rectangle of metres the stitched period map covers, worked out from the tiles above, and `period-map.jpg` is a copy of it for the game to load. The map is laid as one flat quad, so the Mercator rows sit up to four metres from where they belong in the middle of the sheet, round Hopwas; everything else is exact to the decimetre the layers are written to.
 
 The layers come from one Overpass request for the box longitude -1.868 to -1.692, latitude 52.567 to 52.685, widened to cover the whole period map: the canals and the rivers, railways, roads from primary down to unclassified, woods and forest, and the buildings within 900 metres of Hopwas, Whittington, Fazeley and Huddlesford. `pound.json` is the canal from Huddlesford Junction to Fazeley Junction as one line, north to south, the water Sparrow steers along, found as the shortest way along the canals between the two places where three of them meet; `canal.json` is the rest of the canals, the water beyond the two junctions. The script prints how many features each layer holds and how long the pound came out: about 11 kilometres is right. Trunk roads and motorways are left out: the A5 and A38 dual carriageways and the M6 Toll came after 1938.
+
+Until the OpenStreetMap layers can be fetched, `pound.json` is traced by hand from the period map. `pound-traced-from-period-map.json`, beside the map here, holds a hundred points read off the stitched sheet in pixels from Huddlesford Junction to Fazeley Junction, and `python3 -m tools.map --traced` turns them into metres and a smooth curve with a point every ten metres. It comes out at 10.5 kilometres and lies within about fifteen metres of the canal as the surveyors drew it; the Fazeley end is taken where the Birmingham and Fazeley turns south under Watling Street. The next full run of `python3 -m tools.map` replaces it with OpenStreetMap's line. The game builds whichever layers it finds and says in the console which are missing.
 
 ## OpenStreetMap
 
