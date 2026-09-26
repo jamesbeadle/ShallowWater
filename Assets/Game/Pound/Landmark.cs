@@ -4,6 +4,7 @@ namespace ShallowWater.Game.Pound
     {
         HuddlesfordJunction,
         HopwasBridge,
-        FazeleyJunction
+        FazeleyJunction,
+        GlascoteLocks
     }
 }

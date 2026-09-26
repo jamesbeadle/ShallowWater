@@ -55,7 +55,7 @@ def lengthInKilometres(line: dict) -> float:
 def report(layer: str, features: list[dict]) -> None:
     print(f"{layer}: {len(features)} features")
     if layer == POUND_LAYER:
-        print(f"  the pound runs {lengthInKilometres(features[0]):.1f} km from Huddlesford Junction to Fazeley Junction")
+        print(f"  the pound runs {lengthInKilometres(features[0]):.1f} km from Huddlesford Junction to Glascote locks")
 
 
 def chosenLayers(arguments: argparse.Namespace) -> dict[str, tuple[str, list[dict]]]:

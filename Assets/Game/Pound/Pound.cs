@@ -25,21 +25,21 @@ namespace ShallowWater.Game.Pound
         public double LengthMetres => centreline.LengthMetres;
         public GroundLine Line => centreline.Line;
         public double PlanksAlong => PoundLimits.PlanksFromHuddlesfordMetres;
-        public double ChainAlong => LengthMetres - PoundLimits.ChainFromFazeleyMetres;
-        private double NorthmostBoatAlong => PlanksAlong + BoatSize.HalfLengthMetres;
-        private double SouthmostBoatAlong => ChainAlong - BoatSize.HalfLengthMetres;
+        public double LockGatesAlong => LengthMetres - PoundLimits.LockGatesFromGlascoteMetres;
+        private double BoatAlongNearestHuddlesford => PlanksAlong + BoatSize.HalfLengthMetres;
+        private double BoatAlongNearestGlascote => LockGatesAlong - BoatSize.HalfLengthMetres;
 
         public bool IsOnTheWater(WaterPosition position)
         {
-            var isBetweenPlanksAndChain = position.Along >= NorthmostBoatAlong && position.Along <= SouthmostBoatAlong;
+            var isBetweenPlanksAndLock = position.Along >= BoatAlongNearestHuddlesford && position.Along <= BoatAlongNearestGlascote;
             var distanceFromCentre = Math.Abs(position.Across);
             var isWithinBanks = distanceFromCentre <= HalfWidth;
-            return isBetweenPlanksAndChain && isWithinBanks;
+            return isBetweenPlanksAndLock && isWithinBanks;
         }
 
         public WaterPosition Nearest(WaterPosition position)
         {
-            var along = Math.Clamp(position.Along, NorthmostBoatAlong, SouthmostBoatAlong);
+            var along = Math.Clamp(position.Along, BoatAlongNearestHuddlesford, BoatAlongNearestGlascote);
             var across = Math.Clamp(position.Across, -HalfWidth, HalfWidth);
             return new WaterPosition(along, across);
         }
@@ -62,8 +62,9 @@ namespace ShallowWater.Game.Pound
         public double AlongOf(Landmark landmark)
         {
             if (landmark == Landmark.HuddlesfordJunction) return HuddlesfordAlong;
-            if (landmark == Landmark.FazeleyJunction) return LengthMetres;
-            return WaterPositionAt(GroundPoint.HopwasBridge).Along;
+            if (landmark == Landmark.GlascoteLocks) return LengthMetres;
+            var place = LandmarkPlaces.Of(landmark);
+            return WaterPositionAt(place).Along;
         }
 
         public GroundLine LineAlong(Span span)

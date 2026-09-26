@@ -9,6 +9,7 @@ namespace ShallowWater.Unity.World
     public static class FazeleyChain
     {
         private static readonly Color Iron = new Color(0.14f, 0.14f, 0.15f);
+        private const double IntoTheArmMetres = 8;
         private const float PostHeightMetres = 1.4f;
         private const float PostWidthMetres = 0.25f;
         private const float PostsBackFromTheWaterMetres = 0.5f;
@@ -17,20 +18,24 @@ namespace ShallowWater.Unity.World
         private const float LinkThicknessMetres = 0.07f;
         private const float LinkShareOfItsSpan = 0.8f;
 
-        public static void Hang(Pound pound)
+        public static void Hang()
         {
+            if (!MapFiles.Has(MapLayers.Canal)) return;
+            var junction = LandmarkPlaces.Of(Landmark.FazeleyJunction);
+            var arm = new Centreline(CanalArms.StartingNearest(MapLines.Read(MapLayers.Canal), junction));
             var paint = Paint.Of(Iron);
-            var reach = pound.HalfWidth + PostsBackFromTheWaterMetres;
-            var eastPostTop = Post(pound, -reach, paint);
-            var westPostTop = Post(pound, reach, paint);
+            var reach = PoundLimits.ChannelHalfWidthMetres + PostsBackFromTheWaterMetres;
+            var eastPostTop = Post(arm, -reach, paint);
+            var westPostTop = Post(arm, reach, paint);
             var links = ChainSag.Between(eastPostTop, westPostTop, SagMetres, LinkCount);
             for (var link = 0; link < LinkCount; link++) Link(links[link], links[link + 1], paint);
         }
 
-        private static WorldPoint Post(Pound pound, double across, Material paint)
+        private static WorldPoint Post(Centreline arm, double across, Material paint)
         {
+            var ground = arm.Offset(IntoTheArmMetres, across);
             var middle = Heights.BankTopMetres + PostHeightMetres / 2;
-            var position = PoundPlacement.OnThePound(pound, pound.ChainAlong, across, middle);
+            var position = new Vector3((float)ground.East, (float)middle, (float)ground.North);
             var size = new Vector3(PostWidthMetres, PostHeightMetres / Primitives.CylinderHeightUnits, PostWidthMetres);
             Blocks.Place(PrimitiveType.Cylinder, "Chain post", paint, new Placement(position, size, Quaternion.identity));
             return new WorldPoint(position.x, Heights.BankTopMetres + PostHeightMetres, position.z);
