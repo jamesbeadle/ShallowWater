@@ -1,6 +1,5 @@
 using System.Linq;
 using ShallowWater.Game.Boat;
-using ShallowWater.Game.Ground;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.Map;
@@ -37,8 +36,8 @@ namespace ShallowWater.Unity.World
 
         private static WaterPosition MooringAtHopwas(Pound pound)
         {
-            var bridge = pound.WaterPositionAt(GroundPoint.HopwasBridge);
-            return new WaterPosition(bridge.Along, 0);
+            var bridge = pound.AlongOf(Landmark.HopwasBridge);
+            return new WaterPosition(bridge, 0);
         }
 
         private static FollowCamera FollowingCamera()

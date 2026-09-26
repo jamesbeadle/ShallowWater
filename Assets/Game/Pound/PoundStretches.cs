@@ -18,7 +18,7 @@ namespace ShallowWater.Game.Pound
         private static readonly Reach NorthOfFazeleyJunction = Reach.From(Landmark.FazeleyJunction, -230, 180);
         private static readonly Reach BelowGlascoteLocks = Reach.From(Landmark.GlascoteLocks, -140, 100);
 
-        private static readonly Reach BirminghamAndFazeleyMouth = Reach.From(Landmark.FazeleyJunction, -7, 14);
+        private static readonly Reach BirminghamAndFazeleyMouth = Reach.From(Landmark.FazeleyJunction, -2, 19);
 
         private static readonly Reach[] Villages = { Hopwas, FazeleyToTamworth };
         private static readonly Reach[] ArmMouths = { BirminghamAndFazeleyMouth };

@@ -4,8 +4,6 @@ namespace ShallowWater.Game.Ground
 {
     public readonly struct GroundPoint
     {
-        public static readonly GroundPoint HopwasBridge = new GroundPoint(0, 0);
-
         public double East { get; }
         public double North { get; }
 
