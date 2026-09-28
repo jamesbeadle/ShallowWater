@@ -8,7 +8,7 @@ namespace ShallowWater.Unity.Woods
     public sealed class TreeBatch
     {
         public const int MostTrees = 1023;
-        private const float TallestTreeMetres = 14f;
+        private const float TallestTreeMetres = 16f;
 
         private readonly TreePart trunks;
         private readonly TreePart crowns;
