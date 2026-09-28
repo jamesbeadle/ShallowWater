@@ -1,38 +1,49 @@
+using ShallowWater.Unity.Controls;
+using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 namespace ShallowWater.Unity.Helm
 {
     public static class HelmInput
     {
-        public static double Throttle()
+        private const float StickDeadZone = 0.2f;
+
+        public static bool IsOpeningUp()
         {
             var keyboard = Keyboard.current;
-            if (keyboard == null) return 0;
-            var ahead = IsPressed(keyboard.wKey) || IsPressed(keyboard.upArrowKey);
-            var astern = IsPressed(keyboard.sKey) || IsPressed(keyboard.downArrowKey);
-            return Axis(ahead, astern);
+            var gamepad = Gamepad.current;
+            return Buttons.IsAnyPressedNow(keyboard?.wKey, keyboard?.upArrowKey, gamepad?.rightShoulder);
+        }
+
+        public static bool IsEasingOff()
+        {
+            var keyboard = Keyboard.current;
+            var gamepad = Gamepad.current;
+            return Buttons.IsAnyPressedNow(keyboard?.sKey, keyboard?.downArrowKey, gamepad?.leftShoulder);
+        }
+
+        public static bool IsStopping()
+        {
+            var keyboard = Keyboard.current;
+            var gamepad = Gamepad.current;
+            return Buttons.IsAnyPressedNow(keyboard?.spaceKey, gamepad?.buttonWest);
         }
 
         public static double Rudder()
         {
             var keyboard = Keyboard.current;
-            if (keyboard == null) return 0;
-            var starboard = IsPressed(keyboard.dKey) || IsPressed(keyboard.rightArrowKey);
-            var port = IsPressed(keyboard.aKey) || IsPressed(keyboard.leftArrowKey);
-            return Axis(starboard, port);
+            var toStarboard = Buttons.IsAnyHeld(keyboard?.dKey, keyboard?.rightArrowKey);
+            var toPort = Buttons.IsAnyHeld(keyboard?.aKey, keyboard?.leftArrowKey);
+            var keys = Buttons.Axis(toStarboard, toPort);
+            return Mathf.Clamp(keys + StickAcross(), -1, 1);
         }
 
-        private static bool IsPressed(KeyControl key)
+        private static float StickAcross()
         {
-            return key.isPressed;
-        }
-
-        private static double Axis(bool isPositive, bool isNegative)
-        {
-            if (isPositive == isNegative) return 0;
-            if (isPositive) return 1;
-            return -1;
+            var gamepad = Gamepad.current;
+            if (gamepad == null) return 0;
+            var across = gamepad.leftStick.ReadValue().x;
+            return Mathf.Abs(across) < StickDeadZone ? 0 : across;
         }
     }
 }

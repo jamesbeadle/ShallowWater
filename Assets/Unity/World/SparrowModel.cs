@@ -20,6 +20,8 @@ namespace ShallowWater.Unity.World
             var helm = boat.AddComponent<BoatController>();
             helm.Launch(motion, pound);
             boat.AddComponent<WakeSignal>();
+            boat.AddComponent<WakeTrail>();
+            boat.AddComponent<EngineSound>();
             var model = Model(boat.transform);
             model.AddComponent<Riding>().Under(helm);
             var modelPlacement = model.transform;

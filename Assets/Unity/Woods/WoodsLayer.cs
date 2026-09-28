@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using ShallowWater.Game.Shapes;
 using ShallowWater.Game.Woods;
@@ -12,9 +13,9 @@ namespace ShallowWater.Unity.Woods
         private const string WoodsName = "Woods";
         private const string FloorName = "Woodland floor";
 
-        public static void Plant()
+        public static IReadOnlyList<Tree> Plant()
         {
-            if (!OptionalLayer.IsPresent(MapLayers.Woods)) return;
+            if (!OptionalLayer.IsPresent(MapLayers.Woods)) return new Tree[0];
             var woods = MapAreas.Read(MapLayers.Woods);
             var floor = new Shape();
             foreach (var wood in woods) floor.Append(WoodFloor.Under(wood));
@@ -22,6 +23,7 @@ namespace ShallowWater.Unity.Woods
             var trees = woods.SelectMany(WoodPlanting.Within).ToList();
             var renderer = new GameObject(WoodsName).AddComponent<WoodsRenderer>();
             renderer.Plant(trees);
+            return trees;
         }
     }
 }

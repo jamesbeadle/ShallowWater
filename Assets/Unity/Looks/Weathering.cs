@@ -17,6 +17,9 @@ namespace ShallowWater.Unity.Looks
         public static readonly Weathering Gloss = new Weathering(1.2f, 0.05f, 0.1f, 0.5f, 0.0015f);
         public static readonly Weathering CastIron = new Weathering(0.5f, 0.03f, 0.25f, 0.4f, 0.003f, 0.6f);
         public static readonly Weathering Tarnished = new Weathering(0.4f, 0.02f, 0.35f, 0.35f, 0.002f, 0.8f);
+        public static readonly Weathering Cloth = new Weathering(0.25f, 0.008f, 0.4f, 0.06f, 0.0005f);
+        public static readonly Weathering Leather = new Weathering(0.15f, 0.01f, 0.3f, 0.35f, 0.0005f);
+        public static readonly Weathering Complexion = new Weathering(0.1f, 0.01f, 0.15f, 0.3f, 0.0002f);
         public static readonly Weathering LeafLitter = new Weathering(3.5f, 0.1f, 0.55f, 0.1f, 0.02f);
         public static readonly Weathering Glass = new Weathering(1f, 0.05f, 0.1f, 0.9f, 0.0005f);
 

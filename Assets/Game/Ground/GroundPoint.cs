@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ShallowWater.Game.Ground
 {
@@ -16,6 +18,12 @@ namespace ShallowWater.Game.Ground
         public double Length => Math.Sqrt(East * East + North * North);
         public double Bearing => Math.Atan2(East, North);
         public GroundPoint RightAngleClockwise => new GroundPoint(North, -East);
+        public GroundPoint Normalised => this * (1 / Length);
+
+        public static GroundPoint MeanOf(IReadOnlyList<GroundPoint> points)
+        {
+            return new GroundPoint(points.Average(point => point.East), points.Average(point => point.North));
+        }
 
         public static GroundPoint Facing(double bearing)
         {
@@ -40,6 +48,11 @@ namespace ShallowWater.Game.Ground
         public double Dot(GroundPoint other)
         {
             return East * other.East + North * other.North;
+        }
+
+        public double Cross(GroundPoint other)
+        {
+            return East * other.North - North * other.East;
         }
 
         public double DistanceTo(GroundPoint other)

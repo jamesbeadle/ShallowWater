@@ -26,20 +26,9 @@ namespace ShallowWater.Game.Pound
         public GroundLine Line => centreline.Line;
         public double PlanksAlong => PoundLimits.PlanksFromHuddlesfordMetres;
         public double LockGatesAlong => LengthMetres - PoundLimits.LockGatesFromGlascoteMetres;
-        private double BoatAlongNearestHuddlesford => PlanksAlong + BoatSize.HalfLengthMetres;
-        private double BoatAlongNearestGlascote => LockGatesAlong - BoatSize.HalfLengthMetres;
-
-        public bool IsOnTheWater(WaterPosition position)
+        public WaterPosition KeptAfloat(WaterPosition position)
         {
-            var isBetweenPlanksAndLock = position.Along >= BoatAlongNearestHuddlesford && position.Along <= BoatAlongNearestGlascote;
-            var distanceFromCentre = Math.Abs(position.Across);
-            var isWithinBanks = distanceFromCentre <= HalfWidth;
-            return isBetweenPlanksAndLock && isWithinBanks;
-        }
-
-        public WaterPosition Nearest(WaterPosition position)
-        {
-            var along = Math.Clamp(position.Along, BoatAlongNearestHuddlesford, BoatAlongNearestGlascote);
+            var along = Math.Clamp(position.Along, PlanksAlong, LockGatesAlong);
             var across = Math.Clamp(position.Across, -HalfWidth, HalfWidth);
             return new WaterPosition(along, across);
         }

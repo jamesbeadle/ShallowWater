@@ -17,6 +17,7 @@ namespace ShallowWater.Game.Pound
         private const double BothSides = 2;
 
         public const double OuterReachMetres = GrassFromCentreMetres + OuterSlopeWidthMetres;
+        public const double BankTopReachMetres = GrassFromCentreMetres;
 
         public static IReadOnlyList<Band> For(Stretch stretch)
         {

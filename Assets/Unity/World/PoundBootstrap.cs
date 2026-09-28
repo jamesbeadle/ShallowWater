@@ -3,6 +3,7 @@ using ShallowWater.Game.Boat;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Map;
 using ShallowWater.Unity.Picture;
+using ShallowWater.Unity.Player;
 using ShallowWater.Unity.Sky;
 using ShallowWater.Unity.Woods;
 using UnityEngine;
@@ -11,7 +12,8 @@ namespace ShallowWater.Unity.World
 {
     public static class PoundBootstrap
     {
-        private const double HeadingTowardsFazeley = 0;
+        private const string MainCameraTag = "MainCamera";
+        private const double MooredOffTheBankMetres = 0.3;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void WakeAtHopwas()
@@ -23,36 +25,41 @@ namespace ShallowWater.Unity.World
             LandLinesLayer.Lay(MapLayers.River);
             LandLinesLayer.Lay(MapLayers.Railway);
             RoadsLayer.Lay(pound);
-            WoodsLayer.Plant();
+            var trees = WoodsLayer.Plant();
             BuildingsLayer.Raise();
             CanalLayer.Dig(pound);
             HuddlesfordPlanks.Drop(pound);
             GlascoteLock.CloseItsBottomGates(pound);
             FazeleyChain.Hang();
-            var motion = new BoatMotion(MooringAtHopwas(pound), HeadingTowardsFazeley);
-            var boat = SparrowModel.Launched(motion, pound);
-            FollowingCamera().Follow(boat.transform);
+            var boat = SparrowModel.Launched(MooredAtHopwas(pound), pound);
+            var camera = OrbitingCamera();
+            boat.AddComponent<ShoreLeave>().Crew(pound, LandSurvey.Of(pound, trees), camera);
+            boat.AddComponent<Hud>();
         }
 
-        private static WaterPosition MooringAtHopwas(Pound pound)
+        private static BoatMotion MooredAtHopwas(Pound pound)
         {
             var bridge = pound.AlongOf(Landmark.HopwasBridge);
-            return new WaterPosition(bridge, 0);
+            var againstTheTowpath = PoundLimits.TowpathSide * (pound.HalfWidth - BoatSize.BeamMetres / 2 - MooredOffTheBankMetres);
+            var mooring = pound.GroundPointAt(new WaterPosition(bridge, againstTheTowpath));
+            return new BoatMotion(mooring, pound.BearingAt(bridge));
         }
 
-        private static FollowCamera FollowingCamera()
+        private static OrbitCamera OrbitingCamera()
         {
             var camera = Camera.main;
             var hasNoCamera = camera == null;
             if (hasNoCamera) camera = HelmCamera();
             HelmPicture.Frame(camera);
-            return camera.gameObject.AddComponent<FollowCamera>();
+            var listening = camera.GetComponent<AudioListener>();
+            if (listening == null) camera.gameObject.AddComponent<AudioListener>();
+            return camera.gameObject.AddComponent<OrbitCamera>();
         }
 
         private static Camera HelmCamera()
         {
             var camera = new GameObject("Helm camera").AddComponent<Camera>();
-            camera.tag = "MainCamera";
+            camera.tag = MainCameraTag;
             return camera;
         }
     }

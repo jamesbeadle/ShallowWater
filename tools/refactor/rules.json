@@ -81,7 +81,7 @@
       "OnInitialized", "OnInitializedAsync", "OnParametersSet", "OnParametersSetAsync",
       "OnAfterRender", "OnAfterRenderAsync", "Handle", "Invoke", "InvokeAsync", "Execute", "ExecuteAsync",
       "ToString", "Equals", "GetHashCode", "Up", "Down",
-      "Awake", "Start", "Update", "LateUpdate", "FixedUpdate", "OnEnable", "OnDisable", "OnDestroy"
+      "Awake", "Start", "Update", "LateUpdate", "FixedUpdate", "OnEnable", "OnDisable", "OnDestroy", "OnGUI"
     ]
   },
   "areas": [

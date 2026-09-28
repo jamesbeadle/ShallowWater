@@ -38,6 +38,7 @@ Shader "Shallow Water/Water"
             #define GLINT_STRENGTH 6.0
             #define LEAVES_PER_METRE 2.8
             #define LEAF_SIZE 0.12
+            #define BANK_WASH_PER_METRE 4.0
 
             fixed4 _Deep;
             fixed4 _Shallow;
@@ -107,7 +108,10 @@ Shader "Shallow Water/Water"
                 colour += _LightColor0.rgb * glint * shadow;
                 colour = Leaves(colour, light, i.worldPos.xz, nearTheBank);
                 colour = lerp(colour, _Churned.rgb * light, wake.churn * 0.35);
-                colour = lerp(colour, _Foam.rgb * light, wake.foam);
+                float wetBank = smoothstep(0.82, 1.0, abs(i.surfacePlace.y) / _HalfWidth);
+                float2 alongTheBank = float2(i.surfacePlace.x * 0.7 + _Time.y * 0.4, i.surfacePlace.y * 3.0);
+                float breakingOnTheBank = wetBank * saturate(wake.swell * BANK_WASH_PER_METRE) * smoothstep(0.45, 0.75, ValueNoise(alongTheBank));
+                colour = lerp(colour, _Foam.rgb * light, saturate(wake.foam + breakingOnTheBank));
                 UNITY_APPLY_FOG(i.fogCoord, colour);
                 return fixed4(colour, 1.0);
             }
