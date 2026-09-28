@@ -8,12 +8,13 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 
 | Look | Draws | Used for |
 | --- | --- | --- |
-| Weathered | colour, worn patches, grain and soot | grass, banks, dirt towpath, tar, gravel, timber, iron, bark, and on the boat the deck, cloths, roof, tarnished brass and ironwork |
+| Weathered | colour, worn patches, grain and soot | grass, banks, dirt towpath, tar, gravel, timber, iron, the leaf litter under the woods, and on the boat the deck, cloths, roof, tarnished brass and ironwork |
 | Stone | laid stones with mortar between | coping, setts on the paved towpath, kerbs, flagstones |
 | Brick | stretcher-bond brick, and on cottage walls sash windows, curtains, sills, a panelled door and a step | cottage walls, gables, chimney stacks, the lock chamber |
 | Slate | lapped slate courses with moss near the eaves | cottage roofs |
 | Hedge | leaf clumps, autumn turning and haws | hedgerows and garden hedges |
-| Crown | leaf clumps, each tree its own autumn colour, stirring in the wind | tree crowns in the woods |
+| Foliage | leaf cards turned to face the eye, each a cluster of oak, ash, birch or hazel leaves or pine needle tufts, each tree its own way into autumn, with light through the leaves and a breeze in them | the crowns of every tree and hazel in the woods |
+| Bark | furrowed oak, netted ash, white birch with its black foot and lenticels, pine plates turning orange up the trunk, lichen and moss at the foot | the trunks and limbs of every tree |
 | Paintwork | faded panels and coach lines, SPARROW signwritten with roses, roses and castles, diamonds, all under soot, streaks and chipped paint | *Sparrow*'s cabin sides, back doors, cratch, deck board and Buckby cans |
 | Hull Plates | riveted iron plates lapped in strakes, tar, coal dust, rust streaks, scrapes and weed at the waterline | *Sparrow*'s hull |
 | Rope | laid strands, or hair | cloth strings, Turk's heads, the mop, the fender and coiled line, the horse tail |
@@ -45,6 +46,20 @@ Every look also shapes the light, not just the colour: mortar sits back from the
 
 In the Unity layer, `SparrowModel` launches her with `Riding` (a gentle roll and heave, squatting with speed and heeling into a turn), `WakeSignal` (which tells the water and the smoke where the boat is and how fast she is going) and two `Plume`s of smoke.
 
+## The woods
+
+The woods are the ones on the map, planted the way Hopwas Hays and the smaller woods of the pound were in 1938. `WoodPlanting` sets out each wood in `Assets/Game/Woods`:
+
+- `Compartments` divides it into compartments of a few hectares; some deep inside are Scots pine plantations in rows, and the rest is broadleaf.
+- `Rides` cuts one or two straight rides through the larger woods.
+- `SpeciesMix` plants the broadleaf mostly with oak, with patches of birch and ash and more birch along the edges; a fifth of the trees are young, and the oaks on the edge grow open, wide and low.
+- `Understorey` sets hazel coppice under the canopy, thickest along the edges.
+- `WoodFloor` lays leaf litter under every wood.
+
+A tree is not a mesh from a file. Each species has a `Habit` (`OakHabits`, `AshHabits`, `BirchHabits`, `PineHabits`, `HazelHabits`): how tall it grows, where the trunk forks, how many limbs it throws and at what angle, how they bend and droop, and how its leaves cluster. `TreeGrowth` grows a tree from a habit and a seed, limb by limb, and `TreeForms` keeps the dozen forms the woods are planted with. `TreeFigures` draws each form three ways: near, with every branch and every leaf clump; middle, with the main limbs and the clumps merged; and far, with the trunk and a few large clumps.
+
+In the Unity layer, `WoodsRenderer` draws the woods for every camera that looks at them, the game's and the Scene view's. `WoodTiles` lays the trees in 200-metre tiles; for each camera, `WoodView` picks near, middle or far for every tree within 320 metres and far for the tiles beyond, draws nothing past three kilometres, and draws each form as one instanced batch per tile. Only the near and middle trees cast shadows.
+
 ## Where a point sits on its surface
 
 Some looks need to know where they are on the thing they cover, not just in the world: a window belongs in the middle of a wall, a rail a set distance from the middle of the track, the water's banks at its edges. Every point of a `Shape` carries a `SurfacePlace` for that, sent to the shader as the mesh's first texture coordinates:
@@ -53,7 +68,7 @@ Some looks need to know where they are on the thing they cover, not just in the 
 - a cottage wall measures from the middle of the wall and up from its foot;
 - a roof slope measures along the ridge and up the slope from the eaves;
 - the boat measures along its length and up from the waterline;
-- a turned shape measures around it and up it, and a tube along it and around it.
+- a turned shape measures around it and up it, a tube along it and around it, and a limb along it and by the angle around it, so bark wraps without a seam.
 
 ## Things that move
 
