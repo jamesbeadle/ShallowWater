@@ -36,6 +36,13 @@ namespace ShallowWater.Game.Shapes
         Cratch,
         Brass,
         Crown,
-        Bark
+        Bark,
+        RubbingStrake,
+        BoatIron,
+        Rope,
+        TarredRope,
+        Can,
+        LampGlass,
+        HorseTail
     }
 }

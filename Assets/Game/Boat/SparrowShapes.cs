@@ -9,8 +9,11 @@ namespace ShallowWater.Game.Boat
             var surfaces = new SurfaceShapes();
             HullShapes.Build(surfaces);
             CabinShapes.Build(surfaces);
+            Stovepipes.Build(surfaces);
+            RoofStowage.Build(surfaces);
             HoldShapes.Build(surfaces);
-            Fittings.Build(surfaces);
+            ForeEnd.Build(surfaces);
+            SternGear.Build(surfaces);
             return surfaces;
         }
     }

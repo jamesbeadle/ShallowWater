@@ -24,6 +24,7 @@ Shader "Shallow Water/Brick"
         #pragma target 3.5
         #include "Noise.cginc"
         #include "Openings.cginc"
+        #include "Relief.cginc"
 
         #define BRICK_LENGTH 0.225
         #define COURSE_HEIGHT 0.075
@@ -42,12 +43,25 @@ Shader "Shallow Water/Brick"
             float3 worldPos;
             float3 worldNormal;
             float2 surfacePlace;
+            INTERNAL_DATA
         };
 
         void vert (inout appdata_full v, out Input o)
         {
             UNITY_INITIALIZE_OUTPUT(Input, o);
             o.surfacePlace = v.texcoord.xy;
+        }
+
+        float BrickRelief(float3 position, float3 normal)
+        {
+            bool isLevel = abs(normal.y) > 0.5;
+            float2 wall = isLevel ? position.xz : float2(AlongTheFace(position, normal), position.y);
+            float course = floor(wall.y / COURSE_HEIGHT);
+            float2 place = float2(wall.x / BRICK_LENGTH + frac(course * 0.5), wall.y / COURSE_HEIGHT);
+            float2 inside = frac(place);
+            bool isJoint = inside.x < JOINT_ALONG || inside.y < JOINT_UP;
+            float face = ValueNoise(place * float2(5.0, 2.0)) * 0.002;
+            return ((isJoint ? -0.006 : 0.0) + face) * PatternDetail(place);
         }
 
         float3 Bricks(float3 position, float3 normal)
@@ -80,12 +94,16 @@ Shader "Shallow Water/Brick"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            float3 wall = Bricks(IN.worldPos, IN.worldNormal);
+            float3 vertexNormal = VERTEX_NORMAL(IN);
+            float3 wall = Bricks(IN.worldPos, vertexNormal);
             float weathering = Fbm(IN.worldPos.xz * 0.8 + IN.worldPos.y * 0.3);
             wall *= lerp(0.82, 1.05, weathering);
             Opening opening = OpeningAt(IN.surfacePlace);
             o.Albedo = opening.coverage > 0.0 ? opening.colour : wall;
             o.Smoothness = opening.coverage > 0.0 ? opening.smoothness : 0.12;
+            float openingRelief = opening.smoothness > 0.9 ? -0.03 : 0.01;
+            float relief = opening.coverage > 0.0 ? openingRelief : BrickRelief(IN.worldPos, vertexNormal);
+            o.Normal = WORLD_TO_TANGENT(IN, Raised(IN.worldPos, vertexNormal, relief));
             o.Alpha = 1;
         }
         ENDCG

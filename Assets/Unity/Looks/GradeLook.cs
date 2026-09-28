@@ -5,7 +5,7 @@ namespace ShallowWater.Unity.Looks
     public static class GradeLook
     {
         private const float Exposure = 0.85f;
-        private const float Saturation = 0.92f;
+        private const float Saturation = 0.86f;
         private const float Vignette = 0.28f;
         private static readonly Vector4 OctoberWarmth = new Vector4(1.04f, 1f, 0.94f, 1f);
         private static readonly int ExposureProperty = Shader.PropertyToID("_Exposure");

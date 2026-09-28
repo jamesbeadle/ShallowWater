@@ -9,6 +9,8 @@ Shader "Shallow Water/Water"
         _HalfWidth ("Half width in metres", Float) = 6
         _Ripple ("Ripple strength", Float) = 1
         _LeafAmount ("Fallen leaf amount", Range(0, 0.5)) = 0.06
+        _Churned ("Silt churned up by the propeller", Color) = (0.3, 0.24, 0.15, 1)
+        _Foam ("Foam", Color) = (0.72, 0.7, 0.62, 1)
     }
     SubShader
     {
@@ -29,7 +31,7 @@ Shader "Shallow Water/Water"
             #include "Lighting.cginc"
             #include "AutoLight.cginc"
             #include "Sky.cginc"
-            #include "Ripples.cginc"
+            #include "Wake.cginc"
 
             #define WATER_REFLECTANCE 0.02
             #define GLINT_SHARPNESS 900.0
@@ -44,6 +46,8 @@ Shader "Shallow Water/Water"
             float _HalfWidth;
             float _Ripple;
             float _LeafAmount;
+            fixed4 _Churned;
+            fixed4 _Foam;
 
             struct v2f
             {
@@ -87,13 +91,14 @@ Shader "Shallow Water/Water"
                 float eyeDistance = length(toTheEye);
                 float3 view = toTheEye / eyeDistance;
                 float calm = saturate(eyeDistance / RIPPLES_FADE_METRES);
-                float2 slope = RippleSlope(i.worldPos.xz, _Time.y) * _Ripple * (1.0 - calm * 0.85);
+                Wake wake = WakeAt(i.worldPos.xz, _Time.y);
+                float2 slope = RippleSlope(i.worldPos.xz, _Time.y) * _Ripple * (1.0 - calm * 0.85) + wake.slope;
                 float3 normal = normalize(float3(-slope.x, 1.0, -slope.y));
                 float3 sun = _WorldSpaceLightPos0.xyz;
                 float shadow = SHADOW_ATTENUATION(i);
                 float nearTheBank = smoothstep(0.45, 1.0, abs(i.surfacePlace.y) / _HalfWidth);
                 float3 light = ShadeSH9(float4(normal, 1.0)) + _LightColor0.rgb * saturate(dot(normal, sun)) * shadow;
-                float3 body = lerp(_Deep.rgb, _Shallow.rgb, nearTheBank * 0.6) * light;
+                float3 body = lerp(lerp(_Deep.rgb, _Shallow.rgb, nearTheBank * 0.6), _Churned.rgb, wake.churn * 0.7) * light;
                 float facing = saturate(dot(normal, view));
                 float fresnel = WATER_REFLECTANCE + (1.0 - WATER_REFLECTANCE) * pow(1.0 - facing, 5.0);
                 float3 reflected = reflect(-view, normal);
@@ -101,6 +106,8 @@ Shader "Shallow Water/Water"
                 float glint = pow(saturate(dot(reflected, sun)), GLINT_SHARPNESS) * GLINT_STRENGTH;
                 colour += _LightColor0.rgb * glint * shadow;
                 colour = Leaves(colour, light, i.worldPos.xz, nearTheBank);
+                colour = lerp(colour, _Churned.rgb * light, wake.churn * 0.35);
+                colour = lerp(colour, _Foam.rgb * light, wake.foam);
                 UNITY_APPLY_FOG(i.fogCoord, colour);
                 return fixed4(colour, 1.0);
             }
