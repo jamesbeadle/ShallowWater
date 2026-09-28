@@ -21,6 +21,21 @@ namespace ShallowWater.Game.Shapes
         GardenHedge,
         TelegraphPole,
         Wall,
-        Roof
+        GableWall,
+        Roof,
+        Brickwork,
+        ChimneyPot,
+        Timber,
+        Iron,
+        Hull,
+        Deck,
+        Cabin,
+        CabinBack,
+        CabinRoof,
+        Cloths,
+        Cratch,
+        Brass,
+        Crown,
+        Bark
     }
 }

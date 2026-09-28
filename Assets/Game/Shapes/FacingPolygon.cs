@@ -14,7 +14,7 @@ namespace ShallowWater.Game.Shapes
             var isAnticlockwise = AreaSeenFrom(corners, facing) > NoArea;
             var ordered = isAnticlockwise ? corners.Reverse().ToList() : corners.ToList();
             var polygon = new Shape();
-            foreach (var corner in ordered) polygon.Add(corner);
+            foreach (var corner in ordered) polygon.Add(corner, new SurfacePlace(Across(corner, facing), corner.Height));
             for (var corner = 1; corner < ordered.Count - 1; corner++) polygon.AddTriangle(FirstCorner, corner, corner + 1);
             return polygon;
         }

@@ -1,6 +1,7 @@
 using ShallowWater.Game.Ground;
 using ShallowWater.Game.Pound;
 using ShallowWater.Game.Shapes;
+using ShallowWater.Unity.Looks;
 using ShallowWater.Unity.Map;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ namespace ShallowWater.Unity.World
 {
     public static class FazeleyChain
     {
-        private static readonly Color Iron = new Color(0.14f, 0.14f, 0.15f);
         private const double IntoTheArmMetres = 25;
         private const float PostHeightMetres = 1.4f;
         private const float PostWidthMetres = 0.25f;
@@ -23,7 +23,7 @@ namespace ShallowWater.Unity.World
             if (!MapFiles.Has(MapLayers.Canal)) return;
             var junction = LandmarkPlaces.Of(Landmark.FazeleyJunction);
             var arm = new Centreline(CanalArms.StartingNearest(MapLines.Read(MapLayers.Canal), junction));
-            var paint = Paint.Of(Iron);
+            var paint = Finishes.For(Surface.Iron);
             var reach = PoundLimits.ChannelHalfWidthMetres + PostsBackFromTheWaterMetres;
             var eastPostTop = Post(arm, -reach, paint);
             var westPostTop = Post(arm, reach, paint);

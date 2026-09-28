@@ -1,12 +1,12 @@
 using ShallowWater.Game.Pound;
-using ShallowWater.Unity.Map;
+using ShallowWater.Game.Shapes;
+using ShallowWater.Unity.Looks;
 using UnityEngine;
 
 namespace ShallowWater.Unity.World
 {
     public static class HuddlesfordPlanks
     {
-        private static readonly Color TarredOak = new Color(0.22f, 0.16f, 0.11f);
         private const int PlankCount = 4;
         private const float PlankHeightMetres = 0.25f;
         private const float PlankThicknessMetres = 0.12f;
@@ -15,7 +15,7 @@ namespace ShallowWater.Unity.World
 
         public static void Drop(Pound pound)
         {
-            var paint = Paint.Of(TarredOak);
+            var paint = Finishes.For(Surface.Timber);
             var width = (float)pound.HalfWidth * 2 + IntoEachBankMetres * 2;
             var size = new Vector3(width, PlankHeightMetres, PlankThicknessMetres);
             var turn = PoundPlacement.AlongThePound(pound, pound.PlanksAlong);

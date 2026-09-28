@@ -12,11 +12,13 @@ namespace ShallowWater.Game.Shapes
         {
             var shape = new Shape();
             var tangents = line.Tangents();
+            var distances = line.DistancesAlong();
             for (var index = 0; index < line.Count; index++)
             {
                 var spread = MiterAt(line, tangents, index);
-                shape.Add(band.LeftBeside(line[index], spread));
-                shape.Add(band.RightBeside(line[index], spread));
+                var along = distances[index];
+                shape.Add(band.LeftBeside(line[index], spread), new SurfacePlace(along, band.LeftOffset));
+                shape.Add(band.RightBeside(line[index], spread), new SurfacePlace(along, band.RightOffset));
             }
             for (var segment = 0; segment < line.SegmentCount; segment++) Join(shape, segment * PointsPerCrossing);
             return shape;

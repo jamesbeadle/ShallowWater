@@ -11,14 +11,19 @@ namespace ShallowWater.Game.Woods
         private const double SmallestScale = 0.75;
         private const double ScaleRange = 0.5;
         private const int Seed = 1938;
+        private const int ShapingSeed = 1939;
         private const double Middle = 0.5;
+        private const double FullTurnRadians = 2 * Math.PI;
+        private const double StoutestCrown = 0.8;
+        private const double SlendernessRange = 0.45;
 
         public static IEnumerable<Tree> Within(Area area)
         {
             var random = new Random(Seed);
+            var shaping = new Random(ShapingSeed);
             foreach (var corner in CellCornersUnder(area.Outline))
             {
-                var tree = WanderedTree(corner, random);
+                var tree = WanderedTree(corner, random, shaping);
                 if (area.IsAround(tree.Position)) yield return tree;
             }
         }
@@ -35,12 +40,14 @@ namespace ShallowWater.Game.Woods
             }
         }
 
-        private static Tree WanderedTree(GroundPoint corner, Random random)
+        private static Tree WanderedTree(GroundPoint corner, Random random, Random shaping)
         {
             var east = (random.NextDouble() - Middle) * Wander * SpacingMetres;
             var north = (random.NextDouble() - Middle) * Wander * SpacingMetres;
             var scale = SmallestScale + random.NextDouble() * ScaleRange;
-            return new Tree(corner + new GroundPoint(east, north), scale);
+            var turn = shaping.NextDouble() * FullTurnRadians;
+            var slenderness = StoutestCrown + shaping.NextDouble() * SlendernessRange;
+            return new Tree(corner + new GroundPoint(east, north), scale, turn, slenderness);
         }
     }
 }

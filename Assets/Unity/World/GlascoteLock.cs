@@ -1,13 +1,12 @@
 using ShallowWater.Game.Pound;
-using ShallowWater.Unity.Map;
+using ShallowWater.Game.Shapes;
+using ShallowWater.Unity.Looks;
 using UnityEngine;
 
 namespace ShallowWater.Unity.World
 {
     public static class GlascoteLock
     {
-        private static readonly Color Brick = new Color(0.46f, 0.26f, 0.20f);
-        private static readonly Color GateTimber = new Color(0.10f, 0.09f, 0.08f);
         private static readonly double[] Banks = { PoundLimits.TowpathSide, -PoundLimits.TowpathSide };
         private const float ChamberHalfWidthMetres = 1.1f;
         private const float WallReachMetres = 7.5f;
@@ -24,8 +23,8 @@ namespace ShallowWater.Unity.World
 
         public static void CloseItsBottomGates(Pound pound)
         {
-            var brick = Paint.Of(Brick);
-            var timber = Paint.Of(GateTimber);
+            var brick = Finishes.For(Surface.Brickwork);
+            var timber = Finishes.For(Surface.Timber);
             foreach (var bank in Banks)
             {
                 ChamberWall(pound, bank, brick);

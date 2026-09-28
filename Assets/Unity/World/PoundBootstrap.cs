@@ -3,6 +3,8 @@ using ShallowWater.Game.Boat;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.Map;
+using ShallowWater.Unity.Picture;
+using ShallowWater.Unity.Sky;
 using ShallowWater.Unity.Woods;
 using UnityEngine;
 
@@ -17,19 +19,19 @@ namespace ShallowWater.Unity.World
         {
             var centreline = MapLines.Read(MapLayers.Pound).First();
             var pound = Pound.HuddlesfordToFazeley(centreline);
+            Daylight.Rise();
             GroundLayer.Lay();
             LandLinesLayer.Lay(MapLayers.River);
             LandLinesLayer.Lay(MapLayers.Railway);
             RoadsLayer.Lay(pound);
             WoodsLayer.Plant();
             BuildingsLayer.Raise();
-            PoundScenery.Sun();
             CanalLayer.Dig(pound);
             HuddlesfordPlanks.Drop(pound);
             GlascoteLock.CloseItsBottomGates(pound);
             FazeleyChain.Hang();
             var motion = new BoatMotion(MooringAtHopwas(pound), HeadingTowardsFazeley);
-            var boat = PoundScenery.Boat();
+            var boat = SparrowModel.Moored();
             boat.AddComponent<BoatController>().Launch(motion, pound);
             FollowingCamera().Follow(boat.transform);
         }
@@ -45,6 +47,7 @@ namespace ShallowWater.Unity.World
             var camera = Camera.main;
             var hasNoCamera = camera == null;
             if (hasNoCamera) camera = HelmCamera();
+            HelmPicture.Frame(camera);
             return camera.gameObject.AddComponent<FollowCamera>();
         }
 
