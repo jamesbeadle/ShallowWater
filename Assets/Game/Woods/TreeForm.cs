@@ -11,5 +11,6 @@ namespace ShallowWater.Game.Woods
         public Habit Habit { get; }
         public int Seed { get; }
         public TreeSpecies Species => Habit.Species;
+        public double TrunkRadiusMetres => Habit.TrunkRadiusMetres;
     }
 }

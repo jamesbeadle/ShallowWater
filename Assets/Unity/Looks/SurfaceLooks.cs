@@ -7,6 +7,9 @@ namespace ShallowWater.Unity.Looks
 {
     public static class SurfaceLooks
     {
+        private const float WornIn = 0.15f;
+        private const float Clean = 0;
+
         private static readonly Dictionary<Surface, Func<Material>> BySurface = new Dictionary<Surface, Func<Material>>
         {
             { Surface.Water, WaterLook.Canal },
@@ -59,6 +62,11 @@ namespace ShallowWater.Unity.Looks
             { Surface.PineNeedles, FoliageLook.Pine },
             { Surface.HazelBark, BarkLook.Hazel },
             { Surface.HazelLeaves, FoliageLook.Hazel },
+            { Surface.Jacket, () => WeatheredLook.Aboard(PeoplePalette.Jacket, Weathering.Cloth, WornIn) },
+            { Surface.Trousers, () => WeatheredLook.Aboard(PeoplePalette.Trousers, Weathering.Cloth, WornIn) },
+            { Surface.Skin, () => WeatheredLook.Aboard(PeoplePalette.Skin, Weathering.Complexion, Clean) },
+            { Surface.Cap, () => WeatheredLook.Aboard(PeoplePalette.Cap, Weathering.Cloth, WornIn) },
+            { Surface.Boots, () => WeatheredLook.Aboard(PeoplePalette.Boots, Weathering.Leather, WornIn) },
             { Surface.WoodlandFloor, () => WeatheredLook.Of(WoodsPalette.LeafLitter, Weathering.LeafLitter) },
         };
 

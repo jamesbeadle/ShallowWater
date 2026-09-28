@@ -3,6 +3,7 @@ using ShallowWater.Game.Boat;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Map;
 using ShallowWater.Unity.Picture;
+using ShallowWater.Unity.Player;
 using ShallowWater.Unity.Sky;
 using ShallowWater.Unity.Woods;
 using UnityEngine;
@@ -24,14 +25,16 @@ namespace ShallowWater.Unity.World
             LandLinesLayer.Lay(MapLayers.River);
             LandLinesLayer.Lay(MapLayers.Railway);
             RoadsLayer.Lay(pound);
-            WoodsLayer.Plant();
+            var trees = WoodsLayer.Plant();
             BuildingsLayer.Raise();
             CanalLayer.Dig(pound);
             HuddlesfordPlanks.Drop(pound);
             GlascoteLock.CloseItsBottomGates(pound);
             FazeleyChain.Hang();
             var boat = SparrowModel.Launched(MooredAtHopwas(pound), pound);
-            OrbitingCamera().Follow(boat.transform, CameraFraming.AtTheHelm);
+            var camera = OrbitingCamera();
+            boat.AddComponent<ShoreLeave>().Crew(pound, LandSurvey.Of(pound, trees), camera);
+            boat.AddComponent<Hud>();
         }
 
         private static BoatMotion MooredAtHopwas(Pound pound)
