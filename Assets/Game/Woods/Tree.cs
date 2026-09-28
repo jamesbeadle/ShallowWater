@@ -7,16 +7,16 @@ namespace ShallowWater.Game.Woods
         public GroundPoint Position { get; }
         public double Scale { get; }
         public double TurnRadians { get; }
-        public double Slenderness { get; }
+        public int Form { get; }
         public double East => Position.East;
         public double North => Position.North;
 
-        public Tree(GroundPoint position, double scale, double turnRadians, double slenderness)
+        public Tree(GroundPoint position, double scale, double turnRadians, int form)
         {
             Position = position;
             Scale = scale;
             TurnRadians = turnRadians;
-            Slenderness = slenderness;
+            Form = form;
         }
     }
 }

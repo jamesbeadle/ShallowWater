@@ -49,8 +49,17 @@ namespace ShallowWater.Unity.Looks
             { Surface.Rope, RopeLook.Cotton },
             { Surface.TarredRope, RopeLook.TarredHemp },
             { Surface.HorseTail, RopeLook.HorseHair },
-            { Surface.Crown, CrownLook.Autumn },
-            { Surface.Bark, () => WeatheredLook.Of(CountryPalette.Bark, Weathering.Bark) },
+            { Surface.OakBark, BarkLook.Oak },
+            { Surface.AshBark, BarkLook.Ash },
+            { Surface.BirchBark, BarkLook.Birch },
+            { Surface.PineBark, BarkLook.Pine },
+            { Surface.OakLeaves, FoliageLook.Oak },
+            { Surface.AshLeaves, FoliageLook.Ash },
+            { Surface.BirchLeaves, FoliageLook.Birch },
+            { Surface.PineNeedles, FoliageLook.Pine },
+            { Surface.HazelBark, BarkLook.Hazel },
+            { Surface.HazelLeaves, FoliageLook.Hazel },
+            { Surface.WoodlandFloor, () => WeatheredLook.Of(WoodsPalette.LeafLitter, Weathering.LeafLitter) },
         };
 
         public static Material Made(Surface surface)

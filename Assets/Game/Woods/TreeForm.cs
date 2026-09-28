@@ -1,11 +1,15 @@
 namespace ShallowWater.Game.Woods
 {
-    public static class TreeForm
+    public sealed class TreeForm
     {
-        public const double TrunkHeightMetres = 3;
-        public const double TrunkWidthMetres = 0.6;
-        public const double CrownHeightMetres = 8;
-        public const double CrownWidthMetres = 8.5;
-        public const double CrownBaseMetres = 2.2;
+        public TreeForm(Habit habit, int seed)
+        {
+            Habit = habit;
+            Seed = seed;
+        }
+
+        public Habit Habit { get; }
+        public int Seed { get; }
+        public TreeSpecies Species => Habit.Species;
     }
 }

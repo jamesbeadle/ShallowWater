@@ -9,7 +9,8 @@ namespace ShallowWater.Unity.Looks
         public const string Brick = "Shallow Water/Brick";
         public const string Slate = "Shallow Water/Slate";
         public const string Hedge = "Shallow Water/Hedge";
-        public const string Crown = "Shallow Water/Crown";
+        public const string Foliage = "Shallow Water/Foliage";
+        public const string Bark = "Shallow Water/Bark";
         public const string Paintwork = "Shallow Water/Paintwork";
         public const string HullPlates = "Shallow Water/Hull Plates";
         public const string Rope = "Shallow Water/Rope";

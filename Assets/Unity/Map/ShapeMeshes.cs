@@ -43,6 +43,15 @@ namespace ShallowWater.Unity.Map
             return mesh;
         }
 
+        public static Mesh SmoothMeshOf(Shape shape)
+        {
+            var mesh = MeshOf(shape);
+            var normals = NormalWelding.Welded(mesh.vertices, mesh.normals);
+            mesh.normals = normals;
+            mesh.SetTangents(TangentsAcross(normals));
+            return mesh;
+        }
+
         private static List<Vector4> TangentsAcross(Vector3[] normals)
         {
             var tangents = new List<Vector4>(normals.Length);
