@@ -57,5 +57,19 @@ namespace ShallowWater.Game.Shapes
         {
             return new WorldPoint(point.East + Eastward, point.Height + Upward, point.North + Northward);
         }
+
+        public Offset TurnedAbout(Offset axis, double radians)
+        {
+            var cosine = Math.Cos(radians);
+            var alongTheAxis = axis * (axis.Dot(this) * (1 - cosine));
+            return this * cosine + axis.Cross(this) * Math.Sin(radians) + alongTheAxis;
+        }
+
+        public Offset AnyRightAngle()
+        {
+            var isUpright = Math.Abs(Upward) > Math.Abs(Eastward) + Math.Abs(Northward);
+            var reference = isUpright ? East : Up;
+            return Cross(reference).Normalised;
+        }
     }
 }
