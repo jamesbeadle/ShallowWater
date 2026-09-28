@@ -54,7 +54,7 @@ He would tell you he takes the work for the money. He takes it because on the cu
 
 ## What this repository is
 
-The game, built in Unity 6 for web, PC, Xbox and PlayStation, with the game itself written in plain C# that knows nothing about the engine. The story bible lives in `docs/story/` and is the source of truth for every chapter. `PROJECT.md` holds the conventions.
+The game, built in Unity 6 for web, PC, Xbox and PlayStation, with the game itself written in plain C# that knows nothing about the engine. The story bible lives in `docs/story/` and is the source of truth for every chapter. `docs/playing.md` gives the controls and how the boat and the walking work. `PROJECT.md` holds the conventions.
 
 Single player. Story first. No multiplayer, no live service. A series you finish, chapter by chapter, and come back to when the next one is on the shelf.
 
