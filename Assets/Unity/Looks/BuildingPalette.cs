@@ -4,7 +4,7 @@ namespace ShallowWater.Unity.Looks
 {
     public static class BuildingPalette
     {
-        public static readonly Tones Brick = new Tones(new Color(0.55f, 0.3f, 0.22f), new Color(0.42f, 0.22f, 0.17f), new Color(0.62f, 0.58f, 0.52f));
+        public static readonly Tones Brick = new Tones(new Color(0.5f, 0.3f, 0.23f), new Color(0.42f, 0.22f, 0.17f), new Color(0.62f, 0.58f, 0.52f));
         public static readonly Color WindowFrame = new Color(0.88f, 0.86f, 0.8f);
         public static readonly Color Glass = new Color(0.1f, 0.12f, 0.14f);
         public static readonly Color Curtain = new Color(0.55f, 0.35f, 0.3f);

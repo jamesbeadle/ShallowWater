@@ -10,6 +10,9 @@ namespace ShallowWater.Unity.Helm
         private BoatMotion motion;
         private Pound pound;
 
+        public float RudderShare { get; private set; }
+        public float SpeedShare => motion == null ? 0 : (float)(motion.SpeedMetresPerSecond / BoatHandling.TopSpeedMetresPerSecond);
+
         public void Launch(BoatMotion boatMotion, Pound water)
         {
             motion = boatMotion;
@@ -19,7 +22,9 @@ namespace ShallowWater.Unity.Helm
         private void Update()
         {
             if (motion == null) return;
-            motion.Advance(Time.deltaTime, HelmInput.Throttle(), HelmInput.Rudder());
+            var rudder = HelmInput.Rudder();
+            RudderShare = (float)rudder;
+            motion.Advance(Time.deltaTime, HelmInput.Throttle(), rudder);
             KeepInsideThePound();
             PlaceOnTheWater();
         }

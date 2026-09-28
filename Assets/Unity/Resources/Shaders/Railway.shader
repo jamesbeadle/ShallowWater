@@ -16,6 +16,7 @@ Shader "Shallow Water/Railway"
         #pragma surface surf Standard fullforwardshadows vertex:vert
         #pragma target 3.5
         #include "Noise.cginc"
+        #include "Relief.cginc"
 
         #define SLEEPER_SPACING 0.7
         #define SLEEPER_SHARE 0.36
@@ -32,6 +33,9 @@ Shader "Shallow Water/Railway"
         struct Input
         {
             float2 surfacePlace;
+            float3 worldPos;
+            float3 worldNormal;
+            INTERNAL_DATA
         };
 
         void vert (inout appdata_full v, out Input o)
@@ -57,6 +61,9 @@ Shader "Shallow Water/Railway"
             o.Albedo = lerp(average, track, detail);
             o.Smoothness = isRail ? 0.7 * detail : 0.08;
             o.Metallic = isRail ? 0.8 * detail : 0.0;
+            float trackRelief = (isRail ? 0.05 : 0.0) + (isSleeper ? 0.02 : 0.0);
+            float relief = trackRelief * detail + (stones - 0.5) * 0.015;
+            o.Normal = WORLD_TO_TANGENT(IN, Raised(IN.worldPos, VERTEX_NORMAL(IN), relief));
             o.Alpha = 1;
         }
         ENDCG

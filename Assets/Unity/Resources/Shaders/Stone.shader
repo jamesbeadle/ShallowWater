@@ -18,6 +18,7 @@ Shader "Shallow Water/Stone"
         #pragma surface surf Standard fullforwardshadows
         #pragma target 3.5
         #include "Noise.cginc"
+        #include "Relief.cginc"
 
         fixed4 _Colour;
         fixed4 _Variation;
@@ -30,11 +31,13 @@ Shader "Shallow Water/Stone"
         {
             float3 worldPos;
             float3 worldNormal;
+            INTERNAL_DATA
         };
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            float2 place = FacePlace(IN.worldPos, IN.worldNormal) / _StoneMetres;
+            float3 vertexNormal = VERTEX_NORMAL(IN);
+            float2 place = FacePlace(IN.worldPos, vertexNormal) / _StoneMetres;
             float3 cells = Cells(place);
             float detail = PatternDetail(place);
             float3 averageStone = lerp(_Colour.rgb, _Variation.rgb, 0.5);
@@ -48,6 +51,8 @@ Shader "Shallow Water/Stone"
             colour *= lerp(0.8, 1.05, dirt);
             o.Albedo = lerp(averageStone * lerp(0.8, 1.05, dirt), colour, detail);
             o.Smoothness = _Smoothness * (1.0 - isMortar * detail);
+            float relief = (saturate(cells.x * 4.0) * 0.004 - isMortar * 0.008 + (mottle - 0.5) * 0.003) * detail;
+            o.Normal = WORLD_TO_TANGENT(IN, Raised(IN.worldPos, vertexNormal, relief));
             o.Alpha = 1;
         }
         ENDCG

@@ -19,6 +19,7 @@ Shader "Shallow Water/Crown"
         #pragma multi_compile_instancing
         #pragma target 3.5
         #include "Noise.cginc"
+        #include "Relief.cginc"
 
         #define CLUMPS_ACROSS_THE_CROWN 7.0
         #define LEAVES_ACROSS_THE_CROWN 22.0
@@ -36,6 +37,9 @@ Shader "Shallow Water/Crown"
         {
             float3 crownPlace;
             float seed;
+            float3 worldPos;
+            float3 worldNormal;
+            INTERNAL_DATA
         };
 
         void vert (inout appdata_full v, out Input o)
@@ -73,6 +77,8 @@ Shader "Shallow Water/Crown"
             o.Albedo = colour * lerp(0.6, 1.0, outer);
             o.Occlusion = lerp(0.5, 1.0, isLeafy * outer);
             o.Smoothness = 0.1;
+            float relief = (clumps - 0.5) * 0.3 + (leaves - 0.5) * 0.05 * detail;
+            o.Normal = WORLD_TO_TANGENT(IN, Raised(IN.worldPos, VERTEX_NORMAL(IN), relief));
             o.Alpha = 1;
         }
         ENDCG

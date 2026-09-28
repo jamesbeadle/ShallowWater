@@ -1,7 +1,6 @@
 using System.Linq;
 using ShallowWater.Game.Boat;
 using ShallowWater.Game.Pound;
-using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.Map;
 using ShallowWater.Unity.Picture;
 using ShallowWater.Unity.Sky;
@@ -31,8 +30,7 @@ namespace ShallowWater.Unity.World
             GlascoteLock.CloseItsBottomGates(pound);
             FazeleyChain.Hang();
             var motion = new BoatMotion(MooringAtHopwas(pound), HeadingTowardsFazeley);
-            var boat = SparrowModel.Moored();
-            boat.AddComponent<BoatController>().Launch(motion, pound);
+            var boat = SparrowModel.Launched(motion, pound);
             FollowingCamera().Follow(boat.transform);
         }
 

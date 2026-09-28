@@ -19,6 +19,7 @@ Shader "Shallow Water/Fields"
         #pragma surface surf Standard fullforwardshadows
         #pragma target 3.5
         #include "Noise.cginc"
+        #include "Relief.cginc"
 
         #define FIELD_WARP 0.35
         #define FURROW_METRES 0.35
@@ -36,7 +37,20 @@ Shader "Shallow Water/Fields"
         struct Input
         {
             float3 worldPos;
+            float3 worldNormal;
+            INTERNAL_DATA
         };
+
+        float FieldRelief(float kind, float2 ground, float isHedgerow)
+        {
+            float2 furrowDirection = normalize(float2(cos(kind * 40.0), sin(kind * 40.0)));
+            float furrowPlace = dot(ground, furrowDirection) / FURROW_METRES;
+            float furrowDetail = PatternDetail(float2(furrowPlace, 0.0));
+            float furrows = sin(furrowPlace * 6.2831853) * 0.04 * step(0.62, kind) * furrowDetail;
+            float2 turfPlace = ground / GRAIN_METRES;
+            float turf = (ValueNoise(turfPlace) - 0.5) * 0.02 * PatternDetail(turfPlace);
+            return furrows + turf + isHedgerow * 0.4 * ValueNoise(ground * 0.8);
+        }
 
         float3 FieldCrop(float kind, float2 ground)
         {
@@ -64,6 +78,8 @@ Shader "Shallow Water/Fields"
             float grain = lerp(0.5, ValueNoise(grainPlace), PatternDetail(grainPlace));
             o.Albedo = colour * lerp(0.85, 1.1, grain);
             o.Smoothness = 0.06;
+            float relief = FieldRelief(cells.y, ground, isHedgerow);
+            o.Normal = WORLD_TO_TANGENT(IN, Raised(IN.worldPos, VERTEX_NORMAL(IN), relief));
             o.Alpha = 1;
         }
         ENDCG

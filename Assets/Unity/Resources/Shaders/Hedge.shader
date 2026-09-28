@@ -17,6 +17,7 @@ Shader "Shallow Water/Hedge"
         #pragma surface surf Standard fullforwardshadows
         #pragma target 3.5
         #include "Noise.cginc"
+        #include "Relief.cginc"
 
         #define CLUMPS_PER_METRE 3.1
         #define LEAVES_PER_METRE 11.0
@@ -32,6 +33,8 @@ Shader "Shallow Water/Hedge"
         struct Input
         {
             float3 worldPos;
+            float3 worldNormal;
+            INTERNAL_DATA
         };
 
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -48,6 +51,8 @@ Shader "Shallow Water/Hedge"
             o.Albedo = lerp(colour, _Berries.rgb, isBerry);
             o.Occlusion = lerp(0.55, 1.0, isLeafy);
             o.Smoothness = 0.08 + isBerry * 0.5;
+            float relief = (clumps - 0.5) * 0.12 + (leaves - 0.5) * 0.02 * detail;
+            o.Normal = WORLD_TO_TANGENT(IN, Raised(IN.worldPos, VERTEX_NORMAL(IN), relief));
             o.Alpha = 1;
         }
         ENDCG

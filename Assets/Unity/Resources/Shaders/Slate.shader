@@ -16,6 +16,7 @@ Shader "Shallow Water/Slate"
         #pragma surface surf Standard fullforwardshadows vertex:vert
         #pragma target 3.5
         #include "Noise.cginc"
+        #include "Relief.cginc"
 
         #define SLATE_WIDTH 0.3
         #define ROW_UP_THE_SLOPE 0.22
@@ -32,6 +33,8 @@ Shader "Shallow Water/Slate"
         {
             float3 worldPos;
             float2 surfacePlace;
+            float3 worldNormal;
+            INTERNAL_DATA
         };
 
         void vert (inout appdata_full v, out Input o)
@@ -51,12 +54,15 @@ Shader "Shallow Water/Slate"
             float joint = inside.x < JOINT_WIDTH ? 0.55 : 1.0;
             float3 laid = slate * lapShadow * joint;
             float3 average = lerp(_Colour.rgb, _Variation.rgb, 0.5) * 0.88;
-            float3 colour = lerp(average, laid, PatternDetail(place));
+            float detail = PatternDetail(place);
+            float3 colour = lerp(average, laid, detail);
             float mossPatches = smoothstep(0.62, 0.85, Fbm(IN.worldPos.xz * 0.6));
             float nearTheEaves = 1.0 - saturate(roof.y / MOSS_REACH_UP_THE_SLOPE);
             colour = lerp(colour, _Moss.rgb, mossPatches * nearTheEaves * 0.5);
             o.Albedo = colour;
             o.Smoothness = _Smoothness * (1.0 - mossPatches * 0.8);
+            float relief = (0.006 * (1.0 - inside.y) - (inside.x < JOINT_WIDTH ? 0.003 : 0.0)) * detail;
+            o.Normal = WORLD_TO_TANGENT(IN, Raised(IN.worldPos, VERTEX_NORMAL(IN), relief));
             o.Alpha = 1;
         }
         ENDCG

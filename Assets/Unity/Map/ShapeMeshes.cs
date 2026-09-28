@@ -11,6 +11,8 @@ namespace ShallowWater.Unity.Map
     {
         private const int WholeMesh = 0;
         private const int SurfacePlaceChannel = 0;
+        private const float NearlyUpright = 0.95f;
+        private const float RightHanded = 1f;
 
         public static GameObject Build(string name, Shape shape, Material finish)
         {
@@ -36,8 +38,25 @@ namespace ShallowWater.Unity.Map
             mesh.SetUVs(SurfacePlaceChannel, Places(shape));
             mesh.SetTriangles(new List<int>(shape.Triangles), WholeMesh);
             mesh.RecalculateNormals();
+            mesh.SetTangents(TangentsAcross(mesh.normals));
             mesh.RecalculateBounds();
             return mesh;
+        }
+
+        private static List<Vector4> TangentsAcross(Vector3[] normals)
+        {
+            var tangents = new List<Vector4>(normals.Length);
+            foreach (var normal in normals) tangents.Add(TangentAcross(normal));
+            return tangents;
+        }
+
+        private static Vector4 TangentAcross(Vector3 normal)
+        {
+            var isUpright = Mathf.Abs(normal.y) > NearlyUpright;
+            var reference = isUpright ? Vector3.right : Vector3.up;
+            var across = Vector3.Cross(reference, normal);
+            across.Normalize();
+            return new Vector4(across.x, across.y, across.z, RightHanded);
         }
 
         private static List<Vector3> Vertices(Shape shape)

@@ -12,9 +12,12 @@ namespace ShallowWater.Game.Boat
         {
             surfaces.Add(Surface.Cabin, Sweep.Lengthways(Ends.Select(PortSide).ToList()));
             surfaces.Add(Surface.Cabin, Sweep.Lengthways(Ends.Select(StarboardSide).ToList()));
+            surfaces.Add(Surface.Cabin, Sweep.Lengthways(Ends.Select(along => Lip(along, BoatSides.Port)).ToList()));
+            surfaces.Add(Surface.Cabin, Sweep.Lengthways(Ends.Select(along => Lip(along, BoatSides.Starboard)).ToList()));
             surfaces.Add(Surface.CabinRoof, Sweep.Lengthways(Ends.Select(Roof).ToList()));
             surfaces.Add(Surface.CabinBack, FacingPolygon.Towards(Outline(SparrowForm.CabinBackAlong), BoatSides.Astern));
             surfaces.Add(Surface.Cabin, FacingPolygon.Towards(Outline(SparrowForm.CabinFrontAlong), BoatSides.Ahead));
+            RoofFittings.Build(surfaces);
         }
 
         private static IReadOnlyList<WorldPoint> PortSide(double along)
@@ -25,6 +28,13 @@ namespace ShallowWater.Game.Boat
         private static IReadOnlyList<WorldPoint> StarboardSide(double along)
         {
             return new[] { Top(along, BoatSides.Starboard), Foot(along, BoatSides.Starboard) };
+        }
+
+        private static IReadOnlyList<WorldPoint> Lip(double along, double side)
+        {
+            var top = SparrowForm.CabinSideTopMetres + SparrowForm.RoofLipProudMetres;
+            var lip = new Rise(SparrowForm.CabinSideTopMetres - SparrowForm.RoofLipHeightMetres, top);
+            return Beading.Across(along, side, SparrowForm.CabinTopHalfWidthMetres, lip, SparrowForm.RoofLipProudMetres);
         }
 
         private static IReadOnlyList<WorldPoint> Roof(double along)
@@ -41,12 +51,12 @@ namespace ShallowWater.Game.Boat
 
         private static WorldPoint Foot(double along, double side)
         {
-            return new WorldPoint(side * SparrowForm.CabinHalfWidthMetres, SparrowForm.CabinFootMetres, along);
+            return new WorldPoint(side * SparrowForm.CabinFootHalfWidthMetres, SparrowForm.CabinFootMetres, along);
         }
 
         private static WorldPoint Top(double along, double side)
         {
-            return new WorldPoint(side * SparrowForm.CabinHalfWidthMetres, SparrowForm.CabinSideTopMetres, along);
+            return new WorldPoint(side * SparrowForm.CabinTopHalfWidthMetres, SparrowForm.CabinSideTopMetres, along);
         }
 
         private static WorldPoint Crown(double along)
