@@ -11,6 +11,7 @@ namespace ShallowWater.Unity.World
         private static readonly int BoatPlace = Shader.PropertyToID("_BoatPlace");
         private static readonly int BoatHeading = Shader.PropertyToID("_BoatHeading");
         private static readonly int BoatVelocity = Shader.PropertyToID("_BoatVelocity");
+        private static readonly int BoatWash = Shader.PropertyToID("_BoatWash");
         private static readonly int BoatSizeProperty = Shader.PropertyToID("_BoatSize");
 
         private BoatController helm;
@@ -30,10 +31,12 @@ namespace ShallowWater.Unity.World
             var heading = transform.forward;
             var velocity = (place - lastPlace) / Mathf.Max(Time.deltaTime, ShortestFrameSeconds);
             lastPlace = place;
-            var speed = helm == null ? 0 : Mathf.Abs(helm.SpeedShare);
+            var speedShare = Mathf.Abs(helm.SpeedShare);
+            var speed = helm.SpeedShare * (float)BoatHandling.TopSpeedMetresPerSecond;
             Shader.SetGlobalVector(BoatPlace, new Vector4(place.x, place.z, Unused, Unused));
             Shader.SetGlobalVector(BoatHeading, new Vector4(heading.x, heading.z, Unused, Unused));
-            Shader.SetGlobalVector(BoatVelocity, new Vector4(velocity.x, velocity.y, velocity.z, speed));
+            Shader.SetGlobalVector(BoatVelocity, new Vector4(velocity.x, velocity.y, velocity.z, speedShare));
+            Shader.SetGlobalVector(BoatWash, new Vector4(helm.ThrustShare, speed, Unused, Unused));
         }
     }
 }

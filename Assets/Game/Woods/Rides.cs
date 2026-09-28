@@ -16,7 +16,7 @@ namespace ShallowWater.Game.Woods
         public Rides(GroundRing outline)
         {
             var corners = outline.Corners;
-            centre = new GroundPoint(corners.Average(corner => corner.East), corners.Average(corner => corner.North));
+            centre = GroundPoint.MeanOf(corners);
             var width = outline.East - outline.West;
             var depth = outline.North - outline.South;
             var shortestSide = Math.Min(width, depth);

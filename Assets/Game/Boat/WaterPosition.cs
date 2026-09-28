@@ -10,10 +10,5 @@ namespace ShallowWater.Game.Boat
             Along = along;
             Across = across;
         }
-
-        public WaterPosition Moved(double along, double across)
-        {
-            return new WaterPosition(Along + along, Across + across);
-        }
     }
 }

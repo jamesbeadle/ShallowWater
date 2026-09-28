@@ -21,7 +21,7 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 | Smoke | puffs that rise, grow, drift and fade, left behind as the boat moves | the stove chimney, and the Bolinder's exhaust at one puff a second |
 | Railway | ballast, sleepers and rails | both railways |
 | Fields | a patchwork of pasture, stubble and plough with hedgerow lines | the countryside under everything |
-| Water | ripples, the sky and its clouds reflected, the banks darkening the edges, silt, fallen leaves, and *Sparrow*'s wake and churned-up silt | the canal, the canals beyond the pound, the Tame |
+| Water | ripples, the sky and its clouds reflected, the banks darkening the edges, silt, fallen leaves, and *Sparrow*'s bow wave, her wake along the path she took, the prop wash and churned silt, and her wash breaking on the banks | the canal, the canals beyond the pound, the Tame |
 | Sky | the sky gradient, sun, glow and drifting cloud | the skybox |
 | Grade | exposure, October warmth, tone curve and vignette | the finished picture |
 
@@ -44,7 +44,9 @@ Every look also shapes the light, not just the colour: mortar sits back from the
 
 `Lathe` (turned shapes) and `Tube` (ropes, rails, links) in `Assets/Game/Shapes` build most of the fittings.
 
-In the Unity layer, `SparrowModel` launches her with `Riding` (a gentle roll and heave, squatting with speed and heeling into a turn), `WakeSignal` (which tells the water and the smoke where the boat is and how fast she is going) and two `Plume`s of smoke.
+In the Unity layer, `SparrowModel` launches her with `Riding` (a gentle roll and heave, squatting with speed and heeling as she swings), `WakeSignal` (which tells the water and the smoke where the boat is, how fast she is going and how hard the engine is working), `WakeTrail`, `EngineSound` and two `Plume`s of smoke.
+
+Her wake follows where she has been, not where she is pointing. `WakeTrail` keeps the stern's last 24 places, one every 0.6 seconds, with her speed and the engine's work at each, and hands them to the water. `Kelvin.cginc` finds the nearest point of that trail for every patch of water and draws the Kelvin pattern from it: the transverse waves astern, and the diverging arms spreading at 19.5 degrees from the bow, their wavelength set by her speed and their height by its square, dying away over seven seconds. `Wake.cginc` adds the cushion of water heaped at the bow, the prop wash (streaky foam for a few seconds and churned silt for half a minute, as heavy as the engine was working) and foam on the crests when she goes faster than a walk; the water shader breaks the swell into foam where it reaches the banks. Turn her and the wake bends; stop her and it spreads out and settles.
 
 ## The woods
 

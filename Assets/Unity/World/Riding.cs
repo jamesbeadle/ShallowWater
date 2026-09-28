@@ -11,8 +11,9 @@ namespace ShallowWater.Unity.World
         private const float PitchPeriodSeconds = 6.1f;
         private const float HeaveMetres = 0.015f;
         private const float HeavePeriodSeconds = 3.7f;
-        private const float SquatDegrees = 0.9f;
-        private const float HeelDegrees = 1.4f;
+        private const float SquatDegrees = 1.6f;
+        private const float SurgeDegrees = 0.5f;
+        private const float HeelDegreesPerSwing = 12f;
         private const float EasePerSecond = 1.2f;
         private const float FullTurnRadians = 2 * Mathf.PI;
         private const float Level = 0;
@@ -42,8 +43,9 @@ namespace ShallowWater.Unity.World
             if (helm == null) return;
             var ease = EasePerSecond * Time.deltaTime;
             var speed = helm.SpeedShare;
-            squat = Mathf.Lerp(squat, speed * SquatDegrees, ease);
-            heel = Mathf.Lerp(heel, helm.RudderShare * speed * HeelDegrees, ease);
+            var wantedSquat = speed * Mathf.Abs(speed) * SquatDegrees + helm.ThrustShare * SurgeDegrees;
+            squat = Mathf.Lerp(squat, wantedSquat, ease);
+            heel = Mathf.Lerp(heel, helm.SwingRadiansPerSecond * speed * HeelDegreesPerSwing, ease);
         }
 
         private static float Swing(float time, float periodSeconds)
