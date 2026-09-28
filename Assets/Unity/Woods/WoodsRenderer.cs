@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using ShallowWater.Game.Woods;
 using UnityEngine;
 
@@ -7,22 +6,33 @@ namespace ShallowWater.Unity.Woods
 {
     public sealed class WoodsRenderer : MonoBehaviour
     {
-        private readonly List<TreeBatch> batches = new List<TreeBatch>();
+        private readonly Dictionary<Camera, WoodView> views = new Dictionary<Camera, WoodView>();
+        private List<WoodTile> tiles = new List<WoodTile>();
 
         public void Plant(IReadOnlyList<Tree> trees)
         {
-            var trunks = TreePart.Trunk();
-            var crowns = TreePart.Crown();
-            for (var first = 0; first < trees.Count; first += TreeBatch.MostTrees)
-            {
-                var batch = trees.Skip(first).Take(TreeBatch.MostTrees).ToList();
-                batches.Add(new TreeBatch(batch, trunks, crowns));
-            }
+            tiles = WoodTiles.Laid(trees, TreeModels.Made());
+            views.Clear();
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            foreach (var batch in batches) batch.Draw();
+            Camera.onPreCull += DrawFor;
+        }
+
+        private void OnDisable()
+        {
+            Camera.onPreCull -= DrawFor;
+        }
+
+        private void DrawFor(Camera camera)
+        {
+            var kind = camera.cameraType;
+            var isLookingAtTheWorld = kind == CameraType.Game || kind == CameraType.SceneView;
+            if (!isLookingAtTheWorld) return;
+            var hasView = views.TryGetValue(camera, out var view);
+            if (!hasView) view = views[camera] = new WoodView(tiles);
+            view.DrawFor(camera);
         }
     }
 }

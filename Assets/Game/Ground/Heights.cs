@@ -7,6 +7,7 @@ namespace ShallowWater.Game.Ground
         public const double BankTopMetres = 0.35;
         public const double RailwayMetres = -0.15;
         public const double RiverMetres = -0.25;
+        public const double WoodlandFloorMetres = -0.22;
         public const double GroundMetres = -0.3;
     }
 }
