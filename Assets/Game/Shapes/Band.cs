@@ -15,6 +15,8 @@ namespace ShallowWater.Game.Shapes
         }
 
         public Surface Surface { get; }
+        public double LeftOffset => left.Offset;
+        public double RightOffset => right.Offset;
 
         public WorldPoint LeftBeside(GroundPoint centre, GroundPoint spread)
         {
