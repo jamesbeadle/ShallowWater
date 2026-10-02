@@ -6,6 +6,7 @@ namespace ShallowWater.Game.Woods
 {
     public sealed class Limb
     {
+        private const double WholeLength = 1;
         private readonly List<double> distances = new List<double>();
 
         public Limb(IReadOnlyList<WorldPoint> path, IReadOnlyList<double> radiiMetres, int order)
@@ -26,6 +27,7 @@ namespace ShallowWater.Game.Woods
         public int Order { get; }
         public double LengthMetres => distances.Last();
         public int Segments => Path.Count - 1;
+        public LimbPoint Tip => At(WholeLength);
 
         public Limb Coarsened(int everyNthRing)
         {
