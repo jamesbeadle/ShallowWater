@@ -10,7 +10,6 @@ namespace ShallowWater.Game.Woods
         private const double FootBelowTheGroundMetres = 0.2;
         private const double FullTurnRadians = 2 * Math.PI;
         private const double DegreesToRadians = Math.PI / 180;
-        private const double ForkShareUpTheTrunk = 0.93;
         private const double ForkJitter = 0.15;
         private const double ShorterTowardsTheTip = 0.5;
 
@@ -18,11 +17,11 @@ namespace ShallowWater.Game.Woods
         {
             var random = new Random(seed);
             var trunk = TrunkFlare.Flared(LimbGrowth.Grown(TrunkStart(habit, random), habit.Trunk, 0, random), habit.FlareShare);
-            var limbs = new List<Limb> { trunk };
             var level = habit.Levels[0];
             var crownBase = level.FromShare;
             Func<double, double> byTheCrown = share => CrownOutlines.LengthShareAt(habit.Outline, (share - crownBase) / (1 - crownBase));
             var starts = ForkLimbs(trunk, habit, random).Concat(Offshoots.Along(trunk, level, byTheCrown, random)).ToList();
+            var limbs = new List<Limb> { TrunkKnuckle.Knuckled(trunk) };
             foreach (var start in starts) GrowOn(limbs, start, 1, habit, random);
             return limbs;
         }
@@ -49,7 +48,7 @@ namespace ShallowWater.Game.Woods
 
         private static IEnumerable<LimbStart> ForkLimbs(Limb trunk, Habit habit, Random random)
         {
-            var fork = trunk.At(ForkShareUpTheTrunk);
+            var fork = trunk.Tip;
             for (var limb = 0; limb < habit.ForkLimbs; limb++)
             {
                 var around = FullTurnRadians * (limb + Jitter(random) * ForkJitter) / habit.ForkLimbs;
