@@ -4,16 +4,16 @@ namespace ShallowWater.Game.Boat
 {
     public static class Propeller
     {
-        public const double FullThrustNewtons = 4600;
+        public const double FullThrustNewtons = 9200;
         public const double AheadMetres = -BoatSize.HalfLengthMetres;
-        private const double NoThrustMetresPerSecond = 3.5;
+        private const double NoThrustMetresPerSecond = 7.0;
         private const double AsternEfficiency = 0.6;
         private const double HullWakeShare = 0.3;
         private const double DiscSquareMetres = 0.24;
         private const double WashOnTheRudderShare = 0.75;
         private const double AsternWalkShare = 0.2;
         private const double AheadWalkShare = 0.02;
-        private const double WalkFadingMetresPerSecond = 0.5;
+        private const double WalkFadingMetresPerSecond = 1.0;
         private const double Stopped = 0;
 
         public static double ThrustAt(double turns, double aheadMetresPerSecond)
