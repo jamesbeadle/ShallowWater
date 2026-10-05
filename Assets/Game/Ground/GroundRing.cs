@@ -30,6 +30,8 @@ namespace ShallowWater.Game.Ground
 
         public bool IsAround(GroundPoint point)
         {
+            var isOutsideTheBounds = point.East < West || point.East > East || point.North < South || point.North > North;
+            if (isOutsideTheBounds) return false;
             var isInside = false;
             for (int index = 0, previous = corners.Count - 1; index < corners.Count; previous = index++)
             {

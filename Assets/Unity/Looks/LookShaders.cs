@@ -17,6 +17,7 @@ namespace ShallowWater.Unity.Looks
         public const string Smoke = "Shallow Water/Smoke";
         public const string Railway = "Shallow Water/Railway";
         public const string Fields = "Shallow Water/Fields";
+        public const string Crops = "Shallow Water/Crops";
         public const string Water = "Shallow Water/Water";
         public const string Sky = "Shallow Water/Sky";
         public const string Grade = "Hidden/Shallow Water/Grade";

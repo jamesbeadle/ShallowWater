@@ -74,7 +74,7 @@ namespace ShallowWater.Unity.Looks
         {
             var isKnown = BySurface.TryGetValue(surface, out var look);
             if (isKnown) return look();
-            throw new ArgumentException($"No look is known for the {surface} surface.", nameof(surface));
+            return CropLooks.Made(surface);
         }
     }
 }

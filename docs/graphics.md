@@ -20,12 +20,26 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 | Rope | laid strands, or hair | cloth strings, Turk's heads, the mop, the fender and coiled line, the horse tail |
 | Smoke | puffs that rise, grow, drift and fade, left behind as the boat moves | the stove chimney, and the Bolinder's exhaust at one puff a second |
 | Railway | ballast, sleepers and rails | both railways |
-| Fields | a patchwork of pasture, stubble and plough with hedgerow lines | the countryside under everything |
+| Crops | worked from each field's own direction: pasture with tussocks, the old ridge and furrow of the open fields, rushy water meadow, clover ley, wheat, barley and oat stubble in drilled rows, horse-ploughed furrow slices with the open furrows between the lands, winter wheat just drilled, mangolds, swedes, sugar beet and kale in rows of plants with some rows lifted and heaped, potato ridges half lifted, the rough grass and fallen leaves at the hedge foot, and the trodden dirt of a footpath | every field within a mile of the canal, its headland, its hedge foot and its footpath |
+| Fields | a patchwork of pasture, stubble and plough with hedgerow lines | the countryside beyond the farmland, under everything |
 | Water | ripples, the sky and its clouds reflected, the banks darkening the edges, silt, fallen leaves, and *Sparrow*'s bow wave, her wake along the path she took, the prop wash and churned silt, and her wash breaking on the banks | the canal, the canals beyond the pound, the Tame |
 | Sky | the sky gradient, sun, glow and drifting cloud | the skybox |
 | Grade | exposure, October warmth, tone curve and vignette | the finished picture |
 
 The colours are named in the palettes beside the looks (`CountryPalette`, `RoadPalette`, `StonePalette`, `BuildingPalette`, `BoatPalette`, `WaterPalette`, `SkyPalette`), written as they would be picked, and turned into linear light by Unity.
+
+## The fields
+
+The fields are the farmland of October 1938 within 1.5 kilometres of the pound, laid out in plain C# in `Assets/Game/Fields` and drawn by `FieldsLayer`. No field pattern survives on the one-inch sheet, so they are planted the way the enclosure landscape was made:
+
+- `FarmBlocks` divides the land into farms of about 40 hectares round scattered steadings, and `FieldDivision` cuts each farm into fields of three to nine hectares along the farm's own grain, so neighbouring fields share a direction and a farm reads as one holding.
+- `FieldsCutByLines` cuts a field in two wherever the canal, the Tame, a railway or a road runs through it straight enough, so no crop carries on across them; a road or the water is the field's edge there, with a grass margin and no hedge of its own.
+- `Cropping` sows each field: mostly grass, as the Midlands were in the thirties (permanent pasture, old ridge and furrow, clover leys), then stubble from the harvest, autumn ploughing, winter wheat, and the roots of the time (mangolds, swedes, sugar beet for the factories, potatoes, kale). Fields within 260 metres of the Tame are water meadow and pasture.
+- `FieldStrips` and `FieldShapes` build each field from its hedge inward: the rough grass of the hedge foot, a footpath where one runs, the headland where the plough team turned (worked along the hedge), then the body of the field worked along its length.
+- Every farm boundary has a hedge, and three in five carry a public footpath, a narrow dusty dirt path along one side of the hedge, so a walker can cross the country from field to field without walking through the crops. `HedgeGaps` opens a gap with a stile wherever a footpath meets a hedge, and a gateway in most field hedges, with a five-bar gate shut or swung open, or left open (`Stile`, `FieldGate`).
+- `HedgerowShapes` lays the hedges themselves: hawthorn, field hedges cut to about 1.6 metres and the older farm boundaries taller and ragged, stopping short of the roads, the water, the railway, the woods and the villages. `HedgerowTrees` stands open-grown oaks and some ash in them, closer together on the old farm boundaries, and the woods renderer draws them with the woods.
+
+The ground sheet with the old patchwork drops a few centimetres below the fields and shows only beyond the farmland; M swaps the fields and the patchwork for the period map together.
 
 ## Relief
 
