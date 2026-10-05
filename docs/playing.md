@@ -12,6 +12,7 @@ The game side lives in plain C# (`Assets/Game`); the Unity layer only reads the 
 | Tiller | A / D or ← / → | left stick |
 | Look round | right mouse drag, scroll to zoom | right stick |
 | Step ashore | E | south button |
+| Show or hide the controls | H, or click **Controls** at the top left | select (view) button |
 
 The lever stays where it is put: full astern, half astern, stop, dead slow, half ahead and full ahead. It sets the engine's revolutions, not her speed (`BoatHandling`). The Bolinder has no reverse gear, so going from ahead to astern the engine stops, pauses a second and a half, and runs the other way (`Engine`). The beat is one a second at tickover and quickens with the revolutions (`EngineSound`, from `BolinderBeat`).
 
@@ -41,6 +42,7 @@ Ashore, within a line's length (nine metres) of the stern, T ties her up (`Tying
 | Look round | right mouse drag, scroll to zoom | right stick |
 | Step aboard | E | south button |
 | Tie up, cast off | T | north button |
+| Show or hide the controls | H, or click **Controls** at the top left | select (view) button |
 
 `Land` knows where he can go: the canal, its arms and the Tame are water (`WaterLines`), houses and tree trunks are in the way (`Obstacles`), and the banks, towpath and woodland floor are at their own heights. `Walker` takes him up to a walk or a run and turns him to face his way, and `Gait` swings his thighs, shins, arms and forearms for the stride. He is built from shapes like everything else (`AskewShapes`).
 
