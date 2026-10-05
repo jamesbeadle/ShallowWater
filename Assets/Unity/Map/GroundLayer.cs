@@ -13,7 +13,7 @@ namespace ShallowWater.Unity.Map
         private const float LayFlatDegrees = 90f;
         private const float QuadThickness = 1f;
 
-        public static void Lay(GameObject fields)
+        public static PrintedSheet Lay(GameObject fields)
         {
             var record = MapFiles.Layer<GroundRecord>(MapLayers.Ground);
             var sheet = new MapSheet(record.west, record.east, record.south, record.north);
@@ -25,9 +25,10 @@ namespace ShallowWater.Unity.Map
             Within(gathering, beyond);
             Within(gathering, fields);
             var periodMap = Sheet(PeriodMapName, sheet, Heights.GroundMetres);
-            PeriodMap.PrintOn(periodMap, record.image);
+            var print = PeriodMap.PrintOn(periodMap, record.image);
             var toggle = new GameObject(GroundName).AddComponent<PeriodMapToggle>();
             toggle.Between(countryside, periodMap);
+            return new PrintedSheet(print, sheet);
         }
 
         private static void Within(Transform parent, GameObject part)

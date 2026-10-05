@@ -36,3 +36,9 @@ When she lies within a metre and a half of either bank and is barely moving, E s
 | Step aboard | E | south button |
 
 `Land` knows where he can go: the canal, its arms and the Tame are water (`WaterLines`), houses and tree trunks are in the way (`Obstacles`), and the banks, towpath and woodland floor are at their own heights. `Walker` takes him up to a walk or a run and turns him to face his way, and `Gait` swings his thighs, shins, arms and forearms for the stride. He is built from shapes like everything else (`AskewShapes`).
+
+## The day and the radar
+
+The clock runs a game minute to each real second, so a day passes in 24 minutes (`GameClock`), starting at half past eight in the morning. The sun follows its mid-October path over Tamworth (`SunPath`): it rises about a quarter to seven in the east-south-east, stands 28 degrees up at noon and sets about a quarter past five. Between the sun at 12 degrees and the sun 10 degrees below the horizon the sky passes through twilight (`DayStages`); once the sun is 2 degrees down, the full moon opposite it takes over the light (`Lighting`) and the stars come out.
+
+The time of day is in the top right corner. The radar in the bottom left shows 400 metres of the 1900 map round Askew or *Sparrow*, whichever the camera follows, turned so that the way the camera looks is up; the arrow is you and the N on the rim is north.

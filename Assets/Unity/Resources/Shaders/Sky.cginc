@@ -11,10 +11,15 @@ float4 _SunGlow;
 float4 _CloudLight;
 float4 _CloudShade;
 float _CloudCover;
+float _StarShare;
 
 #define CLOUD_DRIFT float2(0.004, 0.0015)
 #define CLOUD_SCALE 1.7
 #define CLOUD_DECK 0.12
+#define STAR_CELLS 600.0
+#define STAR_RARITY 0.9985
+#define STAR_BRIGHTNESS 1.2
+#define STAR_TWINKLE_SPEED 3.0
 
 float3 SkyGradient(float3 direction)
 {
@@ -25,6 +30,15 @@ float3 SkyGradient(float3 direction)
     float towardsTheSun = saturate(dot(direction, _SunDirection.xyz));
     float glow = pow(towardsTheSun, 8.0) * 0.35 + pow(towardsTheSun, 64.0) * 0.6;
     return sky + _SunGlow.rgb * glow;
+}
+
+float3 Stars(float3 direction)
+{
+    float chance = Hash31(floor(direction * STAR_CELLS));
+    float isAStar = step(STAR_RARITY, chance);
+    float twinkle = 0.6 + 0.4 * sin(_Time.y * STAR_TWINKLE_SPEED + chance * 400.0);
+    float aboveTheHaze = smoothstep(0.05, 0.25, direction.y);
+    return isAStar * twinkle * aboveTheHaze * _StarShare * STAR_BRIGHTNESS;
 }
 
 float3 CloudsOver(float3 sky, float3 direction)
@@ -42,7 +56,7 @@ float3 CloudsOver(float3 sky, float3 direction)
 
 float3 SkyColour(float3 direction)
 {
-    float3 sky = SkyGradient(direction);
+    float3 sky = SkyGradient(direction) + Stars(direction);
     return CloudsOver(sky, direction);
 }
 

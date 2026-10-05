@@ -14,19 +14,24 @@ namespace ShallowWater.Unity.Sky
         private static readonly int CloudLight = Shader.PropertyToID("_CloudLight");
         private static readonly int CloudShade = Shader.PropertyToID("_CloudShade");
         private static readonly int CloudCoverProperty = Shader.PropertyToID("_CloudCover");
+        private static readonly int StarShare = Shader.PropertyToID("_StarShare");
 
-        public static void SpreadOver(Vector3 sunlightHeading)
+        public static void Hang()
         {
-            Shader.SetGlobalVector(SunDirection, -sunlightHeading);
-            ShaderColours.SetGlobal(SkyZenith, SkyPalette.Zenith);
-            ShaderColours.SetGlobal(SkyHorizon, SkyPalette.Horizon);
-            ShaderColours.SetGlobal(SkyHaze, SkyPalette.Haze);
-            ShaderColours.SetGlobal(SunGlow, SkyPalette.SunGlow);
-            ShaderColours.SetGlobal(CloudLight, SkyPalette.CloudLight);
-            ShaderColours.SetGlobal(CloudShade, SkyPalette.CloudShade);
             Shader.SetGlobalFloat(CloudCoverProperty, CloudCover);
             RenderSettings.skybox = LookShaders.Made(LookShaders.Sky);
-            DynamicGI.UpdateEnvironment();
+        }
+
+        public static void Paint(SkyColours colours, Vector3 lightHeading, float nightShare)
+        {
+            Shader.SetGlobalVector(SunDirection, -lightHeading);
+            ShaderColours.SetGlobal(SkyZenith, colours.Zenith);
+            ShaderColours.SetGlobal(SkyHorizon, colours.Horizon);
+            ShaderColours.SetGlobal(SkyHaze, colours.Haze);
+            ShaderColours.SetGlobal(SunGlow, colours.Glow);
+            ShaderColours.SetGlobal(CloudLight, colours.CloudLight);
+            ShaderColours.SetGlobal(CloudShade, colours.CloudShade);
+            Shader.SetGlobalFloat(StarShare, nightShare);
         }
     }
 }

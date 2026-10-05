@@ -20,9 +20,9 @@ namespace ShallowWater.Unity.World
         {
             var centreline = MapLines.Read(MapLayers.Pound).First();
             var pound = Pound.HuddlesfordToFazeley(centreline);
-            Daylight.Rise();
+            var dayAndNight = Daylight.Rise();
             var countryside = FieldsLayer.Lay(pound);
-            GroundLayer.Lay(countryside.Fields);
+            var periodMap = GroundLayer.Lay(countryside.Fields);
             LandLinesLayer.Lay(MapLayers.River);
             LandLinesLayer.Lay(MapLayers.Railway);
             RoadsLayer.Lay(pound);
@@ -36,6 +36,8 @@ namespace ShallowWater.Unity.World
             var camera = OrbitingCamera();
             boat.AddComponent<ShoreLeave>().Crew(pound, LandSurvey.Of(pound, trees), camera);
             boat.AddComponent<Hud>();
+            boat.AddComponent<HudClock>().Reads(dayAndNight);
+            boat.AddComponent<Radar>().Over(periodMap, camera);
         }
 
         private static BoatMotion MooredAtHopwas(Pound pound)

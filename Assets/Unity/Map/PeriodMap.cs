@@ -7,11 +7,13 @@ namespace ShallowWater.Unity.Map
         private const int SizeBeforeLoading = 2;
         private const int SharpestAnisotropy = 8;
 
-        public static void PrintOn(GameObject sheet, string imageName)
+        public static Texture2D PrintOn(GameObject sheet, string imageName)
         {
             var renderer = sheet.GetComponent<Renderer>();
             var material = renderer.material;
-            material.mainTexture = Printed(imageName);
+            var print = Printed(imageName);
+            material.mainTexture = print;
+            return print;
         }
 
         private static Texture2D Printed(string imageName)
