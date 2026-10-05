@@ -1,5 +1,6 @@
 using ShallowWater.Unity.Looks;
 using ShallowWater.Unity.Map;
+using ShallowWater.Unity.Overlay;
 using ShallowWater.Unity.World;
 using UnityEngine;
 
@@ -44,7 +45,7 @@ namespace ShallowWater.Unity.Player
         private void MarkNorth(Rect radar, float headingDegrees)
         {
             var size = radar.width * NorthMarkShare;
-            northStyle = northStyle ?? HudStyle.Caps((int)(size * FontToMark), TextAnchor.MiddleCenter);
+            northStyle = northStyle ?? HudStyle.Badge((int)(size * FontToMark));
             var towardsNorth = -headingDegrees * Mathf.Deg2Rad;
             var onTheRim = new Vector2(Mathf.Sin(towardsNorth), -Mathf.Cos(towardsNorth)) * radar.width * RimShare;
             var centre = radar.center + onTheRim;

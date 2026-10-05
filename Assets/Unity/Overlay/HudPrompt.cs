@@ -1,6 +1,6 @@
-namespace ShallowWater.Unity.Player
+namespace ShallowWater.Unity.Overlay
 {
-    public readonly struct HudPrompt
+    public sealed class HudPrompt
     {
         public HudPrompt(string keys, string words)
         {

@@ -1,0 +1,59 @@
+.hud-glass.hud-controls {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 440px;
+    padding: 22px 24px 16px 24px;
+    background-color: var(--glass-deep);
+    border-radius: 12px;
+    transition-property: opacity, translate;
+    transition-duration: 0.18s, 0.18s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+}
+
+.hud-controls--hidden {
+    opacity: 0;
+    translate: -24px 0;
+}
+
+.hud-text.hud-title {
+    margin-top: 4px;
+    margin-bottom: 12px;
+    font-size: 30px;
+}
+
+.hud-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-top-width: 1px;
+    border-top-color: var(--rule);
+}
+
+.hud-text.hud-row__action {
+    font-size: 19px;
+}
+
+.hud-footer {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 12px;
+    border-top-width: 1px;
+    border-top-color: var(--rule);
+}
+
+.hud-footer .hud-text.hud-cap {
+    height: 28px;
+    min-width: 28px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.hud-text.hud-footer__words {
+    margin-left: 10px;
+    font-size: 16px;
+    color: var(--ink-faint);
+    -unity-font-definition: url("Fonts/Cabin-Medium.ttf");
+}

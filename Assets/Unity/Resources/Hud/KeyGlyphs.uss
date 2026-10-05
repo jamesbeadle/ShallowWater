@@ -1,0 +1,79 @@
+.hud-keys {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.hud-glyph--after,
+.hud-text.hud-glyph--after {
+    margin-left: 6px;
+}
+
+.hud-text.hud-cap {
+    height: 34px;
+    min-width: 34px;
+    padding: 0 9px;
+    flex-shrink: 0;
+    background-color: var(--cap);
+    border-radius: 6px;
+    border-bottom-width: 3px;
+    border-bottom-color: var(--cap-lip);
+    color: var(--cap-ink);
+    font-size: 17px;
+    -unity-text-align: middle-center;
+    -unity-font-definition: url("Fonts/Cabin-Bold.ttf");
+}
+
+.hud-text.hud-cap--word {
+    padding: 0 12px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+
+.hud-mouse {
+    width: 24px;
+    height: 34px;
+    flex-shrink: 0;
+    border-width: 2px;
+    border-color: var(--cap);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hud-mouse__button {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 13px;
+    border-bottom-width: 2px;
+    border-color: var(--cap);
+}
+
+.hud-mouse__button--left {
+    left: 0;
+    border-right-width: 1px;
+}
+
+.hud-mouse__button--right {
+    right: 0;
+    border-left-width: 1px;
+}
+
+.hud-mouse__button--pressed {
+    background-color: var(--brass);
+    border-top-right-radius: 10px;
+}
+
+.hud-mouse__wheel {
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 4px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: var(--cap);
+}
+
+.hud-mouse__wheel--turned {
+    background-color: var(--brass);
+}
