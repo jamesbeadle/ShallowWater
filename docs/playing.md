@@ -29,7 +29,7 @@ The lever stays where it is put: full astern, half astern, stop, dead slow, half
 
 When she lies within a metre and a half of either bank and is barely moving, E steps Askew ashore beside the stern (`Landing`); the lever goes to stop and she lies where she is. Near the stern again, E steps him back into the hatch at the tiller.
 
-At the tiller he stands in the back cabin hatchway with the slide pushed open, the roof at his hips, his right hand on the tiller and his left on the slide (`Hatchway`, `TillerHold`).
+At the tiller he stands on the step in the back cabin hatchway, with the back doors pinned open behind him and the slide pushed open, the roof at his hips, his right hand on the tiller and his left on the slide (`Hatchway`, `BackDoors`, `TillerHold`).
 
 ## Tying up
 

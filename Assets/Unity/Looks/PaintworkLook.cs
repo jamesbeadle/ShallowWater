@@ -34,13 +34,14 @@ namespace ShallowWater.Unity.Looks
             return Panelled(panels, cabin, engineRoom, Span(SparrowForm.PanelFootMetres, SparrowForm.PanelTopMetres));
         }
 
-        public static Material CabinDoors()
+        public static Material BackDoors()
         {
-            var edge = SparrowForm.CabinTopHalfWidthMetres - SparrowForm.PanelInsetMetres;
-            var portDoor = Span(-edge, -SparrowForm.DoorsMeetMetres);
-            var starboardDoor = Span(SparrowForm.DoorsMeetMetres, edge);
+            var stile = SparrowForm.DoorStileMetres;
+            var hinge = SparrowForm.HatchHalfWidthMetres + stile;
+            var free = SparrowForm.HatchHalfWidthMetres + SparrowForm.DoorWidthMetres - stile;
             var doors = Painted(BackDoorsDecoration, DoorSoot, DoorFade);
-            return Panelled(doors, portDoor, starboardDoor, Span(SparrowForm.DoorsFootMetres, SparrowForm.PanelTopMetres));
+            var heights = Span(SparrowForm.DoorsFootMetres + stile, SparrowForm.DoorsTopMetres - stile);
+            return Panelled(doors, Span(-free, -hinge), Span(hinge, free), heights);
         }
 
         public static Material Diamonds()

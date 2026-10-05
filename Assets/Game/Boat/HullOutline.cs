@@ -10,7 +10,7 @@ namespace ShallowWater.Game.Boat
         private const double OnTheCentreline = 0;
         private const double Shoulder = BoatSize.HalfLengthMetres - ShoulderFromTheBowMetres;
         private const double Quarter = QuarterFromTheSternMetres - BoatSize.HalfLengthMetres;
-        private const double HelmAlongMetres = -9.2;
+        private const double HelmAlongMetres = -9.05;
 
         public static readonly HullPoint Helm = new HullPoint(HelmAlongMetres, OnTheCentreline);
         public static readonly HullPoint BowShoulder = new HullPoint(Shoulder, OnTheCentreline);

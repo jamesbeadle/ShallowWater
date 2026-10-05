@@ -20,19 +20,19 @@ namespace ShallowWater.Game.Boat
             surfaces.Add(Surface.CabinRoof, Sweep.Lengthways(BesideTheHatch.Select(along => RoofBesideTheHatch(along, BoatSides.Port)).ToList()));
             surfaces.Add(Surface.CabinRoof, Sweep.Lengthways(BesideTheHatch.Select(along => RoofBesideTheHatch(along, BoatSides.Starboard)).ToList()));
             Hatchway.Build(surfaces);
-            surfaces.Add(Surface.CabinBack, FacingPolygon.Towards(Outline(SparrowForm.CabinBackAlong), BoatSides.Astern));
-            surfaces.Add(Surface.Cabin, FacingPolygon.Towards(Outline(SparrowForm.CabinFrontAlong), BoatSides.Ahead));
+            CabinBack.Build(surfaces);
+            surfaces.Add(Surface.Cabin, FacingPolygon.Towards(Front(), BoatSides.Ahead));
             RoofFittings.Build(surfaces);
         }
 
         private static IReadOnlyList<WorldPoint> PortSide(double along)
         {
-            return new[] { Foot(along, BoatSides.Port), Top(along, BoatSides.Port) };
+            return new[] { CabinSection.Foot(along, BoatSides.Port), CabinSection.Top(along, BoatSides.Port) };
         }
 
         private static IReadOnlyList<WorldPoint> StarboardSide(double along)
         {
-            return new[] { Top(along, BoatSides.Starboard), Foot(along, BoatSides.Starboard) };
+            return new[] { CabinSection.Top(along, BoatSides.Starboard), CabinSection.Foot(along, BoatSides.Starboard) };
         }
 
         private static IReadOnlyList<WorldPoint> Lip(double along, double side)
@@ -44,37 +44,27 @@ namespace ShallowWater.Game.Boat
 
         private static IReadOnlyList<WorldPoint> Roof(double along)
         {
-            return new[] { Top(along, BoatSides.Port), Crown(along), Top(along, BoatSides.Starboard) };
+            return new[] { CabinSection.Top(along, BoatSides.Port), CabinSection.Crown(along), CabinSection.Top(along, BoatSides.Starboard) };
         }
 
         private static IReadOnlyList<WorldPoint> RoofBesideTheHatch(double along, double side)
         {
             var edge = Hatchway.EdgeAt(along, side);
-            var top = Top(along, side);
+            var top = CabinSection.Top(along, side);
             var isPort = side == BoatSides.Port;
             return isPort ? new[] { top, edge } : new[] { edge, top };
         }
 
-        private static IReadOnlyList<WorldPoint> Outline(double along)
+        private static IReadOnlyList<WorldPoint> Front()
         {
+            var along = SparrowForm.CabinFrontAlong;
             var port = BoatSides.Port;
             var starboard = BoatSides.Starboard;
-            return new[] { Foot(along, port), Top(along, port), Crown(along), Top(along, starboard), Foot(along, starboard) };
-        }
-
-        private static WorldPoint Foot(double along, double side)
-        {
-            return new WorldPoint(side * SparrowForm.CabinFootHalfWidthMetres, SparrowForm.CabinFootMetres, along);
-        }
-
-        private static WorldPoint Top(double along, double side)
-        {
-            return new WorldPoint(side * SparrowForm.CabinTopHalfWidthMetres, SparrowForm.CabinSideTopMetres, along);
-        }
-
-        private static WorldPoint Crown(double along)
-        {
-            return new WorldPoint(BoatSides.Amidships, SparrowForm.CabinCrownMetres, along);
+            return new[]
+            {
+                CabinSection.Foot(along, port), CabinSection.Top(along, port), CabinSection.Crown(along),
+                CabinSection.Top(along, starboard), CabinSection.Foot(along, starboard)
+            };
         }
     }
 }

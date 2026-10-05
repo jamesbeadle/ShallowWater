@@ -47,7 +47,7 @@ namespace ShallowWater.Unity.Looks
             { Surface.RubbingStrake, () => WeatheredLook.Aboard(BoatPalette.Strakes, Weathering.Tarred, BoatSoot.Light) },
             { Surface.Deck, () => WeatheredLook.Aboard(BoatPalette.Deck, Weathering.Timber, BoatSoot.Heavy) },
             { Surface.Cabin, PaintworkLook.CabinSides },
-            { Surface.CabinBack, PaintworkLook.CabinDoors },
+            { Surface.BackDoors, PaintworkLook.BackDoors },
             { Surface.CabinRoof, () => WeatheredLook.Aboard(BoatPalette.CabinRoof, Weathering.Gloss, BoatSoot.Heavy) },
             { Surface.Cloths, () => WeatheredLook.Aboard(BoatPalette.Cloths, Weathering.Tarpaulin, BoatSoot.Light) },
             { Surface.Cratch, PaintworkLook.Diamonds },
