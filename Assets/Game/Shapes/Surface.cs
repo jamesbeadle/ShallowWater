@@ -52,7 +52,7 @@ namespace ShallowWater.Game.Shapes
         Hull,
         Deck,
         Cabin,
-        CabinBack,
+        BackDoors,
         CabinRoof,
         Cloths,
         Cratch,

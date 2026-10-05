@@ -10,7 +10,7 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class ShoreLeave : MonoBehaviour
     {
-        private const float StandingToPortMetres = -0.1f;
+        private const float StandingToPortMetres = -0.15f;
 
         private BoatController boat;
         private Pound pound;

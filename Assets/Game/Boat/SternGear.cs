@@ -23,7 +23,7 @@ namespace ShallowWater.Game.Boat
             new Offset(0, 0.8, 0), new Offset(0, 0.95, -0.03), new Offset(0, 1.15, 0), new Offset(0, 1.35, 0.08),
             new Offset(0, 1.52, 0.2), new Offset(0, 1.63, 0.36), new Offset(0, 1.69, 0.55), new Offset(0, 1.71, 0.72)
         };
-        private static readonly Offset TillerHandleEnd = new Offset(0, 1.74, 1.13);
+        private static readonly Offset TillerHandleEnd = new Offset(0, 1.74, 1.22);
         private const double SwanNeckRadiusMetres = 0.02;
         private const double HandleRadiusMetres = 0.028;
         private static readonly double[] TurksHeadsMetres = { 0.62, 0.68 };

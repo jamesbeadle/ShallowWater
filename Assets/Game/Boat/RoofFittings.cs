@@ -7,10 +7,15 @@ namespace ShallowWater.Game.Boat
     public static class RoofFittings
     {
         private const double IntoTheRoofMetres = 1.74;
-        private static readonly GroundPoint SlidePushedOpen = new GroundPoint(BoatSides.Amidships, -8.45);
-        private const double SlideHalfLengthMetres = 0.4;
-        private const double SlideHalfWidthMetres = 0.32;
+        private const double SlideOverTheHatchMetres = 0.05;
+        private const double SlideHalfLengthMetres = 0.45;
+        private const double SlideHalfWidthMetres = SparrowForm.HatchHalfWidthMetres + SlideOverTheHatchMetres;
+        private const double SlideBackAlong = SparrowForm.HatchFrontAlong - SlideOverTheHatchMetres;
+        private static readonly GroundPoint SlidePushedOpen = new GroundPoint(BoatSides.Amidships, SlideBackAlong + SlideHalfLengthMetres);
         private const double SlideTopMetres = 1.9;
+        private const double RunnerHalfWidthMetres = 0.015;
+        private const double RunnerAboveTheRoofMetres = 0.035;
+        private const double Half = 0.5;
         private static readonly GroundPoint PigeonBoxPlace = new GroundPoint(BoatSides.Amidships, -5.45);
         private const double PigeonBoxHalfLengthMetres = 0.28;
         private const double PigeonBoxHalfWidthMetres = 0.22;
@@ -29,6 +34,7 @@ namespace ShallowWater.Game.Boat
         public static void Build(SurfaceShapes surfaces)
         {
             Box(surfaces, SlidePushedOpen, SlideHalfLengthMetres, SlideHalfWidthMetres, SlideTopMetres);
+            foreach (var side in Sides) Runner(surfaces, side * (SlideHalfWidthMetres + RunnerHalfWidthMetres));
             Box(surfaces, PigeonBoxPlace, PigeonBoxHalfLengthMetres, PigeonBoxHalfWidthMetres, PigeonBoxTopMetres);
             var lidHalfLength = PigeonBoxHalfLengthMetres + LidOverhangMetres;
             var lid = Footprints.Oblong(PigeonBoxPlace, BoatSides.Ahead, lidHalfLength, PigeonBoxHalfWidthMetres + LidOverhangMetres);
@@ -40,6 +46,15 @@ namespace ShallowWater.Game.Boat
         {
             var footprint = Footprints.Oblong(centre, BoatSides.Ahead, halfLength, halfWidth);
             surfaces.AddSolid(Surface.CabinRoof, footprint, IntoTheRoofMetres, top);
+        }
+
+        private static void Runner(SurfaceShapes surfaces, double across)
+        {
+            var slideFront = SlidePushedOpen.North + SlideHalfLengthMetres;
+            var halfLength = (slideFront - SparrowForm.CabinBackAlong) * Half;
+            var middle = new GroundPoint(across, slideFront - halfLength);
+            var top = SparrowForm.RoofHeightAt(across) + RunnerAboveTheRoofMetres;
+            Box(surfaces, middle, halfLength, RunnerHalfWidthMetres, top);
         }
 
         private static void Handrail(SurfaceShapes surfaces, double across)

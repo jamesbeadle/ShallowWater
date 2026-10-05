@@ -66,7 +66,8 @@ Every look also shapes the light, not just the colour: mortar sits back from the
 *Sparrow* is a 1912 FMC Josher motor as the story bible has her: FMC dark green and red under twenty years of coal dust, no brass kept bright, the name and the roses on the cabin side under the soot, roses and castles on the cabin doors, and a Bolinder beating once a second. The shapes are plain C# in `Assets/Game/Boat`, measured from the boat moored at the origin with her bow to the north, and `SparrowShapes` puts them together:
 
 - `Hull`, `HullShapes`, `RubbingStrakes`: a fine raked bow and an overhanging counter, the decks dropped into wells inside a rising sheer, gunwale capping, two rubbing strakes sweeping up the bow
-- `CabinShapes`, `RoofFittings`: tumblehome, a roof lip, handrails, the slide and the pigeon box
+- `CabinShapes`, `RoofFittings`: tumblehome, a roof lip, handrails, the slide pushed open on its runners and the pigeon box
+- `CabinBack`, `BackDoors`, `Hatchway`: the back of the cabin with its doorway under the slide, so doorway and hatch are one opening 0.84 metres wide and 0.85 long; the back doors swung open and pinned flat against the back on their hooks, castles outward; and the step the steerer stands on
 - `Stovepipes`, `Chain`, `RoofStowage`, `RopeAndMop`: the stove chimney with its bands and chain, the exhaust, two Buckby cans, a coiled line and a mop
 - `HoldShapes`, `Sheeting`, `ClothStrings`: cloths sagging between their strings, the top plank and the mast
 - `ForeEnd`, `BowFender`: the deck board, headlamp, T-stud and bow fender

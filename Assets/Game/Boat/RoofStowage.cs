@@ -8,7 +8,7 @@ namespace ShallowWater.Game.Boat
     {
         private const int RoundSides = 14;
         private const double CanAcross = 0.52;
-        private static readonly double[] CansAlong = { -8.25, -7.8 };
+        private static readonly double[] CansAlong = { -7.55, -7.1 };
         private const double SeatedMetres = 0.02;
         private const double HandleSpanMetres = 0.08;
         private const double HandleRiseMetres = 0.09;

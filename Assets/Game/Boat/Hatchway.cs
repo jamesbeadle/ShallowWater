@@ -24,8 +24,7 @@ namespace ShallowWater.Game.Boat
         {
             surfaces.Add(Surface.Deck, FacingPolygon.Towards(Side(BoatSides.Port), TowardsStarboard));
             surfaces.Add(Surface.Deck, FacingPolygon.Towards(Side(BoatSides.Starboard), TowardsPort));
-            surfaces.Add(Surface.Deck, FacingPolygon.Towards(End(Front), BoatSides.Astern));
-            surfaces.Add(Surface.Deck, FacingPolygon.Towards(End(Back), BoatSides.Ahead));
+            surfaces.Add(Surface.Deck, FacingPolygon.Towards(FrontEnd(), BoatSides.Astern));
             var middle = new GroundPoint(BoatSides.Amidships, (Back + Front) * Half);
             var floor = Footprints.Oblong(middle, BoatSides.Ahead, (Front - Back) * Half, HalfWidth);
             surfaces.Add(Surface.Deck, Extrusion.Roof(floor, Floor));
@@ -37,12 +36,16 @@ namespace ShallowWater.Game.Boat
             return new[] { new WorldPoint(across, Floor, Back), new WorldPoint(across, Floor, Front), EdgeAt(Front, side), EdgeAt(Back, side) };
         }
 
-        private static IReadOnlyList<WorldPoint> End(double along)
+        private static IReadOnlyList<WorldPoint> FrontEnd()
         {
             var port = BoatSides.Port * HalfWidth;
             var starboard = BoatSides.Starboard * HalfWidth;
-            var crown = new WorldPoint(BoatSides.Amidships, SparrowForm.CabinCrownMetres, along);
-            return new[] { new WorldPoint(port, Floor, along), EdgeAt(along, BoatSides.Port), crown, EdgeAt(along, BoatSides.Starboard), new WorldPoint(starboard, Floor, along) };
+            var crown = CabinSection.Crown(Front);
+            return new[]
+            {
+                new WorldPoint(port, Floor, Front), EdgeAt(Front, BoatSides.Port), crown,
+                EdgeAt(Front, BoatSides.Starboard), new WorldPoint(starboard, Floor, Front)
+            };
         }
     }
 }
