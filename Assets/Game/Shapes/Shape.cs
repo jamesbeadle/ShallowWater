@@ -6,10 +6,12 @@ namespace ShallowWater.Game.Shapes
     {
         private readonly List<WorldPoint> points = new List<WorldPoint>();
         private readonly List<SurfacePlace> places = new List<SurfacePlace>();
+        private readonly List<Fitting> fittings = new List<Fitting>();
         private readonly List<int> triangles = new List<int>();
 
         public IReadOnlyList<WorldPoint> Points => points;
         public IReadOnlyList<SurfacePlace> Places => places;
+        public IReadOnlyList<Fitting> Fittings => fittings;
         public IReadOnlyList<int> Triangles => triangles;
         public int PointCount => points.Count;
 
@@ -20,8 +22,14 @@ namespace ShallowWater.Game.Shapes
 
         public int Add(WorldPoint point, SurfacePlace place)
         {
+            return Add(point, place, Fitting.None);
+        }
+
+        public int Add(WorldPoint point, SurfacePlace place, Fitting fitting)
+        {
             points.Add(point);
             places.Add(place);
+            fittings.Add(fitting);
             return points.Count - 1;
         }
 
@@ -43,6 +51,7 @@ namespace ShallowWater.Game.Shapes
             var firstNewPoint = points.Count;
             points.AddRange(other.points);
             places.AddRange(other.places);
+            fittings.AddRange(other.fittings);
             foreach (var corner in other.triangles) triangles.Add(firstNewPoint + corner);
         }
     }

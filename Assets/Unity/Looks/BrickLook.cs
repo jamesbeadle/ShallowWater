@@ -1,3 +1,4 @@
+using ShallowWater.Game.Ground;
 using UnityEngine;
 
 namespace ShallowWater.Unity.Looks
@@ -6,55 +7,57 @@ namespace ShallowWater.Unity.Looks
     {
         private const float Yes = 1;
         private const float No = 0;
-        private const float FrontWindowsFromTheMiddleMetres = 2.1f;
-        private const float GableWindowsFromTheMiddleMetres = 0;
-        private static readonly int Frame = Shader.PropertyToID("_Frame");
-        private static readonly int Glass = Shader.PropertyToID("_Glass");
-        private static readonly int Curtain = Shader.PropertyToID("_Curtain");
-        private static readonly int Door = Shader.PropertyToID("_Door");
-        private static readonly int Sill = Shader.PropertyToID("_Sill");
-        private static readonly int HasWindows = Shader.PropertyToID("_HasWindows");
-        private static readonly int WindowOffset = Shader.PropertyToID("_WindowOffset");
-        private static readonly int HasDoor = Shader.PropertyToID("_HasDoor");
+        private const float PlinthAboveTheGroundMetres = 0.45f;
+        private const float NoPlinthMetres = -100;
+        private static readonly int Headers = Shader.PropertyToID("_Headers");
+        private static readonly int Plinth = Shader.PropertyToID("_Plinth");
+        private static readonly int PlinthTop = Shader.PropertyToID("_PlinthTop");
+        private static readonly int Limewash = Shader.PropertyToID("_Limewash");
+        private static readonly int IsLimewashed = Shader.PropertyToID("_IsLimewashed");
+        private static readonly int IsArch = Shader.PropertyToID("_IsArch");
+        private static readonly int Soot = Shader.PropertyToID("_Soot");
+
+        public static Material Walls()
+        {
+            var material = Bricks(BuildingPalette.BrickFace);
+            material.SetFloat(PlinthTop, (float)Heights.GroundMetres + PlinthAboveTheGroundMetres);
+            material.SetColor(Plinth, BuildingPalette.BlueBrick);
+            return material;
+        }
+
+        public static Material Limewashed()
+        {
+            var material = Walls();
+            material.SetFloat(IsLimewashed, Yes);
+            material.SetColor(Plinth, BuildingPalette.TarredPlinth);
+            return material;
+        }
 
         public static Material Plain()
         {
-            var material = Bricks();
-            material.SetFloat(HasWindows, No);
+            return Bricks(BuildingPalette.BrickFace);
+        }
+
+        public static Material Arches()
+        {
+            var material = Bricks(BuildingPalette.RubbedBrick);
+            material.SetFloat(IsArch, Yes);
             return material;
         }
 
-        public static Material FrontAndBack()
-        {
-            return Windowed(FrontWindowsFromTheMiddleMetres, Yes);
-        }
-
-        public static Material Gable()
-        {
-            return Windowed(GableWindowsFromTheMiddleMetres, No);
-        }
-
-        private static Material Windowed(float windowsFromTheMiddleMetres, float hasDoor)
-        {
-            var material = Bricks();
-            material.SetFloat(HasWindows, Yes);
-            material.SetFloat(WindowOffset, windowsFromTheMiddleMetres);
-            material.SetFloat(HasDoor, hasDoor);
-            material.SetColor(Frame, BuildingPalette.WindowFrame);
-            material.SetColor(Glass, BuildingPalette.Glass);
-            material.SetColor(Curtain, BuildingPalette.Curtain);
-            material.SetColor(Door, BuildingPalette.FrontDoor);
-            material.SetColor(Sill, BuildingPalette.Sill);
-            return material;
-        }
-
-        private static Material Bricks()
+        private static Material Bricks(Color face)
         {
             var material = LookShaders.Made(LookShaders.Brick);
             var brick = BuildingPalette.Brick;
-            material.SetColor(LookProperties.Colour, brick.Main);
+            material.SetColor(LookProperties.Colour, face);
             material.SetColor(LookProperties.Variation, brick.Worn);
             material.SetColor(LookProperties.Mortar, brick.Accent);
+            material.SetColor(Headers, BuildingPalette.BurntHeader);
+            material.SetColor(Limewash, BuildingPalette.Limewash);
+            material.SetColor(Soot, BuildingPalette.Soot);
+            material.SetFloat(PlinthTop, NoPlinthMetres);
+            material.SetFloat(IsLimewashed, No);
+            material.SetFloat(IsArch, No);
             return material;
         }
     }

@@ -26,5 +26,11 @@ namespace ShallowWater.Game.Shapes
             Add(surface, Extrusion.Walls(footprint, bottomMetres, topMetres));
             Add(surface, Extrusion.Roof(footprint, topMetres));
         }
+
+        public void AddBlock(Surface surface, GroundRing footprint, double bottomMetres, double topMetres)
+        {
+            AddSolid(surface, footprint, bottomMetres, topMetres);
+            Add(surface, Extrusion.Floor(footprint, bottomMetres));
+        }
     }
 }

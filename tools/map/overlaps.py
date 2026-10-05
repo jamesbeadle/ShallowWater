@@ -1,4 +1,4 @@
-"""Whether two cottages' footprints overlap. Both are convex, so they are apart exactly when the edge of one or the
+"""Whether two rows' footprints overlap. Both are convex, so they are apart exactly when the edge of one or the
 other has every corner of the pair on its own side: the two outlines, seen along that edge's normal, do not meet.
 """
 from __future__ import annotations

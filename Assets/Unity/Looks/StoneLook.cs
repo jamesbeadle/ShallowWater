@@ -8,6 +8,7 @@ namespace ShallowWater.Unity.Looks
         public const float CopingMetres = 0.9f;
         public const float KerbMetres = 0.9f;
         public const float FlagstoneMetres = 0.75f;
+        public const float DressingMetres = 1.4f;
         private static readonly int StoneMetres = Shader.PropertyToID("_StoneMetres");
 
         public static Material Of(Tones tones, float stoneMetres)

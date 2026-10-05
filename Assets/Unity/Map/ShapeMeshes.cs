@@ -11,6 +11,7 @@ namespace ShallowWater.Unity.Map
     {
         private const int WholeMesh = 0;
         private const int SurfacePlaceChannel = 0;
+        private const int FittingChannel = 1;
         private const float NearlyUpright = 0.95f;
         private const float RightHanded = 1f;
 
@@ -36,6 +37,7 @@ namespace ShallowWater.Unity.Map
             mesh.indexFormat = IndexFormat.UInt32;
             mesh.SetVertices(Vertices(shape));
             mesh.SetUVs(SurfacePlaceChannel, Places(shape));
+            mesh.SetUVs(FittingChannel, Fittings(shape));
             mesh.SetTriangles(new List<int>(shape.Triangles), WholeMesh);
             mesh.RecalculateNormals();
             mesh.SetTangents(TangentsAcross(mesh.normals));
@@ -73,6 +75,18 @@ namespace ShallowWater.Unity.Map
             var vertices = new List<Vector3>(shape.PointCount);
             foreach (var point in shape.Points) vertices.Add(WorldVectors.Of(point));
             return vertices;
+        }
+
+        private static List<Vector4> Fittings(Shape shape)
+        {
+            var fittings = new List<Vector4>(shape.PointCount);
+            foreach (var fitting in shape.Fittings) fittings.Add(FittingVector(fitting));
+            return fittings;
+        }
+
+        private static Vector4 FittingVector(Fitting fitting)
+        {
+            return new Vector4((float)fitting.WidthMetres, (float)fitting.HeightMetres, fitting.Pattern, fitting.Paint);
         }
 
         private static List<Vector2> Places(Shape shape)
