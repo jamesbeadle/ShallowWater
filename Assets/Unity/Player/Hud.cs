@@ -6,17 +6,14 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class Hud : MonoBehaviour
     {
-        private const float HintSeconds = 20f;
         private const float WidthShare = 0.5f;
         private const float LineHeightShare = 0.045f;
         private const int FontShare = 40;
         private const string StepAshore = "E  step ashore";
         private const string StepAboard = "E  step aboard";
-        private const string HelmHint = "W / S  lever ahead and astern     A / D  tiller     Space  stop     right mouse  look round";
         private const string TieUp = "T  tie her up";
         private const string CastOff = "T  cast off";
         private const string MadeFast = "She is made fast: cast off before stepping aboard";
-        private const string WalkHint = "W A S D  walk     Shift  run     T  tie up     right mouse  look round";
 
         private BoatController boat;
         private ShoreLeave shore;
@@ -53,8 +50,6 @@ namespace ShallowWater.Unity.Player
             if (moorer.CanCastOff) lines.Add(CastOff);
             var isWaitingToCastOff = shore.IsHeldAshoreByTheLine && !moorer.CanCastOff;
             if (isWaitingToCastOff) lines.Add(MadeFast);
-            var isNew = Time.timeSinceLevelLoad < HintSeconds;
-            if (isNew) lines.Add(shore.IsAshore ? WalkHint : HelmHint);
             return lines;
         }
     }

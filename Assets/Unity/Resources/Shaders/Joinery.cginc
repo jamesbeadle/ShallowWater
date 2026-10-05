@@ -20,22 +20,6 @@ struct Joinery
     float relief;
 };
 
-struct JoineryInput
-{
-    float3 worldPos;
-    float3 worldNormal;
-    float2 surfacePlace;
-    float4 fitting;
-    INTERNAL_DATA
-};
-
-void JoineryVertex(inout appdata_full v, out JoineryInput o)
-{
-    UNITY_INITIALIZE_OUTPUT(JoineryInput, o);
-    o.surfacePlace = v.texcoord.xy;
-    o.fitting = v.texcoord1;
-}
-
 float3 PaintOf(float paint)
 {
     float3 colour = _Paint0.rgb;

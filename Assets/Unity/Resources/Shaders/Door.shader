@@ -2,6 +2,7 @@ Shader "Shallow Water/Door"
 {
     Properties
     {
+        _Color ("Seen only if this shader cannot run", Color) = (0.08, 0.09, 0.1, 1)
         _Paint0 ("Brunswick green", Color) = (0.1, 0.22, 0.14, 1)
         _Paint1 ("Maroon", Color) = (0.36, 0.09, 0.09, 1)
         _Paint2 ("Black", Color) = (0.06, 0.06, 0.07, 1)
@@ -17,14 +18,30 @@ Shader "Shallow Water/Door"
         LOD 200
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows vertex:JoineryVertex
+        #pragma surface surf Standard fullforwardshadows vertex:vert
         #pragma target 3.5
         #include "Noise.cginc"
         #include "Relief.cginc"
         #include "Joinery.cginc"
         #include "Panels.cginc"
 
-        void surf (JoineryInput IN, inout SurfaceOutputStandard o)
+        struct Input
+        {
+            float2 surfacePlace;
+            float4 fitting;
+            float3 worldPos;
+            float3 worldNormal;
+            INTERNAL_DATA
+        };
+
+        void vert (inout appdata_full v, out Input o)
+        {
+            UNITY_INITIALIZE_OUTPUT(Input, o);
+            o.surfacePlace = v.texcoord.xy;
+            o.fitting = v.texcoord1;
+        }
+
+        void surf (Input IN, inout SurfaceOutputStandard o)
         {
             float3 normal = VERTEX_NORMAL(IN);
             float2 place = IN.surfacePlace;

@@ -38,6 +38,7 @@ namespace ShallowWater.Unity.World
             boat.AddComponent<Hud>();
             boat.AddComponent<HudClock>().Reads(dayAndNight);
             boat.AddComponent<Radar>().Over(periodMap, camera);
+            boat.AddComponent<ControlsKey>();
         }
 
         private static BoatMotion MooredAtHopwas(Pound pound)
