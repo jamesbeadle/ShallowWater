@@ -4,26 +4,21 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class ControlsKey : MonoBehaviour
     {
-        private const float ButtonWidthShare = 0.16f;
-        private const float PanelWidthShare = 0.36f;
-        private const float LineHeightShare = 0.045f;
-        private const int FontShare = 40;
-        private const string Closed = "Controls  (H)";
-        private const string Open = "Hide controls  (H)";
-        private static readonly string[] AtTheHelm =
-        {
-            "W / S   lever ahead and astern", "A / D   tiller", "Space   stop", "E   step ashore, by the bank",
-            "M   the 1900 map", "Right mouse   look round", "Scroll   zoom",
-        };
-        private static readonly string[] Ashore =
-        {
-            "W A S D   walk", "Shift   run", "E   step aboard, by the stern", "T   tie up or cast off",
-            "M   the 1900 map", "Right mouse   look round", "Scroll   zoom",
-        };
+        private const int FontShare = 44;
+        private const float LineShare = 0.04f;
+        private const float RowStepShare = 1.45f;
+        private const float BackdropWidthShare = 0.5f;
+        private const float CapsColumnShare = 0.11f;
+        private const float RuleShare = 0.0025f;
+        private const float TitleRowsDown = 1.5f;
+        private const float RuleColumns = 3f;
+        private const float Half = 0.5f;
+        private const string Title = "CONTROLS";
 
         private ShoreLeave shore;
-        private GUIStyle buttonStyle;
-        private GUIStyle panelStyle;
+        private GUIStyle wordStyle;
+        private GUIStyle titleStyle;
+        private GUIStyle capStyle;
         private bool isOpen;
 
         private void Start()
@@ -40,24 +35,43 @@ namespace ShallowWater.Unity.Player
         {
             if (shore == null) return;
             var fontSize = Screen.height / FontShare;
-            buttonStyle = buttonStyle ?? HudStyle.Made(fontSize, TextAnchor.MiddleCenter);
-            panelStyle = panelStyle ?? HudStyle.Made(fontSize, TextAnchor.UpperLeft);
-            var margin = HudLayout.Margin;
-            var lineHeight = Screen.height * LineHeightShare;
-            var buttonWidth = Screen.width * ButtonWidthShare;
-            var button = new Rect(margin, margin, buttonWidth, lineHeight);
-            var isClicked = GUI.Button(button, isOpen ? Open : Closed, buttonStyle);
+            wordStyle = wordStyle ?? HudStyle.Made(fontSize, TextAnchor.MiddleLeft);
+            titleStyle = titleStyle ?? HudStyle.Caps(fontSize, TextAnchor.MiddleLeft);
+            capStyle = capStyle ?? HudStyle.KeyCap(fontSize);
+            var line = Screen.height * LineShare;
+            var corner = new Vector2(HudLayout.Margin, HudLayout.Margin);
+            var toggle = new Rect(corner.x, corner.y, Screen.width * CapsColumnShare, line);
+            var isClicked = GUI.Button(toggle, GUIContent.none, GUIStyle.none);
             if (isClicked) isOpen = !isOpen;
-            if (!isOpen) return;
-            ShowThePanel(margin, lineHeight, button.yMax);
+            if (!isOpen)
+            {
+                KeyCaps.Prompt(corner, line, ControlsRows.Open, capStyle, wordStyle, HudInk.Hint);
+                return;
+            }
+            ShowThePanel(corner, line);
         }
 
-        private void ShowThePanel(float margin, float lineHeight, float top)
+        private void ShowThePanel(Vector2 corner, float line)
         {
-            var lines = shore.IsAshore ? Ashore : AtTheHelm;
-            var width = Screen.width * PanelWidthShare;
-            var panel = new Rect(margin, top + margin, width, lineHeight * lines.Length);
-            GUI.Label(panel, string.Join("\n", lines), panelStyle);
+            GUI.color = HudInk.Backdrop;
+            GUI.DrawTexture(new Rect(0f, 0f, Screen.width * BackdropWidthShare, Screen.height), HudTextures.Fade);
+            GUI.color = HudInk.Unchanged;
+            KeyCaps.Prompt(corner, line, ControlsRows.Close, capStyle, wordStyle, HudInk.Unchanged);
+            var step = line * RowStepShare;
+            var titlePlace = new Rect(corner.x, corner.y + step * TitleRowsDown, Screen.width, line);
+            HudText.Shadowed(titlePlace, Title, titleStyle, HudInk.Faint);
+            GUI.color = HudInk.Faint;
+            GUI.DrawTexture(new Rect(corner.x, titlePlace.yMax, Screen.width * CapsColumnShare * RuleColumns, Screen.height * RuleShare), Texture2D.whiteTexture);
+            GUI.color = HudInk.Unchanged;
+            var rows = shore.IsAshore ? ControlsRows.Ashore : ControlsRows.AtTheHelm;
+            for (var index = 0; index < rows.Length; index++) Row(new Vector2(corner.x, titlePlace.yMax + step * (index + Half)), line, rows[index]);
+        }
+
+        private void Row(Vector2 corner, float line, HudPrompt row)
+        {
+            KeyCaps.Draw(corner, line, row.Keys, capStyle);
+            var words = new Rect(corner.x + Screen.width * CapsColumnShare, corner.y, Screen.width, line);
+            HudText.Shadowed(words, row.Words, wordStyle);
         }
     }
 }
