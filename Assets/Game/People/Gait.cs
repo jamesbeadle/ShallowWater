@@ -42,8 +42,8 @@ namespace ShallowWater.Game.People
                 { FigurePart.Body, 0 }, { FigurePart.Head, 0 },
                 { FigurePart.LeftThigh, 0 }, { FigurePart.RightThigh, 0 },
                 { FigurePart.LeftShin, -Stride.StandingKnee }, { FigurePart.RightShin, -Stride.StandingKnee },
-                { FigurePart.LeftUpperArm, Stride.RestingArm }, { FigurePart.RightUpperArm, -Stride.ReachingBackArm },
-                { FigurePart.LeftForearm, Stride.RestingElbow }, { FigurePart.RightForearm, Stride.RestingElbow }
+                { FigurePart.LeftUpperArm, TillerHold.SlideArm }, { FigurePart.RightUpperArm, TillerHold.SteeringArm },
+                { FigurePart.LeftForearm, TillerHold.SlideForearm }, { FigurePart.RightForearm, TillerHold.SteeringForearm }
             };
             return new GaitPose(swings, 0, 0);
         }

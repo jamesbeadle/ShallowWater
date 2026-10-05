@@ -10,8 +10,7 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class ShoreLeave : MonoBehaviour
     {
-        private const float StandingInTheHatchMetres = 0.85f;
-        private const float Amidships = 0;
+        private const float StandingToPortMetres = -0.1f;
 
         private BoatController boat;
         private Pound pound;
@@ -67,7 +66,7 @@ namespace ShallowWater.Unity.Player
             var askew = figure.Root;
             askew.SetParent(deck, false);
             var helm = HullOutline.Helm;
-            askew.localPosition = new Vector3(Amidships, StandingInTheHatchMetres, (float)helm.Ahead);
+            askew.localPosition = new Vector3(StandingToPortMetres, (float)SparrowForm.HatchFloorMetres, (float)helm.Ahead);
             askew.localRotation = Quaternion.identity;
             figure.Pose(Gait.AtTheTiller());
             boat.TakeTheHelm();

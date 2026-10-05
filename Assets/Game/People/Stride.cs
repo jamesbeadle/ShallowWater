@@ -5,8 +5,6 @@ namespace ShallowWater.Game.People
     public static class Stride
     {
         public const double StandingKnee = 0.05;
-        public const double RestingArm = 0.08;
-        public const double ReachingBackArm = 0.35;
         public const double RestingElbow = 0.3;
         private const double WalkThigh = 0.42;
         private const double RunThigh = 0.8;
