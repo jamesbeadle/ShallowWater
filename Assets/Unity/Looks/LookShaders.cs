@@ -23,6 +23,7 @@ namespace ShallowWater.Unity.Looks
         public const string Water = "Shallow Water/Water";
         public const string Sky = "Shallow Water/Sky";
         public const string Grade = "Hidden/Shallow Water/Grade";
+        public const string Radar = "Hidden/Shallow Water/Radar";
 
         public static Material Made(string lookName)
         {

@@ -8,12 +8,12 @@ namespace ShallowWater.Unity.Player
         private static readonly Color Shade = new Color(0f, 0f, 0f, 0.35f);
         private const int Pad = 8;
 
-        public static GUIStyle Made(int fontSize)
+        public static GUIStyle Made(int fontSize, TextAnchor anchor)
         {
             var backing = new Texture2D(1, 1);
             backing.SetPixel(0, 0, Shade);
             backing.Apply();
-            var style = new GUIStyle { fontSize = fontSize, alignment = TextAnchor.LowerLeft, padding = new RectOffset(Pad, Pad, Pad, Pad) };
+            var style = new GUIStyle { fontSize = fontSize, alignment = anchor, padding = new RectOffset(Pad, Pad, Pad, Pad) };
             var normal = style.normal;
             normal.textColor = Ink;
             normal.background = backing;

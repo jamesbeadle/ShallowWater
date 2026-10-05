@@ -7,7 +7,6 @@ namespace ShallowWater.Unity.Player
     public sealed class Hud : MonoBehaviour
     {
         private const float HintSeconds = 20f;
-        private const float MarginShare = 0.025f;
         private const float WidthShare = 0.5f;
         private const float LineHeightShare = 0.045f;
         private const int FontShare = 40;
@@ -29,11 +28,11 @@ namespace ShallowWater.Unity.Player
         private void OnGUI()
         {
             if (boat == null) return;
-            style = style ?? HudStyle.Made(Screen.height / FontShare);
+            style = style ?? HudStyle.Made(Screen.height / FontShare, TextAnchor.LowerLeft);
             var lines = Lines();
-            var margin = Screen.height * MarginShare;
+            var margin = HudLayout.Margin;
             var height = Screen.height * LineHeightShare * lines.Count;
-            var place = new Rect(margin, Screen.height - margin - height, Screen.width * WidthShare, height);
+            var place = new Rect(HudLayout.BesideTheRadar, Screen.height - margin - height, Screen.width * WidthShare, height);
             GUI.Label(place, string.Join("\n", lines), style);
         }
 

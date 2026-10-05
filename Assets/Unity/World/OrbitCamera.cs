@@ -18,6 +18,7 @@ namespace ShallowWater.Unity.World
         private float pitchDegrees;
         private float distanceMetres;
 
+        public Transform Target => target;
         public float YawDegrees => IsTurnedWithTheTarget ? TargetYaw + yawDegrees : yawDegrees;
         private bool IsTurnedWithTheTarget => framing.IsTurnedWithTheTarget;
         private float TargetYaw => YawOf(target);
