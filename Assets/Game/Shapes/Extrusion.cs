@@ -28,6 +28,14 @@ namespace ShallowWater.Game.Shapes
             return roof;
         }
 
+        public static Shape Floor(GroundRing footprint, double bottom)
+        {
+            var floor = new Shape();
+            foreach (var corner in footprint.Corners) floor.Add(new WorldPoint(corner.East, bottom, corner.North));
+            foreach (var ear in Triangulation.OfClockwise(footprint.Corners)) floor.AddTriangle(ear[0], ear[2], ear[1]);
+            return floor;
+        }
+
         public static void AddWall(Shape walls, GroundPoint from, GroundPoint to, double alongFrom, Rise rise)
         {
             var alongTo = alongFrom + from.DistanceTo(to);

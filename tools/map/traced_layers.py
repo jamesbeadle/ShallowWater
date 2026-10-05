@@ -1,19 +1,21 @@
 """The map drawn by hand off the 1900 sheet, the game's own 1938 ground: each layer traced from the stitched map as
 pixels and kept in docs/map/traced, turned here into metres, with every line smoothed round its bends and every
-building block the sheet draws raised as the cottages standing on it, each set back from the roads and the water.
+building block the sheet draws raised as the rows of houses standing on it, each facing its street and set back from
+the roads and the water; a row that cannot stand back far enough is halved until its parts can, or left out.
 """
 from __future__ import annotations
 
 import json
 from pathlib import Path
 
-from .cottages import cottagesOn
 from .curves import smoothThrough
 from .ground import toDecimetres
 from .layer_files import areaRecord, lineRecord
 from .overlaps import overlaps
 from .period_map import pixelPoint
+from .rows import SHORTEST_ROW_METRES, centreOf, frontageOf, halves, rowsOn
 from .set_backs import SET_BACK_METRES_BY_LAYER, Obstacle, obstacle, setBack
+from .street_side import streetward
 
 TRACED_FOLDER = Path("docs") / "map" / "traced"
 LINES = "lines"
@@ -21,6 +23,7 @@ AREAS = "areas"
 BLOCKS = "blocks"
 SPACING_METRES = 10
 POINTS_PER_OBSTACLE = 12
+PARTS_OF_A_HALVED_ROW = 2
 SHARED_POINT = 1
 
 
@@ -57,22 +60,32 @@ def obstaclesIn(tracings: dict[str, dict]) -> list[Obstacle]:
     return obstacles
 
 
-def standingCottages(tracing: dict, obstacles: list[Obstacle]) -> list[dict]:
+def placedRows(row: list[tuple[float, float]], obstacles: list[Obstacle]) -> list[list[tuple[float, float]]]:
+    placed = setBack(row, obstacles)
+    if placed is not None:
+        return [placed]
+    isTooShortToHalve = frontageOf(row) < PARTS_OF_A_HALVED_ROW * SHORTEST_ROW_METRES
+    if isTooShortToHalve:
+        return []
+    return [part for half in halves(row) for part in placedRows(half, obstacles)]
+
+
+def standingRows(tracing: dict, obstacles: list[Obstacle]) -> list[dict]:
     standing = []
     for feature in tracing[BLOCKS]:
-        for cottage in cottagesOn(metresOf(feature["pixels"])):
-            placed = setBack(cottage, obstacles)
-            isLeftOut = placed is None or any(overlaps(placed, other) for other in standing)
-            if not isLeftOut:
-                standing.append(placed)
-    return [areaRecord(flatDecimetres(cottage), []) for cottage in standing]
+        corners = metresOf(feature["pixels"])
+        for row in rowsOn(corners, streetward(centreOf(corners), obstacles)):
+            for part in placedRows(row, obstacles):
+                isClear = not any(overlaps(part, other) for other in standing)
+                standing += [part] if isClear else []
+    return [areaRecord(flatDecimetres(row), []) for row in standing]
 
 
 def tracedLayer(tracing: dict, obstacles: list[Obstacle]) -> tuple[str, list[dict]]:
     if LINES in tracing:
         return LINES, [tracedLine(feature) for feature in tracing[LINES]]
     if BLOCKS in tracing:
-        return AREAS, standingCottages(tracing, obstacles)
+        return AREAS, standingRows(tracing, obstacles)
     return AREAS, [tracedArea(feature) for feature in tracing[AREAS]]
 
 

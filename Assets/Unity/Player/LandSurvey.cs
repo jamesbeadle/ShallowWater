@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using ShallowWater.Game.Ground;
 using ShallowWater.Game.Pound;
 using ShallowWater.Game.Walking;
@@ -19,7 +18,7 @@ namespace ShallowWater.Unity.Player
             foreach (var canal in MapLines.ReadIfPresent(MapLayers.Canal)) water.Add(canal, PoundLimits.ChannelHalfWidthMetres);
             foreach (var river in MapLines.ReadIfPresent(MapLayers.River)) water.Add(river, LineBands.RiverWidthMetres / Halved);
             var obstacles = new Obstacles();
-            obstacles.AddFootprints(MapAreas.ReadIfPresent(MapLayers.Buildings).Select(building => building.Outline));
+            obstacles.AddFootprints(Buildings.Footings(MapAreas.ReadIfPresent(MapLayers.Buildings)));
             obstacles.AddTrunks(TreeTrunks.Standing(trees));
             return new Land(pound, water, obstacles, MapAreas.ReadIfPresent(MapLayers.Woods));
         }

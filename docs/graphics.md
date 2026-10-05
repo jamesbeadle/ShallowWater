@@ -10,8 +10,10 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 | --- | --- | --- |
 | Weathered | colour, worn patches, grain and soot | grass, banks, dirt towpath, tar, gravel, timber, iron, the leaf litter under the woods, and on the boat the deck, cloths, roof, tarnished brass and ironwork |
 | Stone | laid stones with mortar between | coping, setts on the paved towpath, kerbs, flagstones |
-| Brick | stretcher-bond brick, and on cottage walls sash windows, curtains, sills, a panelled door and a step | cottage walls, gables, chimney stacks, the lock chamber |
-| Slate | lapped slate courses with moss near the eaves | cottage roofs |
+| Brick | Flemish bond in lime mortar with burnt headers, a blue-brick plinth, soot streaks and damp at the foot; limewash flaking off the brick with a tarred plinth; rubbed bricks on end for arches | house walls, gables, reveals, chimney stacks, window arches, the lock chamber |
+| Slate | lapped courses with moss and lichen near the eaves: Welsh slate, or the smaller cambered Staffordshire plain tiles | house roofs, outshuts, dormers and tile-hung dormer cheeks |
+| Window | box frames and sashes, two-over-two, six-over-six, cottage casements or four panes, in cream, white lead, Brunswick green or brown; old wavy glass, net curtains downstairs and curtains drawn back upstairs | every window, set back in its reveal |
+| Door | four- and six-panel doors with a fanlight, or a ledged plank door with strap hinges; knob, letterbox and worn paint | every front and back door |
 | Hedge | leaf clumps, autumn turning and haws | hedgerows and garden hedges |
 | Foliage | leaf cards turned to face the eye, each a cluster of oak, ash, birch or hazel leaves or pine needle tufts, each tree its own way into autumn, with light through the leaves and a breeze in them | the crowns of every tree and hazel in the woods |
 | Bark | furrowed oak, netted ash, white birch with its black foot and lenticels, pine plates turning orange up the trunk, lichen and moss at the foot | the trunks and limbs of every tree |
@@ -26,7 +28,21 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 | Sky | the sky gradient, sun, glow and drifting cloud | the skybox |
 | Grade | exposure, October warmth, tone curve and vignette | the finished picture |
 
+The stone sills, steps and lintels take the Stone look, ridge tiles and chimney pots the Weathered look as terracotta, and fascias, bargeboards and door hoods as timber.
+
 The colours are named in the palettes beside the looks (`CountryPalette`, `RoadPalette`, `StonePalette`, `BuildingPalette`, `BoatPalette`, `WaterPalette`, `SkyPalette`), written as they would be picked, and turned into linear light by Unity.
+
+## The houses
+
+The villages are the houses of 1938 as Hopwas, Whittington and Fazeley had them: brick terraces of the 1870s to 1890s, older low cottages, and the odd double-fronted Georgian house, all weathered by fifty years and more of coal smoke. Nothing about them is a new build. The shapes are plain C# in `Assets/Game/Houses`:
+
+- The map gives rows, not houses (`tools/map/rows.py`): each block on the 1900 sheet becomes a row, or two back to back, fronting the nearest road or water. `Row` reads the street front from the row's first side.
+- `RowPlan` splits each row into runs built at different times, and `Street` gives each row its character: mostly terraces, mostly cottages, or a mix. A run is two to six terraced houses, one to three cottages, or a Georgian house standing alone; runs abut or stand apart with an entry between, and each has its own eaves height, so the roofline steps along the street.
+- `VictorianTerrace`, `OldCottage` and `GeorgianHouse` are the three styles. Each says how wide its houses are, how high its eaves and how steep its roof, what its walls and roof are made of, and where its doors and windows go, front and back (`TerraceFront`, `TerraceBack`, `CottageFront`, `CottageBack`, `GeorgianElevations`). Terrace doors pair up at the party walls, with a landing window over each; cottages have casements, gabled dormers breaking the eaves on a tiled roof, limewash, bargeboards and finials; a Georgian house is three bays round a fanlit door under a hood, with stone lintels and keystones, under a hipped roof when it stands alone.
+- `RunWalls` pierces each wall with real openings (`PiercedWall`): the window or door is set back in a brick reveal (`Recess`), on a stone sill or step (`Dressings`), under a cambered brick arch, a soldier course or a stone lintel with a keystone (`Lintels`).
+- `GabledRoof` and `HippedRoof` lay slate or tiles over a soffit, with a fascia, a cast-iron gutter and ridge tiles, and verge boards where a gable stands free (`RoofEdges`, `Gutters`, `RidgeTiles`). `Stacks` stands a chimney on every party wall and free gable, with oversailing courses (`StackCap`) and a row of pots, no two alike (`ChimneyPots`); `Downpipes` brings the gutters down every second house.
+- Behind a terraced house is its outshut, a scullery under a lean-to roof, paired with its neighbour's (`OutshutShapes`, `LeanToRoof`); cottages may have a full-width one. `DormerShapes` and `DormerRoof` build the dormers and `DoorHood` the hoods.
+- `RunFootings` gives the walker the ground each house actually stands on, so the entries between runs can be walked through.
 
 ## The fields
 
@@ -81,7 +97,7 @@ In the Unity layer, `WoodsRenderer` draws the woods for every camera that looks 
 Some looks need to know where they are on the thing they cover, not just in the world: a window belongs in the middle of a wall, a rail a set distance from the middle of the track, the water's banks at its edges. Every point of a `Shape` carries a `SurfacePlace` for that, sent to the shader as the mesh's first texture coordinates:
 
 - a ribbon (canal, road, railway) measures along its line and across from its middle;
-- a cottage wall measures from the middle of the wall and up from its foot;
+- a window or door measures from its bottom left corner, and carries its size, its glazing or panelling and its paint as the mesh's second texture coordinates (`Fitting`);
 - a roof slope measures along the ridge and up the slope from the eaves;
 - the boat measures along its length and up from the waterline;
 - a turned shape measures around it and up it, a tube along it and around it, and a limb along it and by the angle around it, so bark wraps without a seam.

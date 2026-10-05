@@ -8,6 +8,8 @@ namespace ShallowWater.Unity.Looks
         public const string Stone = "Shallow Water/Stone";
         public const string Brick = "Shallow Water/Brick";
         public const string Slate = "Shallow Water/Slate";
+        public const string Window = "Shallow Water/Window";
+        public const string Door = "Shallow Water/Door";
         public const string Hedge = "Shallow Water/Hedge";
         public const string Foliage = "Shallow Water/Foliage";
         public const string Bark = "Shallow Water/Bark";

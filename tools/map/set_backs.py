@@ -1,4 +1,4 @@
-"""Cottages stand back from what runs past them. A cottage raised on a building block of the 1900 map, which draws both
+"""Rows of houses stand back from what runs past them. A row raised on a building block of the 1900 map, which draws both
 the block and the road beside it far wider than they are, can land on the road or at the water's edge; it is moved
 straight back until it stands its distance from every road, canal, river and railway, and left out if it cannot.
 """
