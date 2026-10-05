@@ -10,7 +10,7 @@ namespace ShallowWater.Unity.Player
         private const float ReachMetres = 400f;
         private const string North = "N";
         private const float NorthMarkShare = 0.16f;
-        private const float FontToMark = 0.7f;
+        private const float FontToMark = 0.5f;
         private const float RimShare = 0.48f;
 
         private PrintedSheet map;
@@ -44,11 +44,14 @@ namespace ShallowWater.Unity.Player
         private void MarkNorth(Rect radar, float headingDegrees)
         {
             var size = radar.width * NorthMarkShare;
-            northStyle = northStyle ?? HudStyle.Made((int)(size * FontToMark), TextAnchor.MiddleCenter);
+            northStyle = northStyle ?? HudStyle.Caps((int)(size * FontToMark), TextAnchor.MiddleCenter);
             var towardsNorth = -headingDegrees * Mathf.Deg2Rad;
             var onTheRim = new Vector2(Mathf.Sin(towardsNorth), -Mathf.Cos(towardsNorth)) * radar.width * RimShare;
             var centre = radar.center + onTheRim;
             var mark = new Rect(centre.x - size / 2, centre.y - size / 2, size, size);
+            GUI.color = HudInk.Rim;
+            GUI.DrawTexture(mark, HudTextures.Disc);
+            GUI.color = HudInk.Unchanged;
             GUI.Label(mark, North, northStyle);
         }
     }

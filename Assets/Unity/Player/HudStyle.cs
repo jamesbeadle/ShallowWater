@@ -4,19 +4,32 @@ namespace ShallowWater.Unity.Player
 {
     public static class HudStyle
     {
-        private static readonly Color Ink = new Color(0.93f, 0.9f, 0.82f);
-        private static readonly Color Shade = new Color(0f, 0f, 0f, 0.35f);
-        private const int Pad = 8;
+        private const int CapPadding = 10;
+        private const int Unpadded = 0;
 
         public static GUIStyle Made(int fontSize, TextAnchor anchor)
         {
-            var backing = new Texture2D(1, 1);
-            backing.SetPixel(0, 0, Shade);
-            backing.Apply();
-            var style = new GUIStyle { fontSize = fontSize, alignment = anchor, padding = new RectOffset(Pad, Pad, Pad, Pad) };
+            var style = new GUIStyle { fontSize = fontSize, alignment = anchor, wordWrap = false, clipping = TextClipping.Overflow };
             var normal = style.normal;
-            normal.textColor = Ink;
-            normal.background = backing;
+            normal.textColor = HudInk.Ink;
+            return style;
+        }
+
+        public static GUIStyle Caps(int fontSize, TextAnchor anchor)
+        {
+            var style = Made(fontSize, anchor);
+            style.fontStyle = FontStyle.Bold;
+            return style;
+        }
+
+        public static GUIStyle KeyCap(int fontSize)
+        {
+            var style = Caps(fontSize, TextAnchor.MiddleCenter);
+            var border = HudTextures.KeyCapBorder;
+            style.border = new RectOffset(border, border, border, border);
+            style.padding = new RectOffset(CapPadding, CapPadding, Unpadded, Unpadded);
+            var normal = style.normal;
+            normal.background = HudTextures.KeyCap;
             return style;
         }
     }
