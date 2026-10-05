@@ -4,7 +4,7 @@ namespace ShallowWater.Game.Boat
 {
     public static class BoatHandling
     {
-        public const double TopSpeedMetresPerSecond = 2.2;
+        public const double TopSpeedMetresPerSecond = 4.4;
         public const double EngineResponsePerSecond = 0.7;
         public const double ReversingPauseSeconds = 1.5;
         public const double TillerSwingPerSecond = 2.2;

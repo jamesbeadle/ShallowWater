@@ -5,8 +5,8 @@ namespace ShallowWater.Game.Boat
     public static class HullDrag
     {
         private const double SkinNewtonsPerMetrePerSecond = 300;
-        private const double WaveNewtonsPerSpeedSquared = 70;
-        private const double ChannelLimitMetresPerSecond = 2.8;
+        private const double WaveNewtonsPerSpeedSquared = 35;
+        private const double ChannelLimitMetresPerSecond = 5.6;
         private const double TightestSqueeze = 0.12;
         private const double SternFirstBluffness = 2.2;
         private const double Stopped = 0;
