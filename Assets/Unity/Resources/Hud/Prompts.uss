@@ -1,0 +1,51 @@
+.hud-prompt {
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 18px 5px 5px;
+    transition-property: opacity, translate;
+    transition-duration: 0.2s, 0.2s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+}
+
+.hud-glass.hud-prompt {
+    border-radius: 22px;
+}
+
+.hud-prompt--entering {
+    opacity: 0;
+    translate: 16px 0;
+}
+
+.hud-text.hud-prompt__words {
+    margin-left: 12px;
+    font-size: 20px;
+    -unity-font-definition: url("Fonts/Cabin-Medium.ttf");
+}
+
+.hud-prompts {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    align-items: flex-end;
+}
+
+.hud-prompts .hud-prompt {
+    margin-top: 10px;
+}
+
+.hud-hint {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition-property: opacity;
+    transition-duration: 0.18s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.hud-hint--hidden {
+    opacity: 0;
+}
+
+.hud-hint .hud-text.hud-prompt__words {
+    color: var(--ink-soft);
+}

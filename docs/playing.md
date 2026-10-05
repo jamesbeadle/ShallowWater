@@ -51,3 +51,14 @@ Ashore, within a line's length (nine metres) of the stern, T ties her up (`Tying
 The clock runs a game minute to each real second, so a day passes in 24 minutes (`GameClock`), starting at half past eight in the morning. The sun follows its mid-October path over Tamworth (`SunPath`): it rises about a quarter to seven in the east-south-east, stands 28 degrees up at noon and sets about a quarter past five. Between the sun at 12 degrees and the sun 10 degrees below the horizon the sky passes through twilight (`DayStages`); once the sun is 2 degrees down, the full moon opposite it takes over the light (`Lighting`) and the stars come out.
 
 The time of day is in the top right corner. The radar in the bottom left shows 400 metres of the 1900 map round Askew or *Sparrow*, whichever the camera follows, turned so that the way the camera looks is up; the arrow is you and the N on the rim is north.
+
+## The HUD
+
+Everything on the screen but the radar is drawn with UI Toolkit (`Assets/Unity/Overlay`), scaled from a 1920 by 1080 screen by its height so it holds its shape on every platform. `OverlayScreen` raises it, and each piece is a small widget the player components drive:
+
+- **Engine** (`TelegraphCard`, `TelegraphMeter`), beside the radar while you are at the tiller: the order the lever is at, in brass ahead and signal red astern, over a meter that fills from stop towards full ahead or full astern.
+- **Prompts** (`PromptColumn`, `PromptPill`), bottom right: the key and what it does, such as **E** *Step ashore*, sliding in as they become possible.
+- **Controls** (`ControlsPanel`), top left: the **H** *Controls* hint opens a panel of what every key does at the tiller or ashore; H, the gamepad's select or a click on **H** *Close* puts it away.
+- **Clock** (`ClockFace`), top right, with each figure in its own cell so the time does not shift as it changes.
+
+Keys are drawn as key caps and the mouse as a mouse with the button or wheel you use in brass (`KeyGlyphs`, `MouseGlyph`). The look lives in the stylesheets in `Assets/Unity/Resources/Hud` (`Hud.uss` holds the colours and imports one sheet per widget), set in Cabin for the words and Josefin Sans for headings and figures; both are under the SIL Open Font License, which is kept beside them.

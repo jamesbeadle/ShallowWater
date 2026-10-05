@@ -1,0 +1,72 @@
+.hud-glass.hud-telegraph {
+    position: absolute;
+    bottom: 16px;
+    padding: 14px 20px 16px 20px;
+    transition-property: opacity, translate;
+    transition-duration: 0.2s, 0.2s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+}
+
+.hud-telegraph--hidden {
+    opacity: 0;
+    translate: 0 12px;
+}
+
+.hud-text.hud-order {
+    margin-top: 2px;
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.hud-text.hud-order--ahead {
+    color: var(--brass);
+}
+
+.hud-text.hud-order--astern {
+    color: var(--signal-red);
+}
+
+.hud-meter {
+    flex-direction: row;
+    align-items: center;
+}
+
+.hud-segment {
+    width: 30px;
+    height: 7px;
+    margin: 0 2px;
+    border-radius: 4px;
+    background-color: var(--unlit);
+}
+
+.hud-segment--lit.hud-segment--ahead {
+    background-color: var(--brass);
+}
+
+.hud-segment--lit.hud-segment--astern {
+    background-color: var(--signal-red);
+}
+
+.hud-stop {
+    width: 11px;
+    height: 11px;
+    margin: 0 7px;
+    border-radius: 6px;
+    background-color: var(--unlit);
+}
+
+.hud-stop--lit {
+    background-color: var(--ink);
+}
+
+.hud-ends {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 7px;
+}
+
+.hud-text.hud-ends__word {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--ink-faint);
+}

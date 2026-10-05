@@ -2,6 +2,7 @@ using System.Linq;
 using ShallowWater.Game.Boat;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Map;
+using ShallowWater.Unity.Overlay;
 using ShallowWater.Unity.Picture;
 using ShallowWater.Unity.Player;
 using ShallowWater.Unity.Sky;
@@ -35,10 +36,11 @@ namespace ShallowWater.Unity.World
             var boat = SparrowModel.Launched(MooredAtHopwas(pound), pound);
             var camera = OrbitingCamera();
             boat.AddComponent<ShoreLeave>().Crew(pound, LandSurvey.Of(pound, trees), camera);
-            boat.AddComponent<Hud>();
-            boat.AddComponent<HudClock>().Reads(dayAndNight);
+            var screen = OverlayScreen.Raise();
+            boat.AddComponent<Hud>().Shows(screen);
+            boat.AddComponent<HudClock>().Reads(dayAndNight, screen);
             boat.AddComponent<Radar>().Over(periodMap, camera);
-            boat.AddComponent<ControlsKey>();
+            boat.AddComponent<ControlsKey>().Shows(screen);
         }
 
         private static BoatMotion MooredAtHopwas(Pound pound)

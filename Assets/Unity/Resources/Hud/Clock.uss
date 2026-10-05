@@ -1,0 +1,21 @@
+.hud-glass.hud-clock {
+    position: absolute;
+    right: 0;
+    top: 0;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 16px 8px 16px;
+}
+
+.hud-text.hud-clock__digit {
+    width: 21px;
+    font-size: 32px;
+    -unity-text-align: middle-center;
+}
+
+.hud-text.hud-clock__colon {
+    width: 10px;
+    font-size: 32px;
+    color: var(--ink-soft);
+    -unity-text-align: middle-center;
+}

@@ -1,0 +1,58 @@
+@import url("KeyGlyphs.uss");
+@import url("Prompts.uss");
+@import url("ControlsPanel.uss");
+@import url("Telegraph.uss");
+@import url("Clock.uss");
+
+.hud-screen {
+    --ink: #F3ECDD;
+    --ink-soft: rgba(243, 236, 221, 0.74);
+    --ink-faint: rgba(243, 236, 221, 0.46);
+    --rule: rgba(243, 236, 221, 0.10);
+    --glass: rgba(16, 14, 12, 0.92);
+    --glass-deep: rgba(16, 14, 12, 0.95);
+    --edge: rgba(243, 236, 221, 0.07);
+    --edge-lit: rgba(243, 236, 221, 0.16);
+    --brass: #E8B15A;
+    --signal-red: #D8684B;
+    --cap: #EFE8D9;
+    --cap-lip: #9F957F;
+    --cap-ink: #18191D;
+    --unlit: rgba(243, 236, 221, 0.18);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hud-safe-area {
+    position: absolute;
+}
+
+.hud-text {
+    margin: 0;
+    padding: 0;
+    color: var(--ink);
+    white-space: nowrap;
+    -unity-font-style: normal;
+    -unity-font-definition: url("Fonts/Cabin-Regular.ttf");
+}
+
+.hud-text.hud-display {
+    -unity-font-definition: url("Fonts/JosefinSans-SemiBold.ttf");
+}
+
+.hud-text.hud-eyebrow {
+    font-size: 13px;
+    letter-spacing: 3.5px;
+    color: var(--ink-faint);
+}
+
+.hud-glass {
+    background-color: var(--glass);
+    border-width: 1px;
+    border-color: var(--edge);
+    border-top-color: var(--edge-lit);
+    border-radius: 10px;
+}
