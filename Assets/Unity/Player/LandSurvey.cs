@@ -16,24 +16,12 @@ namespace ShallowWater.Unity.Player
         {
             var water = new WaterLines();
             water.Add(pound.Line, pound.HalfWidth);
-            foreach (var canal in LinesOf(MapLayers.Canal)) water.Add(canal, PoundLimits.ChannelHalfWidthMetres);
-            foreach (var river in LinesOf(MapLayers.River)) water.Add(river, LineBands.RiverWidthMetres / Halved);
+            foreach (var canal in MapLines.ReadIfPresent(MapLayers.Canal)) water.Add(canal, PoundLimits.ChannelHalfWidthMetres);
+            foreach (var river in MapLines.ReadIfPresent(MapLayers.River)) water.Add(river, LineBands.RiverWidthMetres / Halved);
             var obstacles = new Obstacles();
-            obstacles.AddFootprints(AreasOf(MapLayers.Buildings).Select(building => building.Outline));
+            obstacles.AddFootprints(MapAreas.ReadIfPresent(MapLayers.Buildings).Select(building => building.Outline));
             obstacles.AddTrunks(TreeTrunks.Standing(trees));
-            return new Land(pound, water, obstacles, AreasOf(MapLayers.Woods));
-        }
-
-        private static IReadOnlyList<GroundLine> LinesOf(string layerName)
-        {
-            var isPresent = OptionalLayer.IsPresent(layerName);
-            return isPresent ? MapLines.Read(layerName) : new List<GroundLine>();
-        }
-
-        private static IReadOnlyList<Area> AreasOf(string layerName)
-        {
-            var isPresent = OptionalLayer.IsPresent(layerName);
-            return isPresent ? MapAreas.Read(layerName) : new List<Area>();
+            return new Land(pound, water, obstacles, MapAreas.ReadIfPresent(MapLayers.Woods));
         }
     }
 }

@@ -13,14 +13,15 @@ namespace ShallowWater.Unity.Map
         public static void Lay(Pound pound)
         {
             if (!OptionalLayer.IsPresent(MapLayers.Roads)) return;
-            var roads = RoadsOnTheMap();
+            var roads = OnTheMap();
             var surroundings = new RoadSurroundings(Clearings(pound, roads), Villages());
             ShapeMeshes.BuildEach(LayerName, RoadShapes.Of(roads, surroundings));
         }
 
-        private static List<Road> RoadsOnTheMap()
+        public static List<Road> OnTheMap()
         {
             var roads = new List<Road>();
+            if (!MapFiles.Has(MapLayers.Roads)) return roads;
             foreach (var record in MapLines.Records(MapLayers.Roads)) AddRoad(roads, record);
             return roads;
         }

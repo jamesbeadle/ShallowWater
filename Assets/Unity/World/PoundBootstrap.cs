@@ -21,11 +21,12 @@ namespace ShallowWater.Unity.World
             var centreline = MapLines.Read(MapLayers.Pound).First();
             var pound = Pound.HuddlesfordToFazeley(centreline);
             Daylight.Rise();
-            GroundLayer.Lay();
+            var countryside = FieldsLayer.Lay(pound);
+            GroundLayer.Lay(countryside.Fields);
             LandLinesLayer.Lay(MapLayers.River);
             LandLinesLayer.Lay(MapLayers.Railway);
             RoadsLayer.Lay(pound);
-            var trees = WoodsLayer.Plant();
+            var trees = WoodsLayer.Plant(countryside.HedgerowTrees);
             BuildingsLayer.Raise();
             CanalLayer.Dig(pound);
             HuddlesfordPlanks.Drop(pound);
