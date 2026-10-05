@@ -2,6 +2,7 @@ Shader "Shallow Water/Window"
 {
     Properties
     {
+        _Color ("Seen only if this shader cannot run", Color) = (0.08, 0.09, 0.1, 1)
         _Paint0 ("Cream", Color) = (0.84, 0.79, 0.66, 1)
         _Paint1 ("White lead", Color) = (0.88, 0.87, 0.82, 1)
         _Paint2 ("Brunswick green", Color) = (0.11, 0.22, 0.15, 1)
@@ -18,14 +19,30 @@ Shader "Shallow Water/Window"
         LOD 200
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows vertex:JoineryVertex
+        #pragma surface surf Standard fullforwardshadows vertex:vert
         #pragma target 3.5
         #include "Noise.cginc"
         #include "Relief.cginc"
         #include "Joinery.cginc"
         #include "Glazing.cginc"
 
-        void surf (JoineryInput IN, inout SurfaceOutputStandard o)
+        struct Input
+        {
+            float2 surfacePlace;
+            float4 fitting;
+            float3 worldPos;
+            float3 worldNormal;
+            INTERNAL_DATA
+        };
+
+        void vert (inout appdata_full v, out Input o)
+        {
+            UNITY_INITIALIZE_OUTPUT(Input, o);
+            o.surfacePlace = v.texcoord.xy;
+            o.fitting = v.texcoord1;
+        }
+
+        void surf (Input IN, inout SurfaceOutputStandard o)
         {
             float3 normal = VERTEX_NORMAL(IN);
             float2 place = IN.surfacePlace;
