@@ -7,6 +7,7 @@ namespace ShallowWater.Game.Boat
     {
         private const double Rebound = 0.15;
         private const double BankFriction = 0.3;
+        private const double NoWay = 0;
 
         private readonly Engine engine = new Engine();
         private readonly Tiller tiller = new Tiller();
@@ -42,6 +43,14 @@ namespace ShallowWater.Game.Boat
         public GroundPoint PointOf(HullPoint point)
         {
             return Position + Heading * point.Ahead + Starboard * point.ToStarboard;
+        }
+
+        public void LieAgainstTheLine(double seconds, ThrottleNotch notch)
+        {
+            engine.Run(seconds, notch);
+            Thrust = Propeller.ThrustAt(engine.Turns, NoWay);
+            Velocity = default;
+            SwingRadiansPerSecond = NoWay;
         }
 
         public void Shift(GroundPoint by)

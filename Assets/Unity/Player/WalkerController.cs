@@ -16,7 +16,10 @@ namespace ShallowWater.Unity.Player
         private OrbitCamera view;
         private double phase;
 
+        private const double ClosestToFaceMetres = 0.05;
+
         public GroundPoint Position => walker.Position;
+        public double Bearing => walker.Bearing;
 
         public void Ready(Land ground, AskewModel model, OrbitCamera camera)
         {
@@ -29,6 +32,14 @@ namespace ShallowWater.Unity.Player
         {
             walker.StandAt(place, bearing);
             Place();
+        }
+
+        public void Face(GroundPoint place)
+        {
+            var towards = place - walker.Position;
+            var isUnderfoot = towards.Length < ClosestToFaceMetres;
+            if (isUnderfoot) return;
+            SetOff(walker.Position, towards.Bearing);
         }
 
         private void Update()

@@ -15,6 +15,7 @@ namespace ShallowWater.Unity.Helm
 
         public BoatMotion Motion { get; private set; }
         public bool IsManned { get; private set; } = true;
+        public bool IsMadeFast { get; private set; }
         public ThrottleNotch Notch => throttle.Notch;
         public float RudderShare => Motion == null ? 0 : (float)Motion.Rudder;
         public float ThrustShare => Motion == null ? 0 : (float)Motion.ThrustShare;
@@ -40,14 +41,34 @@ namespace ShallowWater.Unity.Helm
             IsManned = false;
         }
 
+        public void MakeFast()
+        {
+            IsMadeFast = true;
+        }
+
+        public void CastOff()
+        {
+            IsMadeFast = false;
+        }
+
         private void Update()
         {
             if (Motion == null) return;
             if (IsManned) WorkTheLever();
             var rudder = IsManned ? HelmInput.Rudder() : Amidships;
             var steps = Mathf.CeilToInt(Time.deltaTime / LongestStepSeconds);
-            for (var step = 0; step < steps; step++) Steer(Time.deltaTime / steps, rudder);
+            for (var step = 0; step < steps; step++) Advance(Time.deltaTime / steps, rudder);
             Place();
+        }
+
+        private void Advance(float seconds, double rudder)
+        {
+            if (IsMadeFast)
+            {
+                Motion.LieAgainstTheLine(seconds, throttle.Notch);
+                return;
+            }
+            Steer(seconds, rudder);
         }
 
         private void Steer(float seconds, double rudder)

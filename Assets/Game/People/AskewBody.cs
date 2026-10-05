@@ -14,6 +14,11 @@ namespace ShallowWater.Game.People
         private const double PeakThicknessMetres = 0.012;
         private const int PeakCorners = 7;
         private static readonly WorldPoint Pivot = new WorldPoint(0, 0, 0);
+        private static readonly WorldPoint Nose = new WorldPoint(0, 0.12, 0.088);
+        private const double NoseRadiusMetres = 0.018;
+        private static readonly WorldPoint[] Ears = { new WorldPoint(-0.09, 0.14, -0.005), new WorldPoint(0.09, 0.14, -0.005) };
+        private const double EarRadiusMetres = 0.02;
+        private const int FeatureSides = 8;
 
         private static readonly Offset BodyShape = new Offset(1, 1, AskewForm.BodyDepthShare);
 
@@ -46,6 +51,8 @@ namespace ShallowWater.Game.People
         {
             var head = new SurfaceShapes();
             head.Add(Surface.Skin, Lathe.Turned(Pivot, Head, AskewForm.RoundSides));
+            head.Add(Surface.Skin, Ball.Of(Nose, NoseRadiusMetres, FeatureSides));
+            foreach (var ear in Ears) head.Add(Surface.Skin, Ball.Of(ear, EarRadiusMetres, FeatureSides));
             head.Add(Surface.Cap, Lathe.Turned(Pivot, Cap, AskewForm.RoundSides));
             head.AddSolid(Surface.Cap, Peak(), PeakMetres, PeakMetres + PeakThicknessMetres);
             return head;

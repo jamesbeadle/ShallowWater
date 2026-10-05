@@ -20,10 +20,10 @@ namespace ShallowWater.Game.Boat
         private const double StockFootMetres = 0.2;
         private static readonly Offset[] SwanNeck =
         {
-            new Offset(0, 0.8, 0), new Offset(0, 0.9, -0.02), new Offset(0, 0.98, 0.04), new Offset(0, 1.03, 0.15),
-            new Offset(0, 1.07, 0.32), new Offset(0, 1.1, 0.52), new Offset(0, 1.13, 0.72)
+            new Offset(0, 0.8, 0), new Offset(0, 0.95, -0.03), new Offset(0, 1.15, 0), new Offset(0, 1.35, 0.08),
+            new Offset(0, 1.52, 0.2), new Offset(0, 1.63, 0.36), new Offset(0, 1.69, 0.55), new Offset(0, 1.71, 0.72)
         };
-        private static readonly Offset TillerHandleEnd = new Offset(0, 1.16, 0.95);
+        private static readonly Offset TillerHandleEnd = new Offset(0, 1.74, 1.13);
         private const double SwanNeckRadiusMetres = 0.02;
         private const double HandleRadiusMetres = 0.028;
         private static readonly double[] TurksHeadsMetres = { 0.62, 0.68 };

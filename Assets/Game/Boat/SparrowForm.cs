@@ -5,6 +5,9 @@ namespace ShallowWater.Game.Boat
         public const double CabinBackAlong = -9.5;
         public const double EngineRoomAlong = -6.7;
         public const double CabinFrontAlong = -4.2;
+        public const double HatchFrontAlong = -8.85;
+        public const double HatchHalfWidthMetres = 0.3;
+        public const double HatchFloorMetres = 0.85;
         public const double CabinFootHalfWidthMetres = 0.97;
         public const double CabinTopHalfWidthMetres = 0.9;
         public const double CabinFootMetres = 0.3;

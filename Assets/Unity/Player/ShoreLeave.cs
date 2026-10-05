@@ -10,8 +10,7 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class ShoreLeave : MonoBehaviour
     {
-        private const float StandingInTheHatchMetres = 0.85f;
-        private const float Amidships = 0;
+        private const float StandingToPortMetres = -0.1f;
 
         private BoatController boat;
         private Pound pound;
@@ -19,10 +18,12 @@ namespace ShallowWater.Unity.Player
         private WalkerController walking;
         private OrbitCamera view;
         private Transform deck;
+        private Moorer moorer;
 
         public bool IsAshore { get; private set; }
         public bool CanStepAshore { get; private set; }
         public bool CanStepAboard { get; private set; }
+        public bool IsHeldAshoreByTheLine { get; private set; }
 
         public void Crew(Pound water, Land ground, OrbitCamera camera)
         {
@@ -34,6 +35,8 @@ namespace ShallowWater.Unity.Player
             var askew = figure.Root;
             walking = askew.gameObject.AddComponent<WalkerController>();
             walking.Ready(ground, figure, camera);
+            moorer = gameObject.AddComponent<Moorer>();
+            moorer.Ready(figure, walking, ground, Bollards.AlongThe(water));
             StepAboard();
         }
 
@@ -42,7 +45,10 @@ namespace ShallowWater.Unity.Player
             if (boat == null) return;
             var motion = boat.Motion;
             CanStepAshore = !IsAshore && Landing.CanStepAshore(motion, pound);
-            CanStepAboard = IsAshore && Landing.CanStepAboard(motion, walking.Position);
+            var isBesideTheHelm = IsAshore && Landing.CanStepAboard(motion, walking.Position);
+            var isLoose = moorer.IsLoose;
+            CanStepAboard = isBesideTheHelm && isLoose;
+            IsHeldAshoreByTheLine = isBesideTheHelm && !isLoose;
             if (!ShoreInput.IsSteppingAcross()) return;
             if (CanStepAshore) StepAshore();
             if (CanStepAboard) StepAboard();
@@ -67,7 +73,7 @@ namespace ShallowWater.Unity.Player
             var askew = figure.Root;
             askew.SetParent(deck, false);
             var helm = HullOutline.Helm;
-            askew.localPosition = new Vector3(Amidships, StandingInTheHatchMetres, (float)helm.Ahead);
+            askew.localPosition = new Vector3(StandingToPortMetres, (float)SparrowForm.HatchFloorMetres, (float)helm.Ahead);
             askew.localRotation = Quaternion.identity;
             figure.Pose(Gait.AtTheTiller());
             boat.TakeTheHelm();

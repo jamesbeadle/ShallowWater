@@ -13,6 +13,7 @@ namespace ShallowWater.Game.Pound
         private const double BackFromTheEdgeMetres = 0.3;
         private const double RadiusMetres = 0.12;
         private const double HeightMetres = 0.6;
+        public const double TopMetres = Heights.BankTopMetres + HeightMetres;
         private const int SidesOfEach = 8;
         private const int FirstBollard = 0;
         private const int SpacesBesideTheFirst = 1;
@@ -20,12 +21,22 @@ namespace ShallowWater.Game.Pound
 
         public static void StandAlong(SurfaceShapes surfaces, Pound pound, Stretch mooring)
         {
-            var top = Heights.BankTopMetres + HeightMetres;
-            foreach (var along in PlacesAlong(mooring.Span))
+            foreach (var centre in PlacesOn(pound, mooring))
             {
-                var footprint = FootprintAt(pound, along);
-                surfaces.AddSolid(Surface.Bollard, footprint, Heights.BankTopMetres, top);
+                var footprint = Footprints.Round(centre, RadiusMetres, SidesOfEach);
+                surfaces.AddSolid(Surface.Bollard, footprint, Heights.BankTopMetres, TopMetres);
             }
+        }
+
+        public static IReadOnlyList<GroundPoint> AlongThe(Pound pound)
+        {
+            var moorings = PoundStretches.Of(pound).Where(stretch => stretch.IsMooring);
+            return moorings.SelectMany(mooring => PlacesOn(pound, mooring)).ToList();
+        }
+
+        private static IEnumerable<GroundPoint> PlacesOn(Pound pound, Stretch mooring)
+        {
+            return PlacesAlong(mooring.Span).Select(along => CentreAt(pound, along));
         }
 
         private static IEnumerable<double> PlacesAlong(Span span)
@@ -35,11 +46,10 @@ namespace ShallowWater.Game.Pound
             return Enumerable.Range(FirstBollard, count).Select(index => first + index * SpacingMetres);
         }
 
-        private static GroundRing FootprintAt(Pound pound, double along)
+        private static GroundPoint CentreAt(Pound pound, double along)
         {
             var across = PoundLimits.TowpathSide * (pound.HalfWidth + BackFromTheEdgeMetres);
-            var centre = pound.GroundPointAt(new WaterPosition(along, across));
-            return Footprints.Round(centre, RadiusMetres, SidesOfEach);
+            return pound.GroundPointAt(new WaterPosition(along, across));
         }
     }
 }

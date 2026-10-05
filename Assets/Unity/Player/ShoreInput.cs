@@ -11,5 +11,12 @@ namespace ShallowWater.Unity.Player
             var gamepad = Gamepad.current;
             return Buttons.IsAnyPressedNow(keyboard?.eKey, gamepad?.buttonSouth);
         }
+
+        public static bool IsMooring()
+        {
+            var keyboard = Keyboard.current;
+            var gamepad = Gamepad.current;
+            return Buttons.IsAnyPressedNow(keyboard?.tKey, gamepad?.buttonNorth);
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace ShallowWater.Game.Boat
     public static class RoofFittings
     {
         private const double IntoTheRoofMetres = 1.74;
-        private static readonly GroundPoint SlidePlace = new GroundPoint(BoatSides.Amidships, -9.12);
+        private static readonly GroundPoint SlidePushedOpen = new GroundPoint(BoatSides.Amidships, -8.45);
         private const double SlideHalfLengthMetres = 0.4;
         private const double SlideHalfWidthMetres = 0.32;
         private const double SlideTopMetres = 1.9;
@@ -28,7 +28,7 @@ namespace ShallowWater.Game.Boat
 
         public static void Build(SurfaceShapes surfaces)
         {
-            Box(surfaces, SlidePlace, SlideHalfLengthMetres, SlideHalfWidthMetres, SlideTopMetres);
+            Box(surfaces, SlidePushedOpen, SlideHalfLengthMetres, SlideHalfWidthMetres, SlideTopMetres);
             Box(surfaces, PigeonBoxPlace, PigeonBoxHalfLengthMetres, PigeonBoxHalfWidthMetres, PigeonBoxTopMetres);
             var lidHalfLength = PigeonBoxHalfLengthMetres + LidOverhangMetres;
             var lid = Footprints.Oblong(PigeonBoxPlace, BoatSides.Ahead, lidHalfLength, PigeonBoxHalfWidthMetres + LidOverhangMetres);
