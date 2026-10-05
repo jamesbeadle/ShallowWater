@@ -4,6 +4,7 @@ namespace ShallowWater.Game.Boat
     {
         public const double LengthMetres = 21;
         public const double BeamMetres = 2.1;
+        public const double DraughtMetres = 0.6;
         public const double HalfLengthMetres = LengthMetres / 2;
     }
 }

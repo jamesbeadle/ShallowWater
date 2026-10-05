@@ -34,7 +34,7 @@ namespace ShallowWater.Unity.Helm
 
         private void Update()
         {
-            var work = Mathf.Abs(helm.ThrustShare);
+            var work = Mathf.Abs(helm.EngineTurns);
             water.volume = WaterVolume * Mathf.Abs(helm.SpeedShare);
             untilTheNextBeat -= Time.deltaTime;
             if (untilTheNextBeat > 0) return;
