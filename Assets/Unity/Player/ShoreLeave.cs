@@ -18,10 +18,12 @@ namespace ShallowWater.Unity.Player
         private WalkerController walking;
         private OrbitCamera view;
         private Transform deck;
+        private Moorer moorer;
 
         public bool IsAshore { get; private set; }
         public bool CanStepAshore { get; private set; }
         public bool CanStepAboard { get; private set; }
+        public bool IsHeldAshoreByTheLine { get; private set; }
 
         public void Crew(Pound water, Land ground, OrbitCamera camera)
         {
@@ -33,6 +35,8 @@ namespace ShallowWater.Unity.Player
             var askew = figure.Root;
             walking = askew.gameObject.AddComponent<WalkerController>();
             walking.Ready(ground, figure, camera);
+            moorer = gameObject.AddComponent<Moorer>();
+            moorer.Ready(figure, walking, ground, Bollards.AlongThe(water));
             StepAboard();
         }
 
@@ -41,7 +45,10 @@ namespace ShallowWater.Unity.Player
             if (boat == null) return;
             var motion = boat.Motion;
             CanStepAshore = !IsAshore && Landing.CanStepAshore(motion, pound);
-            CanStepAboard = IsAshore && Landing.CanStepAboard(motion, walking.Position);
+            var isBesideTheHelm = IsAshore && Landing.CanStepAboard(motion, walking.Position);
+            var isLoose = moorer.IsLoose;
+            CanStepAboard = isBesideTheHelm && isLoose;
+            IsHeldAshoreByTheLine = isBesideTheHelm && !isLoose;
             if (!ShoreInput.IsSteppingAcross()) return;
             if (CanStepAshore) StepAshore();
             if (CanStepAboard) StepAboard();

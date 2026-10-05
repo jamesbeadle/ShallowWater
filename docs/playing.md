@@ -28,11 +28,18 @@ The lever stays where it is put: full astern, half astern, stop, dead slow, half
 
 When she lies within a metre and a half of either bank and is barely moving, E steps Askew ashore beside the stern (`Landing`); the lever goes to stop and she lies where she is. Near the stern again, E steps him back into the hatch at the tiller.
 
+At the tiller he stands in the back cabin hatchway with the slide pushed open, the roof at his hips, his right hand on the tiller and his left on the slide (`Hatchway`, `TillerHold`).
+
+## Tying up
+
+Ashore, within a line's length (nine metres) of the stern, T ties her up (`TyingUp`). He goes to the nearest bollard if one is within two and a half metres, or knocks a mooring pin into the bank in front of him (`MooringPosts`, `MooringPin`), kneels and works the line on (`TyingPose`). The stern line runs from the dolly on the counter nearer him, with a sag (`SternLine`, `Dollies`). Once he starts she lies still against the line, the engine running down as it would. T at the post casts her off the same way. He cannot step aboard while she is made fast: the hint says to cast off first.
+
 | Control | Keyboard | Gamepad |
 | --- | --- | --- |
 | Walk | W A S D or arrows, relative to the camera | left stick |
 | Run | Shift | left stick press or right trigger |
 | Look round | right mouse drag, scroll to zoom | right stick |
 | Step aboard | E | south button |
+| Tie up, cast off | T | north button |
 
 `Land` knows where he can go: the canal, its arms and the Tame are water (`WaterLines`), houses and tree trunks are in the way (`Obstacles`), and the banks, towpath and woodland floor are at their own heights. `Walker` takes him up to a walk or a run and turns him to face his way, and `Gait` swings his thighs, shins, arms and forearms for the stride. He is built from shapes like everything else (`AskewShapes`).
