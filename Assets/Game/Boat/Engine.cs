@@ -10,25 +10,24 @@ namespace ShallowWater.Game.Boat
         private int direction = Ahead;
         private double stoppedFor;
 
-        public double Thrust { get; private set; }
-        public double ThrustShare => Thrust / BoatHandling.FullThrust;
+        public double Turns { get; private set; }
 
         public void Run(double seconds, ThrottleNotch notch)
         {
-            var wanted = BoatHandling.DragAt(BoatHandling.SpeedAt[notch]);
+            var wanted = BoatHandling.TurnsAt[notch];
             var isTheOtherWay = wanted * direction < 0;
             if (isTheOtherWay)
             {
                 Reverse(seconds, wanted);
                 return;
             }
-            Thrust = Eased(Thrust, wanted, seconds);
+            Turns = Eased(Turns, wanted, seconds);
         }
 
         private void Reverse(double seconds, double wanted)
         {
-            Thrust = Eased(Thrust, 0, seconds);
-            var hasStopped = Math.Abs(ThrustShare) < StoppedShare;
+            Turns = Eased(Turns, 0, seconds);
+            var hasStopped = Math.Abs(Turns) < StoppedShare;
             stoppedFor = hasStopped ? stoppedFor + seconds : 0;
             if (stoppedFor < BoatHandling.ReversingPauseSeconds) return;
             direction = Math.Sign(wanted);

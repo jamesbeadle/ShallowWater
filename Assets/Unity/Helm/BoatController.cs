@@ -18,6 +18,7 @@ namespace ShallowWater.Unity.Helm
         public ThrottleNotch Notch => throttle.Notch;
         public float RudderShare => Motion == null ? 0 : (float)Motion.Rudder;
         public float ThrustShare => Motion == null ? 0 : (float)Motion.ThrustShare;
+        public float EngineTurns => Motion == null ? 0 : (float)Motion.EngineTurns;
         public float SpeedShare => Motion == null ? 0 : (float)(Motion.SpeedMetresPerSecond / BoatHandling.TopSpeedMetresPerSecond);
         public float SwingRadiansPerSecond => Motion == null ? 0 : (float)Motion.SwingRadiansPerSecond;
 
@@ -51,7 +52,8 @@ namespace ShallowWater.Unity.Helm
 
         private void Steer(float seconds, double rudder)
         {
-            Motion.Advance(seconds, throttle.Notch, rudder);
+            var suction = BankSuction.On(Motion, pound);
+            Motion.Advance(seconds, throttle.Notch, rudder, suction);
             Banks.Keep(Motion, pound);
         }
 

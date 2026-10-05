@@ -13,6 +13,8 @@ namespace ShallowWater.Game.Boat
         private const double HelmAlongMetres = -9.2;
 
         public static readonly HullPoint Helm = new HullPoint(HelmAlongMetres, OnTheCentreline);
+        public static readonly HullPoint BowShoulder = new HullPoint(Shoulder, OnTheCentreline);
+        public static readonly HullPoint SternQuarter = new HullPoint(Quarter, OnTheCentreline);
 
         public static readonly IReadOnlyList<HullPoint> Points = new[]
         {
