@@ -33,18 +33,59 @@
   "maxFileLines": 100,
   "maxFunctionLines": 30,
   "fileLengthExemptGlobs": [],
-  "booleanPrefixes": ["is", "has", "should", "can", "was", "will", "must", "allows"],
+  "booleanPrefixes": [
+    "is",
+    "has",
+    "should",
+    "can",
+    "was",
+    "will",
+    "must",
+    "allows"
+  ],
   "bannedAbbreviations": [
-    "usr", "btn", "cfg", "tmp", "req", "res", "ctx", "idx", "err", "msg", "num", "val", "cnt", "arr", "obj2", "fn"
+    "usr",
+    "btn",
+    "cfg",
+    "tmp",
+    "req",
+    "res",
+    "ctx",
+    "idx",
+    "err",
+    "msg",
+    "num",
+    "val",
+    "cnt",
+    "arr",
+    "obj2",
+    "fn"
   ],
   "commentMarkers": {
-    "line": ["//", "#"],
-    "documentation": ["///", "/**", "*", "*/", "\"\"\"", "#!"],
+    "line": [
+      "//",
+      "#"
+    ],
+    "documentation": [
+      "///",
+      "/**",
+      "*",
+      "*/",
+      "\"\"\"",
+      "#!"
+    ],
     "markup": "<!--"
   },
   "duplication": {
     "minTokens": 70,
-    "ignoreGlobs": ["**/node_modules/**", "**/dist/**", "**/build/**", "**/bin/**", "**/obj/**", "**/vendor/**"]
+    "ignoreGlobs": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/bin/**",
+      "**/obj/**",
+      "**/vendor/**"
+    ]
   },
   "inventory": {
     "pagesGlob": "",
@@ -52,20 +93,37 @@
     "widgetMarkers": {}
   },
   "styleTokens": {
-    "markupGlobs": ["**/*.html", "**/*.css", "**/*.tsx", "**/*.jsx"],
+    "markupGlobs": [
+      "**/*.html",
+      "**/*.css",
+      "**/*.tsx",
+      "**/*.jsx"
+    ],
     "forbidInlineHexColours": true,
     "forbidInlineStyleAttributes": true
   },
   "prose": {
     "maxMemberChainDepth": 1,
-    "freeChainPrefixes": ["this.", "base.", "self.", "import.meta."],
+    "freeChainPrefixes": [
+      "this.",
+      "base.",
+      "self.",
+      "import.meta."
+    ],
     "maxLineLength": 160,
     "maxIndentDepth": 5,
     "indentWidth": 4,
-    "indentedFileGlobs": ["**/*"]
+    "indentedFileGlobs": [
+      "**/*"
+    ]
   },
   "frameworkHandlers": {
-    "namePatterns": ["^on[A-Z]", "^handle[A-Z]", "^On[A-Z]", "^Handle[A-Z]"],
+    "namePatterns": [
+      "^on[A-Z]",
+      "^handle[A-Z]",
+      "^On[A-Z]",
+      "^Handle[A-Z]"
+    ],
     "names": [],
     "coincidenceLines": 12
   },
@@ -75,24 +133,147 @@
   },
   "orphans": {
     "entryPointNames": [
-      "main", "Main", "load", "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD", "fallback",
-      "handle", "handleError", "handleFetch", "reroute", "init", "entries",
-      "Configure", "ConfigureServices", "Dispose", "DisposeAsync", "BuildRenderTree", "ShouldRender",
-      "OnInitialized", "OnInitializedAsync", "OnParametersSet", "OnParametersSetAsync",
-      "OnAfterRender", "OnAfterRenderAsync", "Handle", "Invoke", "InvokeAsync", "Execute", "ExecuteAsync",
-      "ToString", "Equals", "GetHashCode", "Up", "Down",
-      "Awake", "Start", "Update", "LateUpdate", "FixedUpdate", "OnEnable", "OnDisable", "OnDestroy", "OnGUI"
+      "main",
+      "Main",
+      "load",
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE",
+      "OPTIONS",
+      "HEAD",
+      "fallback",
+      "handle",
+      "handleError",
+      "handleFetch",
+      "reroute",
+      "init",
+      "entries",
+      "Configure",
+      "ConfigureServices",
+      "Dispose",
+      "DisposeAsync",
+      "BuildRenderTree",
+      "ShouldRender",
+      "OnInitialized",
+      "OnInitializedAsync",
+      "OnParametersSet",
+      "OnParametersSetAsync",
+      "OnAfterRender",
+      "OnAfterRenderAsync",
+      "Handle",
+      "Invoke",
+      "InvokeAsync",
+      "Execute",
+      "ExecuteAsync",
+      "ToString",
+      "Equals",
+      "GetHashCode",
+      "Up",
+      "Down",
+      "Awake",
+      "Start",
+      "Update",
+      "LateUpdate",
+      "FixedUpdate",
+      "OnEnable",
+      "OnDisable",
+      "OnDestroy",
+      "OnGUI"
     ]
   },
   "areas": [
-    {"name": "tests", "globs": ["**/*.test.*", "**/*.spec.*", "**/tests/**", "**/Tests/**", "**/*.Tests/**", "**/*Tests.cs"]},
-    {"name": "docs", "globs": ["**/*.md", "docs/**"]},
-    {"name": "tooling", "globs": ["tools/**", ".claude/**", "scripts/**"]},
-    {"name": "database", "globs": ["**/migrations/**", "**/Migrations/**", "**/*.sql"]},
-    {"name": "api", "globs": ["**/api/**", "**/Api/**", "**/controllers/**", "**/Controllers/**", "**/endpoints/**", "**/mcp/**"]},
-    {"name": "frontend", "globs": ["**/*.tsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.html", "**/*.css", "**/*.scss", "**/components/**", "public/**", "static/**"]},
-    {"name": "backend", "globs": ["**/*.ts", "**/*.js", "**/*.py", "**/*.cs", "**/*.go", "**/*.java", "**/*.kt", "**/*.swift", "**/*.rb", "**/*.php"]},
-    {"name": "infrastructure", "globs": [".github/**", "infra/**", "**/*.tf", "**/*.bicep", "**/Dockerfile*", "*.json", "*.yml", "*.yaml", "*.toml", ".*"]}
+    {
+      "name": "tests",
+      "globs": [
+        "**/*.test.*",
+        "**/*.spec.*",
+        "**/tests/**",
+        "**/Tests/**",
+        "**/*.Tests/**",
+        "**/*Tests.cs"
+      ]
+    },
+    {
+      "name": "docs",
+      "globs": [
+        "**/*.md",
+        "docs/**"
+      ]
+    },
+    {
+      "name": "tooling",
+      "globs": [
+        "tools/**",
+        ".claude/**",
+        "scripts/**"
+      ]
+    },
+    {
+      "name": "database",
+      "globs": [
+        "**/migrations/**",
+        "**/Migrations/**",
+        "**/*.sql"
+      ]
+    },
+    {
+      "name": "api",
+      "globs": [
+        "**/api/**",
+        "**/Api/**",
+        "**/controllers/**",
+        "**/Controllers/**",
+        "**/endpoints/**",
+        "**/mcp/**"
+      ]
+    },
+    {
+      "name": "frontend",
+      "globs": [
+        "**/*.tsx",
+        "**/*.jsx",
+        "**/*.vue",
+        "**/*.svelte",
+        "**/*.html",
+        "**/*.css",
+        "**/*.scss",
+        "**/components/**",
+        "public/**",
+        "static/**"
+      ]
+    },
+    {
+      "name": "backend",
+      "globs": [
+        "**/*.ts",
+        "**/*.js",
+        "**/*.py",
+        "**/*.cs",
+        "**/*.go",
+        "**/*.java",
+        "**/*.kt",
+        "**/*.swift",
+        "**/*.rb",
+        "**/*.php"
+      ]
+    },
+    {
+      "name": "infrastructure",
+      "globs": [
+        ".github/**",
+        "infra/**",
+        "**/*.tf",
+        "**/*.bicep",
+        "**/Dockerfile*",
+        "*.json",
+        "*.yml",
+        "*.yaml",
+        "*.toml",
+        ".*"
+      ]
+    }
   ],
   "designPatterns": {
     "entityGlobs": [],
@@ -102,13 +283,102 @@
     "acceptedGaps": []
   },
   "inputValidation": {
-    "schemaGlobs": ["**/migrations/**/*.sql", "**/Migrations/*.cs", "**/*.sql"],
-    "entryPointGlobs": ["**/routes/**", "**/api/**", "**/controllers/**", "**/Controllers/**", "**/handlers/**", "**/mcp/**", "**/Mcp/**", "**/*Controller.*", "**/*Handler.*", "**/*.server.*"],
-    "writePatterns": ["\\.from\\(\\s*['\\\"`](?P<table>\\w+)['\\\"`]\\s*\\)\\s*\\.(?:insert|update|upsert)\\(", "\\.(?P<table>\\w+)\\.(?:create|createMany|update|updateMany|upsert)\\(", "\\.(?P<table>\\w+)\\s*\\.\\s*(?:Add|AddRange|AddAsync|Attach)\\(", "insert\\s+into\\s+(?:\\w+\\.)?[\\\"`\\[]?(?P<table>\\w+)", "\\bupdate\\s+(?:\\w+\\.)?[\\\"`\\[]?(?P<table>\\w+)[\\\"`\\]]?\\s+set\\b"],
-    "validatorPatterns": ["\\bz\\.(?:object|string|number|enum|coerce)\\b", "\\byup\\.", "\\bJoi\\.", "\\.safeParse\\(", "\\bBaseModel\\b", "\\bconstr\\(", "AbstractValidator<", "\\bRuleFor\\(", "\\[(?:MaxLength|StringLength|Range|Required)\\b", "\\bvalidate[A-Z_]\\w*\\("],
+    "schemaGlobs": [
+      "**/migrations/**/*.sql",
+      "**/Migrations/*.cs",
+      "**/*.sql"
+    ],
+    "entryPointGlobs": [
+      "**/routes/**",
+      "**/api/**",
+      "**/controllers/**",
+      "**/Controllers/**",
+      "**/handlers/**",
+      "**/mcp/**",
+      "**/Mcp/**",
+      "**/*Controller.*",
+      "**/*Handler.*",
+      "**/*.server.*"
+    ],
+    "writePatterns": [
+      "\\.from\\(\\s*['\\\"`](?P<table>\\w+)['\\\"`]\\s*\\)\\s*\\.(?:insert|update|upsert)\\(",
+      "\\.(?P<table>\\w+)\\.(?:create|createMany|update|updateMany|upsert)\\(",
+      "\\.(?P<table>\\w+)\\s*\\.\\s*(?:Add|AddRange|AddAsync|Attach)\\(",
+      "insert\\s+into\\s+(?:\\w+\\.)?[\\\"`\\[]?(?P<table>\\w+)",
+      "\\bupdate\\s+(?:\\w+\\.)?[\\\"`\\[]?(?P<table>\\w+)[\\\"`\\]]?\\s+set\\b"
+    ],
+    "validatorPatterns": [
+      "\\bz\\.(?:object|string|number|enum|coerce)\\b",
+      "\\byup\\.",
+      "\\bJoi\\.",
+      "\\.safeParse\\(",
+      "\\bBaseModel\\b",
+      "\\bconstr\\(",
+      "AbstractValidator<",
+      "\\bRuleFor\\(",
+      "\\[(?:MaxLength|StringLength|Range|Required)\\b",
+      "\\bvalidate[A-Z_]\\w*\\("
+    ],
     "exemptGlobs": []
   },
   "score": {
     "elements": {}
+  },
+  "siteDefinition": {
+    "viewGlobs": [
+      "**/*.razor"
+    ],
+    "ignoredTags": [
+      "PageTitle",
+      "HeadContent"
+    ],
+    "catalogue": [],
+    "handRolled": [
+      {
+        "element": "table",
+        "ownedBy": "RecordsTable"
+      },
+      {
+        "element": "input",
+        "ownedBy": "FormField",
+        "unlessAttributes": [
+          "type=\"checkbox\"",
+          "type=\"radio\"",
+          "type=\"file\"",
+          "type=\"hidden\""
+        ]
+      },
+      {
+        "element": "select",
+        "ownedBy": "FormField"
+      },
+      {
+        "element": "textarea",
+        "ownedBy": "FormField"
+      },
+      {
+        "element": "h1",
+        "ownedBy": "PageHeader",
+        "unlessLayouts": [
+          "LandingLayout"
+        ]
+      },
+      {
+        "element": "h2",
+        "ownedBy": "SectionHeader"
+      },
+      {
+        "element": "h3",
+        "ownedBy": "SectionHeader"
+      }
+    ],
+    "horizontalClasses": [
+      "flex",
+      "inline-flex"
+    ],
+    "verticalClasses": [
+      "flex-col"
+    ],
+    "document": "tools/refactor/site-definition.md"
   }
 }
