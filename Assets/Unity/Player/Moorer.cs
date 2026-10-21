@@ -62,7 +62,7 @@ namespace ShallowWater.Unity.Player
             if (walking == null) return;
             var isWalkingHerAlong = mooring.IsLineInHand && !mooring.IsBusy;
             if (isWalkingHerAlong) holder.Hold(mooring);
-            lines.Show(mooring, boat.Motion, holder.Hand);
+            lines.Show(mooring, boat.Motion, holder.HeldEnd);
         }
 
         private void MakeFast(MooringLine line, GroundPoint feet)

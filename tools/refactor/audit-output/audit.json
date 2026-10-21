@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T19:02:12+00:00",
+  "generatedAt": "2026-10-21T19:19:47+00:00",
   "kitVersion": "1.26.0",
   "score": {
     "overall": 100.0,
@@ -329,9 +329,9 @@
       "looserLimits": 0
     },
     "fileAreas": {
-      "totalFiles": 1598,
-      "other": 678,
-      "backend": 488,
+      "totalFiles": 1642,
+      "other": 700,
+      "backend": 510,
       "docs": 299,
       "tooling": 107,
       "infrastructure": 16,
@@ -563,9 +563,9 @@
     "fileAreas": {
       "name": "fileAreas",
       "summary": {
-        "totalFiles": 1598,
-        "other": 678,
-        "backend": 488,
+        "totalFiles": 1642,
+        "other": 700,
+        "backend": 510,
         "docs": 299,
         "tooling": 107,
         "infrastructure": 16,
@@ -574,13 +574,13 @@
       "offenders": [
         {
           "area": "other",
-          "files": 678,
+          "files": 700,
           "sourceFiles": 0,
           "sourceLines": 0
         },
         {
           "area": "backend",
-          "files": 488,
+          "files": 510,
           "sourceFiles": 510,
           "sourceLines": 19480
         },
