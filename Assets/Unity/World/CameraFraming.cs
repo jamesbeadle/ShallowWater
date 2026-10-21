@@ -4,6 +4,7 @@ namespace ShallowWater.Unity.World
     {
         public static readonly CameraFraming AtTheHelm = new CameraFraming(16f, 2f, 14f, true);
         public static readonly CameraFraming Ashore = new CameraFraming(4.5f, 1.55f, 10f, false);
+        public static readonly CameraFraming Aiming = new CameraFraming(1.9f, 1.5f, 3f, false);
 
         public CameraFraming(float distanceMetres, float lookHeightMetres, float pitchDegrees, bool isTurnedWithTheTarget)
         {

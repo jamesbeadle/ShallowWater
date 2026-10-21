@@ -8,7 +8,7 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 
 | Look | Draws | Used for |
 | --- | --- | --- |
-| Weathered | colour, worn patches, grain and soot | grass, banks, dirt towpath, tar, gravel, timber, iron, the leaf litter under the woods, and on the boat the deck, cloths, roof, tarnished brass and ironwork |
+| Weathered | colour, worn patches, grain and soot | grass, banks, dirt towpath, tar, gravel, timber, iron, the leaf litter under the woods, and on the boat the deck, cloths, roof, tarnished brass and ironwork; at the farm the straw and thatch of the ricks, the farmer's tweed and corduroy, the rook rifle's walnut and blued steel, and the feathers, beaks and fur of the quarry |
 | Stone | laid stones with mortar between | coping, setts on the paved towpath, kerbs, flagstones |
 | Brick | Flemish bond in lime mortar with burnt headers, a blue-brick plinth, soot streaks and damp at the foot; limewash flaking off the brick with a tarred plinth; rubbed bricks on end for arches | house walls, gables, reveals, chimney stacks, window arches, the lock chamber |
 | Slate | lapped courses with moss and lichen near the eaves: Welsh slate, or the smaller cambered Staffordshire plain tiles | house roofs, outshuts, dormers and tile-hung dormer cheeks |

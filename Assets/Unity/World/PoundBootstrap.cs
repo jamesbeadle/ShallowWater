@@ -1,5 +1,6 @@
 using System.Linq;
 using ShallowWater.Game.Boat;
+using ShallowWater.Game.Farmyard;
 using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Map;
 using ShallowWater.Unity.Overlay;
@@ -33,10 +34,14 @@ namespace ShallowWater.Unity.World
             HuddlesfordPlanks.Drop(pound);
             GlascoteLock.CloseItsBottomGates(pound);
             FazeleyChain.Hang();
+            var yard = Farmyard.DunstallOn(pound);
+            var farm = DunstallFarm.Raise(yard);
+            var land = LandSurvey.Of(pound, trees, farm.Footings);
             var boat = SparrowModel.Launched(MooredAtHopwas(pound), pound);
             var camera = OrbitingCamera();
-            boat.AddComponent<ShoreLeave>().Crew(pound, LandSurvey.Of(pound, trees), camera);
+            boat.AddComponent<ShoreLeave>().Crew(pound, land, camera);
             var screen = OverlayScreen.Raise();
+            FarmBootstrap.Begin(boat, yard, farm, land, camera, screen);
             boat.AddComponent<Hud>().Shows(screen);
             boat.AddComponent<HudClock>().Reads(dayAndNight, screen);
             boat.AddComponent<Radar>().Over(periodMap, camera);

@@ -11,7 +11,7 @@ namespace ShallowWater.Unity.Player
     {
         private const double Halved = 2;
 
-        public static Land Of(Pound pound, IReadOnlyList<Tree> trees)
+        public static Land Of(Pound pound, IReadOnlyList<Tree> trees, IReadOnlyList<GroundRing> farmFootings)
         {
             var water = new WaterLines();
             water.Add(pound.Line, pound.HalfWidth);
@@ -20,6 +20,7 @@ namespace ShallowWater.Unity.Player
             var obstacles = new Obstacles();
             obstacles.AddFootprints(Buildings.Footings(MapAreas.ReadIfPresent(MapLayers.Buildings)));
             obstacles.AddTrunks(TreeTrunks.Standing(trees));
+            obstacles.AddFootprints(farmFootings);
             return new Land(pound, water, obstacles, MapAreas.ReadIfPresent(MapLayers.Woods));
         }
     }

@@ -12,16 +12,17 @@ namespace ShallowWater.Unity.Player
 
         private readonly Walker walker = new Walker(new GroundPoint(0, 0), 0);
         private Land land;
-        private AskewModel figure;
+        private FigureModel figure;
         private OrbitCamera view;
         private double phase;
 
         private const double ClosestToFaceMetres = 0.05;
+        private const double Still = 0;
 
         public GroundPoint Position => walker.Position;
         public double Bearing => walker.Bearing;
 
-        public void Ready(Land ground, AskewModel model, OrbitCamera camera)
+        public void Ready(Land ground, FigureModel model, OrbitCamera camera)
         {
             land = ground;
             figure = model;
@@ -40,6 +41,13 @@ namespace ShallowWater.Unity.Player
             var isUnderfoot = towards.Length < ClosestToFaceMetres;
             if (isUnderfoot) return;
             SetOff(walker.Position, towards.Bearing);
+        }
+
+        public void Stand()
+        {
+            walker.StandAt(walker.Position, walker.Bearing);
+            figure.Pose(Gait.At(Still, Still));
+            Place();
         }
 
         private void Update()

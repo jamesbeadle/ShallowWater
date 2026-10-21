@@ -13,12 +13,15 @@ namespace ShallowWater.Unity.Player
     {
         private BoatController boat;
         private Pound pound;
-        private AskewModel figure;
+        private FigureModel figure;
         private WalkerController walking;
         private OrbitCamera view;
         private Transform deck;
         private Moorer moorer;
 
+        public FigureModel Figure => figure;
+        public Transform Askew => figure.Root;
+        public WalkerController Walking => walking;
         public bool IsAshore { get; private set; }
         public bool CanStepAshore { get; private set; }
         public bool CanStepAboard { get; private set; }
@@ -30,7 +33,7 @@ namespace ShallowWater.Unity.Player
             view = camera;
             boat = GetComponent<BoatController>();
             deck = GetComponentInChildren<Riding>().transform;
-            figure = AskewModel.Made();
+            figure = FigureModel.Askew();
             var askew = figure.Root;
             walking = askew.gameObject.AddComponent<WalkerController>();
             walking.Ready(ground, figure, camera);

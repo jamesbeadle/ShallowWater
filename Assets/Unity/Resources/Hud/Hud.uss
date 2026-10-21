@@ -3,6 +3,9 @@
 @import url("ControlsPanel.uss");
 @import url("Telegraph.uss");
 @import url("Clock.uss");
+@import url("Speech.uss");
+@import url("Job.uss");
+@import url("Sight.uss");
 
 .hud-screen {
     --ink: #F3ECDD;

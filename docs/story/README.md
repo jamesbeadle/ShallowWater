@@ -11,6 +11,7 @@ This folder is the source of truth for the story of Shallow Water. Every game in
 | [the-long-story.md](the-long-story.md) | The story across the chapters, from the strike to the last boat |
 | [opening.md](opening.md) | The cold open, written as it plays |
 | [demo.md](demo.md) | *Locked*: the demo, mission by mission |
+| [rooks-and-rats.md](rooks-and-rats.md) | *Rooks and Rats*: the farm job that puts the first rifle in Askew's hands |
 | [game-1.md](game-1.md) | *The Grand Union*: Game 2, the junctions open, the order the map unlocks |
 | [systems.md](systems.md) | Heat on a linear canal, the boat, tone, art and sound references |
 

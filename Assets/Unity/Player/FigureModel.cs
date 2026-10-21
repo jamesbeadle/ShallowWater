@@ -1,28 +1,41 @@
+using System;
 using System.Collections.Generic;
 using ShallowWater.Game.People;
+using ShallowWater.Game.Shapes;
 using ShallowWater.Unity.Map;
 using UnityEngine;
 
 namespace ShallowWater.Unity.Player
 {
-    public sealed class AskewModel
+    public sealed class FigureModel
     {
-        private const string FigureName = "Askew";
+        private const string AskewName = "Askew";
+        private const string FarmerName = "Farmer";
         private readonly Dictionary<FigurePart, Transform> joints = new Dictionary<FigurePart, Transform>();
         private readonly Vector3 hips;
 
-        private AskewModel(Transform root)
+        private FigureModel(string name, Func<FigurePart, SurfaceShapes> shapes)
         {
-            Root = root;
-            foreach (FigurePart part in System.Enum.GetValues(typeof(FigurePart))) joints[part] = Jointed(part);
+            Root = new GameObject(name).transform;
+            foreach (FigurePart part in Enum.GetValues(typeof(FigurePart))) joints[part] = Jointed(name, part, shapes(part));
             hips = joints[FigurePart.Body].localPosition;
         }
 
         public Transform Root { get; }
 
-        public static AskewModel Made()
+        public static FigureModel Askew()
         {
-            return new AskewModel(new GameObject(FigureName).transform);
+            return new FigureModel(AskewName, AskewShapes.Of);
+        }
+
+        public static FigureModel Farmer()
+        {
+            return new FigureModel(FarmerName, FarmerShapes.Of);
+        }
+
+        public Transform JointOf(FigurePart part)
+        {
+            return joints[part];
         }
 
         public void Pose(GaitPose pose)
@@ -47,13 +60,13 @@ namespace ShallowWater.Unity.Player
             return swayedToTheRight * leantForward;
         }
 
-        private Transform Jointed(FigurePart part)
+        private Transform Jointed(string name, FigurePart part, SurfaceShapes shapes)
         {
             var joint = new GameObject(part.ToString()).transform;
             var hasParent = FigureJoints.Parents.TryGetValue(part, out var parent);
             joint.SetParent(hasParent ? joints[parent] : Root, false);
             joint.localPosition = WorldVectors.Of(FigureJoints.FromTheParent[part]);
-            foreach (var piece in ShapeMeshes.BuildEach(FigureName, AskewShapes.Of(part)))
+            foreach (var piece in ShapeMeshes.BuildEach(name, shapes))
             {
                 var placement = piece.transform;
                 placement.SetParent(joint, false);

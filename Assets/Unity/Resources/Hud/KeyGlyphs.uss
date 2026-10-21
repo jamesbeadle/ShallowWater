@@ -64,6 +64,11 @@
     border-top-right-radius: 10px;
 }
 
+.hud-mouse__button--left.hud-mouse__button--pressed {
+    border-top-right-radius: 0;
+    border-top-left-radius: 10px;
+}
+
 .hud-mouse__wheel {
     position: absolute;
     left: 8px;
