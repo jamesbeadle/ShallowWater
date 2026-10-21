@@ -3,6 +3,7 @@ using ShallowWater.Game.People;
 using ShallowWater.Game.Pound;
 using ShallowWater.Game.Walking;
 using ShallowWater.Unity.Helm;
+using ShallowWater.Unity.Map;
 using ShallowWater.Unity.World;
 using UnityEngine;
 
@@ -10,8 +11,6 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class ShoreLeave : MonoBehaviour
     {
-        private const float StandingToPortMetres = -0.15f;
-
         private BoatController boat;
         private Pound pound;
         private AskewModel figure;
@@ -44,6 +43,7 @@ namespace ShallowWater.Unity.Player
         {
             if (boat == null) return;
             var motion = boat.Motion;
+            if (!IsAshore) HoldTheTiller();
             CanStepAshore = !IsAshore && Landing.CanStepAshore(motion, pound);
             var isBesideTheHelm = IsAshore && Landing.CanStepAboard(motion, walking.Position);
             var isLoose = moorer.IsLoose;
@@ -72,13 +72,18 @@ namespace ShallowWater.Unity.Player
             walking.enabled = false;
             var askew = figure.Root;
             askew.SetParent(deck, false);
-            var helm = HullOutline.Helm;
-            askew.localPosition = new Vector3(StandingToPortMetres, (float)SparrowForm.HatchFloorMetres, (float)helm.Ahead);
+            askew.localPosition = WorldVectors.Of(HelmStance.Feet);
             askew.localRotation = Quaternion.identity;
-            figure.Pose(Gait.AtTheTiller());
             boat.TakeTheHelm();
+            HoldTheTiller();
             view.Follow(transform, CameraFraming.AtTheHelm);
             IsAshore = false;
+        }
+
+        private void HoldTheTiller()
+        {
+            var holding = TillerHold.At(boat.RudderShare);
+            figure.Pose(holding);
         }
     }
 }

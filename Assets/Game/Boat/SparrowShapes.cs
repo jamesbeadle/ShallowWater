@@ -13,7 +13,6 @@ namespace ShallowWater.Game.Boat
             RoofStowage.Build(surfaces);
             HoldShapes.Build(surfaces);
             ForeEnd.Build(surfaces);
-            SternGear.Build(surfaces);
             Dollies.Build(surfaces);
             return surfaces;
         }

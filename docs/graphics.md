@@ -71,7 +71,7 @@ Every look also shapes the light, not just the colour: mortar sits back from the
 - `Stovepipes`, `Chain`, `RoofStowage`, `RopeAndMop`: the stove chimney with its bands and chain, the exhaust, two Buckby cans, a coiled line and a mop
 - `HoldShapes`, `Sheeting`, `ClothStrings`: cloths sagging between their strings, the top plank and the mast
 - `ForeEnd`, `BowFender`: the deck board, headlamp, T-stud and bow fender
-- `SternGear`: the rudder, swan-neck tiller, Turk's heads and horse tail
+- `SternGear`: the rudder, swan-neck tiller, Turk's heads and horse tail, built about the rudder stock so that `TillerSwing` can turn the whole gear with the rudder as the boat is steered
 
 `Lathe` (turned shapes) and `Tube` (ropes, rails, links) in `Assets/Game/Shapes` build most of the fittings.
 
@@ -95,7 +95,7 @@ In the Unity layer, `WoodsRenderer` draws the woods for every camera that looks 
 
 ## Askew
 
-Askew is not a mesh from a file either. `AskewShapes` builds him part by part, one `FigurePart` to a joint, from the same lathes, tubes and balls as everything else, so he is drawn with the world's own looks and posed by turning each joint about its axis: `Gait` for walking and running, `TyingPose` for tying up and `TillerHold` at the helm. `AskewForm` holds his measurements. `AskewCoat` turns the double-breasted greatcoat with its collar up and two rows of horn buttons, `AskewScarf` wraps the scarf and hangs its tail down his chest, `AskewHead` shapes the skull, brow, nose, ears and eyes with stubble over the jaw and hair under the cap, `AskewCap` sits the flat cap on him with its peak, and `AskewLimbs`, `Hand` and `Boot` make the sleeves with their cuffs, the hands, the trousers and the boots. The looks are `PeopleLooks` over `PeoplePalette`: sooted cloth for the coat, trousers and cap, a weathered complexion, a faded oxblood scarf. A part turn of a lathe (`Lathe.TurnedThrough`) is what lets the collar open at the front, the stubble stop at the ears and the hair stay at the back.
+Askew is not a mesh from a file either. `AskewShapes` builds him part by part, one `FigurePart` to a joint, from the same lathes, tubes and balls as everything else, so he is drawn with the world's own looks and posed by turning each joint about its axis: `Gait` for walking and running, `TyingPose` for tying up and `TillerHold` at the helm, where `HelmStance` steps, sways and dips him towards the tiller as it swings and `ArmReach` bends his right arm so the hand stays on the handle. `AskewForm` holds his measurements. `AskewCoat` turns the double-breasted greatcoat with its collar up and two rows of horn buttons, `AskewScarf` wraps the scarf and hangs its tail down his chest, `AskewHead` shapes the skull, brow, nose, ears and eyes with stubble over the jaw and hair under the cap, `AskewCap` sits the flat cap on him with its peak, and `AskewLimbs`, `Hand` and `Boot` make the sleeves with their cuffs, the hands, the trousers and the boots. The looks are `PeopleLooks` over `PeoplePalette`: sooted cloth for the coat, trousers and cap, a weathered complexion, a faded oxblood scarf. A part turn of a lathe (`Lathe.TurnedThrough`) is what lets the collar open at the front, the stubble stop at the ears and the hair stay at the back.
 
 ## Where a point sits on its surface
 

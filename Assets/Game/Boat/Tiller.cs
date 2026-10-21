@@ -6,6 +6,11 @@ namespace ShallowWater.Game.Boat
     {
         public double Rudder { get; private set; }
 
+        public static double TurnedRadians(double rudder)
+        {
+            return -rudder * RudderForce.HardOverRadians;
+        }
+
         public void Put(double seconds, double wanted)
         {
             var swing = BoatHandling.TillerSwingPerSecond * seconds;

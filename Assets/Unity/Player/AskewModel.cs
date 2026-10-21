@@ -27,10 +27,24 @@ namespace ShallowWater.Unity.Player
 
         public void Pose(GaitPose pose)
         {
-            foreach (var swing in pose.SwingRadians) joints[swing.Key].localRotation = Quaternion.Euler(-(float)swing.Value * Mathf.Rad2Deg, 0, 0);
+            foreach (var swing in pose.SwingRadians) joints[swing.Key].localRotation = Hanging(swing.Value, pose.ReachOf(swing.Key));
             var body = joints[FigurePart.Body];
-            body.localPosition = hips + Vector3.up * (float)pose.BobMetres;
-            body.localRotation = Quaternion.Euler((float)pose.LeanRadians * Mathf.Rad2Deg, 0, 0);
+            body.localPosition = hips + Vector3.up * (float)pose.BobMetres + Vector3.right * (float)pose.StepAcrossMetres;
+            body.localRotation = Standing(pose.LeanRadians, pose.SwayRadians);
+        }
+
+        private static Quaternion Hanging(double swingRadians, double reachRadians)
+        {
+            var swungForward = Quaternion.AngleAxis(-(float)swingRadians * Mathf.Rad2Deg, Vector3.right);
+            var reachedToTheRight = Quaternion.AngleAxis((float)reachRadians * Mathf.Rad2Deg, Vector3.forward);
+            return reachedToTheRight * swungForward;
+        }
+
+        private static Quaternion Standing(double leanRadians, double swayRadians)
+        {
+            var leantForward = Quaternion.AngleAxis((float)leanRadians * Mathf.Rad2Deg, Vector3.right);
+            var swayedToTheRight = Quaternion.AngleAxis(-(float)swayRadians * Mathf.Rad2Deg, Vector3.forward);
+            return swayedToTheRight * leantForward;
         }
 
         private Transform Jointed(FigurePart part)
