@@ -10,29 +10,38 @@ namespace ShallowWater.Game.Shapes
         public static Shape Turned(WorldPoint foot, IReadOnlyList<ProfilePoint> profile, int sides)
         {
             var turned = new Shape();
-            foreach (var point in profile) AddRing(turned, foot, point, sides);
-            for (var ring = 0; ring + 1 < profile.Count; ring++) JoinRings(turned, ring * sides, sides);
+            foreach (var point in profile) AddRing(turned, foot, point, sides, 0, FullTurnRadians, sides);
+            for (var ring = 0; ring + 1 < profile.Count; ring++) JoinRings(turned, ring * sides, sides, sides);
             return turned;
         }
 
-        private static void AddRing(Shape turned, WorldPoint foot, ProfilePoint point, int sides)
+        public static Shape TurnedThrough(WorldPoint foot, IReadOnlyList<ProfilePoint> profile, int sides, double fromRadians, double toRadians)
         {
-            for (var side = 0; side < sides; side++)
+            var turned = new Shape();
+            var pointsPerRing = sides + 1;
+            foreach (var point in profile) AddRing(turned, foot, point, sides, fromRadians, toRadians - fromRadians, pointsPerRing);
+            for (var ring = 0; ring + 1 < profile.Count; ring++) JoinRings(turned, ring * pointsPerRing, sides, pointsPerRing);
+            return turned;
+        }
+
+        private static void AddRing(Shape turned, WorldPoint foot, ProfilePoint point, int sides, double fromRadians, double sweepRadians, int pointsPerRing)
+        {
+            for (var side = 0; side < pointsPerRing; side++)
             {
-                var around = FullTurnRadians * side / sides;
+                var around = fromRadians + sweepRadians * side / sides;
                 var radius = point.RadiusMetres;
                 var place = new WorldPoint(foot.East + radius * Math.Cos(around), foot.Height + point.HeightMetres, foot.North + radius * Math.Sin(around));
                 turned.Add(place, new SurfacePlace(around * radius, point.HeightMetres));
             }
         }
 
-        private static void JoinRings(Shape turned, int firstOfTheRing, int sides)
+        private static void JoinRings(Shape turned, int firstOfTheRing, int sides, int pointsPerRing)
         {
             for (var side = 0; side < sides; side++)
             {
                 var here = firstOfTheRing + side;
-                var next = firstOfTheRing + (side + 1) % sides;
-                turned.AddQuad(here, next, here + sides, next + sides);
+                var next = firstOfTheRing + (side + 1) % pointsPerRing;
+                turned.AddQuad(here, next, here + pointsPerRing, next + pointsPerRing);
             }
         }
     }
