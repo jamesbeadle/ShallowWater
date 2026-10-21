@@ -23,7 +23,7 @@ namespace ShallowWater.Unity.Player
             boat = helm;
         }
 
-        public WorldPoint Hand { get; private set; }
+        public WorldPoint HeldEnd { get; private set; }
 
         public void Hold(Mooring mooring)
         {
@@ -35,9 +35,9 @@ namespace ShallowWater.Unity.Player
             var studFromTheFeet = FeetFrame.Of(feet, walking.Bearing, CentreLine.StudOn(boat.Motion));
             figure.Pose(LineInHand.Holding(walking.Stride, studFromTheFeet));
             var wrist = figure.JointOf(LineInHand.ForearmFor(studFromTheFeet));
-            Hand = WorldVectors.PointOf(wrist.TransformPoint(InTheHand));
+            HeldEnd = WorldVectors.PointOf(wrist.TransformPoint(InTheHand));
             var held = mooring.Hand;
-            held.MoveTo(new GroundPoint(Hand.East, Hand.North), Time.deltaTime);
+            held.MoveTo(new GroundPoint(HeldEnd.East, HeldEnd.North), Time.deltaTime);
         }
     }
 }
