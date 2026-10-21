@@ -35,19 +35,6 @@ namespace ShallowWater.Game.People
             return new GaitPose(swings, Stride.Bob(phaseRadians, run) * going, Stride.Lean(run) * going);
         }
 
-        public static GaitPose AtTheTiller()
-        {
-            var swings = new Dictionary<FigurePart, double>
-            {
-                { FigurePart.Body, 0 }, { FigurePart.Head, 0 },
-                { FigurePart.LeftThigh, 0 }, { FigurePart.RightThigh, 0 },
-                { FigurePart.LeftShin, -Stride.StandingKnee }, { FigurePart.RightShin, -Stride.StandingKnee },
-                { FigurePart.LeftUpperArm, TillerHold.SlideArm }, { FigurePart.RightUpperArm, TillerHold.SteeringArm },
-                { FigurePart.LeftForearm, TillerHold.SlideForearm }, { FigurePart.RightForearm, TillerHold.SteeringForearm }
-            };
-            return new GaitPose(swings, 0, 0);
-        }
-
         private static double RunShare(double speedMetresPerSecond)
         {
             var share = (speedMetresPerSecond - WalkingPace.WalkMetresPerSecond) / (WalkingPace.RunMetresPerSecond - WalkingPace.WalkMetresPerSecond);
