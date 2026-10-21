@@ -16,7 +16,7 @@ namespace ShallowWater.Unity.Player
         private readonly MooringGear gear = new MooringGear();
         private BoatController boat;
         private ShoreLeave shore;
-        private AskewModel figure;
+        private FigureModel figure;
         private WalkerController walking;
         private Land land;
         private IReadOnlyList<GroundPoint> bollards;
@@ -27,7 +27,7 @@ namespace ShallowWater.Unity.Player
         public bool CanTieUp { get; private set; }
         public bool CanCastOff { get; private set; }
 
-        public void Ready(AskewModel model, WalkerController walker, Land ground, IReadOnlyList<GroundPoint> bollardPlaces)
+        public void Ready(FigureModel model, WalkerController walker, Land ground, IReadOnlyList<GroundPoint> bollardPlaces)
         {
             boat = GetComponent<BoatController>();
             shore = GetComponent<ShoreLeave>();

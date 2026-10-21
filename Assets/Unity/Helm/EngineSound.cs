@@ -1,12 +1,12 @@
 using ShallowWater.Game.Sound;
+using ShallowWater.Unity.Sound;
 using UnityEngine;
 
 namespace ShallowWater.Unity.Helm
 {
     public sealed class EngineSound : MonoBehaviour
     {
-        private const int SamplesPerSecond = 22050;
-        private const int Mono = 1;
+        private const int SamplesPerSecond = Clips.SamplesPerSecond;
         private const float TickoverBeatsPerSecond = 1f;
         private const float FullBeatsPerSecond = 2.4f;
         private const float QuietestBeat = 0.6f;
@@ -24,10 +24,10 @@ namespace ShallowWater.Unity.Helm
         private void Start()
         {
             helm = GetComponent<BoatController>();
-            beat = Clip("Bolinder beat", BolinderBeat.Samples(SamplesPerSecond));
+            beat = Clips.Of("Bolinder beat", BolinderBeat.Samples(SamplesPerSecond));
             beats = Source();
             water = Source();
-            water.clip = Clip("Water at the bow", WaterHush.Samples(SamplesPerSecond));
+            water.clip = Clips.Of("Water at the bow", WaterHush.Samples(SamplesPerSecond));
             water.loop = true;
             water.Play();
         }
@@ -50,13 +50,6 @@ namespace ShallowWater.Unity.Helm
             source.maxDistance = HeardToMetres;
             source.playOnAwake = false;
             return source;
-        }
-
-        private static AudioClip Clip(string name, float[] samples)
-        {
-            var clip = AudioClip.Create(name, samples.Length, Mono, SamplesPerSecond, false);
-            clip.SetData(samples, 0);
-            return clip;
         }
     }
 }

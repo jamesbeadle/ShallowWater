@@ -86,7 +86,7 @@ namespace ShallowWater.Unity.Looks
         {
             var isKnown = BySurface.TryGetValue(surface, out var look);
             if (isKnown) return look();
-            return CropLooks.Made(surface);
+            return FarmLooks.Made(surface);
         }
     }
 }

@@ -35,11 +35,11 @@ namespace ShallowWater.Game.People
             new WorldPoint(0, 0.4, 0.168), new WorldPoint(0, 0.28, 0.156), new WorldPoint(0, 0.16, 0.143), new WorldPoint(0, 0.04, 0.146)
         };
 
-        public static void Dress(SurfaceShapes torso)
+        public static void Dress(SurfaceShapes torso, Surface coat)
         {
-            torso.Add(Surface.Coat, Scaled.Of(Lathe.Turned(Hips, Coat, AskewForm.RoundSides), BodyShape));
+            torso.Add(coat, Scaled.Of(Lathe.Turned(Hips, Coat, AskewForm.RoundSides), BodyShape));
             torso.Add(Surface.Shirt, Lathe.Turned(Hips, Shirt, AskewForm.LimbSides));
-            torso.Add(Surface.Coat, Lathe.TurnedThrough(Hips, Collar, AskewForm.RoundSides, FaceForward + CollarOpeningRadians, FaceForward + 2 * Math.PI - CollarOpeningRadians));
+            torso.Add(coat, Lathe.TurnedThrough(Hips, Collar, AskewForm.RoundSides, FaceForward + CollarOpeningRadians, FaceForward + 2 * Math.PI - CollarOpeningRadians));
             Button(torso);
         }
 

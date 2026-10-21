@@ -6,6 +6,7 @@ namespace ShallowWater.Unity.Overlay
 {
     public static class KeyGlyphs
     {
+        public const string LeftMouse = "Left mouse";
         public const string RightMouse = "Right mouse";
         public const string Wheel = "Wheel";
         private const char Between = '|';
@@ -18,6 +19,7 @@ namespace ShallowWater.Unity.Overlay
 
         private static readonly Dictionary<string, Func<VisualElement>> MouseGlyphs = new Dictionary<string, Func<VisualElement>>
         {
+            { LeftMouse, MouseGlyph.Firing },
             { RightMouse, MouseGlyph.Looking },
             { Wheel, MouseGlyph.Zooming }
         };

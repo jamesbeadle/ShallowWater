@@ -14,7 +14,9 @@ namespace ShallowWater.Unity.Player
         public static readonly HudPrompt[] Ashore =
         {
             new HudPrompt("W|A|S|D", "Walk"), new HudPrompt("Shift", "Run"), new HudPrompt("E", "Step aboard, by the stern"),
-            new HudPrompt("T", "Tie up or cast off"), new HudPrompt("M", "The 1900 map"),
+            new HudPrompt("T", "Tie up or cast off"), new HudPrompt("E", "Talk, by the farmer"),
+            new HudPrompt(KeyGlyphs.RightMouse, "Shoulder the rifle, held"), new HudPrompt(KeyGlyphs.LeftMouse, "Fire, shouldered"),
+            new HudPrompt("M", "The 1900 map"),
             new HudPrompt(KeyGlyphs.RightMouse, "Look round"), new HudPrompt(KeyGlyphs.Wheel, "Zoom"),
         };
 

@@ -85,6 +85,16 @@ namespace ShallowWater.Game.Shapes
         TarredRope,
         Can,
         LampGlass,
-        HorseTail
+        HorseTail,
+        Tweed,
+        Corduroy,
+        Straw,
+        Thatch,
+        Feathers,
+        WhiteFeathers,
+        Beak,
+        Fur,
+        GunStock,
+        GunMetal
     }
 }

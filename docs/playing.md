@@ -42,7 +42,14 @@ Ashore, within a line's length (nine metres) of the stern, T ties her up (`Tying
 | Look round | right mouse drag, scroll to zoom | right stick |
 | Step aboard | E | south button |
 | Tie up, cast off | T | north button |
+| Talk, by the farmer | E | south button |
+| Shoulder the rifle, once he has it | hold the right mouse button | hold the left trigger |
+| Fire, shouldered | left mouse button | right trigger |
 | Show or hide the controls | H, or click the **H Controls** hint at the top left | select (view) button |
+
+## The farm job
+
+Dunstall Farm stands on the west bank 1,750 metres south of Hopwas bridge (`Farmyard`): a fenced stackyard with two hayricks and a muck heap, its gate towards the water, and the farmer inside it. Within a few yards of him E starts the talk (`Talker`, `Conversation`); his words come up on a card at the bottom of the screen and E takes them a line at a time. The talk ends with a rook rifle in Askew's hand (`FarmRifleMission`, `RookRifle`), carried at the trail and stowed when he steps aboard. Holding the right mouse button shoulders it (`Marksman`, `AimingPose`): the camera closes in, a ring marks the aim, and the left button fires one shot before the bolt is worked. The quarry (`Flock`, `Roaming`) sit on the posts and ricks and run between the rick feet; a hit lays them in the yard. The card at the top counts the cull, and when the last one is down the farmer keeps his word: the rifle is Askew's and a pub lead goes on the card. The story of the job is in `docs/story/rooks-and-rats.md`.
 
 `Land` knows where he can go: the canal, its arms and the Tame are water (`WaterLines`), houses and tree trunks are in the way (`Obstacles`), and the banks, towpath and woodland floor are at their own heights. `Walker` takes him up to a walk or a run and turns him to face his way, and `Gait` swings his thighs, shins, arms and forearms for the stride. He is built from shapes like everything else (`AskewShapes`).
 

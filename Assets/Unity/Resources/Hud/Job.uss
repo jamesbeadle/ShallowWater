@@ -1,0 +1,27 @@
+.hud-job-row {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    align-items: center;
+}
+
+.hud-glass.hud-job {
+    padding: 8px 20px 10px 20px;
+    align-items: center;
+    transition-property: opacity, translate;
+    transition-duration: 0.2s, 0.2s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+}
+
+.hud-job--hidden {
+    opacity: 0;
+    translate: 0 -12px;
+}
+
+.hud-text.hud-job__words {
+    margin-top: 4px;
+    font-size: 20px;
+    color: var(--brass);
+    -unity-font-definition: url("Fonts/Cabin-Medium.ttf");
+}

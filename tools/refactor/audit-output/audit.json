@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-09-25T17:16:31+00:00",
-  "kitVersion": "1.12.0",
+  "generatedAt": "2026-10-21T14:07:31+00:00",
+  "kitVersion": "1.26.0",
   "score": {
-    "overall": 84.8,
+    "overall": 100.0,
     "groups": [
       {
         "group": "Standard baseline checks",
-        "score": 95.5,
-        "weight": 36
+        "score": 100.0,
+        "weight": 52
       },
       {
         "group": "Design pattern file count",
-        "score": null,
-        "weight": 0
+        "score": 100.0,
+        "weight": 10
       },
       {
         "group": "Prose",
-        "score": 57.1,
-        "weight": 14
+        "score": 100.0,
+        "weight": 20
       },
       {
         "group": "Widget adoption",
@@ -40,7 +40,7 @@
         "unit": "files",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 3,
+        "measuredAgainst": 511,
         "score": 100.0
       },
       {
@@ -62,9 +62,10 @@
         "weight": 8,
         "zeroAt": 0.25,
         "unit": "functions",
-        "isMeasured": false,
+        "isMeasured": true,
         "offenders": 0,
-        "score": null
+        "measuredAgainst": 1258,
+        "score": 100.0
       },
       {
         "key": "elseBlocks",
@@ -75,7 +76,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 12,
+        "measuredAgainst": 296,
         "score": 100.0
       },
       {
@@ -98,7 +99,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 0.17,
+        "measuredAgainst": 19.88,
         "score": 100.0
       },
       {
@@ -110,7 +111,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 0.17,
+        "measuredAgainst": 19.88,
         "score": 100.0
       },
       {
@@ -120,9 +121,10 @@
         "weight": 4,
         "zeroAt": 0.1,
         "unit": "components and functions",
-        "isMeasured": false,
+        "isMeasured": true,
         "offenders": 0,
-        "score": null
+        "measuredAgainst": 1258,
+        "score": 100.0
       },
       {
         "key": "memberChains",
@@ -133,7 +135,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 0.17,
+        "measuredAgainst": 19.88,
         "score": 100.0
       },
       {
@@ -144,9 +146,9 @@
         "zeroAt": 30,
         "unit": "thousand lines",
         "isMeasured": true,
-        "offenders": 2,
-        "measuredAgainst": 0.17,
-        "score": 59.8
+        "offenders": 0,
+        "measuredAgainst": 19.88,
+        "score": 100.0
       },
       {
         "key": "functionNames",
@@ -155,9 +157,10 @@
         "weight": 4,
         "zeroAt": 0.1,
         "unit": "functions",
-        "isMeasured": false,
+        "isMeasured": true,
         "offenders": 0,
-        "score": null
+        "measuredAgainst": 1258,
+        "score": 100.0
       },
       {
         "key": "predictedFiles",
@@ -166,9 +169,10 @@
         "weight": 10,
         "zeroAt": 0.5,
         "unit": "predicted files",
-        "isMeasured": false,
+        "isMeasured": true,
         "offenders": 0,
-        "score": null
+        "measuredAgainst": 4,
+        "score": 100.0
       },
       {
         "key": "entityFileCounts",
@@ -190,7 +194,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 12,
+        "measuredAgainst": 296,
         "score": 100.0
       },
       {
@@ -201,9 +205,9 @@
         "zeroAt": 0.25,
         "unit": "branches",
         "isMeasured": true,
-        "offenders": 4,
-        "measuredAgainst": 12,
-        "score": 0.0
+        "offenders": 0,
+        "measuredAgainst": 296,
+        "score": 100.0
       },
       {
         "key": "gluedAccessors",
@@ -212,9 +216,10 @@
         "weight": 6,
         "zeroAt": 0.1,
         "unit": "functions",
-        "isMeasured": false,
+        "isMeasured": true,
         "offenders": 0,
-        "score": null
+        "measuredAgainst": 1258,
+        "score": 100.0
       },
       {
         "key": "handRolledWidgets",
@@ -244,17 +249,17 @@
     "fileLength": {
       "limit": 100,
       "filesOverLimit": 0,
-      "totalFiles": 3,
-      "totalLines": 166,
+      "totalFiles": 511,
+      "totalLines": 19877,
       "worstFileLines": 0,
       "worstFileTimesOverLimit": 0.0
     },
     "functionShape": {
       "limit": 30,
       "functionsOverLimit": 0,
-      "totalFunctions": 0,
+      "totalFunctions": 1258,
       "elseBlocks": 0,
-      "ifBlocks": 12,
+      "ifBlocks": 296,
       "measurementIsHeuristic": true
     },
     "functionNames": {
@@ -267,11 +272,12 @@
       "measurementIsHeuristic": true
     },
     "duplication": {
-      "skipped": "jscpd is not installed (npm install -g jscpd)"
+      "skipped": "jscpd is not installed (npm install -g jscpd)",
+      "carriedFromBaseline": true
     },
     "naming": {
       "bannedAbbreviationHits": 0,
-      "unprefixedBooleans": 0
+      "unprefixedBooleans": 3
     },
     "comments": {
       "explanatoryCommentLines": 0,
@@ -285,22 +291,22 @@
     },
     "prose": {
       "longMemberChainLines": 0,
-      "deeplyIndentedLines": 2,
-      "overlongLines": 0,
+      "deeplyIndentedLines": 0,
+      "overlongLines": 7,
       "measurementIsHeuristic": true
     },
     "conditions": {
       "tangledConditionLines": 0,
-      "literalComparisonLines": 4,
+      "literalComparisonLines": 0,
       "measurementIsHeuristic": true
     },
     "orphans": {
       "orphanFunctions": 0,
-      "functionsExamined": 0
+      "functionsExamined": 1258
     },
     "designPatterns": {
-      "roleFamilies": 0,
-      "predictedFiles": 0,
+      "roleFamilies": 15,
+      "predictedFiles": 4,
       "predictedFilesMissing": 0,
       "entities": 0,
       "entitiesOutOfRange": 0,
@@ -323,9 +329,13 @@
       "looserLimits": 0
     },
     "fileAreas": {
-      "totalFiles": 8,
-      "docs": 5,
-      "infrastructure": 3
+      "totalFiles": 1500,
+      "other": 624,
+      "backend": 445,
+      "docs": 298,
+      "tooling": 107,
+      "infrastructure": 16,
+      "tests": 10
     }
   },
   "details": {
@@ -334,8 +344,8 @@
       "summary": {
         "limit": 100,
         "filesOverLimit": 0,
-        "totalFiles": 3,
-        "totalLines": 166,
+        "totalFiles": 511,
+        "totalLines": 19877,
         "worstFileLines": 0,
         "worstFileTimesOverLimit": 0.0
       },
@@ -346,9 +356,9 @@
       "summary": {
         "limit": 30,
         "functionsOverLimit": 0,
-        "totalFunctions": 0,
+        "totalFunctions": 1258,
         "elseBlocks": 0,
-        "ifBlocks": 12,
+        "ifBlocks": 296,
         "measurementIsHeuristic": true
       },
       "offenders": []
@@ -374,11 +384,27 @@
       "name": "naming",
       "summary": {
         "bannedAbbreviationHits": 0,
-        "unprefixedBooleans": 0
+        "unprefixedBooleans": 3
       },
       "offenders": {
         "abbreviations": [],
-        "booleans": []
+        "booleans": [
+          {
+            "file": "Assets/Game/Houses/GeorgianHouse.cs",
+            "line": 24,
+            "name": "StandsAlone"
+          },
+          {
+            "file": "Assets/Game/Houses/HouseStyle.cs",
+            "line": 18,
+            "name": "StandsAlone"
+          },
+          {
+            "file": "Assets/Game/Houses/RunLayout.cs",
+            "line": 21,
+            "name": "StandsAlone"
+          }
+        ]
       }
     },
     "comments": {
@@ -407,75 +433,100 @@
       "name": "prose",
       "summary": {
         "longMemberChainLines": 0,
-        "deeplyIndentedLines": 2,
-        "overlongLines": 0,
+        "deeplyIndentedLines": 0,
+        "overlongLines": 7,
         "measurementIsHeuristic": true
       },
       "offenders": {
         "memberChains": [],
-        "deepIndentation": [
+        "deepIndentation": [],
+        "overlongLines": [
           {
-            "file": "tools/mcp/run_process.py",
-            "line": 17
+            "file": "Assets/Game/People/AskewCoat.cs",
+            "line": 42
           },
           {
-            "file": "tools/mcp/server.py",
-            "line": 66
+            "file": "Assets/Game/People/AskewCoat.cs",
+            "line": 50
+          },
+          {
+            "file": "Assets/Game/People/AskewCoat.cs",
+            "line": 51
+          },
+          {
+            "file": "Assets/Game/People/AskewHead.cs",
+            "line": 47
+          },
+          {
+            "file": "Assets/Game/People/AskewHead.cs",
+            "line": 48
+          },
+          {
+            "file": "Assets/Game/People/HelmStance.cs",
+            "line": 19
+          },
+          {
+            "file": "Assets/Game/People/HelmStance.cs",
+            "line": 23
           }
-        ],
-        "overlongLines": []
+        ]
       }
     },
     "conditions": {
       "name": "conditions",
       "summary": {
         "tangledConditionLines": 0,
-        "literalComparisonLines": 4,
+        "literalComparisonLines": 0,
         "measurementIsHeuristic": true
       },
       "offenders": {
         "tangled": [],
-        "literalComparisons": [
-          {
-            "file": "tools/mcp/server.py",
-            "line": 64
-          },
-          {
-            "file": "tools/mcp/server.py",
-            "line": 68
-          },
-          {
-            "file": "tools/mcp/server.py",
-            "line": 71
-          },
-          {
-            "file": "tools/mcp/server.py",
-            "line": 86
-          }
-        ]
+        "literalComparisons": []
       }
     },
     "orphans": {
       "name": "orphans",
       "summary": {
         "orphanFunctions": 0,
-        "functionsExamined": 0
+        "functionsExamined": 1258
       },
       "offenders": []
     },
     "designPatterns": {
       "name": "designPatterns",
       "summary": {
-        "roleFamilies": 0,
-        "predictedFiles": 0,
+        "roleFamilies": 15,
+        "predictedFiles": 4,
         "predictedFilesMissing": 0,
         "entities": 0,
         "entitiesOutOfRange": 0,
         "measurementIsHeuristic": true
       },
       "offenders": {
-        "roleFamilies": {},
-        "patterns": [],
+        "roleFamilies": {
+          "form": 4,
+          "habits": 6,
+          "input": 6,
+          "kind": 4,
+          "layer": 8,
+          "line": 5,
+          "lines": 6,
+          "look": 18,
+          "looks": 4,
+          "outline": 4,
+          "palette": 11,
+          "point": 5,
+          "roof": 4,
+          "section": 4,
+          "shapes": 22
+        },
+        "patterns": [
+          {
+            "pattern": "every looks has a palette",
+            "predicted": 4,
+            "missing": []
+          }
+        ],
         "missingPredictedFiles": [],
         "entityFileCounts": []
       }
@@ -500,26 +551,55 @@
         "skipped": "no siteDefinition catalogue in rules.json"
       },
       "offenders": {
-        "handRolled": []
+        "handRolled": [],
+        "boxedWidgets": []
       }
     },
     "fileAreas": {
       "name": "fileAreas",
       "summary": {
-        "totalFiles": 8,
-        "docs": 5,
-        "infrastructure": 3
+        "totalFiles": 1500,
+        "other": 624,
+        "backend": 445,
+        "docs": 298,
+        "tooling": 107,
+        "infrastructure": 16,
+        "tests": 10
       },
       "offenders": [
         {
-          "area": "docs",
-          "files": 5,
+          "area": "other",
+          "files": 624,
           "sourceFiles": 0,
           "sourceLines": 0
         },
         {
+          "area": "backend",
+          "files": 445,
+          "sourceFiles": 491,
+          "sourceLines": 18708
+        },
+        {
+          "area": "docs",
+          "files": 298,
+          "sourceFiles": 0,
+          "sourceLines": 0
+        },
+        {
+          "area": "tooling",
+          "files": 107,
+          "sourceFiles": 20,
+          "sourceLines": 1169
+        },
+        {
           "area": "infrastructure",
-          "files": 3,
+          "files": 16,
+          "sourceFiles": 0,
+          "sourceLines": 0
+        },
+        {
+          "area": "tests",
+          "files": 10,
           "sourceFiles": 0,
           "sourceLines": 0
         }
@@ -542,7 +622,8 @@
     "duplication": {
       "name": "duplication",
       "summary": {
-        "skipped": "jscpd is not installed (npm install -g jscpd)"
+        "skipped": "jscpd is not installed (npm install -g jscpd)",
+        "carriedFromBaseline": true
       },
       "offenders": []
     }

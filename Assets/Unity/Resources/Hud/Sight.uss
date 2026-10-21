@@ -1,0 +1,24 @@
+.hud-sight-row {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.hud-sight {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+    border-color: var(--ink);
+    border-radius: 14px;
+    transition-property: opacity;
+    transition-duration: 0.12s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.hud-sight--hidden {
+    opacity: 0;
+}

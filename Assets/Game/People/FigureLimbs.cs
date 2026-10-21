@@ -2,7 +2,7 @@ using ShallowWater.Game.Shapes;
 
 namespace ShallowWater.Game.People
 {
-    public static class AskewLimbs
+    public static class FigureLimbs
     {
         private const double AnkleAboveTheGroundMetres = 0.06;
         private const double ThighRadiusMetres = 0.09;
@@ -23,31 +23,31 @@ namespace ShallowWater.Game.People
             new ProfilePoint(CuffRadiusMetres, -AskewForm.ForearmMetres), new ProfilePoint(CuffRadiusMetres, -AskewForm.ForearmMetres + CuffMetres)
         };
 
-        public static SurfaceShapes Thigh()
+        public static SurfaceShapes Thigh(Outfit outfit)
         {
-            return Limb(Surface.Trousers, AskewForm.ThighMetres, ThighRadiusMetres, KneeRadiusMetres);
+            return Limb(outfit.Trousers, AskewForm.ThighMetres, ThighRadiusMetres, KneeRadiusMetres);
         }
 
-        public static SurfaceShapes Shin()
+        public static SurfaceShapes Shin(Outfit outfit)
         {
-            var shin = Limb(Surface.Trousers, AskewForm.ShinMetres, CalfRadiusMetres, AnkleRadiusMetres);
-            shin.Add(Surface.Trousers, Ball.Of(Joint, KneeRadiusMetres, AskewForm.LimbSides));
+            var shin = Limb(outfit.Trousers, AskewForm.ShinMetres, CalfRadiusMetres, AnkleRadiusMetres);
+            shin.Add(outfit.Trousers, Ball.Of(Joint, KneeRadiusMetres, AskewForm.LimbSides));
             shin.Add(Surface.Boots, Boot.Shaped(-AskewForm.ShinMetres - AnkleAboveTheGroundMetres));
             return shin;
         }
 
-        public static SurfaceShapes UpperArm()
+        public static SurfaceShapes UpperArm(Outfit outfit)
         {
-            var upperArm = Limb(Surface.Coat, AskewForm.UpperArmMetres, ShoulderRadiusMetres, ElbowRadiusMetres);
-            upperArm.Add(Surface.Coat, Ball.Of(Joint, ShoulderRadiusMetres, AskewForm.LimbSides));
+            var upperArm = Limb(outfit.Coat, AskewForm.UpperArmMetres, ShoulderRadiusMetres, ElbowRadiusMetres);
+            upperArm.Add(outfit.Coat, Ball.Of(Joint, ShoulderRadiusMetres, AskewForm.LimbSides));
             return upperArm;
         }
 
-        public static SurfaceShapes Forearm()
+        public static SurfaceShapes Forearm(Outfit outfit)
         {
-            var forearm = Limb(Surface.Coat, AskewForm.ForearmMetres, ElbowRadiusMetres, WristRadiusMetres);
-            forearm.Add(Surface.Coat, Ball.Of(Joint, ElbowRadiusMetres, AskewForm.LimbSides));
-            forearm.Add(Surface.Coat, Lathe.Turned(Joint, Cuff, AskewForm.LimbSides));
+            var forearm = Limb(outfit.Coat, AskewForm.ForearmMetres, ElbowRadiusMetres, WristRadiusMetres);
+            forearm.Add(outfit.Coat, Ball.Of(Joint, ElbowRadiusMetres, AskewForm.LimbSides));
+            forearm.Add(outfit.Coat, Lathe.Turned(Joint, Cuff, AskewForm.LimbSides));
             forearm.Add(Surface.Skin, Hand.Hanging(Wrist));
             return forearm;
         }

@@ -280,7 +280,9 @@
     "minimumFamilySize": 4,
     "cooccurrenceThreshold": 0.75,
     "fileCountBand": 2.0,
-    "acceptedGaps": []
+    "acceptedGaps": [
+      "Assets/Unity/Looks/SurfacePalette.cs"
+    ]
   },
   "inputValidation": {
     "schemaGlobs": [

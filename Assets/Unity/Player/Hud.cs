@@ -17,6 +17,8 @@ namespace ShallowWater.Unity.Player
         private BoatController boat;
         private ShoreLeave shore;
         private Moorer moorer;
+        private Talker talker;
+        private Marksman marksman;
         private TelegraphCard telegraph;
         private PromptColumn prompts;
 
@@ -31,6 +33,8 @@ namespace ShallowWater.Unity.Player
             boat = GetComponent<BoatController>();
             shore = GetComponent<ShoreLeave>();
             moorer = GetComponent<Moorer>();
+            talker = GetComponent<Talker>();
+            marksman = GetComponent<Marksman>();
         }
 
         private void LateUpdate()
@@ -52,6 +56,7 @@ namespace ShallowWater.Unity.Player
             if (moorer.CanCastOff) shown.Add(CastOff);
             var isWaitingToCastOff = shore.IsHeldAshoreByTheLine && !moorer.CanCastOff;
             if (isWaitingToCastOff) shown.Add(MadeFast);
+            shown.AddRange(FarmPrompts.Of(talker, marksman));
             return shown;
         }
     }
