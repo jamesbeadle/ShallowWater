@@ -36,5 +36,12 @@ namespace ShallowWater.Game.People
         {
             return ReachRadians.TryGetValue(part, out var reach) ? reach : Upright;
         }
+
+        public GaitPose Holding(FigurePart upperArm, FigurePart forearm, ArmAngles arm)
+        {
+            var swings = new Dictionary<FigurePart, double>(SwingRadians) { [upperArm] = arm.SwingRadians, [forearm] = arm.ElbowRadians };
+            var reaches = new Dictionary<FigurePart, double>(ReachRadians) { [upperArm] = arm.ReachRadians };
+            return new GaitPose(swings, BobMetres, LeanRadians, reaches, SwayRadians, StepAcrossMetres);
+        }
     }
 }

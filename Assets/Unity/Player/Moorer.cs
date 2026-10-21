@@ -1,9 +1,6 @@
-using System.Collections.Generic;
 using ShallowWater.Game.Ground;
 using ShallowWater.Game.Mooring;
 using ShallowWater.Game.People;
-using ShallowWater.Game.Shapes;
-using ShallowWater.Game.Walking;
 using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.World;
 using UnityEngine;
@@ -12,69 +9,91 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class Moorer : MonoBehaviour
     {
-        private readonly TyingUp job = new TyingUp();
-        private readonly MooringGear gear = new MooringGear();
+        private readonly Mooring mooring = new Mooring();
+        private MooringLines lines;
+        private LineHolder holder;
         private BoatController boat;
-        private ShoreLeave shore;
         private FigureModel figure;
         private WalkerController walking;
-        private Land land;
-        private IReadOnlyList<GroundPoint> bollards;
-        private MooringPost post;
-        private WorldPoint dolly;
+        private MooringPosts posts;
 
-        public bool IsLoose => job.IsLoose;
-        public bool CanTieUp { get; private set; }
-        public bool CanCastOff { get; private set; }
+        public bool IsHoldingTheLine => mooring.IsLineInHand;
+        public bool IsLineOnThePost => mooring.IsCentreLineOnThePost;
+        public bool IsWorking => mooring.IsBusy;
+        public MooringLine? ToMakeFast { get; private set; }
+        public MooringLine? ToLetGo { get; private set; }
 
-        public void Ready(FigureModel model, WalkerController walker, Land ground, IReadOnlyList<GroundPoint> bollardPlaces)
+        public void Ready(FigureModel model, WalkerController walker, MooringPosts postsAlongTheBank)
         {
             boat = GetComponent<BoatController>();
-            shore = GetComponent<ShoreLeave>();
+            boat.Moored(mooring);
+            lines = new MooringLines(GetComponentInChildren<Riding>().transform);
+            holder = new LineHolder(model, walker, boat);
             figure = model;
             walking = walker;
-            land = ground;
-            bollards = bollardPlaces;
+            posts = postsAlongTheBank;
+        }
+
+        public void TakeTheLineAshore()
+        {
+            mooring.TakeAshore(walking.Position);
+        }
+
+        public void TakeTheLineAboard()
+        {
+            mooring.TakeAboard();
         }
 
         private void Update()
         {
             if (walking == null) return;
             var feet = walking.Position;
-            CanTieUp = shore.IsAshore && job.IsLoose && SternLine.CanReach(boat.Motion, feet);
-            CanCastOff = shore.IsAshore && job.IsFast && MooringPosts.IsWithinReach(feet, post);
-            var isAskedFor = ShoreInput.IsMooring();
-            if (isAskedFor && CanTieUp) TieUp(feet);
-            if (isAskedFor && CanCastOff) SetToWork();
-            if (job.IsBusy) Work();
+            ToMakeFast = MooringChoices.ToMakeFast(mooring, boat.Motion, feet);
+            ToLetGo = MooringChoices.ToLetGo(mooring, feet);
+            var isMakingFast = ToMakeFast.HasValue && ShoreInput.IsMakingFast();
+            if (isMakingFast) MakeFast(ToMakeFast.Value, feet);
+            var isLettingGo = ToLetGo.HasValue && ShoreInput.IsLettingGo();
+            if (isLettingGo) LetGo(ToLetGo.Value);
+            if (mooring.IsBusy) Work();
         }
 
-        private void TieUp(GroundPoint feet)
+        private void LateUpdate()
         {
-            post = MooringPosts.For(feet, walking.Bearing, bollards, land);
-            dolly = SternLine.DollyNearest(boat.Motion, feet);
-            boat.MakeFast();
-            SetToWork();
+            if (walking == null) return;
+            var isWalkingHerAlong = mooring.IsLineInHand && !mooring.IsBusy;
+            if (isWalkingHerAlong) holder.Hold(mooring);
+            lines.Show(mooring, boat.Motion, holder.Hand);
         }
 
-        private void SetToWork()
+        private void MakeFast(MooringLine line, GroundPoint feet)
         {
-            job.Begin();
+            var post = posts.For(feet, walking.Bearing);
+            var onTheBoat = LineEnds.OnTheBoat(line, boat.Motion, feet);
+            mooring.MakeFast(line, LaidLine.TakenUpBetween(onTheBoat, post));
+            KneelAt(post);
+        }
+
+        private void LetGo(MooringLine line)
+        {
+            mooring.LetGo(line);
+            KneelAt(mooring.LaidAt(line).Post);
+        }
+
+        private void KneelAt(MooringPost post)
+        {
             walking.enabled = false;
             walking.SetOff(MooringPosts.KneelingBeside(walking.Position, post), walking.Bearing);
             walking.Face(post.Place);
-            CanTieUp = false;
-            CanCastOff = false;
         }
 
         private void Work()
         {
-            job.Work(Time.deltaTime);
-            figure.Pose(TyingPose.At(job.Share));
-            gear.Show(job.IsLineMade, dolly, post);
-            if (job.IsBusy) return;
+            mooring.WorkOn(Time.deltaTime);
+            var work = mooring.Work;
+            var isFinished = work == null;
+            figure.Pose(TyingPose.At(isFinished ? TyingPose.Finished : work.Share));
+            if (!isFinished) return;
             walking.enabled = true;
-            if (job.IsLoose) boat.CastOff();
         }
     }
 }

@@ -12,8 +12,6 @@ namespace ShallowWater.Unity.Map
         private const int WholeMesh = 0;
         private const int SurfacePlaceChannel = 0;
         private const int FittingChannel = 1;
-        private const float NearlyUpright = 0.95f;
-        private const float RightHanded = 1f;
 
         public static GameObject Build(string name, Shape shape, Material finish)
         {
@@ -35,12 +33,18 @@ namespace ShallowWater.Unity.Map
         {
             var mesh = new Mesh();
             mesh.indexFormat = IndexFormat.UInt32;
+            return Filled(mesh, shape);
+        }
+
+        public static Mesh Filled(Mesh mesh, Shape shape)
+        {
+            mesh.Clear();
             mesh.SetVertices(Vertices(shape));
             mesh.SetUVs(SurfacePlaceChannel, Places(shape));
             mesh.SetUVs(FittingChannel, Fittings(shape));
             mesh.SetTriangles(new List<int>(shape.Triangles), WholeMesh);
             mesh.RecalculateNormals();
-            mesh.SetTangents(TangentsAcross(mesh.normals));
+            mesh.SetTangents(MeshTangents.Across(mesh.normals));
             mesh.RecalculateBounds();
             return mesh;
         }
@@ -50,24 +54,8 @@ namespace ShallowWater.Unity.Map
             var mesh = MeshOf(shape);
             var normals = NormalWelding.Welded(mesh.vertices, mesh.normals);
             mesh.normals = normals;
-            mesh.SetTangents(TangentsAcross(normals));
+            mesh.SetTangents(MeshTangents.Across(normals));
             return mesh;
-        }
-
-        private static List<Vector4> TangentsAcross(Vector3[] normals)
-        {
-            var tangents = new List<Vector4>(normals.Length);
-            foreach (var normal in normals) tangents.Add(TangentAcross(normal));
-            return tangents;
-        }
-
-        private static Vector4 TangentAcross(Vector3 normal)
-        {
-            var isUpright = Mathf.Abs(normal.y) > NearlyUpright;
-            var reference = isUpright ? Vector3.right : Vector3.up;
-            var across = Vector3.Cross(reference, normal);
-            across.Normalize();
-            return new Vector4(across.x, across.y, across.z, RightHanded);
         }
 
         private static List<Vector3> Vertices(Shape shape)

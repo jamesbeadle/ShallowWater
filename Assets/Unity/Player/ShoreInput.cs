@@ -17,11 +17,18 @@ namespace ShallowWater.Unity.Player
             return IsSteppingAcross();
         }
 
-        public static bool IsMooring()
+        public static bool IsMakingFast()
         {
             var keyboard = Keyboard.current;
             var gamepad = Gamepad.current;
             return Buttons.IsAnyPressedNow(keyboard?.tKey, gamepad?.buttonNorth);
+        }
+
+        public static bool IsLettingGo()
+        {
+            var keyboard = Keyboard.current;
+            var gamepad = Gamepad.current;
+            return Buttons.IsAnyPressedNow(keyboard?.rKey, gamepad?.buttonWest);
         }
     }
 }

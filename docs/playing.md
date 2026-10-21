@@ -33,7 +33,11 @@ At the tiller he stands on the step in the back cabin hatchway, with the back do
 
 ## Tying up
 
-Ashore, within a line's length (nine metres) of the stern, T ties her up (`TyingUp`). He goes to the nearest bollard if one is within two and a half metres, or knocks a mooring pin into the bank in front of him (`MooringPosts`, `MooringPin`), kneels and works the line on (`TyingPose`). The stern line runs from the dolly on the counter nearer him, with a sag (`SternLine`, `Dollies`). Once he starts she lies still against the line, the engine running down as it would. T at the post casts her off the same way. He cannot step aboard while she is made fast: the hint says to cast off first.
+*Sparrow* carries a centre line: made fast to the T-stud on the top planks amidships and laid aft along the planks and the cabin roof, with the tail coiled at the back of the roof by the hatch (`CentreStud`, `CentreLineDrape`). When Askew steps ashore he takes it with him, and from then until he steps back aboard it runs from the stud, over the side cloth, to his hand (`Mooring`, `CentreLine`, `LineInHand`): he holds it in the hand nearer the boat, hanging back at his hip, and the slack sags into the cut. With the line in hand he walks her along the bank: she follows him once the line comes taut, eleven metres from the stud, and the line holds him back from walking further (`LinePull`, `MooringPull`). She is eighteen tonnes, so she gathers way over ten seconds or so and carries it after he stops.
+
+T ties the centre line off where he stands (`LineWork`): to the nearest bollard if one is within two and a half metres, or to a mooring pin he knocks into the bank in front of him (`MooringPosts`, `MooringPin`), kneeling to work the line on (`TyingPose`). She now lies on the centre line, and can still swing on it. Within a line's length (nine metres) of the bow T-stud, T ties the bow line to a post the same way; within nine metres of the stern dolly, T ties the stern line (`BowLine`, `SternLine`). With all three lines on she is made fast and lies still, the engine running down as it would.
+
+Casting off is the same in reverse: R at a post lets go the bow or stern line there, and once both ends are loose R at the centre post casts her off, which puts the centre line back in his hand. He steps aboard with it, and it lies draped along the roof again. He cannot step aboard while the centre line is on its post: the hint says to let go the lines first. He cannot shoulder the rifle with the line in his hand.
 
 | Control | Keyboard | Gamepad |
 | --- | --- | --- |
@@ -41,7 +45,8 @@ Ashore, within a line's length (nine metres) of the stern, T ties her up (`Tying
 | Run | Shift | left stick press or right trigger |
 | Look round | right mouse drag, scroll to zoom | right stick |
 | Step aboard | E | south button |
-| Tie up, cast off | T | north button |
+| Tie her up, then the bow and stern lines | T | north button |
+| Let go a line, at its post | R | west button |
 | Talk, by the farmer | E | south button |
 | Shoulder the rifle, once he has it | hold the right mouse button | hold the left trigger |
 | Fire, shouldered | left mouse button | right trigger |

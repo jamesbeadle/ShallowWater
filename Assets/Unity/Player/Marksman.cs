@@ -12,6 +12,7 @@ namespace ShallowWater.Unity.Player
         private readonly RookRifle rifle = new RookRifle();
         private ShoreLeave shore;
         private Talker talker;
+        private Moorer moorer;
         private FarmRifleMission mission;
         private FigureModel figure;
         private WalkerController walking;
@@ -27,6 +28,7 @@ namespace ShallowWater.Unity.Player
         {
             shore = GetComponent<ShoreLeave>();
             talker = GetComponent<Talker>();
+            moorer = GetComponent<Moorer>();
             mission = job;
             figure = model;
             walking = walker;
@@ -43,7 +45,7 @@ namespace ShallowWater.Unity.Player
             rifle.Work(Time.deltaTime);
             var isCarried = mission.IsRifleInHand && shore.IsAshore;
             inHand.Show(isCarried);
-            CanAim = isCarried && !talker.IsTalking;
+            CanAim = isCarried && !talker.IsTalking && !moorer.IsHoldingTheLine;
             var wantsToAim = CanAim && AimInput.IsShouldering();
             if (wantsToAim != IsAiming) Shoulder(wantsToAim);
             if (!IsAiming) return;

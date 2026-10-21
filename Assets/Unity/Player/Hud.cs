@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ShallowWater.Game.Mooring;
 using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.Overlay;
 using UnityEngine;
@@ -10,9 +11,19 @@ namespace ShallowWater.Unity.Player
     {
         private static readonly HudPrompt StepAshore = new HudPrompt("E", "Step ashore");
         private static readonly HudPrompt StepAboard = new HudPrompt("E", "Step aboard");
-        private static readonly HudPrompt TieUp = new HudPrompt("T", "Tie her up");
-        private static readonly HudPrompt CastOff = new HudPrompt("T", "Cast off");
-        private static readonly HudPrompt MadeFast = new HudPrompt("T", "Cast off at the post before stepping aboard");
+        private static readonly HudPrompt MadeFast = new HudPrompt("R", "Let go the lines at their posts before stepping aboard");
+        private static readonly Dictionary<MooringLine, HudPrompt> MakeFast = new Dictionary<MooringLine, HudPrompt>
+        {
+            { MooringLine.Centre, new HudPrompt("T", "Tie her up") },
+            { MooringLine.Bow, new HudPrompt("T", "Tie the bow line") },
+            { MooringLine.Stern, new HudPrompt("T", "Tie the stern line") }
+        };
+        private static readonly Dictionary<MooringLine, HudPrompt> LetGo = new Dictionary<MooringLine, HudPrompt>
+        {
+            { MooringLine.Centre, new HudPrompt("R", "Cast off") },
+            { MooringLine.Bow, new HudPrompt("R", "Let go the bow line") },
+            { MooringLine.Stern, new HudPrompt("R", "Let go the stern line") }
+        };
 
         private BoatController boat;
         private ShoreLeave shore;
@@ -52,9 +63,11 @@ namespace ShallowWater.Unity.Player
             var shown = new List<HudPrompt>();
             if (shore.CanStepAshore) shown.Add(StepAshore);
             if (shore.CanStepAboard) shown.Add(StepAboard);
-            if (moorer.CanTieUp) shown.Add(TieUp);
-            if (moorer.CanCastOff) shown.Add(CastOff);
-            var isWaitingToCastOff = shore.IsHeldAshoreByTheLine && !moorer.CanCastOff;
+            var toMakeFast = moorer.ToMakeFast;
+            var toLetGo = moorer.ToLetGo;
+            if (toMakeFast.HasValue) shown.Add(MakeFast[toMakeFast.Value]);
+            if (toLetGo.HasValue) shown.Add(LetGo[toLetGo.Value]);
+            var isWaitingToCastOff = shore.IsHeldAshoreByTheLine && !toLetGo.HasValue;
             if (isWaitingToCastOff) shown.Add(MadeFast);
             shown.AddRange(FarmPrompts.Of(talker, marksman));
             return shown;
