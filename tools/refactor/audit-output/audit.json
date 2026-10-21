@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T14:07:31+00:00",
+  "generatedAt": "2026-10-21T19:02:12+00:00",
   "kitVersion": "1.26.0",
   "score": {
     "overall": 100.0,
@@ -40,7 +40,7 @@
         "unit": "files",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 511,
+        "measuredAgainst": 530,
         "score": 100.0
       },
       {
@@ -64,7 +64,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1258,
+        "measuredAgainst": 1321,
         "score": 100.0
       },
       {
@@ -76,7 +76,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 296,
+        "measuredAgainst": 322,
         "score": 100.0
       },
       {
@@ -99,7 +99,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 19.88,
+        "measuredAgainst": 20.65,
         "score": 100.0
       },
       {
@@ -111,7 +111,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 19.88,
+        "measuredAgainst": 20.65,
         "score": 100.0
       },
       {
@@ -123,7 +123,7 @@
         "unit": "components and functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1258,
+        "measuredAgainst": 1321,
         "score": 100.0
       },
       {
@@ -135,7 +135,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 19.88,
+        "measuredAgainst": 20.65,
         "score": 100.0
       },
       {
@@ -147,7 +147,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 19.88,
+        "measuredAgainst": 20.65,
         "score": 100.0
       },
       {
@@ -159,7 +159,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1258,
+        "measuredAgainst": 1321,
         "score": 100.0
       },
       {
@@ -194,7 +194,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 296,
+        "measuredAgainst": 322,
         "score": 100.0
       },
       {
@@ -206,7 +206,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 296,
+        "measuredAgainst": 322,
         "score": 100.0
       },
       {
@@ -218,7 +218,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1258,
+        "measuredAgainst": 1321,
         "score": 100.0
       },
       {
@@ -249,17 +249,17 @@
     "fileLength": {
       "limit": 100,
       "filesOverLimit": 0,
-      "totalFiles": 511,
-      "totalLines": 19877,
+      "totalFiles": 530,
+      "totalLines": 20649,
       "worstFileLines": 0,
       "worstFileTimesOverLimit": 0.0
     },
     "functionShape": {
       "limit": 30,
       "functionsOverLimit": 0,
-      "totalFunctions": 1258,
+      "totalFunctions": 1321,
       "elseBlocks": 0,
-      "ifBlocks": 296,
+      "ifBlocks": 322,
       "measurementIsHeuristic": true
     },
     "functionNames": {
@@ -277,7 +277,7 @@
     },
     "naming": {
       "bannedAbbreviationHits": 0,
-      "unprefixedBooleans": 3
+      "unprefixedBooleans": 4
     },
     "comments": {
       "explanatoryCommentLines": 0,
@@ -302,7 +302,7 @@
     },
     "orphans": {
       "orphanFunctions": 0,
-      "functionsExamined": 1258
+      "functionsExamined": 1321
     },
     "designPatterns": {
       "roleFamilies": 15,
@@ -329,10 +329,10 @@
       "looserLimits": 0
     },
     "fileAreas": {
-      "totalFiles": 1500,
-      "other": 624,
-      "backend": 445,
-      "docs": 298,
+      "totalFiles": 1598,
+      "other": 678,
+      "backend": 488,
+      "docs": 299,
       "tooling": 107,
       "infrastructure": 16,
       "tests": 10
@@ -344,8 +344,8 @@
       "summary": {
         "limit": 100,
         "filesOverLimit": 0,
-        "totalFiles": 511,
-        "totalLines": 19877,
+        "totalFiles": 530,
+        "totalLines": 20649,
         "worstFileLines": 0,
         "worstFileTimesOverLimit": 0.0
       },
@@ -356,9 +356,9 @@
       "summary": {
         "limit": 30,
         "functionsOverLimit": 0,
-        "totalFunctions": 1258,
+        "totalFunctions": 1321,
         "elseBlocks": 0,
-        "ifBlocks": 296,
+        "ifBlocks": 322,
         "measurementIsHeuristic": true
       },
       "offenders": []
@@ -384,7 +384,7 @@
       "name": "naming",
       "summary": {
         "bannedAbbreviationHits": 0,
-        "unprefixedBooleans": 3
+        "unprefixedBooleans": 4
       },
       "offenders": {
         "abbreviations": [],
@@ -403,6 +403,11 @@
             "file": "Assets/Game/Houses/RunLayout.cs",
             "line": 21,
             "name": "StandsAlone"
+          },
+          {
+            "file": "Assets/Game/Mooring/Mooring.cs",
+            "line": 18,
+            "name": "AreTheEndsLoose"
           }
         ]
       }
@@ -488,7 +493,7 @@
       "name": "orphans",
       "summary": {
         "orphanFunctions": 0,
-        "functionsExamined": 1258
+        "functionsExamined": 1321
       },
       "offenders": []
     },
@@ -509,8 +514,8 @@
           "input": 6,
           "kind": 4,
           "layer": 8,
-          "line": 5,
-          "lines": 6,
+          "line": 11,
+          "lines": 7,
           "look": 18,
           "looks": 4,
           "outline": 4,
@@ -558,10 +563,10 @@
     "fileAreas": {
       "name": "fileAreas",
       "summary": {
-        "totalFiles": 1500,
-        "other": 624,
-        "backend": 445,
-        "docs": 298,
+        "totalFiles": 1598,
+        "other": 678,
+        "backend": 488,
+        "docs": 299,
         "tooling": 107,
         "infrastructure": 16,
         "tests": 10
@@ -569,19 +574,19 @@
       "offenders": [
         {
           "area": "other",
-          "files": 624,
+          "files": 678,
           "sourceFiles": 0,
           "sourceLines": 0
         },
         {
           "area": "backend",
-          "files": 445,
-          "sourceFiles": 491,
-          "sourceLines": 18708
+          "files": 488,
+          "sourceFiles": 510,
+          "sourceLines": 19480
         },
         {
           "area": "docs",
-          "files": 298,
+          "files": 299,
           "sourceFiles": 0,
           "sourceLines": 0
         },

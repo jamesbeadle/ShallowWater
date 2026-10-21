@@ -6,7 +6,7 @@ using ShallowWater.Game.Walking;
 
 namespace ShallowWater.Game.Mooring
 {
-    public static class MooringPosts
+    public sealed class MooringPosts
     {
         public const double ReachMetres = 2.5;
         private const double PinAheadMetres = 0.45;
@@ -16,17 +16,26 @@ namespace ShallowWater.Game.Mooring
         private const bool IsAPin = true;
         private const double KneelingFromThePostMetres = 0.5;
 
-        public static MooringPost For(GroundPoint feet, double bearing, IReadOnlyList<GroundPoint> bollards, Land land)
+        private readonly IReadOnlyList<GroundPoint> bollards;
+        private readonly Land land;
+
+        public MooringPosts(IReadOnlyList<GroundPoint> bollards, Land land)
+        {
+            this.bollards = bollards;
+            this.land = land;
+        }
+
+        public MooringPost For(GroundPoint feet, double bearing)
         {
             var withinReach = bollards.Where(bollard => bollard.DistanceTo(feet) < ReachMetres);
             var nearest = withinReach.OrderBy(bollard => bollard.DistanceTo(feet)).ToList();
             var hasABollardWithinReach = nearest.Any();
-            if (!hasABollardWithinReach) return Pinned(feet, bearing, land);
+            if (!hasABollardWithinReach) return Pinned(feet, bearing);
             var bollard = nearest.First();
             return new MooringPost(bollard, BollardTieMetres, IsABollard);
         }
 
-        private static MooringPost Pinned(GroundPoint feet, double bearing, Land land)
+        private MooringPost Pinned(GroundPoint feet, double bearing)
         {
             var ahead = feet + GroundPoint.Facing(bearing) * PinAheadMetres;
             var pin = land.IsOpen(ahead) ? ahead : feet;

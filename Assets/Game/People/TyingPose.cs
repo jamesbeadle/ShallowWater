@@ -5,6 +5,7 @@ namespace ShallowWater.Game.People
 {
     public static class TyingPose
     {
+        public const double Finished = 1;
         private const double GettingDownShare = 0.25;
         private const double Thigh = 1.3;
         private const double Knee = 2.0;

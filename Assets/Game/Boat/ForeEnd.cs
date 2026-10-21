@@ -17,8 +17,8 @@ namespace ShallowWater.Game.Boat
         private const double LensRadiusMetres = 0.065;
         private const int LensSides = 12;
         private const double RimRadiusMetres = 0.007;
-        private const double StudAlong = 9.4;
-        private const double StudPinHeightMetres = 0.13;
+        public const double StudAlong = 9.4;
+        public const double StudPinHeightMetres = 0.13;
         private const double StudPinHalfLengthMetres = 0.08;
         private const double StudPinRadiusMetres = 0.015;
         private const double FullTurnRadians = 2 * Math.PI;

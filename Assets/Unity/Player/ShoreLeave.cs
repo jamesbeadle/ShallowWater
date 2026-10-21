@@ -1,4 +1,5 @@
 using ShallowWater.Game.Boat;
+using ShallowWater.Game.Mooring;
 using ShallowWater.Game.People;
 using ShallowWater.Game.Pound;
 using ShallowWater.Game.Walking;
@@ -38,7 +39,7 @@ namespace ShallowWater.Unity.Player
             walking = askew.gameObject.AddComponent<WalkerController>();
             walking.Ready(ground, figure, camera);
             moorer = gameObject.AddComponent<Moorer>();
-            moorer.Ready(figure, walking, ground, Bollards.AlongThe(water));
+            moorer.Ready(figure, walking, new MooringPosts(Bollards.AlongThe(water), ground));
             StepAboard();
         }
 
@@ -49,9 +50,9 @@ namespace ShallowWater.Unity.Player
             if (!IsAshore) HoldTheTiller();
             CanStepAshore = !IsAshore && Landing.CanStepAshore(motion, pound);
             var isBesideTheHelm = IsAshore && Landing.CanStepAboard(motion, walking.Position);
-            var isLoose = moorer.IsLoose;
-            CanStepAboard = isBesideTheHelm && isLoose;
-            IsHeldAshoreByTheLine = isBesideTheHelm && !isLoose;
+            var isHoldingTheLine = moorer.IsHoldingTheLine && !moorer.IsWorking;
+            CanStepAboard = isBesideTheHelm && isHoldingTheLine;
+            IsHeldAshoreByTheLine = isBesideTheHelm && moorer.IsLineOnThePost;
             if (!ShoreInput.IsSteppingAcross()) return;
             if (CanStepAshore) StepAshore();
             if (CanStepAboard) StepAboard();
@@ -65,6 +66,7 @@ namespace ShallowWater.Unity.Player
             askew.SetParent(null, true);
             walking.SetOff(Landing.AshoreFrom(motion, pound), motion.Bearing);
             walking.enabled = true;
+            moorer.TakeTheLineAshore();
             view.Follow(askew, CameraFraming.Ashore);
             IsAshore = true;
             CanStepAboard = false;
@@ -72,6 +74,7 @@ namespace ShallowWater.Unity.Player
 
         private void StepAboard()
         {
+            moorer.TakeTheLineAboard();
             walking.enabled = false;
             var askew = figure.Root;
             askew.SetParent(deck, false);

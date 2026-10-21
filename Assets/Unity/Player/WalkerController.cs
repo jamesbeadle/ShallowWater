@@ -21,6 +21,7 @@ namespace ShallowWater.Unity.Player
 
         public GroundPoint Position => walker.Position;
         public double Bearing => walker.Bearing;
+        public GaitPose Stride { get; private set; } = Gait.At(Still, Still);
 
         public void Ready(Land ground, FigureModel model, OrbitCamera camera)
         {
@@ -46,7 +47,8 @@ namespace ShallowWater.Unity.Player
         public void Stand()
         {
             walker.StandAt(walker.Position, walker.Bearing);
-            figure.Pose(Gait.At(Still, Still));
+            Stride = Gait.At(Still, Still);
+            figure.Pose(Stride);
             Place();
         }
 
@@ -57,7 +59,8 @@ namespace ShallowWater.Unity.Player
             walker.Stride(seconds, WalkInput.Wish(view.YawDegrees), WalkInput.IsRunning(), land);
             var speed = walker.SpeedMetresPerSecond;
             phase = (phase + Gait.CyclesPerSecond(speed) * seconds * FullTurnRadians) % FullTurnRadians;
-            figure.Pose(Gait.At(phase, speed));
+            Stride = Gait.At(phase, speed);
+            figure.Pose(Stride);
             Place();
         }
 

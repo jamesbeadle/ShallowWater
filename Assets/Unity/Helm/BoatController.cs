@@ -1,5 +1,6 @@
 using ShallowWater.Game.Boat;
 using ShallowWater.Game.Ground;
+using ShallowWater.Game.Mooring;
 using ShallowWater.Game.Pound;
 using UnityEngine;
 
@@ -12,10 +13,10 @@ namespace ShallowWater.Unity.Helm
 
         private readonly Throttle throttle = new Throttle();
         private Pound pound;
+        private Mooring mooring = new Mooring();
 
         public BoatMotion Motion { get; private set; }
         public bool IsManned { get; private set; } = true;
-        public bool IsMadeFast { get; private set; }
         public ThrottleNotch Notch => throttle.Notch;
         public float RudderShare => Motion == null ? 0 : (float)Motion.Rudder;
         public float ThrustShare => Motion == null ? 0 : (float)Motion.ThrustShare;
@@ -41,14 +42,9 @@ namespace ShallowWater.Unity.Helm
             IsManned = false;
         }
 
-        public void MakeFast()
+        public void Moored(Mooring lines)
         {
-            IsMadeFast = true;
-        }
-
-        public void CastOff()
-        {
-            IsMadeFast = false;
+            mooring = lines;
         }
 
         private void Update()
@@ -63,7 +59,7 @@ namespace ShallowWater.Unity.Helm
 
         private void Advance(float seconds, double rudder)
         {
-            if (IsMadeFast)
+            if (mooring.IsFast)
             {
                 Motion.LieAgainstTheLine(seconds, throttle.Notch);
                 return;
@@ -74,7 +70,8 @@ namespace ShallowWater.Unity.Helm
         private void Steer(float seconds, double rudder)
         {
             var suction = BankSuction.On(Motion, pound);
-            Motion.Advance(seconds, throttle.Notch, rudder, suction);
+            var pull = MooringPull.On(mooring, Motion);
+            Motion.Advance(seconds, throttle.Notch, rudder, suction + pull);
             Banks.Keep(Motion, pound);
         }
 

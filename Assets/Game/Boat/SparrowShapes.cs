@@ -14,6 +14,7 @@ namespace ShallowWater.Game.Boat
             HoldShapes.Build(surfaces);
             ForeEnd.Build(surfaces);
             Dollies.Build(surfaces);
+            CentreStud.Build(surfaces);
             return surfaces;
         }
     }
