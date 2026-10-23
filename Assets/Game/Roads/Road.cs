@@ -49,8 +49,13 @@ namespace ShallowWater.Game.Roads
 
         public GroundLine Between(Span span)
         {
+            return Beside(span, OnTheCentreline);
+        }
+
+        public GroundLine Beside(Span span, double across)
+        {
             var steps = Math.Max(FewestSteps, (int)Math.Ceiling(span.Length / SampleSpacingMetres));
-            var places = Enumerable.Range(FirstStep, steps + 1).Select(step => At(span.From + span.Length * step / steps, OnTheCentreline));
+            var places = Enumerable.Range(FirstStep, steps + 1).Select(step => At(span.From + span.Length * step / steps, across));
             return new GroundLine(places);
         }
     }

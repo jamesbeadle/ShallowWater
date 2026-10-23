@@ -6,7 +6,7 @@ namespace ShallowWater.Game.Roads
     public static class RoadShapes
     {
         private const double TelegraphSide = -1;
-        private static readonly double[] Sides = { -1, 1 };
+        public static readonly double[] Sides = { -1, 1 };
 
         public static SurfaceShapes Of(IEnumerable<Road> roads, RoadSurroundings surroundings)
         {

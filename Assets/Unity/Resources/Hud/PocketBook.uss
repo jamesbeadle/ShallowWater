@@ -184,10 +184,6 @@
     transition-timing-function: ease-out-cubic;
 }
 
-.rounds--hidden {
-    opacity: 0;
-}
-
 .round {
     width: 7px;
     height: 18px;

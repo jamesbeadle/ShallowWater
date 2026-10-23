@@ -31,13 +31,13 @@ namespace ShallowWater.Unity.Overlay
             section.Add(card);
         }
 
-        public void Show(FarmRifleMission mission)
+        public void Show(FarmJob job)
         {
-            var hasTheLead = mission.HasTheLead;
+            var hasTheLead = job.HasTheLead;
             card.EnableInClassList(HiddenClass, !hasTheLead);
             nothing.EnableInClassList(NothingHiddenClass, hasTheLead);
             if (!hasTheLead) return;
-            var lead = mission.Lead;
+            var lead = job.Lead;
             who.text = lead.Name + Comma + lead.Pub + Comma + lead.Place;
             telephone.text = lead.Telephone;
         }

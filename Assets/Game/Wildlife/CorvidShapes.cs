@@ -21,6 +21,7 @@ namespace ShallowWater.Game.Wildlife
         private static readonly WorldPoint[] MagpieTail = { new WorldPoint(0, 0.15, -0.12), new WorldPoint(0, 0.18, -0.36) };
         private static readonly double[] TailRadiiMetres = { 0.03, 0.04 };
         private static readonly double[] LegFeet = { -0.02, 0.02 };
+        private static readonly WorldPoint RightShoulder = new WorldPoint(0.045, 0.19, 0.04);
 
         public static SurfaceShapes Of(QuarryKind kind)
         {
@@ -33,6 +34,11 @@ namespace ShallowWater.Game.Wildlife
             foreach (var across in LegFeet) Leg(bird, across);
             Markings(bird, kind);
             return bird;
+        }
+
+        public static WorldPoint ShoulderOf(double side)
+        {
+            return new WorldPoint(RightShoulder.East * side, RightShoulder.Height, RightShoulder.North);
         }
 
         private static void Leg(SurfaceShapes bird, double across)

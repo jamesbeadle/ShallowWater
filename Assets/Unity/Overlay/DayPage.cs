@@ -23,9 +23,9 @@ namespace ShallowWater.Unity.Overlay
             water = new WaterEntry(page);
         }
 
-        public void Show(FarmRifleMission mission, ThrottleNotch lever, Mooring mooring, bool isAshore)
+        public void Show(FarmJob farmJob, ThrottleNotch lever, Mooring mooring, bool isAshore)
         {
-            job.Show(mission);
+            job.Show(farmJob);
             boat.Show(lever, mooring, isAshore);
         }
 

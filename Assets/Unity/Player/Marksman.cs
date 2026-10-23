@@ -14,7 +14,7 @@ namespace ShallowWater.Unity.Player
         private ShoreLeave shore;
         private Talker talker;
         private Moorer moorer;
-        private FarmRifleMission mission;
+        private FarmJob job;
         private FigureModel figure;
         private WalkerController walking;
         private OrbitCamera view;
@@ -27,12 +27,12 @@ namespace ShallowWater.Unity.Player
         public bool IsAiming => rifle.IsShouldered;
         public bool CanAim { get; private set; }
 
-        public void Ready(FarmRifleMission job, FigureModel model, WalkerController walker, OrbitCamera camera, Wildlife quarry)
+        public void Ready(FarmJob farmJob, FigureModel model, WalkerController walker, OrbitCamera camera, Wildlife quarry)
         {
             shore = GetComponent<ShoreLeave>();
             talker = GetComponent<Talker>();
             moorer = GetComponent<Moorer>();
-            mission = job;
+            job = farmJob;
             figure = model;
             walking = walker;
             view = camera;
@@ -46,9 +46,9 @@ namespace ShallowWater.Unity.Player
 
         private void Update()
         {
-            if (mission == null) return;
+            if (job == null) return;
             rifle.Work(Time.deltaTime);
-            var isCarried = mission.IsRifleInHand && shore.IsAshore;
+            var isCarried = shore.IsAshore;
             inHand.Show(isCarried);
             CanAim = isCarried && !talker.IsTalking && !moorer.IsHoldingTheLine;
             var wantsToAim = CanAim && AimInput.IsShouldering();
@@ -84,10 +84,12 @@ namespace ShallowWater.Unity.Player
             rifle.Fire();
             report.Fire();
             var eye = view.transform;
-            var struck = Shot.Hit(WorldVectors.PointOf(eye.position), WorldVectors.OffsetOf(eye.forward), wildlife.Alive, RookRifle.RangeMetres);
-            if (struck == null) return;
-            struck.Kill();
-            mission.Killed();
+            var muzzle = WorldVectors.PointOf(eye.position);
+            var aim = WorldVectors.OffsetOf(eye.forward);
+            var struck = Shot.Hit(muzzle, aim, wildlife.Alive, SightLine.ReachOf(eye, RookRifle.RangeMetres));
+            if (struck != null) wildlife.Struck(struck, aim);
+            if (struck != null) job.Killed(struck);
+            wildlife.Startle(muzzle);
         }
     }
 }

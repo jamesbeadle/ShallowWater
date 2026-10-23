@@ -11,6 +11,7 @@ namespace ShallowWater.Unity.World
         private const float FarthestShare = 3f;
         private const float EasePerSecond = 6f;
         private const float LowestAboveTheWaterMetres = 0.6f;
+        private const float AtOnce = 1f;
 
         private Transform target;
         private CameraFraming framing;
@@ -40,9 +41,11 @@ namespace ShallowWater.Unity.World
             Orbit();
             var pivot = target.position + Vector3.up * framing.LookHeightMetres;
             var turn = Quaternion.Euler(pitchDegrees, YawDegrees, 0);
-            var wanted = pivot - turn * Vector3.forward * distanceMetres;
+            var orbiting = pivot - turn * Vector3.forward * distanceMetres;
+            var wanted = CameraClearance.KeptClear(pivot, orbiting);
             wanted.y = Mathf.Max(wanted.y, LowestAboveTheWaterMetres);
-            var ease = 1 - Mathf.Exp(-EasePerSecond * Time.deltaTime);
+            var isPulledIn = wanted != orbiting;
+            var ease = isPulledIn ? AtOnce : 1 - Mathf.Exp(-EasePerSecond * Time.deltaTime);
             transform.position = Vector3.Lerp(transform.position, wanted, ease);
             transform.LookAt(pivot);
         }

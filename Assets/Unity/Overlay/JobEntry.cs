@@ -12,12 +12,12 @@ namespace ShallowWater.Unity.Overlay
         private const string ForTheFarmer = "For " + FarmerLines.Name + ", who farms it";
         private const string WordsClass = "page-job__words";
 
-        private static readonly Dictionary<FarmRifleStage, string> Standing = new Dictionary<FarmRifleStage, string>
+        private static readonly Dictionary<FarmJobStage, string> Standing = new Dictionary<FarmJobStage, string>
         {
-            { FarmRifleStage.NotYetAsked, string.Empty },
-            { FarmRifleStage.Culling, "on it" },
-            { FarmRifleStage.Cleared, "done, to be paid" },
-            { FarmRifleStage.Paid, "paid, in kind" }
+            { FarmJobStage.NotYetAsked, string.Empty },
+            { FarmJobStage.Culling, "on it" },
+            { FarmJobStage.Cleared, "done, to be paid" },
+            { FarmJobStage.Paid, "paid, with a name" }
         };
 
         private readonly PageEntry job = new PageEntry(Sketches.Gate());
@@ -30,13 +30,13 @@ namespace ShallowWater.Unity.Overlay
             section.Add(words);
         }
 
-        public void Show(FarmRifleMission mission)
+        public void Show(FarmJob farmJob)
         {
-            var hasBegun = mission.HasBegun;
+            var hasBegun = farmJob.HasBegun;
             job.Fade(!hasBegun);
             if (!hasBegun) job.Write(NothingOn, NothingOnNote, string.Empty);
-            if (hasBegun) job.Write(FarmerLines.Farm, ForTheFarmer, Standing[mission.Stage]);
-            words.text = mission.Words;
+            if (hasBegun) job.Write(FarmerLines.Farm, ForTheFarmer, Standing[farmJob.Stage]);
+            words.text = farmJob.Words;
         }
     }
 }

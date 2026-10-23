@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using ShallowWater.Game.Ground;
 using ShallowWater.Game.Pound;
@@ -12,14 +11,14 @@ namespace ShallowWater.Game.Walking
         private readonly CanalPound pound;
         private readonly WaterLines water;
         private readonly Obstacles obstacles;
-        private readonly IReadOnlyList<Area> woods;
+        private readonly Relief relief;
 
-        public Land(CanalPound pound, WaterLines water, Obstacles obstacles, IReadOnlyList<Area> woods)
+        public Land(CanalPound pound, WaterLines water, Obstacles obstacles, Relief relief)
         {
             this.pound = pound;
             this.water = water;
             this.obstacles = obstacles;
-            this.woods = woods;
+            this.relief = relief;
         }
 
         public bool IsOpen(GroundPoint place)
@@ -37,10 +36,8 @@ namespace ShallowWater.Game.Walking
         public double HeightAt(GroundPoint place)
         {
             var fromTheCanal = Math.Abs(pound.WaterPositionAt(place).Across);
-            var isOnTheBanks = fromTheCanal < CanalSection.OuterReachMetres;
-            if (isOnTheBanks) return BankProfile.HeightAt(fromTheCanal);
-            var isInAWood = woods.Any(wood => wood.IsAround(place));
-            return isInAWood ? Heights.WoodlandFloorMetres : Heights.GroundMetres;
+            var isOnTheBanks = fromTheCanal < CanalSection.FarmlandReachMetres;
+            return isOnTheBanks ? BankProfile.HeightAt(fromTheCanal) : relief.HeightAt(place);
         }
     }
 }

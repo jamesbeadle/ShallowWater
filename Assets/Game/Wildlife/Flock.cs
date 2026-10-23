@@ -7,35 +7,53 @@ namespace ShallowWater.Game.Wildlife
 {
     public sealed class Flock
     {
-        private const int Seed = 1938;
-
-        private static readonly QuarryKind[] OnTheFarm =
-        {
-            QuarryKind.Rook, QuarryKind.Rook, QuarryKind.Rook, QuarryKind.Crow, QuarryKind.Crow, QuarryKind.Magpie,
-            QuarryKind.Rat, QuarryKind.Rat, QuarryKind.Rat, QuarryKind.Rat
-        };
-
-        private readonly Random random = new Random(Seed);
+        private readonly Random random;
         private readonly List<Quarry> all = new List<Quarry>();
+
+        private Flock(int seed)
+        {
+            random = new Random(seed);
+        }
 
         public IReadOnlyList<Quarry> All => all;
         public IEnumerable<Quarry> Alive => all.Where(quarry => quarry.IsAlive);
         public int Count => all.Count;
 
-        public static Flock Stocked(IReadOnlyList<WorldPoint> perches, IReadOnlyList<WorldPoint> ratRuns)
+        public static Flock Stocked(IEnumerable<Stocking> stockings, int seed)
         {
-            var flock = new Flock();
-            foreach (var kind in OnTheFarm)
-            {
-                var stations = QuarryHabits.IsACorvid(kind) ? perches : ratRuns;
-                flock.all.Add(new Quarry(kind, new Roaming(stations, QuarryHabits.Of(kind), flock.random)));
-            }
+            var flock = new Flock(seed);
+            foreach (var stocking in stockings) flock.Stock(stocking);
             return flock;
+        }
+
+        public bool Has(Quarry quarry)
+        {
+            return all.Contains(quarry);
         }
 
         public void Live(double seconds)
         {
             foreach (var quarry in all) quarry.Live(seconds, random);
+        }
+
+        public void Startle(WorldPoint shotFrom, double hearingMetres)
+        {
+            foreach (var quarry in Alive)
+            {
+                var isWithinHearing = Offset.Between(shotFrom, quarry.Position).Length < hearingMetres;
+                if (isWithinHearing) quarry.Startle(random);
+            }
+        }
+
+        private void Stock(Stocking stocking)
+        {
+            var habit = QuarryHabits.Of(stocking.Kind);
+            for (var each = 0; each < stocking.Count; each++) all.Add(Hatched(stocking, habit));
+        }
+
+        private Quarry Hatched(Stocking stocking, Habit habit)
+        {
+            return new Quarry(stocking.Kind, new Roaming(stocking.Stations, habit, random), new Calling(habit, random));
         }
     }
 }

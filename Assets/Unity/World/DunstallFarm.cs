@@ -1,6 +1,6 @@
 using ShallowWater.Game.Farmyard;
+using ShallowWater.Game.Pound;
 using ShallowWater.Unity.Map;
-using UnityEngine;
 
 namespace ShallowWater.Unity.World
 {
@@ -8,15 +8,10 @@ namespace ShallowWater.Unity.World
     {
         private const string LayerName = "Dunstall Farm";
 
-        public static FarmyardShapes Raise(Farmyard yard)
+        public static FarmyardShapes Raise(Pound pound)
         {
-            var farmyard = FarmyardShapes.Of(yard);
-            var farm = new GameObject(LayerName).transform;
-            foreach (var piece in ShapeMeshes.BuildEach(LayerName, farmyard.Shapes))
-            {
-                var placement = piece.transform;
-                placement.SetParent(farm, false);
-            }
+            var farmyard = FarmyardShapes.Of(Farmyard.DunstallOn(pound));
+            Gatherings.Of(LayerName, Solidity.Hardened(ShapeMeshes.BuildEach(LayerName, farmyard.Shapes)));
             return farmyard;
         }
     }

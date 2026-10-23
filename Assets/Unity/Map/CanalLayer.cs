@@ -11,7 +11,7 @@ namespace ShallowWater.Unity.Map
         {
             var surfaces = PoundShapes.Of(pound);
             AddCanalsBeyond(surfaces);
-            ShapeMeshes.BuildEach(LayerName, surfaces);
+            Solidity.Hardened(ShapeMeshes.BuildEach(LayerName, surfaces));
         }
 
         private static void AddCanalsBeyond(SurfaceShapes surfaces)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ShallowWater.Game.Shapes;
+using ShallowWater.Game.Walking;
 using ShallowWater.Game.Woods;
 
 namespace ShallowWater.Game.Fields
@@ -9,7 +10,8 @@ namespace ShallowWater.Game.Fields
     {
         private const int Seed = 1939;
 
-        private readonly List<Tree> hedgerowTrees = new List<Tree>();
+        private readonly List<Tree> standards = new List<Tree>();
+        private readonly List<Hedge> hedges = new List<Hedge>();
         private readonly HedgerowTiles hedgerows = new HedgerowTiles();
 
         private CountrysideShapes()
@@ -18,7 +20,8 @@ namespace ShallowWater.Game.Fields
 
         public SurfaceShapes Fields { get; } = new SurfaceShapes();
         public IEnumerable<SurfaceShapes> HedgerowTiles => hedgerows.All;
-        public IReadOnlyList<Tree> HedgerowTrees => hedgerowTrees;
+        public IReadOnlyList<Tree> Standards => standards;
+        public IReadOnlyList<Hedge> Hedges => hedges;
 
         public static CountrysideShapes Of(FieldPlan plan, Farmland farmland)
         {
@@ -32,7 +35,15 @@ namespace ShallowWater.Game.Fields
         private void Plant(Hedgerow hedgerow, Farmland farmland, Random random)
         {
             var tile = hedgerows.TileOf(hedgerow);
-            HedgerowShapes.Add(tile, hedgerowTrees, hedgerow, farmland, random);
+            foreach (var run in HedgeRuns.Of(hedgerow, farmland)) Grow(tile, hedgerow, run, random);
+            foreach (var gap in hedgerow.Gaps) GapFurnishing.Add(tile, hedgerow, gap, farmland, random);
+        }
+
+        private void Grow(SurfaceShapes tile, Hedgerow hedgerow, HedgeStretch run, Random random)
+        {
+            var line = HedgerowShapes.AddRun(tile, hedgerow, run);
+            hedges.Add(new Hedge(line, FieldHedgeSection.HalfWidthMetres));
+            standards.AddRange(HedgerowTrees.Along(hedgerow, run, random));
         }
     }
 }

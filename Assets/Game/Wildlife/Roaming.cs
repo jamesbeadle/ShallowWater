@@ -63,6 +63,13 @@ namespace ShallowWater.Game.Wildlife
             if (share >= Arrived) Arrive(random);
         }
 
+        public void Startle(Random random)
+        {
+            if (IsMoving) return;
+            pauseSeconds = Setting;
+            towards = Another(random);
+        }
+
         private void Rest(double seconds, Random random)
         {
             pauseSeconds -= seconds;

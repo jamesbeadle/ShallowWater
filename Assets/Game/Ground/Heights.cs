@@ -9,6 +9,7 @@ namespace ShallowWater.Game.Ground
         public const double RiverMetres = -0.25;
         public const double WoodlandFloorMetres = -0.22;
         public const double GroundMetres = -0.3;
+        public const double VillageTurfMetres = -0.32;
         public const double BeyondTheFarmlandMetres = -0.36;
     }
 }

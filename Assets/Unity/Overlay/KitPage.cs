@@ -25,12 +25,12 @@ namespace ShallowWater.Unity.Overlay
             papers = new PaperCard(page);
         }
 
-        public void Show(FarmRifleMission mission, RookRifle rifle, bool isAshore, Kit kit, TimeOfDay time)
+        public void Show(FarmJob job, RookRifle rifle, bool isAshore, Kit kit, TimeOfDay time)
         {
-            locker.Show(mission, rifle, isAshore);
-            cartridges.Show(kit.Cartridges, mission.IsRifleInHand);
+            locker.Show(rifle, isAshore);
+            cartridges.Show(kit.Cartridges);
             pockets.Show(kit.Purse, time);
-            papers.Show(mission);
+            papers.Show(job);
         }
     }
 }

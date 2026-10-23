@@ -10,12 +10,18 @@ namespace ShallowWater.Unity.Map
     {
         private const string LayerName = "Roads";
 
-        public static void Lay(Pound pound)
+        public static RoadNetwork Lay(Pound pound)
         {
-            if (!OptionalLayer.IsPresent(MapLayers.Roads)) return;
             var roads = OnTheMap();
-            var surroundings = new RoadSurroundings(Clearings(pound, roads), Villages());
-            ShapeMeshes.BuildEach(LayerName, RoadShapes.Of(roads, surroundings));
+            var network = new RoadNetwork(roads, new RoadSurroundings(Clearings(pound, roads), Villages()));
+            var isOnTheMap = OptionalLayer.IsPresent(MapLayers.Roads);
+            if (isOnTheMap) Pave(network);
+            return network;
+        }
+
+        private static void Pave(RoadNetwork network)
+        {
+            Gatherings.Of(LayerName, Solidity.Hardened(ShapeMeshes.BuildEach(LayerName, network.Shapes)));
         }
 
         public static List<Road> OnTheMap()

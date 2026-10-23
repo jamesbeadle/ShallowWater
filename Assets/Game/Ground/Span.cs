@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace ShallowWater.Game.Ground
 {
     public readonly struct Span
@@ -23,6 +26,13 @@ namespace ShallowWater.Game.Ground
         public bool IsAround(double along)
         {
             return along >= From && along <= To;
+        }
+
+        public IEnumerable<Span> Pieces(double longestMetres)
+        {
+            var count = Math.Max(1, (int)Math.Ceiling(Length / longestMetres));
+            var pieceLength = Length / count;
+            for (var piece = 0; piece < count; piece++) yield return new Span(From + pieceLength * piece, From + pieceLength * (piece + 1));
         }
     }
 }

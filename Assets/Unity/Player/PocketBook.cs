@@ -17,7 +17,7 @@ namespace ShallowWater.Unity.Player
         private Moorer moorer;
         private Marksman marksman;
         private BoatController boat;
-        private FarmRifleMission mission;
+        private FarmJob job;
         private DayAndNight day;
         private Pound pound;
         private string poundLength;
@@ -41,12 +41,12 @@ namespace ShallowWater.Unity.Player
             marksman = GetComponent<Marksman>();
             boat = GetComponent<BoatController>();
             var farm = GetComponent<FarmHud>();
-            mission = farm.Mission;
+            job = farm.Job;
         }
 
         private void Update()
         {
-            var isReady = book != null && mission != null;
+            var isReady = book != null && job != null;
             if (!isReady) return;
             var isPutAway = IsOpen && BookInput.IsPutAway();
             var isTurned = BookInput.IsAskedFor() || isPutAway;
@@ -58,9 +58,9 @@ namespace ShallowWater.Unity.Player
             if (!IsOpen) return;
             var isAshore = shore.IsAshore;
             var kitPage = book.Kit;
-            kitPage.Show(mission, marksman.Rifle, isAshore, Kit, day.Now);
+            kitPage.Show(job, marksman.Rifle, isAshore, Kit, day.Now);
             var dayPage = book.Day;
-            dayPage.Show(mission, boat.Notch, moorer.Mooring, isAshore);
+            dayPage.Show(job, boat.Notch, moorer.Mooring, isAshore);
         }
 
         private void TakeOut()

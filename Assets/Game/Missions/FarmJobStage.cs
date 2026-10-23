@@ -1,6 +1,6 @@
 namespace ShallowWater.Game.Missions
 {
-    public enum FarmRifleStage
+    public enum FarmJobStage
     {
         NotYetAsked,
         Culling,

@@ -24,10 +24,10 @@ namespace ShallowWater.Unity.Overlay
             screen.Add(row);
         }
 
-        public void Show(FarmRifleMission mission)
+        public void Show(FarmJob job)
         {
-            card.EnableInClassList(HiddenClass, !mission.HasBegun);
-            words.text = mission.Words;
+            card.EnableInClassList(HiddenClass, !job.HasBegun);
+            words.text = job.Words;
         }
     }
 }
