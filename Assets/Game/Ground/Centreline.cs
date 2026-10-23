@@ -19,6 +19,7 @@ namespace ShallowWater.Game.Ground
         public GroundLine Line { get; }
         public IReadOnlyList<double> Distances => distances;
         public double LengthMetres => distances[distances.Length - 1];
+        public Span Whole => new Span(0, LengthMetres);
 
         public double BearingAt(double along)
         {
@@ -38,11 +39,12 @@ namespace ShallowWater.Game.Ground
             return onTheLine + right * across;
         }
 
-        public WaterPosition Nearest(GroundPoint point)
+        public WaterPosition NearestWithin(GroundPoint point, Span span)
         {
-            var nearestSegment = 0;
+            var nearestSegment = SegmentAt(span.From);
+            var lastSegment = SegmentAt(span.To);
             var nearestDistance = DistanceFrom(nearestSegment, point);
-            for (var segment = 1; segment < Line.SegmentCount; segment++)
+            for (var segment = nearestSegment + 1; segment <= lastSegment; segment++)
             {
                 var distance = DistanceFrom(segment, point);
                 if (distance >= nearestDistance) continue;

@@ -1,3 +1,5 @@
+using ShallowWater.Game.Ground;
+
 namespace ShallowWater.Game.Boat
 {
     public readonly struct HullPoint
@@ -10,5 +12,11 @@ namespace ShallowWater.Game.Boat
 
         public double Ahead { get; }
         public double ToStarboard { get; }
+
+        public static HullPoint On(BoatMotion boat, GroundPoint place)
+        {
+            var away = place - boat.Position;
+            return new HullPoint(away.Dot(boat.Heading), away.Dot(boat.Starboard));
+        }
     }
 }

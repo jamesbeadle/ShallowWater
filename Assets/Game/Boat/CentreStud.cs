@@ -6,12 +6,13 @@ namespace ShallowWater.Game.Boat
     {
         public const double Along = 0;
         public const double TieMetres = 0.13;
+        public const double RadiusMetres = 0.03;
         private const double PinHalfLengthMetres = 0.08;
         private const double PinRadiusMetres = 0.015;
         private const int RoundSides = 12;
         private static readonly ProfilePoint[] Stud =
         {
-            new ProfilePoint(0.03, 0), new ProfilePoint(0.03, 0.16), new ProfilePoint(0.045, 0.17), new ProfilePoint(0.045, 0.19), new ProfilePoint(0, 0.19)
+            new ProfilePoint(RadiusMetres, 0), new ProfilePoint(RadiusMetres, 0.16), new ProfilePoint(0.045, 0.17), new ProfilePoint(0.045, 0.19), new ProfilePoint(0, 0.19)
         };
 
         public static readonly HullPoint OnTheHull = new HullPoint(Along, BoatSides.Amidships);

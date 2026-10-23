@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using ShallowWater.Game.Boat;
-using ShallowWater.Game.Ground;
 using ShallowWater.Game.Mooring;
 using ShallowWater.Game.Shapes;
 using UnityEngine;
@@ -11,13 +10,14 @@ namespace ShallowWater.Unity.World
     public sealed class MooringLines
     {
         private const string DrapedName = "Centre line on the roof";
-        private const int RopeSides = 6;
         private readonly RopeMesh draped;
         private readonly Dictionary<MooringLine, RopeMesh> ropes = new Dictionary<MooringLine, RopeMesh>();
         private readonly MooringPins pins = new MooringPins();
+        private readonly SurfaceBeneath beneath;
 
-        public MooringLines(Transform boatModel)
+        public MooringLines(Transform boatModel, SurfaceBeneath surfaceBeneath)
         {
+            beneath = surfaceBeneath;
             draped = new RopeMesh(DrapedName, boatModel);
             draped.Lay(CentreLineDrape.Laid());
             foreach (MooringLine line in Enum.GetValues(typeof(MooringLine))) ropes[line] = new RopeMesh(line.ToString(), null);
@@ -39,19 +39,16 @@ namespace ShallowWater.Unity.World
             var isOnTheRoof = mooring.Hold == CentreLineHold.OnTheRoof;
             if (isOnTheRoof) rope.TakeUp();
             if (isOnTheRoof) return;
-            var isHeldAtThePost = mooring.IsLaid(MooringLine.Centre) || IsWorkingOn(mooring, MooringLine.Centre);
-            var end = isHeldAtThePost ? TieOf(mooring, MooringLine.Centre) : hand;
-            rope.Lay(CentreLineShape(boat, end, isHeldAtThePost));
+            var stud = LineEnds.OnTheBoat(MooringLine.Centre, boat, hand.Place);
+            rope.Lay(CentreLineShape(mooring, stud, hand));
         }
 
-        private static Shape CentreLineShape(BoatMotion boat, WorldPoint end, bool isHeldAtThePost)
+        private Shape CentreLineShape(Mooring mooring, LineEnd stud, WorldPoint hand)
         {
-            var stud = CentreLine.StudOn(boat);
-            var edge = CentreLine.OverTheSideTowards(boat, new GroundPoint(end.East, end.North));
-            var onTheBoat = Tube.Along(new[] { stud, edge }, HangingLine.RadiusMetres, RopeSides);
-            var slack = CentreLine.SlackBeyond(stud, edge, end);
-            onTheBoat.Append(isHeldAtThePost ? HangingLine.TakenUp(edge, end) : HangingLine.WithSlack(edge, end, slack));
-            return onTheBoat;
+            var isHeldAtThePost = mooring.IsLaid(MooringLine.Centre) || IsWorkingOn(mooring, MooringLine.Centre);
+            if (!isHeldAtThePost) return MooringLineShape.InHand(stud, hand, beneath);
+            var laid = mooring.LaidAt(MooringLine.Centre);
+            return MooringLineShape.MadeFast(stud, laid, beneath);
         }
 
         private void ShowTheEndLine(Mooring mooring, BoatMotion boat, MooringLine line)
@@ -63,13 +60,7 @@ namespace ShallowWater.Unity.World
             if (!isLaid) return;
             var laid = mooring.LaidAt(line);
             var onTheBoat = LineEnds.OnTheBoat(line, boat, laid.Anchor);
-            rope.Lay(HangingLine.TakenUp(onTheBoat, laid.Tie));
-        }
-
-        private static WorldPoint TieOf(Mooring mooring, MooringLine line)
-        {
-            var laid = mooring.LaidAt(line);
-            return laid.Tie;
+            rope.Lay(MooringLineShape.MadeFast(onTheBoat, laid, beneath));
         }
 
         private static bool IsWorkingOn(Mooring mooring, MooringLine line)

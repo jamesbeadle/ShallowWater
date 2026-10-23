@@ -25,6 +25,7 @@ namespace ShallowWater.Game.Boat
         private const double RailAcrossMetres = 0.78;
         private const double RailAboveTheRoofMetres = 0.07;
         private const double RailRadiusMetres = 0.016;
+        public const double RailInnerEdgeMetres = RailAcrossMetres - RailRadiusMetres;
         private const int RailSides = 6;
         private const double RailFromAlong = -8.6;
         private const double RailToAlong = -4.5;

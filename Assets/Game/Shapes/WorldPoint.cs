@@ -1,3 +1,5 @@
+using ShallowWater.Game.Ground;
+
 namespace ShallowWater.Game.Shapes
 {
     public readonly struct WorldPoint
@@ -5,6 +7,7 @@ namespace ShallowWater.Game.Shapes
         public double East { get; }
         public double Height { get; }
         public double North { get; }
+        public GroundPoint Place => new GroundPoint(East, North);
 
         public WorldPoint(double east, double height, double north)
         {

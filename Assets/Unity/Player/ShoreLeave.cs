@@ -39,7 +39,7 @@ namespace ShallowWater.Unity.Player
             walking = askew.gameObject.AddComponent<WalkerController>();
             walking.Ready(ground, figure, camera);
             moorer = gameObject.AddComponent<Moorer>();
-            moorer.Ready(figure, walking, new MooringPosts(Bollards.AlongThe(water), ground));
+            moorer.Ready(figure, walking, new MooringPosts(Bollards.AlongThe(water), ground), new SurfaceBeneath(water, boat.Motion));
             StepAboard();
         }
 
