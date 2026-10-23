@@ -6,22 +6,39 @@
 @import url("Speech.uss");
 @import url("Job.uss");
 @import url("Sight.uss");
+@import url("PocketBook.uss");
+@import url("Sketches.uss");
 
 .hud-screen {
-    --ink: #F3ECDD;
-    --ink-soft: rgba(243, 236, 221, 0.74);
-    --ink-faint: rgba(243, 236, 221, 0.46);
-    --rule: rgba(243, 236, 221, 0.10);
-    --glass: rgba(16, 14, 12, 0.92);
-    --glass-deep: rgba(16, 14, 12, 0.95);
-    --edge: rgba(243, 236, 221, 0.07);
-    --edge-lit: rgba(243, 236, 221, 0.16);
-    --brass: #E8B15A;
-    --signal-red: #D8684B;
-    --cap: #EFE8D9;
-    --cap-lip: #9F957F;
-    --cap-ink: #18191D;
-    --unlit: rgba(243, 236, 221, 0.18);
+    --ink: #EFE4C8;
+    --ink-soft: rgba(239, 228, 200, 0.74);
+    --ink-faint: rgba(239, 228, 200, 0.46);
+    --rule: rgba(239, 228, 200, 0.10);
+    --oilskin: rgba(27, 25, 20, 0.93);
+    --oilskin-deep: rgba(22, 20, 16, 0.96);
+    --edge: rgba(239, 228, 200, 0.08);
+    --edge-lit: rgba(239, 228, 200, 0.18);
+    --brass: #C9A24A;
+    --signal-red: #C04F36;
+    --unlit: rgba(239, 228, 200, 0.18);
+    --key-face: #17150F;
+    --key-ring: #B8AE97;
+    --key-ink: #EFE4C8;
+    --enamel: #E6DEC7;
+    --enamel-ink: #1E1B16;
+    --enamel-ink-soft: rgba(30, 27, 22, 0.55);
+    --enamel-rim: #5A5346;
+    --paper: #E7DAB9;
+    --paper-card: #F1E8D2;
+    --paper-edge: #BFAE88;
+    --pencil: #2F2A26;
+    --pencil-soft: rgba(47, 42, 38, 0.66);
+    --pencil-faint: rgba(47, 42, 38, 0.38);
+    --pencil-rule: rgba(47, 42, 38, 0.16);
+    --oilcloth: #1C1F1A;
+    --oilcloth-edge: #3B4036;
+    --gutter: rgba(0, 0, 0, 0.38);
+    --table: rgba(6, 5, 4, 0.78);
     position: absolute;
     left: 0;
     top: 0;
@@ -31,6 +48,13 @@
 
 .hud-safe-area {
     position: absolute;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.hud-safe-area--reading {
+    opacity: 0;
 }
 
 .hud-text {
@@ -50,12 +74,15 @@
     font-size: 13px;
     letter-spacing: 3.5px;
     color: var(--ink-faint);
+    -unity-font-definition: url("Fonts/StardosStencil-Regular.ttf");
 }
 
 .hud-glass {
-    background-color: var(--glass);
+    background-color: var(--oilskin);
+    background-image: url("Materials/Weave.png");
+    background-repeat: repeat;
     border-width: 1px;
     border-color: var(--edge);
     border-top-color: var(--edge-lit);
-    border-radius: 10px;
+    border-radius: 6px;
 }

@@ -11,7 +11,7 @@ namespace ShallowWater.Game.Pound
     {
         private const double SpacingMetres = 9;
         private const double BackFromTheEdgeMetres = 0.3;
-        private const double RadiusMetres = 0.12;
+        public const double RadiusMetres = 0.12;
         private const double HeightMetres = 0.6;
         public const double TopMetres = Heights.BankTopMetres + HeightMetres;
         private const int SidesOfEach = 8;

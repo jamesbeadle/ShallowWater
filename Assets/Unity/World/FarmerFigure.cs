@@ -1,6 +1,5 @@
 using ShallowWater.Game.Farmyard;
 using ShallowWater.Game.Ground;
-using ShallowWater.Game.People;
 using ShallowWater.Game.Walking;
 using ShallowWater.Unity.Player;
 using UnityEngine;
@@ -11,8 +10,6 @@ namespace ShallowWater.Unity.World
     {
         private const double NoticesFromMetres = 9;
         private const float TurnPerSecond = 3f;
-        private const double Still = 0;
-
         private Farmyard yard;
         private Transform askew;
         private float bearingDegrees;
@@ -20,7 +17,6 @@ namespace ShallowWater.Unity.World
         public static FarmerFigure Standing(Farmyard yard, Land land, Transform askew)
         {
             var figure = FigureModel.Farmer();
-            figure.Pose(Gait.At(Still, Still));
             var root = figure.Root;
             var farmer = root.gameObject.AddComponent<FarmerFigure>();
             farmer.yard = yard;

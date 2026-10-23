@@ -1,4 +1,3 @@
-using System;
 using ShallowWater.Game.Shapes;
 
 namespace ShallowWater.Game.People
@@ -8,31 +7,26 @@ namespace ShallowWater.Game.People
         public const double HandOutMetres = 0.33;
         private const double HandBelowTheShoulderMetres = 0.5;
         private const double Level = 0;
-        private const double Left = -1;
-        private const double Right = 1;
-        private const double HandReachMetres = AskewForm.ForearmMetres + Hand.PalmBelowTheWristMetres;
+        private static readonly Offset ElbowBackAndDown = new Offset(0, -1, -0.6);
 
-        public static bool IsInTheRightHand(Offset studFromTheFeet)
+        public static FigurePart HandFor(Offset studFromTheFeet)
         {
-            return studFromTheFeet.Eastward >= Level;
+            var isToTheRight = studFromTheFeet.Eastward >= Level;
+            return isToTheRight ? FigurePart.RightHand : FigurePart.LeftHand;
         }
 
-        public static FigurePart ForearmFor(Offset studFromTheFeet)
+        public static FigurePose Holding(FigurePose stride, Offset studFromTheFeet)
         {
-            return IsInTheRightHand(studFromTheFeet) ? FigurePart.RightForearm : FigurePart.LeftForearm;
-        }
-
-        public static GaitPose Holding(GaitPose stride, Offset studFromTheFeet)
-        {
-            var side = IsInTheRightHand(studFromTheFeet) ? Right : Left;
-            var shoulder = new Offset(side * AskewForm.ShoulderHalfWidthMetres, AskewForm.ShoulderMetres, Level);
             var towardsTheStud = new Offset(studFromTheFeet.Eastward, Level, studFromTheFeet.Northward).Normalised;
-            var hand = towardsTheStud * HandOutMetres + Offset.Up * -HandBelowTheShoulderMetres;
-            var isAtTheStud = double.IsNaN(hand.Eastward);
+            var isAtTheStud = double.IsNaN(towardsTheStud.Eastward);
             if (isAtTheStud) return stride;
-            var angles = ArmReach.Towards(hand, AskewForm.UpperArmMetres, HandReachMetres);
-            var upperArm = side == Right ? FigurePart.RightUpperArm : FigurePart.LeftUpperArm;
-            return stride.Holding(upperArm, ForearmFor(studFromTheFeet), angles);
+            var hand = HandFor(studFromTheFeet);
+            var forearm = FigureJoints.Parents[hand];
+            var upperArm = FigureJoints.Parents[forearm];
+            var frames = FigurePlacement.Of(stride);
+            var shoulder = frames[upperArm];
+            var palm = (towardsTheStud * HandOutMetres + Offset.Up * -HandBelowTheShoulderMetres).From(shoulder.Origin);
+            return Arms.Reaching(stride, hand, palm, ElbowBackAndDown);
         }
     }
 }

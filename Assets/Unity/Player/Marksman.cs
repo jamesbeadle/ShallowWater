@@ -1,4 +1,5 @@
 using ShallowWater.Game.Guns;
+using ShallowWater.Game.Kit;
 using ShallowWater.Game.Missions;
 using ShallowWater.Game.People;
 using ShallowWater.Unity.Map;
@@ -20,7 +21,9 @@ namespace ShallowWater.Unity.Player
         private Wildlife wildlife;
         private RifleInHand inHand;
         private RifleReport report;
+        private Kit kit;
 
+        public RookRifle Rifle => rifle;
         public bool IsAiming => rifle.IsShouldered;
         public bool CanAim { get; private set; }
 
@@ -37,6 +40,8 @@ namespace ShallowWater.Unity.Player
             inHand = new RifleInHand(model);
             var root = model.Root;
             report = new RifleReport(root.gameObject);
+            var book = GetComponent<PocketBook>();
+            kit = book.Kit;
         }
 
         private void Update()
@@ -72,7 +77,10 @@ namespace ShallowWater.Unity.Player
 
         private void Fire()
         {
-            if (!rifle.IsLoaded) return;
+            var cartridges = kit.Cartridges;
+            var hasARoundToFire = rifle.IsLoaded && cartridges.HasAny;
+            if (!hasARoundToFire) return;
+            cartridges.Spend();
             rifle.Fire();
             report.Fire();
             var eye = view.transform;

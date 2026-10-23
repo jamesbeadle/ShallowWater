@@ -8,6 +8,7 @@ namespace ShallowWater.Unity.Player
         {
             new HudPrompt("W|S", "Lever ahead and astern"), new HudPrompt("A|D", "Tiller"), new HudPrompt("Space", "Stop"),
             new HudPrompt("E", "Step ashore, by the bank"), new HudPrompt("M", "The 1900 map"),
+            new HudPrompt("Tab", "The pocket book: kit, job and boat"),
             new HudPrompt(KeyGlyphs.RightMouse, "Look round"), new HudPrompt(KeyGlyphs.Wheel, "Zoom"),
         };
 
@@ -17,11 +18,13 @@ namespace ShallowWater.Unity.Player
             new HudPrompt("T", "Tie her up, then the bow and stern lines"), new HudPrompt("R", "Let go a line, at its post"),
             new HudPrompt("E", "Talk, by the farmer"),
             new HudPrompt(KeyGlyphs.RightMouse, "Shoulder the rifle"), new HudPrompt(KeyGlyphs.LeftMouse, "Fire, shouldered"),
-            new HudPrompt("M", "The 1900 map"),
+            new HudPrompt("M", "The 1900 map"), new HudPrompt("Tab", "The pocket book: kit, job and boat"),
             new HudPrompt(KeyGlyphs.RightMouse, "Look round"), new HudPrompt(KeyGlyphs.Wheel, "Zoom"),
         };
 
         public static readonly HudPrompt Open = new HudPrompt("H", "Controls");
         public static readonly HudPrompt Close = new HudPrompt("H", "Close");
+        public static readonly HudPrompt Book = new HudPrompt("Tab", "Pocket book");
+        public static readonly HudPrompt PutAway = new HudPrompt("Tab", "Put the book away");
     }
 }

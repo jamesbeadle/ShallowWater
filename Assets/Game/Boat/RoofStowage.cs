@@ -8,6 +8,8 @@ namespace ShallowWater.Game.Boat
     {
         private const int RoundSides = 14;
         private const double CanAcross = 0.52;
+        private const double CanRadiusMetres = 0.13;
+        public const double CansOuterEdgeMetres = CanAcross + CanRadiusMetres;
         private static readonly double[] CansAlong = { -7.55, -7.1 };
         private const double SeatedMetres = 0.02;
         private const double HandleSpanMetres = 0.08;
@@ -23,7 +25,7 @@ namespace ShallowWater.Game.Boat
 
         private static readonly ProfilePoint[] BuckbyCan =
         {
-            new ProfilePoint(0.12, 0), new ProfilePoint(0.13, 0.02), new ProfilePoint(0.13, 0.26), new ProfilePoint(0.125, 0.28),
+            new ProfilePoint(0.12, 0), new ProfilePoint(CanRadiusMetres, 0.02), new ProfilePoint(CanRadiusMetres, 0.26), new ProfilePoint(0.125, 0.28),
             new ProfilePoint(0.095, 0.33), new ProfilePoint(0.075, 0.35), new ProfilePoint(0.075, 0.37), new ProfilePoint(0.095, 0.38),
             new ProfilePoint(0.095, 0.4), new ProfilePoint(0, 0.405)
         };

@@ -7,49 +7,65 @@ namespace ShallowWater.Game.People
     {
         private const double FaceForward = Math.PI / 2;
         private const double CollarOpeningRadians = Math.PI * 0.3;
-        private static readonly WorldPoint Hips = new WorldPoint(0, 0, 0);
+        private const double NeckRadiusMetres = 0.066;
+        private const double ButtonRadiusMetres = 0.012;
+        private const double ButtonRowHalfWidthMetres = 0.055;
+        private const double ButtonProudMetres = 0.004;
+        private static readonly WorldPoint Waist = new WorldPoint(0, 0, 0);
         private static readonly Offset BodyShape = new Offset(1, 1, AskewForm.BodyDepthShare);
 
-        private static readonly ProfilePoint[] Coat =
+        private static readonly ProfilePoint[] Body =
         {
-            new ProfilePoint(0.25, -0.3), new ProfilePoint(0.228, -0.18), new ProfilePoint(0.205, -0.06), new ProfilePoint(0.19, 0.04),
-            new ProfilePoint(0.185, 0.13), new ProfilePoint(0.2, 0.26), new ProfilePoint(0.215, 0.38), new ProfilePoint(0.222, 0.47),
-            new ProfilePoint(0.205, 0.53), new ProfilePoint(0.16, 0.558), new ProfilePoint(0.11, 0.575), new ProfilePoint(0.08, 0.585)
+            new ProfilePoint(0.19, 0), new ProfilePoint(0.196, 0.04), new ProfilePoint(0.207, 0.1), new ProfilePoint(0.224, 0.18),
+            new ProfilePoint(0.236, 0.25), new ProfilePoint(0.238, 0.29), new ProfilePoint(0.226, 0.32), new ProfilePoint(0.188, 0.345),
+            new ProfilePoint(0.14, 0.365), new ProfilePoint(0.098, 0.382), new ProfilePoint(0.074, 0.39)
+        };
+
+        private static readonly ProfilePoint[] Neck =
+        {
+            new ProfilePoint(NeckRadiusMetres, 0.35), new ProfilePoint(NeckRadiusMetres, 0.42)
         };
 
         private static readonly ProfilePoint[] Shirt =
         {
-            new ProfilePoint(0.062, 0.46), new ProfilePoint(0.06, 0.6)
+            new ProfilePoint(0.072, 0.3), new ProfilePoint(0.074, 0.36), new ProfilePoint(0.072, 0.43)
         };
 
         private static readonly ProfilePoint[] Collar =
         {
-            new ProfilePoint(0.108, 0.565), new ProfilePoint(0.096, 0.59), new ProfilePoint(0.108, 0.62), new ProfilePoint(0.126, 0.645)
+            new ProfilePoint(0.1, 0.38), new ProfilePoint(0.095, 0.4), new ProfilePoint(0.108, 0.435), new ProfilePoint(0.128, 0.465)
         };
 
-        private const double ButtonRadiusMetres = 0.012;
-        private const double ButtonRowHalfWidthMetres = 0.055;
+        private static readonly double[] ButtonHeights = { 0.04, 0.13, 0.22 };
 
-        private static readonly WorldPoint[] ButtonRow =
+        public static SurfaceShapes Dress(Outfit outfit)
         {
-            new WorldPoint(0, 0.4, 0.168), new WorldPoint(0, 0.28, 0.156), new WorldPoint(0, 0.16, 0.143), new WorldPoint(0, 0.04, 0.146)
-        };
-
-        public static void Dress(SurfaceShapes torso, Surface coat)
-        {
-            torso.Add(coat, Scaled.Of(Lathe.Turned(Hips, Coat, AskewForm.RoundSides), BodyShape));
-            torso.Add(Surface.Shirt, Lathe.Turned(Hips, Shirt, AskewForm.LimbSides));
-            torso.Add(coat, Lathe.TurnedThrough(Hips, Collar, AskewForm.RoundSides, FaceForward + CollarOpeningRadians, FaceForward + 2 * Math.PI - CollarOpeningRadians));
-            Button(torso);
+            var torso = new SurfaceShapes();
+            torso.Add(outfit.Coat, Scaled.Of(Lathe.Turned(Waist, Body, AskewForm.RoundSides), BodyShape));
+            torso.Add(Surface.Skin, Lathe.Turned(Waist, Neck, AskewForm.LimbSides));
+            torso.Add(Surface.Shirt, Lathe.Turned(Waist, Shirt, AskewForm.LimbSides));
+            torso.Add(outfit.Coat, Lathe.TurnedThrough(Waist, Collar, AskewForm.RoundSides, FaceForward + CollarOpeningRadians, FaceForward + 2 * Math.PI - CollarOpeningRadians));
+            if (outfit.HasAScarf) AskewScarf.Wrap(torso);
+            Button(torso, outfit);
+            return torso;
         }
 
-        private static void Button(SurfaceShapes torso)
+        private static void Button(SurfaceShapes torso, Outfit outfit)
         {
-            foreach (var place in ButtonRow)
+            var rowHalfWidth = outfit.IsDoubleBreasted ? ButtonRowHalfWidthMetres : 0;
+            foreach (var height in ButtonHeights)
             {
-                torso.Add(Surface.Buttons, Ball.Of(new WorldPoint(-ButtonRowHalfWidthMetres, place.Height, place.North), ButtonRadiusMetres, AskewForm.FeatureSides));
-                torso.Add(Surface.Buttons, Ball.Of(new WorldPoint(ButtonRowHalfWidthMetres, place.Height, place.North), ButtonRadiusMetres, AskewForm.FeatureSides));
+                var front = CoatFrontAt(height, rowHalfWidth) + ButtonProudMetres;
+                torso.Add(Surface.Buttons, Ball.Of(new WorldPoint(-rowHalfWidth, height, front), ButtonRadiusMetres, AskewForm.FeatureSides));
+                if (!outfit.IsDoubleBreasted) continue;
+                torso.Add(Surface.Buttons, Ball.Of(new WorldPoint(rowHalfWidth, height, front), ButtonRadiusMetres, AskewForm.FeatureSides));
             }
+        }
+
+        private static double CoatFrontAt(double height, double acrossMetres)
+        {
+            var radius = Profiles.RadiusAt(Body, height);
+            return Math.Sqrt(Math.Max(0, radius * radius - acrossMetres * acrossMetres)) * AskewForm.BodyDepthShare;
         }
     }
 }

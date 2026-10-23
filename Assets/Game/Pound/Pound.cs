@@ -35,7 +35,12 @@ namespace ShallowWater.Game.Pound
 
         public WaterPosition WaterPositionAt(GroundPoint point)
         {
-            return centreline.Nearest(point);
+            return centreline.NearestWithin(point, centreline.Whole);
+        }
+
+        public WaterPosition WaterPositionWithin(GroundPoint point, Span span)
+        {
+            return centreline.NearestWithin(point, span);
         }
 
         public GroundPoint GroundPointAt(WaterPosition position)

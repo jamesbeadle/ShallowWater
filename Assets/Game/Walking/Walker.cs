@@ -16,6 +16,7 @@ namespace ShallowWater.Game.Walking
         public GroundPoint Position { get; private set; }
         public double Bearing { get; private set; }
         public GroundPoint Velocity { get; private set; }
+        public double TurnRadiansPerSecond { get; private set; }
         public double SpeedMetresPerSecond => Velocity.Length;
 
         public void Stride(double seconds, GroundPoint wish, bool isRunning, Land land)
@@ -26,6 +27,7 @@ namespace ShallowWater.Game.Walking
             var stepped = land.Stepped(Position, Velocity * seconds);
             Velocity = (stepped - Position) * (1 / seconds);
             Position = stepped;
+            TurnRadiansPerSecond = 0;
             var isMoving = SpeedMetresPerSecond > WalkingPace.StandingStillMetresPerSecond;
             if (isMoving) Turn(seconds, Velocity.Bearing);
         }
@@ -35,12 +37,15 @@ namespace ShallowWater.Game.Walking
             Position = place;
             Bearing = bearing;
             Velocity = new GroundPoint(0, 0);
+            TurnRadiansPerSecond = 0;
         }
 
         private void Turn(double seconds, double towards)
         {
             var remaining = Math.IEEERemainder(towards - Bearing, FullTurnRadians);
-            Bearing += remaining * Math.Min(1, WalkingPace.TurnPerSecond * seconds);
+            var turned = remaining * Math.Min(1, WalkingPace.TurnPerSecond * seconds);
+            Bearing += turned;
+            TurnRadiansPerSecond = turned / seconds;
         }
     }
 }

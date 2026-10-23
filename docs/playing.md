@@ -13,6 +13,7 @@ The game side lives in plain C# (`Assets/Game`); the Unity layer only reads the 
 | Look round | right mouse drag, scroll to zoom | right stick |
 | Step ashore | E | south button |
 | Show or hide the controls | H, or click the **H Controls** hint at the top left | select (view) button |
+| Open or put away the pocket book | Tab or I, or click the **Tab Pocket book** hint at the top left; Esc puts it away | east button |
 
 The lever stays where it is put: full astern, half astern, stop, dead slow, half ahead and full ahead. It sets the engine's revolutions, not her speed (`BoatHandling`). The Bolinder has no reverse gear, so going from ahead to astern the engine stops, pauses a second and a half, and runs the other way (`Engine`). The beat is one a second at tickover and quickens with the revolutions (`EngineSound`, from `BolinderBeat`).
 
@@ -51,6 +52,7 @@ Casting off is the same in reverse: R at a post lets go the bow or stern line th
 | Shoulder the rifle, ashore | hold the right mouse button | hold the left trigger |
 | Fire, shouldered | left mouse button | right trigger |
 | Show or hide the controls | H, or click the **H Controls** hint at the top left | select (view) button |
+| Open or put away the pocket book | Tab or I, or click the **Tab Pocket book** hint at the top left; Esc puts it away | east button |
 
 ## The rifle and the paddock
 
@@ -79,6 +81,8 @@ Everything on the screen but the radar is drawn with UI Toolkit (`Assets/Unity/O
 - **Engine** (`TelegraphCard`, `TelegraphMeter`), beside the radar while you are at the tiller: the order the lever is at, in brass ahead and signal red astern, over a meter that fills from stop towards full ahead or full astern.
 - **Prompts** (`PromptColumn`, `PromptPill`), bottom right: the key and what it does, such as **E** *Step ashore*, sliding in as they become possible.
 - **Controls** (`ControlsPanel`), top left: the **H** *Controls* hint opens a panel of what every key does at the tiller or ashore; H, the gamepad's select or a click on **H** *Close* puts it away.
-- **Clock** (`ClockFace`), top right, with each figure in its own cell so the time does not shift as it changes.
+- **Clock** (`ClockFace`), top right, an enamel plate with each figure in its own cell so the time does not shift as it changes.
+- **The job** (`JobCard`), top centre, a paper label in pencil: the farm and how the cull stands, then the lead once Pryce gives it.
+- **The pocket book** (`PocketBookScreen`, driven by `PocketBook`), on Tab, I or the gamepad's east button: Askew's oilcloth notebook laid open over the dimmed world, which stands still while he reads it (`WorldPause`, and `Attention` keeps every key from the world until it is put away). The left page is his kit: the gun locker (`GunLocker`, three hooks, the rook rifle on one, his own, with whether it is loaded and in hand or stowed below), the box of fifty .300 Rook cartridges with every round drawn and the spent ones left as outlines (`CartridgeBox`, from `Assets/Game/Kit`), his purse in pounds, shillings and pence (`Purse`, `OldMoney`), his pocket watch with its hands at the game's time (`PocketWatch`), and the papers he has gathered: the lead to Holland on a card (`PaperCard`). The right page is the day: the job and where it stands (`JobEntry`), *Sparrow* with her engine order and each mooring line (`BoatEntry`), and where she lies on the pound in furlongs and yards from the nearest landmark (`WaterEntry`, from `Whereabouts` and `OldDistance`). Every item has a pencil sketch (`Sketches`), and the rifle is fired from that box: when the fifty are spent it will not fire.
 
-Keys are drawn as key caps and the mouse as a mouse with the button or wheel you use in brass (`KeyGlyphs`, `MouseGlyph`). The look lives in the stylesheets in `Assets/Unity/Resources/Hud` (`Hud.uss` holds the colours and imports one sheet per widget), set in Cabin for the words and Josefin Sans for headings and figures; both are under the SIL Open Font License, which is kept beside them.
+The materials are the period's. Cards are oilskin (a dark waxed canvas, with the weave in `Materials/Weave.png`), the key caps are round black typewriter keys with a nickel ring, the job label and the book's pages are worn paper (`Materials/Paper.png`, generated, tileable) and the book's cover is oilcloth. Headings are stencilled in Stardos Stencil, the pencil hand is Caveat, the words are Cabin and the clock's figures Josefin Sans; all four are under the SIL Open Font License, kept beside them in `Assets/Unity/Resources/Hud/Fonts`. The look lives in the stylesheets in `Assets/Unity/Resources/Hud` (`Hud.uss` holds the colours and imports one sheet per widget; `PocketBook.uss` and `Sketches.uss` are the book's). Keys are drawn as those caps and the mouse as a mouse with the button or wheel you use in brass (`KeyGlyphs`, `MouseGlyph`).
