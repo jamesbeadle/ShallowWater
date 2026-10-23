@@ -18,13 +18,12 @@ namespace ShallowWater.Game.People
         private const double Whole = 1;
         private const double Still = 0;
 
-        private GaitRhythm(double speedMetresPerSecond)
+        private GaitRhythm(double speedMetresPerSecond, double cyclesPerSecond)
         {
             Going = Math.Min(Whole, speedMetresPerSecond / WalkingPace.WalkMetresPerSecond);
             var runShare = (speedMetresPerSecond - WalkingPace.WalkMetresPerSecond) / (WalkingPace.RunMetresPerSecond - WalkingPace.WalkMetresPerSecond);
             Run = Math.Clamp(runShare, Still, Whole);
-            var isMoving = speedMetresPerSecond > Still;
-            CyclesPerSecond = isMoving ? speedMetresPerSecond / StrideMetres : Still;
+            CyclesPerSecond = cyclesPerSecond;
         }
 
         public double Going { get; }
@@ -41,7 +40,10 @@ namespace ShallowWater.Game.People
 
         public static GaitRhythm At(double speedMetresPerSecond)
         {
-            return new GaitRhythm(speedMetresPerSecond);
+            var stride = new GaitRhythm(speedMetresPerSecond, Still);
+            var isMoving = speedMetresPerSecond > Still;
+            if (!isMoving) return stride;
+            return new GaitRhythm(speedMetresPerSecond, speedMetresPerSecond / stride.StrideMetres);
         }
 
         public double Between(double walking, double running)
