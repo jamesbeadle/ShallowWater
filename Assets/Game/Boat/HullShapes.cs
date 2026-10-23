@@ -6,7 +6,7 @@ namespace ShallowWater.Game.Boat
 {
     public static class HullShapes
     {
-        private const double PlateMetres = 0.04;
+        public const double PlateMetres = 0.04;
 
         public static void Build(SurfaceShapes surfaces)
         {

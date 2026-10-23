@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T20:43:54+00:00",
+  "generatedAt": "2026-10-23T20:53:06+00:00",
   "kitVersion": "1.26.0",
   "score": {
     "overall": 100.0,
@@ -40,7 +40,7 @@
         "unit": "files",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 562,
+        "measuredAgainst": 604,
         "score": 100.0
       },
       {
@@ -64,7 +64,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1414,
+        "measuredAgainst": 1545,
         "score": 100.0
       },
       {
@@ -76,7 +76,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 333,
+        "measuredAgainst": 383,
         "score": 100.0
       },
       {
@@ -99,7 +99,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 21.98,
+        "measuredAgainst": 23.79,
         "score": 100.0
       },
       {
@@ -111,7 +111,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 21.98,
+        "measuredAgainst": 23.79,
         "score": 100.0
       },
       {
@@ -123,7 +123,7 @@
         "unit": "components and functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1414,
+        "measuredAgainst": 1545,
         "score": 100.0
       },
       {
@@ -135,7 +135,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 21.98,
+        "measuredAgainst": 23.79,
         "score": 100.0
       },
       {
@@ -147,7 +147,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 21.98,
+        "measuredAgainst": 23.79,
         "score": 100.0
       },
       {
@@ -159,7 +159,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1414,
+        "measuredAgainst": 1545,
         "score": 100.0
       },
       {
@@ -194,7 +194,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 333,
+        "measuredAgainst": 383,
         "score": 100.0
       },
       {
@@ -206,7 +206,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 333,
+        "measuredAgainst": 383,
         "score": 100.0
       },
       {
@@ -218,7 +218,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1414,
+        "measuredAgainst": 1545,
         "score": 100.0
       },
       {
@@ -249,17 +249,17 @@
     "fileLength": {
       "limit": 100,
       "filesOverLimit": 0,
-      "totalFiles": 562,
-      "totalLines": 21976,
+      "totalFiles": 604,
+      "totalLines": 23794,
       "worstFileLines": 0,
       "worstFileTimesOverLimit": 0.0
     },
     "functionShape": {
       "limit": 30,
       "functionsOverLimit": 0,
-      "totalFunctions": 1414,
+      "totalFunctions": 1545,
       "elseBlocks": 0,
-      "ifBlocks": 333,
+      "ifBlocks": 383,
       "measurementIsHeuristic": true
     },
     "functionNames": {
@@ -292,7 +292,7 @@
     "prose": {
       "longMemberChainLines": 0,
       "deeplyIndentedLines": 0,
-      "overlongLines": 18,
+      "overlongLines": 23,
       "measurementIsHeuristic": true
     },
     "conditions": {
@@ -302,10 +302,10 @@
     },
     "orphans": {
       "orphanFunctions": 0,
-      "functionsExamined": 1414
+      "functionsExamined": 1545
     },
     "designPatterns": {
-      "roleFamilies": 16,
+      "roleFamilies": 18,
       "predictedFiles": 4,
       "predictedFilesMissing": 0,
       "entities": 0,
@@ -329,9 +329,9 @@
       "looserLimits": 0
     },
     "fileAreas": {
-      "totalFiles": 1628,
-      "other": 693,
-      "backend": 503,
+      "totalFiles": 1814,
+      "other": 798,
+      "backend": 584,
       "docs": 299,
       "tooling": 107,
       "infrastructure": 16,
@@ -344,8 +344,8 @@
       "summary": {
         "limit": 100,
         "filesOverLimit": 0,
-        "totalFiles": 562,
-        "totalLines": 21976,
+        "totalFiles": 604,
+        "totalLines": 23794,
         "worstFileLines": 0,
         "worstFileTimesOverLimit": 0.0
       },
@@ -356,9 +356,9 @@
       "summary": {
         "limit": 30,
         "functionsOverLimit": 0,
-        "totalFunctions": 1414,
+        "totalFunctions": 1545,
         "elseBlocks": 0,
-        "ifBlocks": 333,
+        "ifBlocks": 383,
         "measurementIsHeuristic": true
       },
       "offenders": []
@@ -439,13 +439,33 @@
       "summary": {
         "longMemberChainLines": 0,
         "deeplyIndentedLines": 0,
-        "overlongLines": 18,
+        "overlongLines": 23,
         "measurementIsHeuristic": true
       },
       "offenders": {
         "memberChains": [],
         "deepIndentation": [],
         "overlongLines": [
+          {
+            "file": "Assets/Game/Boat/CentreStud.cs",
+            "line": 15
+          },
+          {
+            "file": "Assets/Game/Boat/Dollies.cs",
+            "line": 14
+          },
+          {
+            "file": "Assets/Game/Boat/ForeEnd.cs",
+            "line": 35
+          },
+          {
+            "file": "Assets/Game/Mooring/CentreLineDrape.cs",
+            "line": 35
+          },
+          {
+            "file": "Assets/Game/Mooring/MooringPin.cs",
+            "line": 13
+          },
           {
             "file": "Assets/Game/People/AskewCoat.cs",
             "line": 47
@@ -537,14 +557,14 @@
       "name": "orphans",
       "summary": {
         "orphanFunctions": 0,
-        "functionsExamined": 1414
+        "functionsExamined": 1545
       },
       "offenders": []
     },
     "designPatterns": {
       "name": "designPatterns",
       "summary": {
-        "roleFamilies": 16,
+        "roleFamilies": 18,
         "predictedFiles": 4,
         "predictedFilesMissing": 0,
         "entities": 0,
@@ -553,10 +573,12 @@
       },
       "offenders": {
         "roleFamilies": {
+          "card": 4,
+          "entry": 4,
           "face": 4,
           "form": 4,
           "habits": 6,
-          "input": 6,
+          "input": 7,
           "kind": 4,
           "layer": 8,
           "line": 11,
@@ -565,7 +587,7 @@
           "looks": 4,
           "outline": 4,
           "palette": 11,
-          "point": 5,
+          "point": 6,
           "roof": 4,
           "section": 4,
           "shapes": 20
@@ -608,9 +630,9 @@
     "fileAreas": {
       "name": "fileAreas",
       "summary": {
-        "totalFiles": 1628,
-        "other": 693,
-        "backend": 503,
+        "totalFiles": 1814,
+        "other": 798,
+        "backend": 584,
         "docs": 299,
         "tooling": 107,
         "infrastructure": 16,
@@ -619,15 +641,15 @@
       "offenders": [
         {
           "area": "other",
-          "files": 693,
+          "files": 798,
           "sourceFiles": 0,
           "sourceLines": 0
         },
         {
           "area": "backend",
-          "files": 503,
-          "sourceFiles": 542,
-          "sourceLines": 20807
+          "files": 584,
+          "sourceFiles": 584,
+          "sourceLines": 22625
         },
         {
           "area": "docs",

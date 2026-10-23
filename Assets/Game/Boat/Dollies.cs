@@ -7,10 +7,11 @@ namespace ShallowWater.Game.Boat
         private const double Along = -10.05;
         private const double InFromTheSideMetres = 0.18;
         private const double TieAboveTheDeckMetres = 0.09;
+        public const double RadiusMetres = 0.035;
         private const int RoundSides = 8;
         private static readonly ProfilePoint[] Shape =
         {
-            new ProfilePoint(0.035, 0), new ProfilePoint(0.035, 0.12), new ProfilePoint(0.05, 0.13), new ProfilePoint(0.045, 0.15), new ProfilePoint(0, 0.16)
+            new ProfilePoint(RadiusMetres, 0), new ProfilePoint(RadiusMetres, 0.12), new ProfilePoint(0.05, 0.13), new ProfilePoint(0.045, 0.15), new ProfilePoint(0, 0.16)
         };
         private static readonly double[] Sides = { BoatSides.Port, BoatSides.Starboard };
 

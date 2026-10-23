@@ -6,7 +6,7 @@ namespace ShallowWater.Game.Pound
 {
     public static class CanalSection
     {
-        private const double SoftEdgeWidthMetres = 0.6;
+        public const double SoftEdgeWidthMetres = 0.6;
         private const double StoneFaceWidthMetres = 0;
         private const double CopingWidthMetres = 0.5;
         private const double DirtPathFromCentreMetres = 7.4;

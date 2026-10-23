@@ -1,16 +1,34 @@
 using ShallowWater.Game.Boat;
 using ShallowWater.Game.Ground;
-using ShallowWater.Game.Shapes;
 
 namespace ShallowWater.Game.Mooring
 {
     public static class LineEnds
     {
-        public static WorldPoint OnTheBoat(MooringLine line, BoatMotion boat, GroundPoint feet)
+        public static LineEnd OnTheBoat(MooringLine line, BoatMotion boat, GroundPoint feet)
         {
-            if (line == MooringLine.Centre) return CentreLine.StudOn(boat);
-            if (line == MooringLine.Bow) return BowLine.StudOn(boat);
-            return SternLine.TieOn(boat, SternLine.DollyNearest(boat, feet));
+            if (line == MooringLine.Centre) return CentreStudOn(boat);
+            if (line == MooringLine.Bow) return BowStudOn(boat);
+            return DollyOn(boat, feet);
+        }
+
+        private static LineEnd CentreStudOn(BoatMotion boat)
+        {
+            var tie = CentreLine.StudOn(boat);
+            return new LineEnd(tie, CentreStud.RadiusMetres);
+        }
+
+        private static LineEnd BowStudOn(BoatMotion boat)
+        {
+            var tie = BowLine.StudOn(boat);
+            return new LineEnd(tie, ForeEnd.StudRadiusMetres);
+        }
+
+        private static LineEnd DollyOn(BoatMotion boat, GroundPoint feet)
+        {
+            var dolly = SternLine.DollyNearest(boat, feet);
+            var tie = SternLine.TieOn(boat, dolly);
+            return new LineEnd(tie, Dollies.RadiusMetres);
         }
 
         public static HullPoint OnTheHull(MooringLine line, BoatMotion boat, GroundPoint feet)

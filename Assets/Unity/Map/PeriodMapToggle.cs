@@ -1,3 +1,4 @@
+using ShallowWater.Unity.Controls;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,11 +18,10 @@ namespace ShallowWater.Unity.Map
 
         private void Update()
         {
+            if (countryside == null) return;
             var keyboard = Keyboard.current;
-            var isReady = keyboard != null && countryside != null;
-            if (!isReady) return;
-            var mapKey = keyboard.mKey;
-            if (!mapKey.wasPressedThisFrame) return;
+            var isMapKeyPressed = Buttons.IsAnyPressedNow(keyboard?.mKey);
+            if (!isMapKeyPressed) return;
             ShowTheCountryside(!countryside.activeSelf);
         }
 
