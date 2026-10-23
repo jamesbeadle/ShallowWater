@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using ShallowWater.Game.Shapes;
 
 namespace ShallowWater.Game.People
 {
@@ -7,46 +7,44 @@ namespace ShallowWater.Game.People
     {
         public const double Finished = 1;
         private const double GettingDownShare = 0.25;
-        private const double Thigh = 1.3;
-        private const double Knee = 2.0;
-        private const double Lean = 0.7;
-        private const double Arm = 0.3;
-        private const double Elbow = 0.35;
-        private const double WorkingSwing = 0.22;
         private const double HitchesWhileWorking = 5;
+        private const double HandCircleMetres = 0.05;
+        private const double HandsApartMetres = 0.07;
+        private const double HandsAheadMetres = 0.45;
         private const double FullTurnRadians = 2 * Math.PI;
-        private const double Upright = 0;
         private const double Whole = 1;
-        private const double HeadLift = 0.3;
-        private const double SmoothStepRise = 3;
-        private const double SmoothStepFall = 2;
-        private const double LegLengthMetres = AskewForm.ThighMetres + AskewForm.ShinMetres;
+        private const double Opposite = -1;
+        private const double Level = 0;
+        private static readonly Offset RightElbowOut = new Offset(0.6, -1, 0);
+        private static readonly Offset LeftElbowOut = new Offset(-0.6, -1, 0);
 
-        public static GaitPose At(double share)
+        public static FigurePose At(double share, double tieAboveTheFeetMetres)
         {
             var down = Down(share);
-            var lean = Lean * down;
-            var thigh = Thigh * down;
-            var shin = thigh - Knee * down;
-            var work = WorkingSwing * down * Math.Sin(share * HitchesWhileWorking * FullTurnRadians);
-            var swings = new Dictionary<FigurePart, double>
-            {
-                { FigurePart.Body, Upright }, { FigurePart.Head, -HeadLift * down },
-                { FigurePart.LeftThigh, thigh + lean }, { FigurePart.RightThigh, thigh + lean },
-                { FigurePart.LeftShin, -Knee * down }, { FigurePart.RightShin, -Knee * down },
-                { FigurePart.LeftUpperArm, Arm * down + lean + work }, { FigurePart.RightUpperArm, Arm * down + lean - work },
-                { FigurePart.LeftForearm, Elbow * down }, { FigurePart.RightForearm, Elbow * down }
-            };
-            var legHeight = AskewForm.ThighMetres * Math.Cos(thigh) + AskewForm.ShinMetres * Math.Cos(shin);
-            return new GaitPose(swings, legHeight - LegLengthMetres, lean);
+            var body = Stance.Body(Level).Blend(Kneeling.Body, down);
+            var left = Stance.LeftFoot.Blend(Kneeling.LeftFoot, down);
+            var kneeling = Legs.Planted(body, left, Kneeling.RightFoot(down));
+            var turn = share * HitchesWhileWorking * FullTurnRadians;
+            var circling = new Offset(Math.Cos(turn), Level, Math.Sin(turn)) * (HandCircleMetres * down);
+            var rightOnThePost = circling.From(new WorldPoint(HandsApartMetres, tieAboveTheFeetMetres, HandsAheadMetres));
+            var leftOnThePost = (circling * Opposite).From(new WorldPoint(-HandsApartMetres, tieAboveTheFeetMetres, HandsAheadMetres));
+            var right = Arms.Reaching(kneeling, FigurePart.RightHand, Reaching(kneeling, FigurePart.RightHand, rightOnThePost, down), RightElbowOut);
+            var both = Arms.Reaching(right, FigurePart.LeftHand, Reaching(kneeling, FigurePart.LeftHand, leftOnThePost, down), LeftElbowOut);
+            return Skirts.Following(both);
+        }
+
+        private static WorldPoint Reaching(FigurePose body, FigurePart hand, WorldPoint onThePost, double down)
+        {
+            var hanging = Arms.PalmOf(body, hand);
+            var towardsThePost = Offset.Between(hanging, onThePost) * down;
+            return towardsThePost.From(hanging);
         }
 
         private static double Down(double share)
         {
             var gettingDown = Math.Min(Whole, share / GettingDownShare);
             var gettingUp = Math.Min(Whole, (Whole - share) / GettingDownShare);
-            var down = Math.Min(gettingDown, gettingUp);
-            return down * down * (SmoothStepRise - SmoothStepFall * down);
+            return Smoothing.Step(Math.Min(gettingDown, gettingUp));
         }
     }
 }

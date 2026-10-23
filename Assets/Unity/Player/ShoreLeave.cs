@@ -88,7 +88,7 @@ namespace ShallowWater.Unity.Player
 
         private void HoldTheTiller()
         {
-            var holding = TillerHold.At(boat.RudderShare);
+            var holding = TillerHold.At(boat.RudderShare, Time.time);
             figure.Pose(holding);
         }
     }

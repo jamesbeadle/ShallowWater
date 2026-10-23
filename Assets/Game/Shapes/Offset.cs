@@ -6,6 +6,7 @@ namespace ShallowWater.Game.Shapes
     {
         public static readonly Offset Up = new Offset(0, 1, 0);
         public static readonly Offset East = new Offset(1, 0, 0);
+        public static readonly Offset North = new Offset(0, 0, 1);
 
         public Offset(double east, double up, double north)
         {

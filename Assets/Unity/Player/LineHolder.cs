@@ -10,8 +10,6 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class LineHolder
     {
-        private static readonly Vector3 InTheHand = new Vector3(0, -(float)(AskewForm.ForearmMetres + Hand.PalmBelowTheWristMetres), 0);
-
         private readonly FigureModel figure;
         private readonly WalkerController walking;
         private readonly BoatController boat;
@@ -34,8 +32,7 @@ namespace ShallowWater.Unity.Player
             var feet = WorldVectors.PointOf(root.position);
             var studFromTheFeet = FeetFrame.Of(feet, walking.Bearing, CentreLine.StudOn(boat.Motion));
             figure.Pose(LineInHand.Holding(walking.Stride, studFromTheFeet));
-            var wrist = figure.JointOf(LineInHand.ForearmFor(studFromTheFeet));
-            HeldEnd = WorldVectors.PointOf(wrist.TransformPoint(InTheHand));
+            HeldEnd = WorldVectors.PointOf(figure.PalmOf(LineInHand.HandFor(studFromTheFeet)));
             var held = mooring.Hand;
             held.MoveTo(new GroundPoint(HeldEnd.East, HeldEnd.North), Time.deltaTime);
         }

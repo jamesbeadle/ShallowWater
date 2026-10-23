@@ -8,20 +8,19 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class WalkerController : MonoBehaviour
     {
-        private const float FullTurnRadians = 2 * Mathf.PI;
-
         private readonly Walker walker = new Walker(new GroundPoint(0, 0), 0);
         private Land land;
         private FigureModel figure;
         private OrbitCamera view;
-        private double phase;
+        private double cycleShare;
 
         private const double ClosestToFaceMetres = 0.05;
         private const double Still = 0;
+        private const double WholeCycle = 1;
 
         public GroundPoint Position => walker.Position;
         public double Bearing => walker.Bearing;
-        public GaitPose Stride { get; private set; } = Gait.At(Still, Still);
+        public FigurePose Stride { get; private set; } = FigurePose.Upright;
 
         public void Ready(Land ground, FigureModel model, OrbitCamera camera)
         {
@@ -47,7 +46,7 @@ namespace ShallowWater.Unity.Player
         public void Stand()
         {
             walker.StandAt(walker.Position, walker.Bearing);
-            Stride = Gait.At(Still, Still);
+            Stride = Gait.At(cycleShare, Still, Still, Time.time);
             figure.Pose(Stride);
             Place();
         }
@@ -58,8 +57,8 @@ namespace ShallowWater.Unity.Player
             if (land == null || seconds <= 0) return;
             walker.Stride(seconds, WalkInput.Wish(view.YawDegrees), WalkInput.IsRunning(), land);
             var speed = walker.SpeedMetresPerSecond;
-            phase = (phase + Gait.CyclesPerSecond(speed) * seconds * FullTurnRadians) % FullTurnRadians;
-            Stride = Gait.At(phase, speed);
+            cycleShare = (cycleShare + Gait.CyclesPerSecond(speed) * seconds) % WholeCycle;
+            Stride = Gait.At(cycleShare, speed, walker.TurnRadiansPerSecond, Time.time);
             figure.Pose(Stride);
             Place();
         }
