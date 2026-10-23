@@ -14,6 +14,8 @@ namespace ShallowWater.Unity.Player
         private JobCard job;
         private Sight sight;
 
+        public FarmRifleMission Mission => mission;
+
         public void Shows(VisualElement screen, FarmRifleMission farmJob)
         {
             mission = farmJob;

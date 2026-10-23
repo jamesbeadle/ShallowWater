@@ -4,18 +4,24 @@
     top: 0;
     flex-direction: row;
     align-items: center;
-    padding: 6px 16px 8px 16px;
+    padding: 5px 14px 7px 14px;
+    background-color: var(--enamel);
+    background-image: none;
+    border-width: 2px;
+    border-color: var(--enamel-rim);
+    border-radius: 5px;
 }
 
 .hud-text.hud-clock__digit {
     width: 21px;
     font-size: 32px;
+    color: var(--enamel-ink);
     -unity-text-align: middle-center;
 }
 
 .hud-text.hud-clock__colon {
     width: 10px;
     font-size: 32px;
-    color: var(--ink-soft);
+    color: var(--enamel-ink-soft);
     -unity-text-align: middle-center;
 }

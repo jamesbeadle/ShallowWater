@@ -18,7 +18,8 @@ namespace ShallowWater.Unity.Controls
         public static float ZoomMetres()
         {
             var mouse = Mouse.current;
-            if (mouse == null) return 0;
+            var isLookingAway = mouse == null || Attention.IsReading;
+            if (isLookingAway) return 0;
             return -mouse.scroll.ReadValue().y * MetresPerScrollNotch;
         }
 

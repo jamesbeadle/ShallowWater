@@ -15,7 +15,9 @@
 .hud-text.hud-order {
     margin-top: 2px;
     margin-bottom: 10px;
-    font-size: 26px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    -unity-font-definition: url("Fonts/StardosStencil-Bold.ttf");
 }
 
 .hud-text.hud-order--ahead {
@@ -69,4 +71,5 @@
     font-size: 11px;
     letter-spacing: 2.5px;
     color: var(--ink-faint);
+    -unity-font-definition: url("Fonts/StardosStencil-Regular.ttf");
 }

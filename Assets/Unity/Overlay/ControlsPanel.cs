@@ -31,7 +31,8 @@ namespace ShallowWater.Unity.Overlay
             panel.Add(rows);
             panel.Add(Footer(close));
             screen.Add(panel);
-            screen.Add(hint);
+            var hints = HintsRow.On(screen);
+            hints.Add(hint);
         }
 
         public bool IsOpen { get; private set; }

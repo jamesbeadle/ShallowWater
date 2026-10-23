@@ -17,6 +17,7 @@ namespace ShallowWater.Unity.Player
         private WalkerController walking;
         private MooringPosts posts;
 
+        public Mooring Mooring => mooring;
         public bool IsHoldingTheLine => mooring.IsLineInHand;
         public bool IsLineOnThePost => mooring.IsCentreLineOnThePost;
         public bool IsWorking => mooring.IsBusy;
