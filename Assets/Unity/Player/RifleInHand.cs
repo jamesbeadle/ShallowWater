@@ -8,18 +8,13 @@ namespace ShallowWater.Unity.Player
     public sealed class RifleInHand
     {
         private const string Name = "Rook rifle";
-        private const float ButtBelowTheShoulderMetres = 0.04f;
-        private const float ButtInsideTheShoulderMetres = 0.05f;
-        private const float ButtForwardOfTheShoulderMetres = 0.1f;
         private const float AtTheTrailDegrees = 55f;
         private const float Level = 0;
-        private static readonly Vector3 ButtAtTheShoulder = new Vector3(
-            (float)AskewForm.ShoulderHalfWidthMetres - ButtInsideTheShoulderMetres,
-            (float)(AskewForm.ShoulderMetres - AskewForm.HipMetres) - ButtBelowTheShoulderMetres,
-            ButtForwardOfTheShoulderMetres);
+        private static readonly Vector3 ButtAtTheShoulder = WorldVectors.Of(AimingPose.ButtFromTheChest);
         private static readonly Vector3 Balance = new Vector3(Level, Level, (float)RookRifle.BalanceFromTheButtMetres);
-        private static readonly Vector3 InTheHand = new Vector3(Level, -(float)(AskewForm.ForearmMetres + Hand.PalmBelowTheWristMetres), Level);
+        private static readonly Vector3 InTheHand = new Vector3(Level, -(float)AskewForm.PalmBelowTheWristMetres, Level);
         private static readonly Quaternion AtTheTrail = Quaternion.Euler(AtTheTrailDegrees, Level, Level);
+        private const float AcrossTheChestDegrees = -(float)AimingPose.ShouldersTwistRadians * Mathf.Rad2Deg;
 
         private readonly FigureModel figure;
         private readonly Transform rifle;
@@ -43,20 +38,21 @@ namespace ShallowWater.Unity.Player
 
         public void Carry()
         {
-            rifle.SetParent(figure.JointOf(FigurePart.RightForearm), false);
+            rifle.SetParent(figure.JointOf(FigurePart.RightHand), false);
             rifle.localRotation = AtTheTrail;
             rifle.localPosition = InTheHand - AtTheTrail * Balance;
         }
 
         public void Shoulder()
         {
-            rifle.SetParent(figure.JointOf(FigurePart.Body), false);
+            rifle.SetParent(figure.JointOf(FigurePart.Chest), false);
             Point(Level);
         }
 
         public void Point(float muzzleDownDegrees)
         {
-            rifle.localRotation = Quaternion.Euler(muzzleDownDegrees, Level, Level);
+            var downFromTheChest = AimingPose.RifleDownFromTheChest(muzzleDownDegrees * Mathf.Deg2Rad) * Mathf.Rad2Deg;
+            rifle.localRotation = Quaternion.Euler((float)downFromTheChest, AcrossTheChestDegrees, Level);
             rifle.localPosition = ButtAtTheShoulder;
         }
     }

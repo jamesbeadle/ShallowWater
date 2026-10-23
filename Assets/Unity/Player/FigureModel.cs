@@ -11,26 +11,32 @@ namespace ShallowWater.Unity.Player
     {
         private const string AskewName = "Askew";
         private const string FarmerName = "Farmer";
+        private const int NeverPosed = -1;
+        private static readonly Vector3 PalmBelowTheWrist = new Vector3(0, -(float)AskewForm.PalmBelowTheWristMetres, 0);
         private readonly Dictionary<FigurePart, Transform> joints = new Dictionary<FigurePart, Transform>();
-        private readonly Vector3 hips;
+        private readonly PoseBlender blender = new PoseBlender();
+        private readonly Vector3 hipsAtRest;
+        private int posedInFrame = NeverPosed;
 
-        private FigureModel(string name, Func<FigurePart, SurfaceShapes> shapes)
+        private FigureModel(string name, Outfit outfit)
         {
             Root = new GameObject(name).transform;
-            foreach (FigurePart part in Enum.GetValues(typeof(FigurePart))) joints[part] = Jointed(name, part, shapes(part));
-            hips = joints[FigurePart.Body].localPosition;
+            foreach (FigurePart part in Enum.GetValues(typeof(FigurePart))) joints[part] = Jointed(name, part, FigureShapes.Of(part, outfit));
+            hipsAtRest = joints[FigurePart.Hips].localPosition;
+            Root.gameObject.AddComponent<FigureAnimator>().Animate(this);
         }
 
         public Transform Root { get; }
+        public bool IsPosedThisFrame => posedInFrame == Time.frameCount;
 
         public static FigureModel Askew()
         {
-            return new FigureModel(AskewName, AskewShapes.Of);
+            return new FigureModel(AskewName, Outfit.Askew);
         }
 
         public static FigureModel Farmer()
         {
-            return new FigureModel(FarmerName, FarmerShapes.Of);
+            return new FigureModel(FarmerName, Outfit.Farmer);
         }
 
         public Transform JointOf(FigurePart part)
@@ -38,26 +44,18 @@ namespace ShallowWater.Unity.Player
             return joints[part];
         }
 
-        public void Pose(GaitPose pose)
+        public Vector3 PalmOf(FigurePart hand)
         {
-            foreach (var swing in pose.SwingRadians) joints[swing.Key].localRotation = Hanging(swing.Value, pose.ReachOf(swing.Key));
-            var body = joints[FigurePart.Body];
-            body.localPosition = hips + Vector3.up * (float)pose.BobMetres + Vector3.right * (float)pose.StepAcrossMetres;
-            body.localRotation = Standing(pose.LeanRadians, pose.SwayRadians);
+            var wrist = joints[hand];
+            return wrist.TransformPoint(PalmBelowTheWrist);
         }
 
-        private static Quaternion Hanging(double swingRadians, double reachRadians)
+        public void Pose(FigurePose target)
         {
-            var swungForward = Quaternion.AngleAxis(-(float)swingRadians * Mathf.Rad2Deg, Vector3.right);
-            var reachedToTheRight = Quaternion.AngleAxis((float)reachRadians * Mathf.Rad2Deg, Vector3.forward);
-            return reachedToTheRight * swungForward;
-        }
-
-        private static Quaternion Standing(double leanRadians, double swayRadians)
-        {
-            var leantForward = Quaternion.AngleAxis((float)leanRadians * Mathf.Rad2Deg, Vector3.right);
-            var swayedToTheRight = Quaternion.AngleAxis(-(float)swayRadians * Mathf.Rad2Deg, Vector3.forward);
-            return swayedToTheRight * leantForward;
+            var shown = blender.Towards(target, Time.time);
+            foreach (var part in joints.Keys) joints[part].localRotation = JointRotations.Of(part, shown.Of(part));
+            joints[FigurePart.Hips].localPosition = hipsAtRest + WorldVectors.Of(shown.HipsOffset);
+            posedInFrame = Time.frameCount;
         }
 
         private Transform Jointed(string name, FigurePart part, SurfaceShapes shapes)

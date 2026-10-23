@@ -1,44 +1,22 @@
-using System;
-using System.Collections.Generic;
-using ShallowWater.Game.Walking;
-
 namespace ShallowWater.Game.People
 {
     public static class Gait
     {
-        private const double WalkStrideMetres = 1.45;
-        private const double RunStrideMetres = 2.9;
-        private const double HalfACycle = Math.PI;
-
         public static double CyclesPerSecond(double speedMetresPerSecond)
         {
-            var runShare = RunShare(speedMetresPerSecond);
-            return speedMetresPerSecond / (WalkStrideMetres + (RunStrideMetres - WalkStrideMetres) * runShare);
+            var rhythm = GaitRhythm.At(speedMetresPerSecond);
+            return rhythm.CyclesPerSecond;
         }
 
-        public static GaitPose At(double phaseRadians, double speedMetresPerSecond)
+        public static FigurePose At(double cycleShare, double speedMetresPerSecond, double turnRadiansPerSecond, double seconds)
         {
-            var going = Math.Min(1, speedMetresPerSecond / WalkingPace.WalkMetresPerSecond);
-            var run = RunShare(speedMetresPerSecond);
-            var swings = new Dictionary<FigurePart, double>
-            {
-                { FigurePart.Body, 0 }, { FigurePart.Head, 0 },
-                { FigurePart.LeftThigh, Stride.Thigh(phaseRadians, run) * going },
-                { FigurePart.RightThigh, Stride.Thigh(phaseRadians + HalfACycle, run) * going },
-                { FigurePart.LeftShin, Stride.Knee(phaseRadians, run, going) },
-                { FigurePart.RightShin, Stride.Knee(phaseRadians + HalfACycle, run, going) },
-                { FigurePart.LeftUpperArm, Stride.Arm(phaseRadians + HalfACycle, run) * going },
-                { FigurePart.RightUpperArm, Stride.Arm(phaseRadians, run) * going },
-                { FigurePart.LeftForearm, Stride.Elbow(run, going) },
-                { FigurePart.RightForearm, Stride.Elbow(run, going) }
-            };
-            return new GaitPose(swings, Stride.Bob(phaseRadians, run) * going, Stride.Lean(run) * going);
-        }
-
-        private static double RunShare(double speedMetresPerSecond)
-        {
-            var share = (speedMetresPerSecond - WalkingPace.WalkMetresPerSecond) / (WalkingPace.RunMetresPerSecond - WalkingPace.WalkMetresPerSecond);
-            return Math.Min(Math.Max(share, 0), 1);
+            var rhythm = GaitRhythm.At(speedMetresPerSecond);
+            var lean = Turning.LeanRadians(turnRadiansPerSecond, speedMetresPerSecond);
+            var left = Stance.LeftFoot.Blend(FootPath.At(cycleShare, rhythm, FigureSide.Left), rhythm.Going);
+            var right = Stance.RightFoot.Blend(FootPath.At(cycleShare + Walking.HalfACycle, rhythm, FigureSide.Right), rhythm.Going);
+            var walking = Walking.Body(cycleShare, rhythm, lean, left, right);
+            var body = Stance.Body(seconds).Blend(walking, rhythm.Going);
+            return Skirts.Following(Legs.Planted(body, left, right));
         }
     }
 }

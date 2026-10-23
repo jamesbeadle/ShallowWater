@@ -13,9 +13,9 @@ namespace ShallowWater.Unity.Player
         private MooringLines lines;
         private LineHolder holder;
         private BoatController boat;
-        private FigureModel figure;
         private WalkerController walking;
         private MooringPosts posts;
+        private LineWorker worker;
 
         public bool IsHoldingTheLine => mooring.IsLineInHand;
         public bool IsLineOnThePost => mooring.IsCentreLineOnThePost;
@@ -29,7 +29,7 @@ namespace ShallowWater.Unity.Player
             boat.Moored(mooring);
             lines = new MooringLines(GetComponentInChildren<Riding>().transform);
             holder = new LineHolder(model, walker, boat);
-            figure = model;
+            worker = new LineWorker(model, walker);
             walking = walker;
             posts = postsAlongTheBank;
         }
@@ -70,30 +70,20 @@ namespace ShallowWater.Unity.Player
             var post = posts.For(feet, walking.Bearing);
             var onTheBoat = LineEnds.OnTheBoat(line, boat.Motion, feet);
             mooring.MakeFast(line, LaidLine.TakenUpBetween(onTheBoat, post));
-            KneelAt(post);
+            worker.KneelAt(post);
         }
 
         private void LetGo(MooringLine line)
         {
             mooring.LetGo(line);
-            KneelAt(mooring.LaidAt(line).Post);
-        }
-
-        private void KneelAt(MooringPost post)
-        {
-            walking.enabled = false;
-            walking.SetOff(MooringPosts.KneelingBeside(walking.Position, post), walking.Bearing);
-            walking.Face(post.Place);
+            var laid = mooring.LaidAt(line);
+            worker.KneelAt(laid.Post);
         }
 
         private void Work()
         {
             mooring.WorkOn(Time.deltaTime);
-            var work = mooring.Work;
-            var isFinished = work == null;
-            figure.Pose(TyingPose.At(isFinished ? TyingPose.Finished : work.Share));
-            if (!isFinished) return;
-            walking.enabled = true;
+            worker.Tie(mooring.Work);
         }
     }
 }
