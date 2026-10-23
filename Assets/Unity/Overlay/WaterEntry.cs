@@ -7,7 +7,7 @@ namespace ShallowWater.Unity.Overlay
     {
         private const string Heading = "THE WATER";
         private const string PoundName = "The pound";
-        private const string PoundNote = "Huddlesford Junction to Glascote locks, no locks between";
+        private const string PoundNote = "Huddlesford to Glascote, not a lock between";
         private const string WordsClass = "page-water__words";
 
         private readonly PageEntry pound = new PageEntry(Sketches.Reeds());

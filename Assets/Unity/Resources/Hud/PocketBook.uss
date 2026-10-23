@@ -153,6 +153,7 @@
 .page-entry__words {
     flex-grow: 1;
     flex-shrink: 1;
+    overflow: hidden;
 }
 
 .hud-text.page-entry__name {
@@ -163,6 +164,7 @@
 
 .hud-text.page-entry__note {
     margin-top: 1px;
+    white-space: normal;
 }
 
 .hud-text.page-entry__pencil {
