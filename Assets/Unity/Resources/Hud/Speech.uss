@@ -9,7 +9,7 @@
 .hud-glass.hud-speech {
     width: 760px;
     padding: 14px 24px 16px 24px;
-    background-color: var(--glass-deep);
+    background-color: var(--oilskin-deep);
     transition-property: opacity, translate;
     transition-duration: 0.2s, 0.2s;
     transition-timing-function: ease-out-cubic, ease-out-cubic;

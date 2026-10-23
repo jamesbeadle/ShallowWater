@@ -1,0 +1,389 @@
+.sketch {
+    flex-shrink: 0;
+}
+
+.sketch-rifle {
+    width: 104px;
+    height: 24px;
+}
+
+.sketch-rifle__stock {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 30px;
+    height: 14px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 7px;
+}
+
+.sketch-rifle__wrist {
+    position: absolute;
+    left: 28px;
+    top: 9px;
+    width: 34px;
+    height: 8px;
+    border-width: 2px;
+    border-color: var(--pencil);
+}
+
+.sketch-rifle__barrel {
+    position: absolute;
+    left: 60px;
+    top: 7px;
+    width: 44px;
+    height: 5px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.sketch-rifle__bolt {
+    position: absolute;
+    left: 46px;
+    top: 1px;
+    width: 7px;
+    height: 7px;
+    border-radius: 3.5px;
+    background-color: var(--pencil);
+}
+
+.sketch-hook {
+    width: 20px;
+    height: 26px;
+}
+
+.sketch-hook__screw {
+    position: absolute;
+    left: 8px;
+    top: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 2.5px;
+    background-color: var(--pencil);
+}
+
+.sketch-hook__curl {
+    position: absolute;
+    left: 3px;
+    top: 7px;
+    width: 14px;
+    height: 16px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-width: 0;
+    border-right-width: 0;
+}
+
+.sketch-box {
+    width: 46px;
+    height: 30px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sketch-box__lid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6px;
+    height: 1px;
+    background-color: var(--pencil-soft);
+}
+
+.sketch-box__label {
+    width: 26px;
+    height: 10px;
+    margin-top: 6px;
+    border-width: 1px;
+    border-color: var(--pencil-soft);
+}
+
+.sketch-coins {
+    width: 56px;
+    height: 30px;
+}
+
+.sketch-coins__penny {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 22px;
+    height: 22px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 11px;
+}
+
+.sketch-coins__shilling {
+    position: absolute;
+    left: 15px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 10px;
+    background-color: var(--paper);
+}
+
+.sketch-coins__florin {
+    position: absolute;
+    left: 30px;
+    top: 6px;
+    width: 26px;
+    height: 26px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 13px;
+    background-color: var(--paper);
+}
+
+.sketch-gate {
+    width: 70px;
+    height: 36px;
+    padding: 5px 0;
+    justify-content: space-between;
+}
+
+.sketch-gate__rail {
+    height: 2px;
+    background-color: var(--pencil);
+}
+
+.sketch-gate__hinge-post {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 36px;
+    background-color: var(--pencil);
+}
+
+.sketch-gate__latch-post {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 36px;
+    background-color: var(--pencil);
+}
+
+.sketch-boat {
+    width: 112px;
+    height: 34px;
+}
+
+.sketch-boat__hull {
+    position: absolute;
+    left: 0;
+    top: 17px;
+    width: 112px;
+    height: 15px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 4px;
+}
+
+.sketch-boat__cabin {
+    position: absolute;
+    left: 62px;
+    top: 7px;
+    width: 38px;
+    height: 12px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.sketch-boat__chimney {
+    position: absolute;
+    left: 72px;
+    top: 0;
+    width: 4px;
+    height: 9px;
+    background-color: var(--pencil);
+}
+
+.sketch-boat__tiller {
+    position: absolute;
+    left: 98px;
+    top: 10px;
+    width: 14px;
+    height: 2px;
+    background-color: var(--pencil);
+    rotate: -35deg;
+}
+
+.sketch-rope {
+    width: 28px;
+    height: 28px;
+}
+
+.sketch-rope__coil {
+    width: 26px;
+    height: 26px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 13px;
+}
+
+.sketch-rope__end {
+    position: absolute;
+    right: -4px;
+    bottom: 3px;
+    width: 12px;
+    height: 2px;
+    background-color: var(--pencil);
+    rotate: 30deg;
+}
+
+.sketch-flywheel {
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sketch-flywheel__rim {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 15px;
+}
+
+.sketch-flywheel__spoke {
+    position: absolute;
+    left: 14px;
+    top: 2px;
+    width: 2px;
+    height: 26px;
+    background-color: var(--pencil);
+}
+
+.sketch-flywheel__cross-spoke {
+    position: absolute;
+    left: 14px;
+    top: 2px;
+    width: 2px;
+    height: 26px;
+    background-color: var(--pencil);
+    rotate: 90deg;
+}
+
+.sketch-flywheel__boss {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: var(--pencil);
+}
+
+.sketch-watch {
+    width: 38px;
+    height: 38px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 19px;
+}
+
+.sketch-watch__crown {
+    position: absolute;
+    left: 13px;
+    top: -8px;
+    width: 8px;
+    height: 6px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 2px;
+}
+
+.sketch-watch__hand {
+    position: absolute;
+    left: 16px;
+    width: 2px;
+    background-color: var(--pencil);
+    transform-origin: 50% 100%;
+}
+
+.sketch-watch__hand--hour {
+    top: 7px;
+    height: 10px;
+}
+
+.sketch-watch__hand--minute {
+    top: 3px;
+    height: 14px;
+}
+
+.sketch-watch__pin {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--pencil);
+}
+
+.sketch-reeds {
+    width: 60px;
+    height: 36px;
+}
+
+.sketch-reeds__water {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    height: 2px;
+    background-color: var(--pencil);
+}
+
+.sketch-reeds__reed {
+    position: absolute;
+    left: 14px;
+    bottom: 6px;
+    width: 2px;
+    height: 26px;
+    background-color: var(--pencil);
+    transform-origin: 50% 100%;
+    rotate: -8deg;
+}
+
+.sketch-reeds__bent-reed {
+    position: absolute;
+    left: 24px;
+    bottom: 6px;
+    width: 2px;
+    height: 30px;
+    background-color: var(--pencil);
+    transform-origin: 50% 100%;
+    rotate: 6deg;
+}
+
+.sketch-reeds__far-reed {
+    position: absolute;
+    left: 36px;
+    bottom: 6px;
+    width: 2px;
+    height: 22px;
+    background-color: var(--pencil-soft);
+    transform-origin: 50% 100%;
+    rotate: 14deg;
+}
