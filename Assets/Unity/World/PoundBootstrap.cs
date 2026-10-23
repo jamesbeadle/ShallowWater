@@ -41,6 +41,7 @@ namespace ShallowWater.Unity.World
             var camera = OrbitingCamera();
             boat.AddComponent<ShoreLeave>().Crew(pound, land, camera);
             var screen = OverlayScreen.Raise();
+            boat.AddComponent<PocketBook>().Opens(screen, dayAndNight, pound);
             FarmBootstrap.Begin(boat, yard, farm, land, camera, screen);
             boat.AddComponent<Hud>().Shows(screen);
             boat.AddComponent<HudClock>().Reads(dayAndNight, screen);

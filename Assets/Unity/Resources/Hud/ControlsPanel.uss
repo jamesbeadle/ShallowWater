@@ -4,8 +4,8 @@
     top: 0;
     width: 440px;
     padding: 22px 24px 16px 24px;
-    background-color: var(--glass-deep);
-    border-radius: 12px;
+    background-color: var(--oilskin-deep);
+    border-radius: 8px;
     transition-property: opacity, translate;
     transition-duration: 0.18s, 0.18s;
     transition-timing-function: ease-out-cubic, ease-out-cubic;
@@ -19,7 +19,9 @@
 .hud-text.hud-title {
     margin-top: 4px;
     margin-bottom: 12px;
-    font-size: 30px;
+    font-size: 26px;
+    letter-spacing: 1px;
+    -unity-font-definition: url("Fonts/StardosStencil-Bold.ttf");
 }
 
 .hud-row {
@@ -47,8 +49,8 @@
 .hud-footer .hud-text.hud-cap {
     height: 28px;
     min-width: 28px;
-    font-size: 14px;
-    border-radius: 5px;
+    font-size: 13px;
+    border-radius: 14px;
 }
 
 .hud-text.hud-footer__words {

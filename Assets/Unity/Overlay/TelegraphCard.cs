@@ -34,7 +34,8 @@ namespace ShallowWater.Unity.Overlay
 
         public void Show(ThrottleNotch lever)
         {
-            order.text = NotchNames.Of(lever);
+            var orderWords = NotchNames.Of(lever);
+            order.text = orderWords.ToUpperInvariant();
             order.EnableInClassList(OrderAheadClass, lever > ThrottleNotch.Stop);
             order.EnableInClassList(OrderAsternClass, lever < ThrottleNotch.Stop);
             meter.Show(lever);
