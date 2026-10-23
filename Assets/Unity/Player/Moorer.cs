@@ -23,11 +23,11 @@ namespace ShallowWater.Unity.Player
         public MooringLine? ToMakeFast { get; private set; }
         public MooringLine? ToLetGo { get; private set; }
 
-        public void Ready(FigureModel model, WalkerController walker, MooringPosts postsAlongTheBank)
+        public void Ready(FigureModel model, WalkerController walker, MooringPosts postsAlongTheBank, SurfaceBeneath beneath)
         {
             boat = GetComponent<BoatController>();
             boat.Moored(mooring);
-            lines = new MooringLines(GetComponentInChildren<Riding>().transform);
+            lines = new MooringLines(GetComponentInChildren<Riding>().transform, beneath);
             holder = new LineHolder(model, walker, boat);
             figure = model;
             walking = walker;
@@ -69,7 +69,7 @@ namespace ShallowWater.Unity.Player
         {
             var post = posts.For(feet, walking.Bearing);
             var onTheBoat = LineEnds.OnTheBoat(line, boat.Motion, feet);
-            mooring.MakeFast(line, LaidLine.TakenUpBetween(onTheBoat, post));
+            mooring.MakeFast(line, LaidLine.TakenUpBetween(onTheBoat.Tie, post));
             KneelAt(post);
         }
 
