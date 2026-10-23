@@ -7,7 +7,7 @@ namespace ShallowWater.Game.Fields
     {
         private const double ShallowestSine = 0.35;
         private const double Half = 0.5;
-        private const double GatewayMetres = 3.6;
+        public const double GatewayMetres = 3.6;
         private const double GatewayFromTheEndMetres = 12;
         private const double FieldGatewayChance = 0.85;
         private const double FarmGatewayChance = 0.3;

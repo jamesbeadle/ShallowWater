@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ShallowWater.Game.Ground
@@ -36,6 +37,16 @@ namespace ShallowWater.Game.Ground
                 distances[index] = distances[index - 1] + step;
             }
             return distances;
+        }
+
+        public double DistanceTo(GroundPoint place)
+        {
+            var nearest = double.MaxValue;
+            for (var segment = 0; segment < SegmentCount; segment++)
+            {
+                nearest = Math.Min(nearest, place.DistanceToSegment(points[segment], points[segment + 1]));
+            }
+            return nearest;
         }
 
         public GroundPoint[] Tangents()

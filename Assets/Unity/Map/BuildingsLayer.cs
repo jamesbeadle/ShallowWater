@@ -10,7 +10,7 @@ namespace ShallowWater.Unity.Map
         {
             if (!OptionalLayer.IsPresent(MapLayers.Buildings)) return;
             var footprints = MapAreas.Read(MapLayers.Buildings);
-            ShapeMeshes.BuildEach(LayerName, Buildings.Raised(footprints));
+            Solidity.Hardened(ShapeMeshes.BuildEach(LayerName, Buildings.Raised(footprints)));
         }
     }
 }

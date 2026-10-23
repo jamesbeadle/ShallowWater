@@ -22,7 +22,7 @@ namespace ShallowWater.Game.Fields
 
         public void AroundThePound(GroundLine pound)
         {
-            Around(pound, CanalSection.OuterReachMetres + BesideTheWaterMetres);
+            Around(pound, CanalSection.FarmlandReachMetres);
         }
 
         public void AroundCanal(GroundLine canal)

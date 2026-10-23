@@ -14,6 +14,11 @@ namespace ShallowWater.Game.Fields
             return BetweenTheGaps(hedgerow).SelectMany(stretch => ClearRuns(hedgerow, stretch, farmland)).Where(IsLongEnough).ToList();
         }
 
+        public static List<HedgeStretch> Of(Hedgerow hedgerow)
+        {
+            return BetweenTheGaps(hedgerow).Where(IsLongEnough).ToList();
+        }
+
         private static IEnumerable<HedgeStretch> BetweenTheGaps(Hedgerow hedgerow)
         {
             var from = 0.0;

@@ -11,43 +11,40 @@ namespace ShallowWater.Game.Farmyard
     {
         public const double HalfLengthMetres = 22;
         public const double HalfWidthMetres = 16;
+        public const double FloorAboveTheGroundMetres = 0.02;
         private const double SouthOfHopwasBridgeMetres = 1750;
         private const double OffTheWaterMetres = 46;
         private const double OffSide = -PoundLimits.TowpathSide;
         private const double FarmerInsideTheGateMetres = 3;
         private const double HailMetres = 2.6;
 
-        public Farmyard(GroundPoint centre, GroundPoint lengthways, GroundPoint towardsTheWater)
+        private readonly CanalsidePlot plot;
+
+        public Farmyard(CanalsidePlot plot)
         {
-            Centre = centre;
-            Lengthways = lengthways;
-            TowardsTheWater = towardsTheWater;
-            Outline = Footprints.Oblong(centre, lengthways, HalfLengthMetres, HalfWidthMetres);
+            this.plot = plot;
         }
 
-        public GroundPoint Centre { get; }
-        public GroundPoint Lengthways { get; }
-        public GroundPoint TowardsTheWater { get; }
-        public GroundRing Outline { get; }
-        public IReadOnlyList<GroundPoint> Corners => Outline.Corners;
-        public Area Ground => new Area(Outline, new GroundRing[0]);
+        public GroundPoint Centre => plot.Centre;
+        public GroundPoint Lengthways => plot.Lengthways;
+        public GroundPoint TowardsTheWater => plot.TowardsTheWater;
+        public GroundRing Outline => plot.Outline;
+        public IReadOnlyList<GroundPoint> Corners => plot.Corners;
         public GroundPoint Gate => Place(0, HalfWidthMetres);
         public GroundPoint FarmerStands => Place(0, HalfWidthMetres - FarmerInsideTheGateMetres);
         public double FarmerBearing => TowardsTheWater.Bearing;
-        public double FloorMetres => Heights.GroundMetres;
+        public double FloorMetres => Heights.GroundMetres + FloorAboveTheGroundMetres;
 
         public static Farmyard DunstallOn(CanalPound pound)
         {
             var along = pound.AlongOf(Landmark.HopwasBridge) + SouthOfHopwasBridgeMetres;
-            var centre = pound.GroundPointAt(new WaterPosition(along, OffSide * OffTheWaterMetres));
-            var waterside = pound.GroundPointAt(new WaterPosition(along, 0));
-            var towardsTheWater = (waterside - centre).Normalised;
-            return new Farmyard(centre, GroundPoint.Facing(pound.BearingAt(along)), towardsTheWater);
+            var anchor = new WaterPosition(along, OffSide * OffTheWaterMetres);
+            return new Farmyard(CanalsidePlot.Beside(pound, anchor, HalfLengthMetres, HalfWidthMetres));
         }
 
         public GroundPoint Place(double alongMetres, double towardsTheWaterMetres)
         {
-            return Centre + Lengthways * alongMetres + TowardsTheWater * towardsTheWaterMetres;
+            return plot.Place(alongMetres, towardsTheWaterMetres);
         }
 
         public WorldPoint Raised(GroundPoint place, double aboveTheFloorMetres)

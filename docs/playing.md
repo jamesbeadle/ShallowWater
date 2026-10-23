@@ -48,15 +48,23 @@ Casting off is the same in reverse: R at a post lets go the bow or stern line th
 | Tie her up, then the bow and stern lines | T | north button |
 | Let go a line, at its post | R | west button |
 | Talk, by the farmer | E | south button |
-| Shoulder the rifle, once he has it | hold the right mouse button | hold the left trigger |
+| Shoulder the rifle, ashore | hold the right mouse button | hold the left trigger |
 | Fire, shouldered | left mouse button | right trigger |
 | Show or hide the controls | H, or click the **H Controls** hint at the top left | select (view) button |
 
+## The rifle and the paddock
+
+Askew carries his own rook rifle (`RookRifle`, `RifleInHand`): at the trail whenever he is ashore, stowed below when he steps aboard. Holding the right mouse button shoulders it (`Marksman`, `AimingPose`): the camera closes in over his shoulder, a ring marks the aim, and the left button fires one shot before the bolt is worked. A shot flies as far as the first thing in its way (`SightLine`, `Shot`): a hedge, a wall, a gatepost or the ground stops it short, so a bird behind a hedge is safe until he finds the gateway. Every shot startles the birds within a couple of hundred yards (`Flock`, `Roaming`): they lift off their perches, calling, and settle somewhere else, so he waits for them to come down before the next.
+
+South of Hopwas bridge, on the towpath side, a hedged paddock lies between the canal and the lane (`Paddock`, `PaddockShapes`): pasture, a stone trough, three oaks in the hedge and an open gate towards the water, with eight crows and two rooks (`PaddockStock`) feeding on the grass and sitting on the gate, the trough and the oaks. The birds beat their wings in flight and fold them when they land (`Wings`, `WingPose`), and call now and then (`Calling`, `CrowCall`). A bird that is hit falls (`Carcass`): it is given weight and a body and tumbles onto whatever is below it, the grass, the gate rail, the towpath or the water.
+
+Everything built from shapes is solid (`Solidity`): the fields and their hedgerows, the roads and their hedges, the river and the railway, the houses, the canal and its towpath, the woodland floor, the village turf, the farm and the paddock each carry a collider, so a falling bird lands on them and the camera is kept out of them (`CameraClearance`): when a hedge or a wall stands between Askew and where the camera wants to be, the camera comes in to his side of it.
+
 ## The farm job
 
-Dunstall Farm stands on the west bank 1,750 metres south of Hopwas bridge (`Farmyard`): a fenced stackyard with two hayricks and a muck heap, its gate towards the water, and the farmer inside it. Within a few yards of him E starts the talk (`Talker`, `Conversation`); his words come up on a card at the bottom of the screen and E takes them a line at a time. The talk ends with a rook rifle in Askew's hand (`FarmRifleMission`, `RookRifle`), carried at the trail and stowed when he steps aboard. Holding the right mouse button shoulders it (`Marksman`, `AimingPose`): the camera closes in, a ring marks the aim, and the left button fires one shot before the bolt is worked. The quarry (`Flock`, `Roaming`) sit on the posts and ricks and run between the rick feet; a hit lays them in the yard. The card at the top counts the cull, and when the last one is down the farmer keeps his word: the rifle is Askew's and a pub lead goes on the card. The story of the job is in `docs/story/rooks-and-rats.md`.
+Dunstall Farm stands on the west bank 1,750 metres south of Hopwas bridge (`Farmyard`): a fenced stackyard with two hayricks and a muck heap, its gate towards the water, and the farmer inside it. Within a few yards of him E starts the talk (`Talker`, `Conversation`); his words come up on a card at the bottom of the screen and E takes them a line at a time. He sees the rifle and asks for the yard to be cleared (`FarmJob`). The farm's quarry (`FarmyardStock`) sit on the posts and ricks and run between the rick feet; the card at the top counts the cull, and when the last one is down the farmer keeps his word: a pub lead goes on the card. Only the farm's own birds and rats count; the paddock's crows are Askew's to shoot as he likes. The story of the job is in `docs/story/rooks-and-rats.md`.
 
-`Land` knows where he can go: the canal, its arms and the Tame are water (`WaterLines`), houses and tree trunks are in the way (`Obstacles`), and the banks, towpath and woodland floor are at their own heights. `Walker` takes him up to a walk or a run and turns him to face his way, and `Gait` swings his thighs, shins, arms and forearms for the stride. He is built from shapes like everything else (`AskewShapes`).
+`Land` knows where he can go: the canal, its arms and the Tame are water (`WaterLines`); houses, tree trunks, hedges, gateposts, the trough and the hayricks are in the way (`Obstacles`, `Hedge`); and he stands at the height of what is under him (`Relief`, `Floors`): the banks, towpath and verge, the woodland floor, the village turf, the farmyard floor, the paddock and the roads with their verges. `Walker` takes him up to a walk or a run and turns him to face his way, and `Gait` swings his thighs, shins, arms and forearms for the stride. He is built from shapes like everything else (`AskewShapes`).
 
 ## The day and the radar
 

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using ShallowWater.Game.Fields;
 using ShallowWater.Game.Pound;
@@ -16,10 +15,10 @@ namespace ShallowWater.Unity.Map
             var unfarmed = MapAreas.ReadIfPresent(MapLayers.Woods).Concat(MapAreas.ReadIfPresent(MapLayers.Villages));
             var farmland = new Farmland(pound.Line, MapLines.ReadIfPresent(MapLayers.River), KeptClearOf(pound), unfarmed);
             var shapes = CountrysideShapes.Of(FieldPlan.Of(farmland), farmland);
-            var fields = Gathered(FieldsName, ShapeMeshes.BuildEach(FieldsName, shapes.Fields));
+            var fields = Gatherings.Of(FieldsName, Solidity.Hardened(ShapeMeshes.BuildEach(FieldsName, shapes.Fields)));
             var hedgerows = shapes.HedgerowTiles.SelectMany(tile => ShapeMeshes.BuildEach(HedgerowsName, tile));
-            Gathered(HedgerowsName, hedgerows);
-            return new Countryside(fields, shapes.HedgerowTrees);
+            Gatherings.Of(HedgerowsName, Solidity.Hardened(hedgerows));
+            return new Countryside(fields, shapes.Standards, shapes.Hedges);
         }
 
         private static KeptClear KeptClearOf(Pound pound)
@@ -31,20 +30,6 @@ namespace ShallowWater.Unity.Map
             foreach (var railway in MapLines.ReadIfPresent(MapLayers.Railway)) keptClear.AroundTheRailway(railway);
             foreach (var road in RoadsLayer.OnTheMap()) keptClear.AroundRoad(road);
             return keptClear;
-        }
-
-        private static GameObject Gathered(string name, IEnumerable<GameObject> parts)
-        {
-            var gathering = new GameObject(name);
-            var parent = gathering.transform;
-            foreach (var part in parts) Within(parent, part);
-            return gathering;
-        }
-
-        private static void Within(Transform parent, GameObject part)
-        {
-            var placing = part.transform;
-            placing.SetParent(parent, false);
         }
     }
 }

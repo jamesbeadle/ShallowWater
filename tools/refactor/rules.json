@@ -281,7 +281,8 @@
     "cooccurrenceThreshold": 0.75,
     "fileCountBand": 2.0,
     "acceptedGaps": [
-      "Assets/Unity/Looks/SurfacePalette.cs"
+      "Assets/Unity/Looks/SurfacePalette.cs",
+      "Assets/Game/Houses/RowShapes.cs"
     ]
   },
   "inputValidation": {

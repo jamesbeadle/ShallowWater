@@ -7,8 +7,10 @@ namespace ShallowWater.Game.Walking
     {
         private const double FootprintCellMetres = 40;
         private const double TrunkCellMetres = 8;
+        private const double HedgeCellMetres = 40;
         private readonly PlaceGrid<GroundRing> footprints = new PlaceGrid<GroundRing>(FootprintCellMetres);
         private readonly PlaceGrid<Trunk> trunks = new PlaceGrid<Trunk>(TrunkCellMetres);
+        private readonly PlaceGrid<Hedge> hedges = new PlaceGrid<Hedge>(HedgeCellMetres);
 
         public void AddFootprints(IEnumerable<GroundRing> rings)
         {
@@ -29,10 +31,20 @@ namespace ShallowWater.Game.Walking
             }
         }
 
+        public void AddHedges(IEnumerable<Hedge> grown)
+        {
+            foreach (var hedge in grown)
+            {
+                var reach = hedge.Reach;
+                hedges.Add(hedge, reach.SouthWest, reach.NorthEast);
+            }
+        }
+
         public bool IsBlocking(GroundPoint place)
         {
             var isAgainstAWall = footprints.HasAnyNear(place, footprint => Walls.IsBlocking(footprint, place));
-            return isAgainstAWall || trunks.HasAnyNear(place, trunk => trunk.IsBlocking(place));
+            var isAgainstATrunk = trunks.HasAnyNear(place, trunk => trunk.IsBlocking(place));
+            return isAgainstAWall || isAgainstATrunk || hedges.HasAnyNear(place, hedge => hedge.IsBlocking(place));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ShallowWater.Unity.Map
             if (!OptionalLayer.IsPresent(layerName)) return;
             var surfaces = new SurfaceShapes();
             foreach (var record in MapLines.Records(layerName)) AddLine(surfaces, record);
-            ShapeMeshes.BuildEach(layerName, surfaces);
+            Solidity.Hardened(ShapeMeshes.BuildEach(layerName, surfaces));
         }
 
         private static void AddLine(SurfaceShapes surfaces, LineRecord record)

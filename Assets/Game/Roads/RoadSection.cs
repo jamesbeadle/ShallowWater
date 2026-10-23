@@ -45,30 +45,43 @@ namespace ShallowWater.Game.Roads
             return road.HeightMetres + VergeRiseMetres;
         }
 
+        public static RoadMargin MarginOf(Road road, Roadside roadside)
+        {
+            var hedge = HedgeBeside(road, roadside);
+            var walkedTo = ReachOf(road, roadside) - hedge.HalfWidthMetres;
+            var isAStreet = roadside == Roadside.Street;
+            var height = isAStreet ? road.HeightMetres + KerbHeightMetres : VergeHeightOf(road);
+            return new RoadMargin(road.HalfWidthMetres, walkedTo, height, hedge.HalfWidthMetres);
+        }
+
+        private static HedgeShape HedgeBeside(Road road, Roadside roadside)
+        {
+            var isAStreet = roadside == Roadside.Street;
+            if (isAStreet) return new HedgeShape(GardenHedgeFaceMetres, GardenHedgeTopMetres, road.HeightMetres + KerbHeightMetres + GardenHedgeHeightMetres, GardenHedgeRoughnessMetres);
+            return new HedgeShape(HedgeFaceMetres, HedgeTopMetres, VergeHeightOf(road) + HedgeHeightMetres, HedgeRoughnessMetres);
+        }
+
         private static SectionWalk WalkOut(Road road, double side, Roadside roadside)
         {
             var walk = new SectionWalk(side, road.HalfWidthMetres, road.HeightMetres);
-            if (roadside == Roadside.Street) Street(walk);
+            if (roadside == Roadside.Street) Street(walk, road);
             if (roadside == Roadside.Hedgerow) Hedgerow(walk, road);
             return walk;
         }
 
         private static void Hedgerow(SectionWalk walk, Road road)
         {
-            var verge = VergeHeightOf(road);
-            walk.Step(Surface.Grass, road.VergeWidthMetres, verge);
-            var hedge = new HedgeShape(HedgeFaceMetres, HedgeTopMetres, verge + HedgeHeightMetres, HedgeRoughnessMetres);
-            Hedge(walk, Surface.Hedge, hedge);
+            walk.Step(Surface.Grass, road.VergeWidthMetres, VergeHeightOf(road));
+            Hedge(walk, Surface.Hedge, HedgeBeside(road, Roadside.Hedgerow));
         }
 
-        private static void Street(SectionWalk walk)
+        private static void Street(SectionWalk walk, Road road)
         {
             var kerb = walk.Height + KerbHeightMetres;
             walk.Step(Surface.Kerb, KerbFaceMetres, kerb);
             walk.Step(Surface.Pavement, PavementWidthMetres, kerb);
             walk.Step(Surface.Grass, FrontGardenWidthMetres, kerb);
-            var gardenHedge = new HedgeShape(GardenHedgeFaceMetres, GardenHedgeTopMetres, kerb + GardenHedgeHeightMetres, GardenHedgeRoughnessMetres);
-            Hedge(walk, Surface.GardenHedge, gardenHedge);
+            Hedge(walk, Surface.GardenHedge, HedgeBeside(road, Roadside.Street));
         }
 
         private static void Hedge(SectionWalk walk, Surface surface, HedgeShape hedge)

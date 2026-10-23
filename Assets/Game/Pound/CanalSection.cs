@@ -14,9 +14,11 @@ namespace ShallowWater.Game.Pound
         private const double PavedPathWidthMetres = 2.8;
         private const double GrassFromCentreMetres = 13;
         private const double OuterSlopeWidthMetres = 1.5;
+        private const double VergeBeyondTheSlopeMetres = 3;
         private const double BothSides = 2;
 
         public const double OuterReachMetres = GrassFromCentreMetres + OuterSlopeWidthMetres;
+        public const double FarmlandReachMetres = OuterReachMetres + VergeBeyondTheSlopeMetres;
         public const double BankTopReachMetres = GrassFromCentreMetres;
 
         public static IReadOnlyList<Band> For(Stretch stretch)
@@ -82,6 +84,7 @@ namespace ShallowWater.Game.Pound
         {
             walk.StepOutTo(Surface.Grass, GrassFromCentreMetres, Heights.BankTopMetres);
             walk.Step(Surface.Bank, OuterSlopeWidthMetres, Heights.GroundMetres);
+            walk.Step(Surface.Grass, VergeBeyondTheSlopeMetres, Heights.GroundMetres);
         }
     }
 }

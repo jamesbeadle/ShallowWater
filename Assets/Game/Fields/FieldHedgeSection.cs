@@ -6,7 +6,7 @@ namespace ShallowWater.Game.Fields
 {
     public static class FieldHedgeSection
     {
-        private const double HalfWidthMetres = 1;
+        public const double HalfWidthMetres = 1;
         private const double FaceMetres = 0.55;
         private const double TopMetres = 0.9;
         private const double FieldHedgeHeightMetres = 1.6;

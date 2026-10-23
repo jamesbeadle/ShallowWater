@@ -12,6 +12,7 @@ namespace ShallowWater.Game.Farmyard
         public const double MuckHeapHeightMetres = 1.1;
         private const double RatRunFromTheRickMetres = 0.5;
         private const int RatRunsRoundARick = 6;
+        private const int MoundSides = 12;
 
         private static readonly (double Along, double Across)[] Ricks = { (-10, -6), (9, -7) };
         private static readonly (double Along, double Across) MuckHeap = (0, -12);
@@ -31,6 +32,12 @@ namespace ShallowWater.Game.Farmyard
             var runs = RickFeet(yard).SelectMany(RoundTheRick).ToList();
             runs.Add(MuckHeapFoot(yard));
             return runs;
+        }
+
+        public static IEnumerable<GroundRing> Mounds(Farmyard yard)
+        {
+            var ricks = RickFeet(yard).Select(foot => Footprints.Round(foot, RickRadiusMetres, MoundSides));
+            return ricks.Append(Footprints.Round(MuckHeapFoot(yard), MuckHeapRadiusMetres, MoundSides));
         }
 
         private static IEnumerable<GroundPoint> RoundTheRick(GroundPoint foot)

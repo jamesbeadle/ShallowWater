@@ -8,7 +8,7 @@ namespace ShallowWater.Unity.Player
     {
         private ShoreLeave shore;
         private Marksman marksman;
-        private FarmRifleMission mission;
+        private FarmJob job;
         private Farmyard yard;
         private WalkerController walking;
 
@@ -16,18 +16,18 @@ namespace ShallowWater.Unity.Player
         public bool CanTalk { get; private set; }
         public bool IsTalking => Conversation.IsTalking;
 
-        public void Ready(FarmRifleMission job, Farmyard farm, WalkerController walker)
+        public void Ready(FarmJob farmJob, Farmyard farm, WalkerController walker)
         {
             shore = GetComponent<ShoreLeave>();
             marksman = GetComponent<Marksman>();
-            mission = job;
+            job = farmJob;
             yard = farm;
             walking = walker;
         }
 
         private void Update()
         {
-            if (mission == null) return;
+            if (job == null) return;
             CanTalk = shore.IsAshore && !IsTalking && !marksman.IsAiming && yard.IsWithinHail(walking.Position);
             var isAskedFor = ShoreInput.IsTalking();
             if (!isAskedFor) return;
@@ -38,7 +38,7 @@ namespace ShallowWater.Unity.Player
 
         private void Begin()
         {
-            Conversation.Begin(FarmerLines.Name, mission.LinesNow());
+            Conversation.Begin(FarmerLines.Name, job.LinesNow());
             walking.enabled = false;
             walking.Face(yard.FarmerStands);
             walking.Stand();
@@ -48,7 +48,7 @@ namespace ShallowWater.Unity.Player
         {
             Conversation.Next();
             if (IsTalking) return;
-            mission.Spoken();
+            job.Spoken();
             walking.enabled = true;
         }
     }
