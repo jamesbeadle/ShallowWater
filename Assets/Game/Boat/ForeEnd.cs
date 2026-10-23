@@ -19,6 +19,7 @@ namespace ShallowWater.Game.Boat
         private const double RimRadiusMetres = 0.007;
         public const double StudAlong = 9.4;
         public const double StudPinHeightMetres = 0.13;
+        public const double StudRadiusMetres = 0.03;
         private const double StudPinHalfLengthMetres = 0.08;
         private const double StudPinRadiusMetres = 0.015;
         private const double FullTurnRadians = 2 * Math.PI;
@@ -31,7 +32,7 @@ namespace ShallowWater.Game.Boat
 
         private static readonly ProfilePoint[] Stud =
         {
-            new ProfilePoint(0.03, 0), new ProfilePoint(0.03, 0.16), new ProfilePoint(0.045, 0.17), new ProfilePoint(0.045, 0.19), new ProfilePoint(0, 0.19)
+            new ProfilePoint(StudRadiusMetres, 0), new ProfilePoint(StudRadiusMetres, 0.16), new ProfilePoint(0.045, 0.17), new ProfilePoint(0.045, 0.19), new ProfilePoint(0, 0.19)
         };
 
         public static void Build(SurfaceShapes surfaces)

@@ -32,7 +32,7 @@ namespace ShallowWater.Game.Mooring
             var hasABollardWithinReach = nearest.Any();
             if (!hasABollardWithinReach) return Pinned(feet, bearing);
             var bollard = nearest.First();
-            return new MooringPost(bollard, BollardTieMetres, IsABollard);
+            return new MooringPost(bollard, BollardTieMetres, Bollards.RadiusMetres, IsABollard);
         }
 
         private MooringPost Pinned(GroundPoint feet, double bearing)
@@ -40,7 +40,7 @@ namespace ShallowWater.Game.Mooring
             var ahead = feet + GroundPoint.Facing(bearing) * PinAheadMetres;
             var pin = land.IsOpen(ahead) ? ahead : feet;
             var ground = land.HeightAt(pin);
-            return new MooringPost(pin, ground + MooringPin.TieAboveTheGroundMetres, IsAPin);
+            return new MooringPost(pin, ground + MooringPin.TieAboveTheGroundMetres, MooringPin.RadiusMetres, IsAPin);
         }
 
         public static GroundPoint KneelingBeside(GroundPoint feet, MooringPost post)

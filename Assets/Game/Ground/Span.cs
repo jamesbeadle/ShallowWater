@@ -10,6 +10,11 @@ namespace ShallowWater.Game.Ground
             To = to;
         }
 
+        public static Span Around(double middle, double reach)
+        {
+            return new Span(middle - reach, middle + reach);
+        }
+
         public double From { get; }
         public double To { get; }
         public double Length => To - From;

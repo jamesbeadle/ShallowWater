@@ -17,5 +17,10 @@ namespace ShallowWater.Game.Pound
         public bool IsMooring { get; }
         public bool IsAtAnArmMouth { get; }
         public bool HasHardEdge => IsVillage || IsMooring;
+
+        public bool IsAround(double along)
+        {
+            return Span.IsAround(along);
+        }
     }
 }
