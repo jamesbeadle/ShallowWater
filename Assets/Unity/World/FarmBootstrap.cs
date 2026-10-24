@@ -19,8 +19,10 @@ namespace ShallowWater.Unity.World
             var job = new FarmJob(farmFlock);
             var yard = scenery.Yard;
             FarmerFigure.Standing(yard, land, shore.Askew);
-            boat.AddComponent<Marksman>().Ready(job, shore.Figure, shore.Walking, camera, wildlife);
-            boat.AddComponent<Talker>().Ready(job, yard, shore.Walking);
+            var marksman = boat.AddComponent<Marksman>();
+            var talker = boat.AddComponent<Talker>();
+            marksman.Ready(job, shore.Figure, shore.Walking, camera, wildlife);
+            talker.Ready(job, yard, shore.Walking);
             boat.AddComponent<FarmHud>().Shows(screen, job);
         }
     }
