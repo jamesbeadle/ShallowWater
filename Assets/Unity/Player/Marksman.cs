@@ -1,7 +1,5 @@
 using ShallowWater.Game.Guns;
-using ShallowWater.Game.Kit;
 using ShallowWater.Game.Missions;
-using ShallowWater.Unity.Map;
 using ShallowWater.Unity.World;
 using UnityEngine;
 
@@ -9,19 +7,17 @@ namespace ShallowWater.Unity.Player
 {
     public sealed class Marksman : MonoBehaviour
     {
-        private readonly RookRifle rifle = new RookRifle();
         private ShoreLeave shore;
         private Talker talker;
         private Moorer moorer;
-        private FarmJob job;
+        private Rifles rifles;
         private WalkerController walking;
-        private Wildlife wildlife;
         private ShoulderedRifle shouldered;
-        private RifleReport report;
-        private Kit kit;
+        private Gunfire gunfire;
 
-        public RookRifle Rifle => rifle;
-        public bool IsAiming => rifle.IsShouldered;
+        public Rifle Rifle => rifles.InHand;
+        public Rifle Slung => rifles.Slung;
+        public bool IsAiming => Rifle.IsShouldered;
         public bool CanAim { get; private set; }
 
         public void Ready(FarmJob farmJob, FigureModel model, WalkerController walker, OrbitCamera camera, Wildlife quarry)
@@ -29,29 +25,30 @@ namespace ShallowWater.Unity.Player
             shore = GetComponent<ShoreLeave>();
             talker = GetComponent<Talker>();
             moorer = GetComponent<Moorer>();
-            job = farmJob;
-            walking = walker;
-            wildlife = quarry;
-            shouldered = new ShoulderedRifle(model, walker, camera);
-            var root = model.Root;
-            report = new RifleReport(root.gameObject);
             var book = GetComponent<PocketBook>();
-            kit = book.Kit;
+            var kit = book.Kit;
+            rifles = kit.Rifles;
+            walking = walker;
+            shouldered = new ShoulderedRifle(model, walker, camera, rifles);
+            var root = model.Root;
+            gunfire = new Gunfire(root.gameObject, quarry, farmJob);
         }
 
         private void Update()
         {
-            if (job == null) return;
-            rifle.Work(Time.deltaTime);
+            if (rifles == null) return;
+            rifles.Work(Time.deltaTime);
             var isCarried = shore.IsAshore;
             shouldered.Show(isCarried);
             CanAim = isCarried && !talker.IsTalking && !moorer.IsWorking;
+            var isChanging = CanAim && AimInput.IsChangingTheRifle();
+            if (isChanging) Change();
             var wantsToAim = WantsToAim();
             if (wantsToAim && !IsAiming) Raise();
             if (!wantsToAim && IsAiming) Lower();
             if (!IsAiming) return;
             shouldered.Aim();
-            if (AimInput.IsFiring()) Fire();
+            if (AimInput.IsFiring()) gunfire.Fire(Rifle, shouldered.Sights);
         }
 
         private bool WantsToAim()
@@ -63,7 +60,7 @@ namespace ShallowWater.Unity.Player
 
         private void Raise()
         {
-            rifle.Shoulder(isShouldered: true);
+            Rifle.Shoulder(isShouldered: true);
             var hand = moorer.Hand;
             hand.LayDown(walking.Position);
             shouldered.Raise();
@@ -71,27 +68,17 @@ namespace ShallowWater.Unity.Player
 
         private void Lower()
         {
-            rifle.Shoulder(isShouldered: false);
+            Rifle.Shoulder(isShouldered: false);
             shouldered.Lower();
             var hand = moorer.Hand;
             hand.TakeUp();
         }
 
-        private void Fire()
+        private void Change()
         {
-            var cartridges = kit.Cartridges;
-            var hasARoundToFire = rifle.IsLoaded && cartridges.HasAny;
-            if (!hasARoundToFire) return;
-            cartridges.Spend();
-            rifle.Fire();
-            report.Fire();
-            var sights = shouldered.Sights;
-            var muzzle = WorldVectors.PointOf(sights.position);
-            var aim = WorldVectors.OffsetOf(sights.forward);
-            var struck = Shot.Hit(muzzle, aim, wildlife.Alive, SightLine.ReachOf(sights, RookRifle.RangeMetres));
-            if (struck != null) wildlife.Struck(struck, aim);
-            if (struck != null) job.Killed(struck);
-            wildlife.Startle(muzzle);
+            if (IsAiming) Lower();
+            rifles.Change();
+            shouldered.Change();
         }
     }
 }

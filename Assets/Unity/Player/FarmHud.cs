@@ -13,12 +13,14 @@ namespace ShallowWater.Unity.Player
         private SpeechCard speech;
         private JobCard card;
         private Sight sight;
+        private Scope scope;
 
         public FarmJob Job => job;
 
         public void Shows(VisualElement screen, FarmJob farmJob)
         {
             job = farmJob;
+            scope = new Scope(screen);
             speech = new SpeechCard(screen);
             card = new JobCard(screen, FarmerLines.Farm);
             sight = new Sight(screen);
@@ -36,7 +38,10 @@ namespace ShallowWater.Unity.Player
             if (!isShowing) return;
             speech.Show(talker.Conversation);
             card.Show(job);
-            sight.Show(marksman.IsAiming);
+            var rifle = marksman.Rifle;
+            var isAiming = marksman.IsAiming;
+            sight.Show(isAiming && !rifle.HasATelescope);
+            scope.Show(isAiming && rifle.HasATelescope);
         }
     }
 }

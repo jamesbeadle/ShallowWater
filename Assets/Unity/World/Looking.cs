@@ -17,5 +17,10 @@ namespace ShallowWater.Unity.World
         public float HighestPitchDegrees { get; }
         public float TurnShare { get; }
         public bool IsOnTheMouseAlone { get; }
+
+        public Looking Through(float magnification)
+        {
+            return new Looking(LowestPitchDegrees, HighestPitchDegrees, TurnShare / magnification, IsOnTheMouseAlone);
+        }
     }
 }

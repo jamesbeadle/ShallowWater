@@ -21,6 +21,11 @@ namespace ShallowWater.Unity.Overlay
             return Drawn(RifleClass, "stock", "wrist", "barrel", "bolt");
         }
 
+        public static VisualElement ScopedRifle()
+        {
+            return Drawn(RifleClass, "stock", "wrist", "barrel", "bolt", "scope", "magazine");
+        }
+
         public static VisualElement Hook()
         {
             return Drawn(HookClass, "screw", "curl");

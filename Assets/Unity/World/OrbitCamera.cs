@@ -38,6 +38,8 @@ namespace ShallowWater.Unity.World
             pitchDegrees = framing.PitchDegrees;
             distanceMetres = framing.DistanceMetres;
             if (isCuttingFromTheEye) transform.position = Place;
+            var picture = GetComponent<Camera>();
+            picture.fieldOfView = framing.FieldOfViewDegrees;
             var looking = framing.Looking;
             MousePointer.Lock(looking.IsOnTheMouseAlone);
         }

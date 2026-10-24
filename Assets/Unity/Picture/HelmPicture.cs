@@ -4,7 +4,7 @@ namespace ShallowWater.Unity.Picture
 {
     public static class HelmPicture
     {
-        private const float FieldOfViewDegrees = 50f;
+        public const float FieldOfViewDegrees = 50f;
         private const float NearestMetres = 0.3f;
         private const float FarthestMetres = 3000f;
 

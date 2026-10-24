@@ -15,7 +15,6 @@ namespace ShallowWater.Unity.Player
     {
         private ShoreLeave shore;
         private Moorer moorer;
-        private Marksman marksman;
         private BoatController boat;
         private FarmJob job;
         private DayAndNight day;
@@ -31,14 +30,13 @@ namespace ShallowWater.Unity.Player
             day = dayAndNight;
             pound = water;
             poundLength = OldDistance.Words(water.LengthMetres);
-            book = new PocketBookScreen(screen, ControlsRows.Book, ControlsRows.PutAway, TakeOut);
+            book = new PocketBookScreen(screen, Kit, ControlsRows.Book, ControlsRows.PutAway, TakeOut);
         }
 
         private void Start()
         {
             shore = GetComponent<ShoreLeave>();
             moorer = GetComponent<Moorer>();
-            marksman = GetComponent<Marksman>();
             boat = GetComponent<BoatController>();
             var farm = GetComponent<FarmHud>();
             job = farm.Job;
@@ -57,8 +55,8 @@ namespace ShallowWater.Unity.Player
         {
             if (!IsOpen) return;
             var isAshore = shore.IsAshore;
-            var kitPage = book.Kit;
-            kitPage.Show(job, marksman.Rifle, isAshore, Kit, day.Now);
+            var kitPage = book.KitPage;
+            kitPage.Show(job, Kit, isAshore, day.Now);
             var dayPage = book.Day;
             dayPage.Show(job, boat.Notch, moorer.Mooring, isAshore);
         }

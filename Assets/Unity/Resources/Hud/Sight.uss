@@ -22,3 +22,48 @@
 .hud-sight--hidden {
     opacity: 0;
 }
+
+.hud-scope-row {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition-property: opacity;
+    transition-duration: 0.12s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.hud-scope-row--hidden {
+    opacity: 0;
+}
+
+.hud-scope {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: 4400px;
+    height: 4400px;
+    border-width: 1750px;
+    border-color: var(--scope-field);
+    border-radius: 2200px;
+}
+
+.hud-scope__wire {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    background-color: var(--scope-wire);
+}
+
+.hud-scope__wire--upright {
+    width: 2px;
+    height: 900px;
+}
+
+.hud-scope__wire--level {
+    width: 900px;
+    height: 2px;
+}

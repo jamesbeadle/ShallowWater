@@ -1,5 +1,4 @@
 using ShallowWater.Game.Day;
-using ShallowWater.Game.Guns;
 using ShallowWater.Game.Kit;
 using ShallowWater.Game.Missions;
 using UnityEngine.UIElements;
@@ -12,23 +11,23 @@ namespace ShallowWater.Unity.Overlay
         private const string Owner = "F. Askew, Sparrow";
 
         private readonly GunLocker locker;
-        private readonly CartridgeBox cartridges;
+        private readonly CartridgeBoxes cartridges;
         private readonly Pockets pockets;
         private readonly PaperCard papers;
 
-        public KitPage(VisualElement page)
+        public KitPage(VisualElement page, Kit kit)
         {
             page.Add(PageElements.Heading(Heading, Owner));
-            locker = new GunLocker(page);
-            cartridges = new CartridgeBox(page);
+            locker = new GunLocker(page, kit.Rifles);
+            cartridges = new CartridgeBoxes(page, kit.Rifles);
             pockets = new Pockets(page);
             papers = new PaperCard(page);
         }
 
-        public void Show(FarmJob job, RookRifle rifle, bool isAshore, Kit kit, TimeOfDay time)
+        public void Show(FarmJob job, Kit kit, bool isAshore, TimeOfDay time)
         {
-            locker.Show(rifle, isAshore);
-            cartridges.Show(kit.Cartridges);
+            locker.Show(kit.Rifles, isAshore);
+            cartridges.Show(kit.Rifles);
             pockets.Show(kit.Purse, time);
             papers.Show(job);
         }
