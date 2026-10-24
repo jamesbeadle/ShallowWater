@@ -32,9 +32,9 @@ namespace ShallowWater.Game.Sound
                 var time = (double)index / samplesPerSecond;
                 puff += (random.NextDouble() * 2 - 1 - puff) * PuffSmoothing;
                 var attack = Math.Min(1, time / AttackSeconds);
-                samples[index] = (float)(attack * Loudest * (Engine(time) + puff * PuffShare * Math.Exp(-time * PuffDecayPerSecond)));
+                samples[index] = (float)(attack * (Engine(time) + puff * PuffShare * Math.Exp(-time * PuffDecayPerSecond)));
             }
-            return samples;
+            return Loudness.Set(samples, Loudest);
         }
 
         private static double Engine(double time)

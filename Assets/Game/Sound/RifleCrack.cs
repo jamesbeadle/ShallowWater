@@ -27,9 +27,9 @@ namespace ShallowWater.Game.Sound
                 var time = (double)index / samplesPerSecond;
                 var noise = random.NextDouble() * 2 - 1;
                 var attack = Math.Min(1, time / AttackSeconds);
-                samples[index] = (float)(attack * Loudest * (Crack(time, noise) + Echo(time, noise)));
+                samples[index] = (float)(attack * (Crack(time, noise) + Echo(time, noise)));
             }
-            return samples;
+            return Loudness.Set(samples, Loudest);
         }
 
         private static double Crack(double time, double noise)
