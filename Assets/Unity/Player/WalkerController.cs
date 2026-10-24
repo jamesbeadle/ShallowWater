@@ -12,6 +12,7 @@ namespace ShallowWater.Unity.Player
         private Land land;
         private FigureModel figure;
         private OrbitCamera view;
+        private Tether tether = Tether.None;
         private double cycleShare;
 
         private const double ClosestToFaceMetres = 0.05;
@@ -35,6 +36,11 @@ namespace ShallowWater.Unity.Player
             Place();
         }
 
+        public void HeldBy(Tether line)
+        {
+            tether = line;
+        }
+
         public void Face(GroundPoint place)
         {
             var towards = place - walker.Position;
@@ -55,7 +61,7 @@ namespace ShallowWater.Unity.Player
         {
             var seconds = Time.deltaTime;
             if (land == null || seconds <= 0) return;
-            walker.Stride(seconds, WalkInput.Wish(view.YawDegrees), WalkInput.IsRunning(), land);
+            walker.Stride(seconds, WalkInput.Wish(view.YawDegrees), WalkInput.IsRunning(), land, tether);
             var speed = walker.SpeedMetresPerSecond;
             cycleShare = (cycleShare + Gait.CyclesPerSecond(speed) * seconds) % WholeCycle;
             Stride = Gait.At(cycleShare, speed, walker.TurnRadiansPerSecond, Time.time);

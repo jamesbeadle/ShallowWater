@@ -2,6 +2,7 @@ using ShallowWater.Game.Boat;
 using ShallowWater.Game.Ground;
 using ShallowWater.Game.People;
 using ShallowWater.Game.Shapes;
+using ShallowWater.Game.Walking;
 
 namespace ShallowWater.Game.Mooring
 {
@@ -17,13 +18,9 @@ namespace ShallowWater.Game.Mooring
             return new WorldPoint(stud.East, StudTieMetres, stud.North);
         }
 
-        public static GroundPoint HeldBack(GroundPoint feet, BoatMotion boat)
+        public static Tether TetherOn(BoatMotion boat)
         {
-            var stud = boat.PointOf(CentreStud.OnTheHull);
-            var away = feet - stud;
-            var isWithinTheLine = away.Length <= HeldBackMetres;
-            if (isWithinTheLine) return feet;
-            return stud + away.Normalised * HeldBackMetres;
+            return new Tether(boat.PointOf(CentreStud.OnTheHull), HeldBackMetres);
         }
     }
 }
