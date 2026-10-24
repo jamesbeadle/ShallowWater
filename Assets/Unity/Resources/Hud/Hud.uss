@@ -39,6 +39,8 @@
     --oilcloth-edge: #3B4036;
     --gutter: rgba(0, 0, 0, 0.38);
     --table: rgba(6, 5, 4, 0.78);
+    --scope-field: #050403;
+    --scope-wire: #15110D;
     position: absolute;
     left: 0;
     top: 0;

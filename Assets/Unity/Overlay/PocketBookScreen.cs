@@ -1,4 +1,5 @@
 using System;
+using ShallowWater.Game.Kit;
 using UnityEngine.UIElements;
 
 namespace ShallowWater.Unity.Overlay
@@ -21,7 +22,7 @@ namespace ShallowWater.Unity.Overlay
         private readonly VisualElement backdrop = OverlayElements.Block(BackdropClass, ClosedClass);
         private readonly VisualElement hint;
 
-        public PocketBookScreen(VisualElement screen, HudPrompt open, HudPrompt close, Action takeOut)
+        public PocketBookScreen(VisualElement screen, Kit kit, HudPrompt open, HudPrompt close, Action takeOut)
         {
             this.screen = screen;
             var book = OverlayElements.Block(BookClass);
@@ -30,7 +31,7 @@ namespace ShallowWater.Unity.Overlay
             book.Add(left);
             book.Add(OverlayElements.Block(SpineClass));
             book.Add(right);
-            Kit = new KitPage(left);
+            KitPage = new KitPage(left, kit);
             Day = new DayPage(right);
             backdrop.Add(book);
             backdrop.Add(Foot(close));
@@ -40,7 +41,7 @@ namespace ShallowWater.Unity.Overlay
             hint = Hint(open, takeOut);
         }
 
-        public KitPage Kit { get; }
+        public KitPage KitPage { get; }
         public DayPage Day { get; }
 
         public void Open(bool isOpen)

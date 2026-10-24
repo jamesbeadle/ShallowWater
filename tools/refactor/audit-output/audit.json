@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T14:17:49+00:00",
+  "generatedAt": "2026-10-24T18:14:36+00:00",
   "kitVersion": "1.26.0",
   "score": {
     "overall": 100.0,
@@ -40,7 +40,7 @@
         "unit": "files",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 651,
+        "measuredAgainst": 663,
         "score": 100.0
       },
       {
@@ -64,7 +64,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1692,
+        "measuredAgainst": 1738,
         "score": 100.0
       },
       {
@@ -76,7 +76,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 408,
+        "measuredAgainst": 416,
         "score": 100.0
       },
       {
@@ -99,7 +99,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 25.59,
+        "measuredAgainst": 26.14,
         "score": 100.0
       },
       {
@@ -111,7 +111,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 25.59,
+        "measuredAgainst": 26.14,
         "score": 100.0
       },
       {
@@ -123,7 +123,7 @@
         "unit": "components and functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1692,
+        "measuredAgainst": 1738,
         "score": 100.0
       },
       {
@@ -135,7 +135,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 25.59,
+        "measuredAgainst": 26.14,
         "score": 100.0
       },
       {
@@ -147,7 +147,7 @@
         "unit": "thousand lines",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 25.59,
+        "measuredAgainst": 26.14,
         "score": 100.0
       },
       {
@@ -159,7 +159,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1692,
+        "measuredAgainst": 1738,
         "score": 100.0
       },
       {
@@ -194,7 +194,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 408,
+        "measuredAgainst": 416,
         "score": 100.0
       },
       {
@@ -206,7 +206,7 @@
         "unit": "branches",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 408,
+        "measuredAgainst": 416,
         "score": 100.0
       },
       {
@@ -218,7 +218,7 @@
         "unit": "functions",
         "isMeasured": true,
         "offenders": 0,
-        "measuredAgainst": 1692,
+        "measuredAgainst": 1738,
         "score": 100.0
       },
       {
@@ -249,17 +249,17 @@
     "fileLength": {
       "limit": 100,
       "filesOverLimit": 0,
-      "totalFiles": 651,
-      "totalLines": 25585,
+      "totalFiles": 663,
+      "totalLines": 26144,
       "worstFileLines": 0,
       "worstFileTimesOverLimit": 0.0
     },
     "functionShape": {
       "limit": 30,
       "functionsOverLimit": 0,
-      "totalFunctions": 1692,
+      "totalFunctions": 1738,
       "elseBlocks": 0,
-      "ifBlocks": 408,
+      "ifBlocks": 416,
       "measurementIsHeuristic": true
     },
     "functionNames": {
@@ -292,7 +292,7 @@
     "prose": {
       "longMemberChainLines": 0,
       "deeplyIndentedLines": 0,
-      "overlongLines": 29,
+      "overlongLines": 30,
       "measurementIsHeuristic": true
     },
     "conditions": {
@@ -302,7 +302,7 @@
     },
     "orphans": {
       "orphanFunctions": 0,
-      "functionsExamined": 1692
+      "functionsExamined": 1738
     },
     "designPatterns": {
       "roleFamilies": 20,
@@ -344,8 +344,8 @@
       "summary": {
         "limit": 100,
         "filesOverLimit": 0,
-        "totalFiles": 651,
-        "totalLines": 25585,
+        "totalFiles": 663,
+        "totalLines": 26144,
         "worstFileLines": 0,
         "worstFileTimesOverLimit": 0.0
       },
@@ -356,9 +356,9 @@
       "summary": {
         "limit": 30,
         "functionsOverLimit": 0,
-        "totalFunctions": 1692,
+        "totalFunctions": 1738,
         "elseBlocks": 0,
-        "ifBlocks": 408,
+        "ifBlocks": 416,
         "measurementIsHeuristic": true
       },
       "offenders": []
@@ -411,7 +411,7 @@
           },
           {
             "file": "Assets/Unity/Player/Marksman.cs",
-            "line": 57,
+            "line": 54,
             "name": "WantsToAim"
           }
         ]
@@ -444,7 +444,7 @@
       "summary": {
         "longMemberChainLines": 0,
         "deeplyIndentedLines": 0,
-        "overlongLines": 29,
+        "overlongLines": 30,
         "measurementIsHeuristic": true
       },
       "offenders": {
@@ -561,7 +561,11 @@
           },
           {
             "file": "Assets/Unity/World/CameraFraming.cs",
-            "line": 9
+            "line": 10
+          },
+          {
+            "file": "Assets/Unity/World/CameraFraming.cs",
+            "line": 13
           },
           {
             "file": "Assets/Unity/World/Scenery.cs",
@@ -586,7 +590,7 @@
       "name": "orphans",
       "summary": {
         "orphanFunctions": 0,
-        "functionsExamined": 1692
+        "functionsExamined": 1738
       },
       "offenders": []
     },
@@ -621,7 +625,7 @@
           "pose": 4,
           "roof": 4,
           "section": 4,
-          "shapes": 22
+          "shapes": 23
         },
         "patterns": [
           {
@@ -684,8 +688,8 @@
         {
           "area": "backend",
           "files": 630,
-          "sourceFiles": 631,
-          "sourceLines": 24416
+          "sourceFiles": 643,
+          "sourceLines": 24975
         },
         {
           "area": "docs",

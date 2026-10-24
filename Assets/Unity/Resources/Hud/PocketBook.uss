@@ -177,7 +177,7 @@
 .rounds {
     flex-direction: row;
     flex-wrap: wrap;
-    width: 300px;
+    width: 450px;
     margin: 10px 0 2px 130px;
     transition-property: opacity;
     transition-duration: 0.2s;
@@ -186,8 +186,8 @@
 
 .round {
     width: 7px;
-    height: 18px;
-    margin: 0 4px 4px 0;
+    height: 16px;
+    margin: 0 2px 3px 0;
     border-width: 1px;
     border-color: var(--pencil);
     border-top-left-radius: 3.5px;

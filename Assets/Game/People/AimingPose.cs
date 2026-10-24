@@ -26,16 +26,16 @@ namespace ShallowWater.Game.People
 
         public static readonly WorldPoint Eye = EyeOf(Standing);
 
-        public static FigurePose At(double muzzleDownRadians)
+        public static FigurePose At(Rifle rifle, double muzzleDownRadians)
         {
-            var holding = Arms.Reaching(Standing, FigurePart.RightHand, OnTheRifle(GripFromTheButt, muzzleDownRadians), RightElbowOutAndUp);
-            var supporting = Arms.Reaching(holding, FigurePart.LeftHand, OnTheRifle(ForeEndFromTheButt, muzzleDownRadians), LeftElbowDown);
+            var holding = Arms.Reaching(Standing, FigurePart.RightHand, OnTheRifle(rifle, GripFromTheButt, muzzleDownRadians), RightElbowOutAndUp);
+            var supporting = Arms.Reaching(holding, FigurePart.LeftHand, OnTheRifle(rifle, ForeEndFromTheButt, muzzleDownRadians), LeftElbowDown);
             return Skirts.Following(supporting);
         }
 
-        public static WorldPoint OnTheRifle(Offset fromTheButt, double muzzleDownRadians)
+        public static WorldPoint OnTheRifle(Rifle rifle, Offset fromTheButt, double muzzleDownRadians)
         {
-            var fromTheEye = (fromTheButt - RookRifle.EyeFromTheButt).TurnedAbout(Offset.East, muzzleDownRadians);
+            var fromTheEye = (fromTheButt - rifle.EyeFromTheButt).TurnedAbout(Offset.East, muzzleDownRadians);
             return fromTheEye.From(Eye);
         }
 

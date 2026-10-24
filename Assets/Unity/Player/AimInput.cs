@@ -12,6 +12,14 @@ namespace ShallowWater.Unity.Player
             return Buttons.IsAnyPressedNow(keyboard?.zKey, gamepad?.leftTrigger);
         }
 
+        public static bool IsChangingTheRifle()
+        {
+            var keyboard = Keyboard.current;
+            var gamepad = Gamepad.current;
+            var dpad = gamepad?.dpad;
+            return Buttons.IsAnyPressedNow(keyboard?.xKey, dpad?.up);
+        }
+
         public static bool IsFiring()
         {
             var keyboard = Keyboard.current;

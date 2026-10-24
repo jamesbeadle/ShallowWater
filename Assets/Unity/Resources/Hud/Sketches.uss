@@ -51,6 +51,30 @@
     background-color: var(--pencil);
 }
 
+.sketch-rifle__scope {
+    position: absolute;
+    left: 24px;
+    top: -5px;
+    width: 32px;
+    height: 7px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-radius: 3.5px;
+    background-color: var(--paper);
+}
+
+.sketch-rifle__magazine {
+    position: absolute;
+    left: 50px;
+    top: 16px;
+    width: 8px;
+    height: 7px;
+    border-width: 2px;
+    border-color: var(--pencil);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
 .sketch-hook {
     width: 20px;
     height: 26px;
