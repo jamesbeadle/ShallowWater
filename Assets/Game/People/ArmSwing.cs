@@ -29,12 +29,12 @@ namespace ShallowWater.Game.People
 
         private static FigurePose Swinging(FigurePose pose, FigureSide side, double forward, double trailing, GaitRhythm rhythm)
         {
-            var going = rhythm.Going;
+            var swinging = rhythm.StrideShare;
             var amplitude = rhythm.Between(WalkSwingRadians, RunSwingRadians);
-            var upperArm = new JointAngles((ForwardBiasRadians + amplitude * forward) * going, rhythm.Between(WalkOutRadians, RunOutRadians) * going, Level);
+            var upperArm = new JointAngles((ForwardBiasRadians + amplitude * forward) * swinging, rhythm.Between(WalkOutRadians, RunOutRadians) * swinging, Level);
             var pump = rhythm.Between(WalkPumpRadians, RunPumpRadians) * (Whole + forward) * Half;
-            var forearm = JointAngles.Swung((rhythm.Between(WalkElbowRadians, RunElbowRadians) + pump) * going);
-            var hand = JointAngles.Swung(HandLagShare * amplitude * trailing * going);
+            var forearm = JointAngles.Swung((rhythm.Between(WalkElbowRadians, RunElbowRadians) + pump) * swinging);
+            var hand = JointAngles.Swung(HandLagShare * amplitude * trailing * swinging);
             var wrist = FigureJoints.Hands[side];
             var lower = FigureJoints.Parents[wrist];
             var upper = FigureJoints.Parents[lower];

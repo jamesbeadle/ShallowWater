@@ -16,9 +16,9 @@ namespace ShallowWater.Game.People
         public static FootStep At(double cycleShare, GaitRhythm rhythm, FigureSide side)
         {
             var across = side == FigureSide.Right ? rhythm.StepHalfWidthMetres : -rhythm.StepHalfWidthMetres;
-            var lift = rhythm.Between(WalkLift.At(cycleShare) * rhythm.Going, RunLift.At(cycleShare));
+            var lift = rhythm.Between(WalkLift.At(cycleShare) * rhythm.StrideShare, RunLift.At(cycleShare));
             var ankle = new WorldPoint(across, AskewForm.AnkleAboveTheSoleMetres + lift, Ahead(cycleShare, rhythm));
-            var toesDown = rhythm.Between(WalkToesDown.At(cycleShare) * rhythm.Going, RunToesDown.At(cycleShare));
+            var toesDown = rhythm.Between(WalkToesDown.At(cycleShare) * rhythm.StrideShare, RunToesDown.At(cycleShare));
             return new FootStep(ankle, toesDown, ToeOutRadians);
         }
 
