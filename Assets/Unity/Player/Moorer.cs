@@ -3,6 +3,7 @@ using ShallowWater.Game.Mooring;
 using ShallowWater.Game.People;
 using ShallowWater.Game.Walking;
 using ShallowWater.Unity.Helm;
+using ShallowWater.Unity.Map;
 using ShallowWater.Unity.World;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace ShallowWater.Unity.Player
         private LineWorker worker;
 
         public Mooring Mooring => mooring;
+        public HandOnTheLine Hand => mooring.Hand;
         public bool IsHoldingTheLine => mooring.IsLineInHand;
         public bool IsLineOnThePost => mooring.IsCentreLineOnThePost;
         public bool IsWorking => mooring.IsBusy;
@@ -65,7 +67,9 @@ namespace ShallowWater.Unity.Player
             if (walking == null) return;
             var isWalkingHerAlong = mooring.IsLineInHand && !mooring.IsBusy;
             if (isWalkingHerAlong) holder.Hold(mooring);
-            lines.Show(mooring, boat.Motion, holder.HeldEnd);
+            var feet = walking.transform;
+            var end = mooring.IsLineLaidDown ? WorldVectors.PointOf(feet.position) : holder.HeldEnd;
+            lines.Show(mooring, boat.Motion, end);
         }
 
         private void MakeFast(MooringLine line, GroundPoint feet)

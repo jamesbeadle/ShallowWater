@@ -1,7 +1,6 @@
 using ShallowWater.Game.Guns;
 using ShallowWater.Game.Kit;
 using ShallowWater.Game.Missions;
-using ShallowWater.Game.People;
 using ShallowWater.Unity.Map;
 using ShallowWater.Unity.World;
 using UnityEngine;
@@ -15,11 +14,9 @@ namespace ShallowWater.Unity.Player
         private Talker talker;
         private Moorer moorer;
         private FarmJob job;
-        private FigureModel figure;
         private WalkerController walking;
-        private OrbitCamera view;
         private Wildlife wildlife;
-        private RifleInHand inHand;
+        private ShoulderedRifle shouldered;
         private RifleReport report;
         private Kit kit;
 
@@ -33,11 +30,9 @@ namespace ShallowWater.Unity.Player
             talker = GetComponent<Talker>();
             moorer = GetComponent<Moorer>();
             job = farmJob;
-            figure = model;
             walking = walker;
-            view = camera;
             wildlife = quarry;
-            inHand = new RifleInHand(model);
+            shouldered = new ShoulderedRifle(model, walker, camera);
             var root = model.Root;
             report = new RifleReport(root.gameObject);
             var book = GetComponent<PocketBook>();
@@ -49,30 +44,34 @@ namespace ShallowWater.Unity.Player
             if (job == null) return;
             rifle.Work(Time.deltaTime);
             var isCarried = shore.IsAshore;
-            inHand.Show(isCarried);
-            CanAim = isCarried && !talker.IsTalking && !moorer.IsHoldingTheLine;
+            shouldered.Show(isCarried);
+            CanAim = isCarried && !talker.IsTalking && !moorer.IsWorking;
             var wantsToAim = CanAim && AimInput.IsShouldering();
             if (wantsToAim != IsAiming) Shoulder(wantsToAim);
             if (!IsAiming) return;
-            Aim();
+            shouldered.Aim();
             if (AimInput.IsFiring()) Fire();
         }
 
         private void Shoulder(bool isAiming)
         {
             rifle.Shoulder(isAiming);
-            walking.enabled = !isAiming && shore.IsAshore;
-            view.Follow(figure.Root, isAiming ? CameraFraming.Aiming : CameraFraming.Ashore);
-            if (isAiming) inHand.Shoulder();
-            if (!isAiming) inHand.Carry();
+            if (isAiming) Raise();
+            if (!isAiming) Lower();
         }
 
-        private void Aim()
+        private void Raise()
         {
-            walking.SetOff(walking.Position, view.YawDegrees * Mathf.Deg2Rad);
-            var muzzleDownDegrees = view.PitchDegrees;
-            figure.Pose(AimingPose.At(muzzleDownDegrees * Mathf.Deg2Rad));
-            inHand.Point(muzzleDownDegrees);
+            var hand = moorer.Hand;
+            hand.LayDown(walking.Position);
+            shouldered.Raise();
+        }
+
+        private void Lower()
+        {
+            shouldered.Lower();
+            var hand = moorer.Hand;
+            hand.TakeUp();
         }
 
         private void Fire()
@@ -83,10 +82,10 @@ namespace ShallowWater.Unity.Player
             cartridges.Spend();
             rifle.Fire();
             report.Fire();
-            var eye = view.transform;
-            var muzzle = WorldVectors.PointOf(eye.position);
-            var aim = WorldVectors.OffsetOf(eye.forward);
-            var struck = Shot.Hit(muzzle, aim, wildlife.Alive, SightLine.ReachOf(eye, RookRifle.RangeMetres));
+            var sights = shouldered.Sights;
+            var muzzle = WorldVectors.PointOf(sights.position);
+            var aim = WorldVectors.OffsetOf(sights.forward);
+            var struck = Shot.Hit(muzzle, aim, wildlife.Alive, SightLine.ReachOf(sights, RookRifle.RangeMetres));
             if (struck != null) wildlife.Struck(struck, aim);
             if (struck != null) job.Killed(struck);
             wildlife.Startle(muzzle);

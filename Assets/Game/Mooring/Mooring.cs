@@ -12,7 +12,8 @@ namespace ShallowWater.Game.Mooring
         public HandOnTheLine Hand { get; } = new HandOnTheLine();
         public LineWork Work => work;
         public bool IsBusy => work != null;
-        public bool IsLineInHand => Hold == CentreLineHold.InHand;
+        public bool IsLineInHand => Hold == CentreLineHold.InHand && !Hand.IsLaidDown;
+        public bool IsLineLaidDown => Hold == CentreLineHold.InHand && Hand.IsLaidDown;
         public bool IsCentreLineOnThePost => Hold == CentreLineHold.OnThePost;
         public bool IsFast => IsCentreLineOnThePost && IsMade(MooringLine.Bow) && IsMade(MooringLine.Stern);
         public bool AreTheEndsLoose => !IsMade(MooringLine.Bow) && !IsMade(MooringLine.Stern);
