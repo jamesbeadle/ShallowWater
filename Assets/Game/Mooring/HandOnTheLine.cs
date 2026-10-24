@@ -9,11 +9,23 @@ namespace ShallowWater.Game.Mooring
 
         public GroundPoint Place { get; private set; }
         public GroundPoint Velocity { get; private set; } = Still;
+        public bool IsLaidDown { get; private set; }
 
         public void Rest(GroundPoint place)
         {
             Place = place;
             Velocity = Still;
+        }
+
+        public void LayDown(GroundPoint place)
+        {
+            Rest(place);
+            IsLaidDown = true;
+        }
+
+        public void TakeUp()
+        {
+            IsLaidDown = false;
         }
 
         public void MoveTo(GroundPoint place, double seconds)

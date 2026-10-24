@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace ShallowWater.Unity.World
 {
+    [DefaultExecutionOrder(BeforeEveryFollower)]
     public sealed class OrbitCamera : MonoBehaviour
     {
-        private const float LowestPitchDegrees = -5f;
-        private const float HighestPitchDegrees = 70f;
+        private const int BeforeEveryFollower = -100;
         private const float NearestShare = 0.35f;
         private const float FarthestShare = 3f;
         private const float EasePerSecond = 6f;
@@ -35,10 +35,15 @@ namespace ShallowWater.Unity.World
             distanceMetres = framing.DistanceMetres;
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             if (target == null) return;
             Orbit();
+        }
+
+        private void LateUpdate()
+        {
+            if (target == null) return;
             var pivot = target.position + Vector3.up * framing.LookHeightMetres;
             var turn = Quaternion.Euler(pitchDegrees, YawDegrees, 0);
             var orbiting = pivot - turn * Vector3.forward * distanceMetres;
@@ -58,9 +63,10 @@ namespace ShallowWater.Unity.World
 
         private void Orbit()
         {
-            var orbit = CameraInput.OrbitDegrees();
+            var looking = framing.Looking;
+            var orbit = CameraInput.OrbitDegrees() * looking.TurnShare;
             yawDegrees += orbit.x;
-            pitchDegrees = Mathf.Clamp(pitchDegrees - orbit.y, LowestPitchDegrees, HighestPitchDegrees);
+            pitchDegrees = Mathf.Clamp(pitchDegrees - orbit.y, looking.LowestPitchDegrees, looking.HighestPitchDegrees);
             var nearest = framing.DistanceMetres * NearestShare;
             var farthest = framing.DistanceMetres * FarthestShare;
             distanceMetres = Mathf.Clamp(distanceMetres + CameraInput.ZoomMetres() * distanceMetres, nearest, farthest);

@@ -24,6 +24,11 @@ namespace ShallowWater.Unity.Overlay
             { Wheel, MouseGlyph.Zooming }
         };
 
+        public static string Either(string keys, string orKeys)
+        {
+            return keys + Between + orKeys;
+        }
+
         public static VisualElement For(string keys)
         {
             var row = OverlayElements.Block(KeysClass);

@@ -5,7 +5,9 @@ namespace ShallowWater.Game.People
     public static class AskewFace
     {
         private const int NoseSides = 8;
-        private static readonly WorldPoint[] Eyes = { new WorldPoint(-0.031, 0.155, 0.087), new WorldPoint(0.031, 0.155, 0.087) };
+        private static readonly WorldPoint AtTheNeck = new WorldPoint(0, 0, 0);
+        public static readonly Offset RightEyeFromTheNeck = new Offset(0.031, 0.155, 0.087);
+        private static readonly WorldPoint[] Eyes = { Mirrored(RightEyeFromTheNeck).From(AtTheNeck), RightEyeFromTheNeck.From(AtTheNeck) };
         private static readonly Offset EyeShape = new Offset(0.013, 0.007, 0.009);
         private static readonly WorldPoint[] Eyebrows = { new WorldPoint(-0.034, 0.172, 0.104), new WorldPoint(0.034, 0.172, 0.104) };
         private static readonly Offset EyebrowShape = new Offset(0.024, 0.005, 0.009);
@@ -23,6 +25,11 @@ namespace ShallowWater.Game.People
             head.Add(Surface.Skin, TaperedTube.Along(Nose, NoseRadiiMetres, NoseSides));
             head.Add(Surface.Stubble, Ball.Shaped(Mouth, MouthShape, AskewForm.FeatureSides));
             foreach (var ear in Ears) head.Add(Surface.Skin, Ball.Shaped(ear, EarShape, AskewForm.FeatureSides));
+        }
+
+        private static Offset Mirrored(Offset onTheRight)
+        {
+            return new Offset(-onTheRight.Eastward, onTheRight.Upward, onTheRight.Northward);
         }
     }
 }

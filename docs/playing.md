@@ -38,7 +38,7 @@ At the tiller he stands on the step in the back cabin hatchway, with the back do
 
 T ties the centre line off where he stands (`LineWork`): to the nearest bollard if one is within two and a half metres, or to a mooring pin he knocks into the bank in front of him (`MooringPosts`, `MooringPin`), kneeling to work the line on (`TyingPose`). She now lies on the centre line, and can still swing on it. Within a line's length (nine metres) of the bow T-stud, T ties the bow line to a post the same way; within nine metres of the stern dolly, T ties the stern line (`BowLine`, `SternLine`). With all three lines on she is made fast and lies still, the engine running down as it would.
 
-Casting off is the same in reverse: R at a post lets go the bow or stern line there, and once both ends are loose R at the centre post casts her off, which puts the centre line back in his hand. He steps aboard with it, and it lies draped along the roof again. He cannot step aboard while the centre line is on its post: the hint says to let go the lines first. He cannot shoulder the rifle with the line in his hand.
+Casting off is the same in reverse: R at a post lets go the bow or stern line there, and once both ends are loose R at the centre post casts her off, which puts the centre line back in his hand. He steps aboard with it, and it lies draped along the roof again. He cannot step aboard while the centre line is on its post: the hint says to let go the lines first. To shoulder the rifle with the line in his hand he lays it down at his feet, and he takes it up again when he lowers the rifle; she lies where she is meanwhile, and he cannot step aboard, tie up or let go until the rifle is down.
 
 | Control | Keyboard | Gamepad |
 | --- | --- | --- |
@@ -50,13 +50,13 @@ Casting off is the same in reverse: R at a post lets go the bow or stern line th
 | Let go a line, at its post | R | west button |
 | Talk, by the farmer | E | south button |
 | Shoulder the rifle, ashore | hold the right mouse button | hold the left trigger |
-| Fire, shouldered | left mouse button | right trigger |
+| Fire, shouldered | Space or the left mouse button | right trigger |
 | Show or hide the controls | H, or click the **H Controls** hint at the top left | select (view) button |
 | Open or put away the pocket book | Tab or I, or click the **Tab Pocket book** hint at the top left; Esc puts it away | east button |
 
 ## The rifle and the paddock
 
-Askew carries his own rook rifle (`RookRifle`, `RifleInHand`): at the trail whenever he is ashore, stowed below when he steps aboard. Holding the right mouse button shoulders it (`Marksman`, `AimingPose`): the camera closes in over his shoulder, a ring marks the aim, and the left button fires one shot before the bolt is worked. A shot flies as far as the first thing in its way (`SightLine`, `Shot`): a hedge, a wall, a gatepost or the ground stops it short, so a bird behind a hedge is safe until he finds the gateway. Every shot startles the birds within a couple of hundred yards (`Flock`, `Roaming`): they lift off their perches, calling, and settle somewhere else, so he waits for them to come down before the next.
+Askew carries his own rook rifle (`RookRifle`, `RifleInHand`): at the trail whenever he is ashore, stowed below when he steps aboard. Holding the right mouse button shoulders it (`Marksman`, `AimingPose`): he turns to face where the camera was looking, the line goes down at his feet if it was in his hand, and the view goes down the sights, from his right eye on the stock along the barrel to the foresight under the ring in the middle of the screen (`CameraFraming.Sighting`, `Looking.DownTheSights`). The rifle is placed from that eye, so the barrel points where the ring is at every pitch, and the mouse lays the aim at a third of its usual rate, up to sixty degrees up or down. Space or the left button fires one shot before the bolt is worked. A shot flies as far as the first thing in its way (`SightLine`, `Shot`): a hedge, a wall, a gatepost or the ground stops it short, so a bird behind a hedge is safe until he finds the gateway. Every shot startles the birds within a couple of hundred yards (`Flock`, `Roaming`): they lift off their perches, calling, and settle somewhere else, so he waits for them to come down before the next.
 
 South of Hopwas bridge, on the towpath side, a hedged paddock lies between the canal and the lane (`Paddock`, `PaddockShapes`): pasture, a stone trough, three oaks in the hedge and an open gate towards the water, with eight crows and two rooks (`PaddockStock`) feeding on the grass and sitting on the gate, the trough and the oaks. The birds beat their wings in flight and fold them when they land (`Wings`, `WingPose`), and call now and then (`Calling`, `CrowCall`). A bird that is hit falls (`Carcass`): it is given weight and a body and tumbles onto whatever is below it, the grass, the gate rail, the towpath or the water.
 
