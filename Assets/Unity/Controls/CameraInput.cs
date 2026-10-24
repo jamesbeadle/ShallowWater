@@ -10,9 +10,9 @@ namespace ShallowWater.Unity.Controls
         private const float MetresPerScrollNotch = 0.01f;
         private const float StickDeadZone = 0.15f;
 
-        public static Vector2 OrbitDegrees()
+        public static Vector2 OrbitDegrees(bool isOnTheMouseAlone)
         {
-            return MouseOrbit() + StickOrbit();
+            return MouseOrbit(isOnTheMouseAlone) + StickOrbit();
         }
 
         public static float ZoomMetres()
@@ -23,12 +23,19 @@ namespace ShallowWater.Unity.Controls
             return -mouse.scroll.ReadValue().y * MetresPerScrollNotch;
         }
 
-        private static Vector2 MouseOrbit()
+        private static Vector2 MouseOrbit(bool isOnTheMouseAlone)
         {
             var mouse = Mouse.current;
-            var isLooking = Buttons.IsAnyHeld(mouse?.rightButton);
+            var isLooking = IsLooking(mouse, isOnTheMouseAlone);
             if (!isLooking) return Vector2.zero;
             return mouse.delta.ReadValue() * MouseDegreesPerPixel;
+        }
+
+        private static bool IsLooking(Mouse mouse, bool isOnTheMouseAlone)
+        {
+            var isLookingAway = mouse == null || Attention.IsReading;
+            if (isLookingAway) return false;
+            return isOnTheMouseAlone || Buttons.IsAnyHeld(mouse.rightButton);
         }
 
         private static Vector2 StickOrbit()

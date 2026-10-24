@@ -46,22 +46,24 @@ namespace ShallowWater.Unity.Player
             var isCarried = shore.IsAshore;
             shouldered.Show(isCarried);
             CanAim = isCarried && !talker.IsTalking && !moorer.IsWorking;
-            var wantsToAim = CanAim && AimInput.IsShouldering();
-            if (wantsToAim != IsAiming) Shoulder(wantsToAim);
+            var wantsToAim = WantsToAim();
+            if (wantsToAim && !IsAiming) Raise();
+            if (!wantsToAim && IsAiming) Lower();
             if (!IsAiming) return;
             shouldered.Aim();
             if (AimInput.IsFiring()) Fire();
         }
 
-        private void Shoulder(bool isAiming)
+        private bool WantsToAim()
         {
-            rifle.Shoulder(isAiming);
-            if (isAiming) Raise();
-            if (!isAiming) Lower();
+            if (!CanAim) return false;
+            if (AimInput.IsTogglingTheAim()) return !IsAiming;
+            return IsAiming;
         }
 
         private void Raise()
         {
+            rifle.Shoulder(isShouldered: true);
             var hand = moorer.Hand;
             hand.LayDown(walking.Position);
             shouldered.Raise();
@@ -69,6 +71,7 @@ namespace ShallowWater.Unity.Player
 
         private void Lower()
         {
+            rifle.Shoulder(isShouldered: false);
             shouldered.Lower();
             var hand = moorer.Hand;
             hand.TakeUp();

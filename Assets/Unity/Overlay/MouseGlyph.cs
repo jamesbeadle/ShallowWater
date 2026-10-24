@@ -12,6 +12,11 @@ namespace ShallowWater.Unity.Overlay
         private const string WheelClass = "hud-mouse__wheel";
         private const string TurnedClass = "hud-mouse__wheel--turned";
 
+        public static VisualElement Aiming()
+        {
+            return Mouse(OverlayElements.Block(ButtonClass, LeftClass), OverlayElements.Block(ButtonClass, RightClass), OverlayElements.Block(WheelClass));
+        }
+
         public static VisualElement Firing()
         {
             var pressedLeftButton = OverlayElements.Block(ButtonClass, LeftClass, PressedClass);
