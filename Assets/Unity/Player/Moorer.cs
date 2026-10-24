@@ -1,6 +1,7 @@
 using ShallowWater.Game.Ground;
 using ShallowWater.Game.Mooring;
 using ShallowWater.Game.People;
+using ShallowWater.Game.Walking;
 using ShallowWater.Unity.Helm;
 using ShallowWater.Unity.World;
 using UnityEngine;
@@ -48,6 +49,7 @@ namespace ShallowWater.Unity.Player
         private void Update()
         {
             if (walking == null) return;
+            walking.HeldBy(mooring.IsLineInHand ? CentreLine.TetherOn(boat.Motion) : Tether.None);
             var feet = walking.Position;
             ToMakeFast = MooringChoices.ToMakeFast(mooring, boat.Motion, feet);
             ToLetGo = MooringChoices.ToLetGo(mooring, feet);

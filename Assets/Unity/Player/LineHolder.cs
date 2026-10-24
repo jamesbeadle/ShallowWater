@@ -25,9 +25,6 @@ namespace ShallowWater.Unity.Player
 
         public void Hold(Mooring mooring)
         {
-            var heldBack = CentreLine.HeldBack(walking.Position, boat.Motion);
-            var isHeldBack = !heldBack.IsSamePlaceAs(walking.Position);
-            if (isHeldBack) walking.SetOff(heldBack, walking.Bearing);
             var root = figure.Root;
             var feet = WorldVectors.PointOf(root.position);
             var studFromTheFeet = FeetFrame.Of(feet, walking.Bearing, CentreLine.StudOn(boat.Motion));

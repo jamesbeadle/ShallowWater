@@ -15,28 +15,31 @@ namespace ShallowWater.Game.People
         private const double RunStepHalfWidthMetres = 0.05;
         private const double WalkCrouchMetres = 0.012;
         private const double RunCrouchMetres = 0.06;
+        private const double WholeWalkMetresPerSecond = 0.4;
         private const double Whole = 1;
         private const double Still = 0;
 
         private GaitRhythm(double speedMetresPerSecond, double cyclesPerSecond)
         {
-            Going = Math.Min(Whole, speedMetresPerSecond / WalkingPace.WalkMetresPerSecond);
+            Going = Math.Min(Whole, speedMetresPerSecond / WholeWalkMetresPerSecond);
+            Pace = Math.Min(Whole, speedMetresPerSecond / WalkingPace.WalkMetresPerSecond);
             var runShare = (speedMetresPerSecond - WalkingPace.WalkMetresPerSecond) / (WalkingPace.RunMetresPerSecond - WalkingPace.WalkMetresPerSecond);
             Run = Math.Clamp(runShare, Still, Whole);
             CyclesPerSecond = cyclesPerSecond;
         }
 
         public double Going { get; }
+        public double Pace { get; }
         public double Run { get; }
         public double CyclesPerSecond { get; }
         public double StanceShare => Between(WalkStanceShare, RunStanceShare);
         public double AnkleAheadMetres => Between(WalkAnkleAheadMetres * StrideShare, RunAnkleAheadMetres);
         public double AnkleBehindMetres => Between(WalkAnkleBehindMetres * StrideShare, RunAnkleBehindMetres);
         public double StepHalfWidthMetres => Between(WalkStepHalfWidthMetres, RunStepHalfWidthMetres);
-        public double CrouchMetres => Between(WalkCrouchMetres * Going, RunCrouchMetres);
+        public double CrouchMetres => Between(WalkCrouchMetres * StrideShare, RunCrouchMetres);
         public double StrideMetres => (AnkleAheadMetres + AnkleBehindMetres) / StanceShare;
         public double GroundMovedInTheSwingMetres => StrideMetres * (Whole - StanceShare);
-        private double StrideShare => Math.Sqrt(Going);
+        public double StrideShare => Math.Sqrt(Pace);
 
         public static GaitRhythm At(double speedMetresPerSecond)
         {

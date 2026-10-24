@@ -19,12 +19,13 @@ namespace ShallowWater.Game.Walking
         public double TurnRadiansPerSecond { get; private set; }
         public double SpeedMetresPerSecond => Velocity.Length;
 
-        public void Stride(double seconds, GroundPoint wish, bool isRunning, Land land)
+        public void Stride(double seconds, GroundPoint wish, bool isRunning, Land land, Tether tether)
         {
             var pace = isRunning ? WalkingPace.RunMetresPerSecond : WalkingPace.WalkMetresPerSecond;
             var takeUp = Math.Min(1, WalkingPace.TakeUpPerSecond * seconds);
             Velocity += (wish * pace - Velocity) * takeUp;
-            var stepped = land.Stepped(Position, Velocity * seconds);
+            var held = tether.HeldBack(Position + Velocity * seconds);
+            var stepped = land.Stepped(Position, held - Position);
             Velocity = (stepped - Position) * (1 / seconds);
             Position = stepped;
             TurnRadiansPerSecond = 0;

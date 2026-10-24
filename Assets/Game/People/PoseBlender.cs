@@ -32,16 +32,16 @@ namespace ShallowWater.Game.People
             var offset = isSudden ? FigurePose.Mixed((committed.Shown, Whole), (target, -Whole)) : committed.Offset;
             var heldSince = isSudden ? now : committed.HeldSince;
             var shown = FigurePose.Mixed((target, Whole), (offset, Remaining(now - heldSince)));
-            return new Blending(shown, offset, heldSince, now);
+            return new Blending(shown, target, offset, heldSince, now);
         }
 
         private bool IsSudden(FigurePose target, double now)
         {
             var seconds = now - committed.ShownAt;
             var suddenRadians = Math.Max(SuddenRadiansAtLeast, SuddenRadiansPerSecond * seconds);
-            var shown = committed.Shown;
-            var isAJumpInAngle = shown.LargestAngleDifferenceFrom(target) > suddenRadians;
-            var moved = shown.HipsOffset - target.HipsOffset;
+            var wanted = committed.Target;
+            var isAJumpInAngle = wanted.LargestAngleDifferenceFrom(target) > suddenRadians;
+            var moved = wanted.HipsOffset - target.HipsOffset;
             var isAJumpInPlace = moved.Length > SuddenMetres;
             return isAJumpInAngle || isAJumpInPlace;
         }

@@ -16,18 +16,18 @@ namespace ShallowWater.Game.People
 
         public static double TwistAt(double cycleShare, GaitRhythm rhythm)
         {
-            return TwistRadians * Math.Cos(cycleShare * FullTurnRadians) * rhythm.Going;
+            return TwistRadians * Math.Cos(cycleShare * FullTurnRadians) * rhythm.StrideShare;
         }
 
         public static double RollAt(double cycleShare, GaitRhythm rhythm)
         {
-            return RollRadians * Math.Sin(cycleShare * FullTurnRadians) * rhythm.Going;
+            return RollRadians * Math.Sin(cycleShare * FullTurnRadians) * rhythm.StrideShare;
         }
 
         public static FigurePose At(double cycleShare, GaitRhythm rhythm, double leanRadians, FootStep left, FootStep right)
         {
             var angles = new JointAngles(Level, RollAt(cycleShare, rhythm) + leanRadians, TwistAt(cycleShare, rhythm));
-            var sway = -SwayMetres * Math.Sin(cycleShare * FullTurnRadians) * rhythm.Going;
+            var sway = -SwayMetres * Math.Sin(cycleShare * FullTurnRadians) * rhythm.StrideShare;
             var onTheGround = Frame.AtTheFeet.Child(new Offset(sway, Level, Level), JointAxes.Signed(FigurePart.Hips, angles));
             var standing = AskewForm.HipMetres - rhythm.CrouchMetres + RunBounce.At(cycleShare) * rhythm.Run;
             var reachable = Math.Min(Reachable(onTheGround, FigurePart.LeftThigh, left), Reachable(onTheGround, FigurePart.RightThigh, right));

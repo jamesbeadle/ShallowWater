@@ -19,10 +19,10 @@ namespace ShallowWater.Game.People
             var turn = cycleShare * FullTurnRadians;
             var hipsTwist = GaitHips.TwistAt(cycleShare, rhythm);
             var hipsRoll = GaitHips.RollAt(cycleShare, rhythm);
-            var shouldersTwist = -ShouldersTwistRadians * Math.Cos(turn) * rhythm.Going;
+            var shouldersTwist = -ShouldersTwistRadians * Math.Cos(turn) * rhythm.StrideShare;
             var chestRoll = -hipsRoll * CounterRollShare;
-            var lean = rhythm.Between(WalkLeanRadians, RunLeanRadians) * rhythm.Going;
-            var chestSwing = lean + StepPitchRadians * Math.Cos(TwiceACycle * turn) * rhythm.Going;
+            var lean = rhythm.Between(WalkLeanRadians, RunLeanRadians) * rhythm.Pace;
+            var chestSwing = lean + StepPitchRadians * Math.Cos(TwiceACycle * turn) * rhythm.StrideShare;
             var chest = new JointAngles(chestSwing, chestRoll, shouldersTwist - hipsTwist);
             var head = new JointAngles(-chestSwing * HeadSteadyShare, -(hipsRoll + chestRoll), -shouldersTwist * HeadFacesForwardShare);
             return pose.With(FigurePart.Chest, chest).With(FigurePart.Head, head);
