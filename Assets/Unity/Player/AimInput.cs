@@ -5,11 +5,11 @@ namespace ShallowWater.Unity.Player
 {
     public static class AimInput
     {
-        public static bool IsShouldering()
+        public static bool IsTogglingTheAim()
         {
-            var mouse = Mouse.current;
+            var keyboard = Keyboard.current;
             var gamepad = Gamepad.current;
-            return Buttons.IsAnyHeld(mouse?.rightButton, gamepad?.leftTrigger);
+            return Buttons.IsAnyPressedNow(keyboard?.zKey, gamepad?.leftTrigger);
         }
 
         public static bool IsFiring()

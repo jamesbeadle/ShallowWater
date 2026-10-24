@@ -24,35 +24,35 @@ namespace ShallowWater.Unity.World
         public float YawDegrees => IsTurnedWithTheTarget ? TargetYaw + yawDegrees : yawDegrees;
         private bool IsTurnedWithTheTarget => framing.IsTurnedWithTheTarget;
         private float TargetYaw => YawOf(target);
+        private Vector3 Pivot => target.position + Vector3.up * framing.LookHeightMetres;
+        private Quaternion Facing => Quaternion.Euler(pitchDegrees, YawDegrees, 0);
+        private Vector3 Place => Pivot - Facing * Vector3.forward * distanceMetres;
 
         public void Follow(Transform newTarget, CameraFraming newFraming)
         {
             var yaw = target == null ? YawOf(newTarget) : YawDegrees;
+            var isCuttingFromTheEye = framing.IsAtTheEye;
             target = newTarget;
             framing = newFraming;
             yawDegrees = IsTurnedWithTheTarget ? yaw - TargetYaw : yaw;
             pitchDegrees = framing.PitchDegrees;
             distanceMetres = framing.DistanceMetres;
+            if (isCuttingFromTheEye) transform.position = Place;
+            var looking = framing.Looking;
+            MousePointer.Lock(looking.IsOnTheMouseAlone);
         }
 
         private void Update()
         {
             if (target == null) return;
-            Orbit();
+            Turn();
         }
 
         private void LateUpdate()
         {
             if (target == null) return;
-            var pivot = target.position + Vector3.up * framing.LookHeightMetres;
-            var turn = Quaternion.Euler(pitchDegrees, YawDegrees, 0);
-            var orbiting = pivot - turn * Vector3.forward * distanceMetres;
-            var wanted = CameraClearance.KeptClear(pivot, orbiting);
-            wanted.y = Mathf.Max(wanted.y, LowestAboveTheWaterMetres);
-            var isPulledIn = wanted != orbiting;
-            var ease = isPulledIn ? AtOnce : 1 - Mathf.Exp(-EasePerSecond * Time.deltaTime);
-            transform.position = Vector3.Lerp(transform.position, wanted, ease);
-            transform.LookAt(pivot);
+            if (framing.IsAtTheEye) Sight();
+            if (!framing.IsAtTheEye) Orbit();
         }
 
         private static float YawOf(Transform placed)
@@ -61,15 +61,38 @@ namespace ShallowWater.Unity.World
             return angles.y;
         }
 
-        private void Orbit()
+        private void Turn()
         {
             var looking = framing.Looking;
-            var orbit = CameraInput.OrbitDegrees() * looking.TurnShare;
-            yawDegrees += orbit.x;
-            pitchDegrees = Mathf.Clamp(pitchDegrees - orbit.y, looking.LowestPitchDegrees, looking.HighestPitchDegrees);
+            var turn = CameraInput.OrbitDegrees(looking.IsOnTheMouseAlone) * looking.TurnShare;
+            yawDegrees += turn.x;
+            pitchDegrees = Mathf.Clamp(pitchDegrees - turn.y, looking.LowestPitchDegrees, looking.HighestPitchDegrees);
+            if (framing.IsAtTheEye) return;
+            Zoom();
+        }
+
+        private void Zoom()
+        {
             var nearest = framing.DistanceMetres * NearestShare;
             var farthest = framing.DistanceMetres * FarthestShare;
             distanceMetres = Mathf.Clamp(distanceMetres + CameraInput.ZoomMetres() * distanceMetres, nearest, farthest);
+        }
+
+        private void Sight()
+        {
+            transform.SetPositionAndRotation(Place, Facing);
+        }
+
+        private void Orbit()
+        {
+            var pivot = Pivot;
+            var place = Place;
+            var wanted = CameraClearance.KeptClear(pivot, place);
+            wanted.y = Mathf.Max(wanted.y, LowestAboveTheWaterMetres);
+            var isPulledIn = wanted != place;
+            var ease = isPulledIn ? AtOnce : 1 - Mathf.Exp(-EasePerSecond * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, wanted, ease);
+            transform.LookAt(pivot);
         }
     }
 }
