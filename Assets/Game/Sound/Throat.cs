@@ -8,14 +8,17 @@ namespace ShallowWater.Game.Sound
 
         private readonly double ring;
         private readonly double pull;
+        private readonly double peakGain;
         private double last;
         private double beforeLast;
 
         public Throat(double resonanceHertz, double widthHertz, int samplesPerSecond)
         {
             var decay = Math.Exp(-Math.PI * widthHertz / samplesPerSecond);
-            ring = 2 * decay * Math.Cos(FullTurnRadians * resonanceHertz / samplesPerSecond);
+            var turn = FullTurnRadians * resonanceHertz / samplesPerSecond;
+            ring = 2 * decay * Math.Cos(turn);
             pull = decay * decay;
+            peakGain = 1 / ((1 - decay) * Math.Sqrt(1 - 2 * decay * Math.Cos(2 * turn) + pull));
         }
 
         public double Resonated(double sample)
@@ -23,7 +26,7 @@ namespace ShallowWater.Game.Sound
             var resonated = sample + ring * last - pull * beforeLast;
             beforeLast = last;
             last = resonated;
-            return resonated;
+            return resonated / peakGain;
         }
     }
 }
