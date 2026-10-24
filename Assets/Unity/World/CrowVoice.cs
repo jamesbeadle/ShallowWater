@@ -13,6 +13,7 @@ namespace ShallowWater.Unity.World
         private const float HeardToMetres = 260f;
         private const float AllAround = 1f;
         private const float PitchSpread = 0.08f;
+        private const float NoDoppler = 0f;
 
         private static readonly Dictionary<QuarryKind, float> PitchOf = new Dictionary<QuarryKind, float>
         {
@@ -28,6 +29,7 @@ namespace ShallowWater.Unity.World
         {
             source = bird.AddComponent<AudioSource>();
             source.spatialBlend = AllAround;
+            source.dopplerLevel = NoDoppler;
             source.minDistance = HeardFromMetres;
             source.maxDistance = HeardToMetres;
             source.playOnAwake = false;
