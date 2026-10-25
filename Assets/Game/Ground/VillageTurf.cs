@@ -6,7 +6,7 @@ namespace ShallowWater.Game.Ground
     {
         public static Shape Under(Area village)
         {
-            return Extrusion.Roof(village.Outline, Heights.VillageTurfMetres);
+            return LevelGround.At(village.Outline, Heights.VillageTurfMetres);
         }
     }
 }
