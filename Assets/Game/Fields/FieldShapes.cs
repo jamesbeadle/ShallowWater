@@ -7,8 +7,6 @@ namespace ShallowWater.Game.Fields
 {
     public static class FieldShapes
     {
-        private const double LongestTriangleEdgeMetres = 120;
-
         public static void Add(SurfaceShapes surfaces, Field field)
         {
             var outline = field.Outline;
@@ -25,7 +23,7 @@ namespace ShallowWater.Game.Fields
                 outer = inner;
             }
             var worked = Worked(outer, field.WorkedAlong);
-            surfaces.Add(CropSurfaces.Of(field.Crop), Subdivision.Finer(worked, LongestTriangleEdgeMetres));
+            surfaces.Add(CropSurfaces.Of(field.Crop), Subdivision.Finer(worked, GroundTriangles.LongestEdgeMetres));
         }
 
         private static void AddStrip(SurfaceShapes surfaces, ConvexOutline outline, int edge, FieldStrip strip, InsetRing ring)
@@ -38,7 +36,7 @@ namespace ShallowWater.Game.Fields
             foreach (var corner in corners) shape.Add(OnTheGround(corner), StripPlace(corner, start, direction, strip));
             shape.AddTriangle(0, 1, 2);
             shape.AddTriangle(0, 2, 3);
-            surfaces.Add(strip.Surface, Subdivision.Finer(shape, LongestTriangleEdgeMetres));
+            surfaces.Add(strip.Surface, Subdivision.Finer(shape, GroundTriangles.LongestEdgeMetres));
         }
 
         private static SurfacePlace StripPlace(GroundPoint corner, GroundPoint start, GroundPoint direction, FieldStrip strip)

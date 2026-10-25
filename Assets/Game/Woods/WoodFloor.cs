@@ -7,7 +7,7 @@ namespace ShallowWater.Game.Woods
     {
         public static Shape Under(Area area)
         {
-            return Extrusion.Roof(area.Outline, Heights.WoodlandFloorMetres);
+            return LevelGround.At(area.Outline, Heights.WoodlandFloorMetres);
         }
     }
 }
