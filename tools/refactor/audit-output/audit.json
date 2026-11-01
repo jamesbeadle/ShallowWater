@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-25T18:33:30+00:00",
-  "kitVersion": "1.26.0",
+  "generatedAt": "2026-11-01T07:48:53+00:00",
+  "kitVersion": "1.38.0",
   "score": {
-    "overall": 100.0,
+    "overall": 99.9,
     "groups": [
       {
         "group": "Standard baseline checks",
-        "score": 100.0,
-        "weight": 52
+        "score": 99.9,
+        "weight": 60
       },
       {
         "group": "Design pattern file count",
@@ -86,9 +86,10 @@
         "weight": 8,
         "zeroAt": 20,
         "unit": "",
-        "isMeasured": false,
-        "offenders": null,
-        "score": null
+        "isMeasured": true,
+        "offenders": 0.21,
+        "measuredAgainst": 1,
+        "score": 99.0
       },
       {
         "key": "comments",
@@ -272,8 +273,10 @@
       "measurementIsHeuristic": true
     },
     "duplication": {
-      "skipped": "jscpd is not installed (npm install -g jscpd)",
-      "carriedFromBaseline": true
+      "clones": 3,
+      "duplicatedLines": 63,
+      "totalLines": 30510,
+      "duplicatedPercentage": 0.21
     },
     "naming": {
       "bannedAbbreviationHits": 0,
@@ -329,9 +332,9 @@
       "looserLimits": 0
     },
     "fileAreas": {
-      "totalFiles": 1933,
-      "other": 858,
-      "backend": 643,
+      "totalFiles": 1937,
+      "other": 860,
+      "backend": 645,
       "docs": 299,
       "tooling": 107,
       "infrastructure": 16,
@@ -670,9 +673,9 @@
     "fileAreas": {
       "name": "fileAreas",
       "summary": {
-        "totalFiles": 1933,
-        "other": 858,
-        "backend": 643,
+        "totalFiles": 1937,
+        "other": 860,
+        "backend": 645,
         "docs": 299,
         "tooling": 107,
         "infrastructure": 16,
@@ -681,13 +684,13 @@
       "offenders": [
         {
           "area": "other",
-          "files": 858,
+          "files": 860,
           "sourceFiles": 0,
           "sourceLines": 0
         },
         {
           "area": "backend",
-          "files": 643,
+          "files": 645,
           "sourceFiles": 645,
           "sourceLines": 24993
         },
@@ -734,10 +737,25 @@
     "duplication": {
       "name": "duplication",
       "summary": {
-        "skipped": "jscpd is not installed (npm install -g jscpd)",
-        "carriedFromBaseline": true
+        "clones": 3,
+        "duplicatedLines": 63,
+        "totalLines": 30510,
+        "duplicatedPercentage": 0.21
       },
-      "offenders": []
+      "offenders": [
+        {
+          "file": "Assets/Game/Houses/OldCottage.cs",
+          "duplicatedLineInstances": 43
+        },
+        {
+          "file": "Assets/Game/Houses/VictorianTerrace.cs",
+          "duplicatedLineInstances": 43
+        },
+        {
+          "file": "Assets/Game/Houses/GeorgianHouse.cs",
+          "duplicatedLineInstances": 40
+        }
+      ]
     }
   }
 }

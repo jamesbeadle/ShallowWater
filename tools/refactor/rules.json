@@ -279,7 +279,7 @@
     "entityGlobs": [],
     "minimumFamilySize": 4,
     "cooccurrenceThreshold": 0.75,
-    "fileCountBand": 2.0,
+    "fileCountBand": 3.0,
     "acceptedGaps": [
       "Assets/Unity/Looks/SurfacePalette.cs",
       "Assets/Game/Houses/RowShapes.cs"
