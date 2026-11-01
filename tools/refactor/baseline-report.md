@@ -1,6 +1,6 @@
 # Refactor audit
 
-Generated 2026-11-01 07:48 UTC.
+Generated 2026-11-01 08:08 UTC.
 
 ## Headline
 
@@ -43,10 +43,10 @@ Each element scores 100% with no offenders and falls in a straight line to 0% wh
 | other | 860 | 0 | 0 |
 | backend | 645 | 645 | 24,993 |
 | docs | 299 | 0 | 0 |
-| tooling | 107 | 20 | 1,169 |
+| tooling | 116 | 20 | 1,169 |
 | infrastructure | 16 | 0 | 0 |
-| tests | 10 | 0 | 0 |
-| **whole repository** | **1,937** | **665** | **26,162** |
+| tests | 14 | 0 | 0 |
+| **whole repository** | **1,950** | **665** | **26,162** |
 
 ## Summary
 
@@ -56,39 +56,39 @@ Each element scores 100% with no offenders and falls in a straight line to 0% wh
 | functionShape | limit: 30, functionsOverLimit: 0, totalFunctions: 1739, elseBlocks: 0, ifBlocks: 416, measurementIsHeuristic: True |
 | functionNames | overlongFunctionNames: 0, maxWords: 5, maxLength: 40 |
 | accessorNames | gluedAccessorNames: 0, measurementIsHeuristic: True |
-| duplication | clones: 3, duplicatedLines: 63, totalLines: 30510, duplicatedPercentage: 0.21 |
+| duplication | clones: 3, duplicatedLines: 63, totalLines: 30607, duplicatedPercentage: 0.21 |
 | naming | bannedAbbreviationHits: 0, unprefixedBooleans: 5 |
 | comments | explanatoryCommentLines: 0, filesWithComments: 0, taskMarkers: 0 |
 | magicValues | inlineHexColours: 0, inlineStyleAttributes: 0, repeatedStringLiterals: 0 |
 | prose | longMemberChainLines: 0, deeplyIndentedLines: 0, overlongLines: 30, measurementIsHeuristic: True |
 | conditions | tangledConditionLines: 0, literalComparisonLines: 0, measurementIsHeuristic: True |
 | orphans | orphanFunctions: 0, functionsExamined: 1739 |
-| designPatterns | roleFamilies: 20, predictedFiles: 8, predictedFilesMissing: 0, entities: 0, entitiesOutOfRange: 0, measurementIsHeuristic: True |
+| designPatterns | roleFamilies: 20, predictedFiles: 8, predictedFilesMissing: 0, entities: 0, entitiesOutOfRange: 0, entitiesAccepted: 0, measurementIsHeuristic: True |
 | inventory | pages: 0, components: 0, orphanComponents: 0, averagePageLines: 0 |
 | siteDefinition | skipped: no siteDefinition catalogue in rules.json |
 | inputValidation | schemaTables: 0, limitedColumns: 0, writeDoors: 0, unvalidatedDoors: 0, looserLimits: 0 |
-| fileAreas | totalFiles: 1937, other: 860, backend: 645, docs: 299, tooling: 107, infrastructure: 16, tests: 10 |
+| fileAreas | totalFiles: 1950, other: 860, backend: 645, docs: 299, tooling: 116, infrastructure: 16, tests: 14 |
 
 ## Against the baseline
 
 | Ratcheted figure | Baseline | Now | Verdict |
 | --- | --- | --- | --- |
-| code quality score | 84.8% | 99.9% | — |
+| code quality score | 99.9% | 99.9% | — |
 | fileLength.filesOverLimit | 0 | 0 | held |
 | fileLength.worstFileLines | 0 | 0 | held |
 | functionShape.functionsOverLimit | 0 | 0 | held |
 | functionShape.elseBlocks | 0 | 0 | held |
-| duplication.duplicatedPercentage | None | 0.21 | — |
+| duplication.duplicatedPercentage | 0.21 | 0.21 | held |
 | comments.explanatoryCommentLines | 0 | 0 | held |
 | magicValues.inlineHexColours | 0 | 0 | held |
 | inventory.orphanComponents | 0 | 0 | held |
 | orphans.orphanFunctions | 0 | 0 | held |
 | prose.longMemberChainLines | 0 | 0 | held |
-| prose.deeplyIndentedLines | 2 | 0 | better |
+| prose.deeplyIndentedLines | 0 | 0 | held |
 | functionNames.overlongFunctionNames | 0 | 0 | held |
 | accessorNames.gluedAccessorNames | 0 | 0 | held |
 | conditions.tangledConditionLines | 0 | 0 | held |
-| conditions.literalComparisonLines | 4 | 0 | better |
+| conditions.literalComparisonLines | 0 | 0 | held |
 | designPatterns.predictedFilesMissing | 0 | 0 | held |
 | siteDefinition.handRolledElements | None | None | — |
 | siteDefinition.boxedContentWidgets | None | None | — |
