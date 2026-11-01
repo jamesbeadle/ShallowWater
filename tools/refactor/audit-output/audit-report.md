@@ -1,21 +1,21 @@
 # Refactor audit
 
-Generated 2026-10-25 18:33 UTC.
+Generated 2026-11-01 07:48 UTC.
 
 ## Headline
 
-**Code quality score 100.0%.** **0 of 665 source files are over the 100-line limit (0.0%)**; the worst file is 0 lines.
+**Code quality score 99.9%.** **0 of 665 source files are over the 100-line limit (0.0%)**; the worst file is 0 lines.
 
 ## Code quality score
 
 | Element | Reading | Score | Weight | 0% at |
 | --- | --- | --- | --- | --- |
-| **Standard baseline checks** | | **100.0%** | **52** | |
+| **Standard baseline checks** | | **99.9%** | **60** | |
 | Files over the line limit | 0 in 665 files | 100.0% | 10 | 50% of files |
 | Worst file, in limits over | 0 | 100.0% | 5 | 9 |
 | Functions over the line limit | 0 in 1739 functions | 100.0% | 8 | 25% of functions |
 | Else blocks | 0 in 416 branches | 100.0% | 5 | 50% of branches |
-| Duplication % | not measured | not measured | — | 20 |
+| Duplication % | 0.21 | 99.0% | 8 | 20 |
 | Explanatory comment lines | 0 in 26.16 thousand lines | 100.0% | 4 | 50 per thousand lines |
 | Inline magic values | 0 in 26.16 thousand lines | 100.0% | 4 | 20 per thousand lines |
 | Orphan components and functions | 0 in 1739 components and functions | 100.0% | 4 | 10% of components and functions |
@@ -40,13 +40,13 @@ Each element scores 100% with no offenders and falls in a straight line to 0% wh
 
 | Area | Files | Of which audited source | Source lines |
 | --- | --- | --- | --- |
-| other | 858 | 0 | 0 |
-| backend | 643 | 645 | 24,993 |
+| other | 860 | 0 | 0 |
+| backend | 645 | 645 | 24,993 |
 | docs | 299 | 0 | 0 |
 | tooling | 107 | 20 | 1,169 |
 | infrastructure | 16 | 0 | 0 |
 | tests | 10 | 0 | 0 |
-| **whole repository** | **1,933** | **665** | **26,162** |
+| **whole repository** | **1,937** | **665** | **26,162** |
 
 ## Summary
 
@@ -56,7 +56,7 @@ Each element scores 100% with no offenders and falls in a straight line to 0% wh
 | functionShape | limit: 30, functionsOverLimit: 0, totalFunctions: 1739, elseBlocks: 0, ifBlocks: 416, measurementIsHeuristic: True |
 | functionNames | overlongFunctionNames: 0, maxWords: 5, maxLength: 40 |
 | accessorNames | gluedAccessorNames: 0, measurementIsHeuristic: True |
-| duplication | skipped: jscpd is not installed (npm install -g jscpd), carriedFromBaseline: True |
+| duplication | clones: 3, duplicatedLines: 63, totalLines: 30510, duplicatedPercentage: 0.21 |
 | naming | bannedAbbreviationHits: 0, unprefixedBooleans: 5 |
 | comments | explanatoryCommentLines: 0, filesWithComments: 0, taskMarkers: 0 |
 | magicValues | inlineHexColours: 0, inlineStyleAttributes: 0, repeatedStringLiterals: 0 |
@@ -67,18 +67,18 @@ Each element scores 100% with no offenders and falls in a straight line to 0% wh
 | inventory | pages: 0, components: 0, orphanComponents: 0, averagePageLines: 0 |
 | siteDefinition | skipped: no siteDefinition catalogue in rules.json |
 | inputValidation | schemaTables: 0, limitedColumns: 0, writeDoors: 0, unvalidatedDoors: 0, looserLimits: 0 |
-| fileAreas | totalFiles: 1933, other: 858, backend: 643, docs: 299, tooling: 107, infrastructure: 16, tests: 10 |
+| fileAreas | totalFiles: 1937, other: 860, backend: 645, docs: 299, tooling: 107, infrastructure: 16, tests: 10 |
 
 ## Against the baseline
 
 | Ratcheted figure | Baseline | Now | Verdict |
 | --- | --- | --- | --- |
-| code quality score | 84.8% | 100.0% | — |
+| code quality score | 84.8% | 99.9% | — |
 | fileLength.filesOverLimit | 0 | 0 | held |
 | fileLength.worstFileLines | 0 | 0 | held |
 | functionShape.functionsOverLimit | 0 | 0 | held |
 | functionShape.elseBlocks | 0 | 0 | held |
-| duplication.duplicatedPercentage | None | None | — |
+| duplication.duplicatedPercentage | None | 0.21 | — |
 | comments.explanatoryCommentLines | 0 | 0 | held |
 | magicValues.inlineHexColours | 0 | 0 | held |
 | inventory.orphanComponents | 0 | 0 | held |
