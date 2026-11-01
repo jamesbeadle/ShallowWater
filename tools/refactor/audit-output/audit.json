@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-01T07:48:53+00:00",
-  "kitVersion": "1.38.0",
+  "generatedAt": "2026-11-01T08:08:13+00:00",
+  "kitVersion": "1.39.0",
   "score": {
     "overall": 99.9,
     "groups": [
@@ -275,7 +275,7 @@
     "duplication": {
       "clones": 3,
       "duplicatedLines": 63,
-      "totalLines": 30510,
+      "totalLines": 30607,
       "duplicatedPercentage": 0.21
     },
     "naming": {
@@ -313,6 +313,7 @@
       "predictedFilesMissing": 0,
       "entities": 0,
       "entitiesOutOfRange": 0,
+      "entitiesAccepted": 0,
       "measurementIsHeuristic": true
     },
     "inventory": {
@@ -332,13 +333,13 @@
       "looserLimits": 0
     },
     "fileAreas": {
-      "totalFiles": 1937,
+      "totalFiles": 1950,
       "other": 860,
       "backend": 645,
       "docs": 299,
-      "tooling": 107,
+      "tooling": 116,
       "infrastructure": 16,
-      "tests": 10
+      "tests": 14
     }
   },
   "details": {
@@ -605,6 +606,7 @@
         "predictedFilesMissing": 0,
         "entities": 0,
         "entitiesOutOfRange": 0,
+        "entitiesAccepted": 0,
         "measurementIsHeuristic": true
       },
       "offenders": {
@@ -673,13 +675,13 @@
     "fileAreas": {
       "name": "fileAreas",
       "summary": {
-        "totalFiles": 1937,
+        "totalFiles": 1950,
         "other": 860,
         "backend": 645,
         "docs": 299,
-        "tooling": 107,
+        "tooling": 116,
         "infrastructure": 16,
-        "tests": 10
+        "tests": 14
       },
       "offenders": [
         {
@@ -702,7 +704,7 @@
         },
         {
           "area": "tooling",
-          "files": 107,
+          "files": 116,
           "sourceFiles": 20,
           "sourceLines": 1169
         },
@@ -714,7 +716,7 @@
         },
         {
           "area": "tests",
-          "files": 10,
+          "files": 14,
           "sourceFiles": 0,
           "sourceLines": 0
         }
@@ -739,7 +741,7 @@
       "summary": {
         "clones": 3,
         "duplicatedLines": 63,
-        "totalLines": 30510,
+        "totalLines": 30607,
         "duplicatedPercentage": 0.21
       },
       "offenders": [
