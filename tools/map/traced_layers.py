@@ -1,7 +1,7 @@
 """The map drawn by hand off the 1900 sheet, the game's own 1938 ground: each layer traced from the stitched map as
-pixels and kept in docs/map/traced, turned here into metres, with every line smoothed round its bends and every
-building block the sheet draws raised as the rows of houses standing on it, each facing its street and set back from
-the roads and the water; a row that cannot stand back far enough is halved until its parts can, or left out.
+pixels and kept in docs/map/traced, turned here into metres, with every line smoothed round its bends, the old inns
+placed where they stood, and the rows of houses raised on every building block the sheet draws and along every
+village street, each facing its street and set back from the roads and the water.
 """
 from __future__ import annotations
 
@@ -10,25 +10,19 @@ from pathlib import Path
 
 from .curves import smoothThrough
 from .ground import toDecimetres
+from .inns import INNS, Inn, standingInns
 from .layer_files import areaRecord, lineRecord
-from .overlaps import overlaps
-from .period_map import pixelPoint
-from .rows import SHORTEST_ROW_METRES, centreOf, frontageOf, halves, rowsOn
-from .set_backs import SET_BACK_METRES_BY_LAYER, Obstacle, obstacle, setBack
-from .street_side import streetward
+from .set_backs import SET_BACK_METRES_BY_LAYER, Obstacle, obstacle
+from .standing_rows import BLOCKS, metresOf, standingRows
 
 TRACED_FOLDER = Path("docs") / "map" / "traced"
 LINES = "lines"
 AREAS = "areas"
-BLOCKS = "blocks"
+VILLAGES = "villages"
+ROADS = "roads"
 SPACING_METRES = 10
 POINTS_PER_OBSTACLE = 12
-PARTS_OF_A_HALVED_ROW = 2
 SHARED_POINT = 1
-
-
-def metresOf(pixels: list[list[float]]) -> list[tuple[float, float]]:
-    return [pixelPoint(x, y) for x, y in pixels]
 
 
 def flatDecimetres(points: list[tuple[float, float]]) -> list[float]:
@@ -37,14 +31,6 @@ def flatDecimetres(points: list[tuple[float, float]]) -> list[float]:
 
 def curveOf(feature: dict) -> list[tuple[float, float]]:
     return smoothThrough(metresOf(feature["pixels"]), SPACING_METRES)
-
-
-def tracedLine(feature: dict) -> dict:
-    return lineRecord(feature["kind"], flatDecimetres(curveOf(feature)))
-
-
-def tracedArea(feature: dict) -> dict:
-    return areaRecord(flatDecimetres(metresOf(feature["pixels"])), [])
 
 
 def piecesOf(curve: list[tuple[float, float]], setBackMetres: float) -> list[Obstacle]:
@@ -60,37 +46,32 @@ def obstaclesIn(tracings: dict[str, dict]) -> list[Obstacle]:
     return obstacles
 
 
-def placedRows(row: list[tuple[float, float]], obstacles: list[Obstacle]) -> list[list[tuple[float, float]]]:
-    placed = setBack(row, obstacles)
-    if placed is not None:
-        return [placed]
-    isTooShortToHalve = frontageOf(row) < PARTS_OF_A_HALVED_ROW * SHORTEST_ROW_METRES
-    if isTooShortToHalve:
-        return []
-    return [part for half in halves(row) for part in placedRows(half, obstacles)]
+def streetsIn(tracings: dict[str, dict]) -> tuple[list, list]:
+    villages = [(area["name"], metresOf(area["pixels"])) for area in tracings.get(VILLAGES, {}).get(AREAS, [])]
+    roads = [(line["name"], curveOf(line)) for line in tracings.get(ROADS, {}).get(LINES, [])]
+    return villages, roads
 
 
-def standingRows(tracing: dict, obstacles: list[Obstacle]) -> list[dict]:
-    standing = []
-    for feature in tracing[BLOCKS]:
-        corners = metresOf(feature["pixels"])
-        for row in rowsOn(corners, streetward(centreOf(corners), obstacles)):
-            for part in placedRows(row, obstacles):
-                isClear = not any(overlaps(part, other) for other in standing)
-                standing += [part] if isClear else []
-    return [areaRecord(flatDecimetres(row), []) for row in standing]
+def innRecord(inn: Inn) -> dict:
+    record = areaRecord(flatDecimetres(inn.corners), [])
+    record["name"] = inn.name
+    return record
 
 
-def tracedLayer(tracing: dict, obstacles: list[Obstacle]) -> tuple[str, list[dict]]:
+def tracedLayer(tracing: dict, tracings: dict[str, dict], inns: list[Inn], obstacles: list[Obstacle]) -> tuple[str, list[dict]]:
     if LINES in tracing:
-        return LINES, [tracedLine(feature) for feature in tracing[LINES]]
+        return LINES, [lineRecord(feature["kind"], flatDecimetres(curveOf(feature))) for feature in tracing[LINES]]
+    if INNS in tracing:
+        return AREAS, [innRecord(inn) for inn in inns]
     if BLOCKS in tracing:
-        return AREAS, standingRows(tracing, obstacles)
-    return AREAS, [tracedArea(feature) for feature in tracing[AREAS]]
+        rows = standingRows(tracing, streetsIn(tracings), [inn.corners for inn in inns], obstacles)
+        return AREAS, [areaRecord(flatDecimetres(row), []) for row in rows]
+    return AREAS, [areaRecord(flatDecimetres(metresOf(feature["pixels"])), []) for feature in tracing[AREAS]]
 
 
 def tracedLayers(repositoryRoot: Path) -> dict[str, tuple[str, list[dict]]]:
     paths = sorted((repositoryRoot / TRACED_FOLDER).glob("*.json"))
     tracings = {path.stem: json.loads(path.read_text(encoding="utf-8")) for path in paths}
     obstacles = obstaclesIn(tracings)
-    return {layer: tracedLayer(tracing, obstacles) for layer, tracing in tracings.items()}
+    inns = standingInns(tracings.get(INNS, {}), obstacles)
+    return {layer: tracedLayer(tracing, tracings, inns, obstacles) for layer, tracing in tracings.items()}

@@ -7,9 +7,9 @@ namespace ShallowWater.Unity.Sky
     public static class Daylight
     {
         private const string SkyLightName = "Sun and moon";
-        private const float ShadowStrength = 0.82f;
+        private const float ShadowStrength = 0.5f;
         private const float AmbientIntensity = 1f;
-        private const float HazeDensity = 0.0009f;
+        private const float HazeDensity = 0.0021f;
 
         public static DayAndNight Rise(TimeOfDay start)
         {

@@ -5,7 +5,7 @@ namespace ShallowWater.Unity.Sky
 {
     public static class SkyDome
     {
-        private const float CloudCover = 0.45f;
+        private const float CloudCover = 0.8f;
         private static readonly int SunDirection = Shader.PropertyToID("_SunDirection");
         private static readonly int SkyZenith = Shader.PropertyToID("_SkyZenith");
         private static readonly int SkyHorizon = Shader.PropertyToID("_SkyHorizon");

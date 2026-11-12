@@ -43,6 +43,7 @@ namespace ShallowWater.Unity.Looks
             { Surface.RidgeTiles, () => WeatheredLook.Of(BuildingPalette.RidgeTiles, Weathering.Terracotta) },
             { Surface.ChimneyPot, () => WeatheredLook.Of(BuildingPalette.ChimneyPot, Weathering.Terracotta) },
             { Surface.Timber, () => WeatheredLook.Of(BuildingPalette.Timber, Weathering.Timber) },
+            { Surface.SignBoard, () => WeatheredLook.Of(BuildingPalette.SignBoard, Weathering.Timber) },
             { Surface.Hull, HullLook.Plates },
             { Surface.RubbingStrake, () => WeatheredLook.Aboard(BoatPalette.Strakes, Weathering.Tarred, BoatSoot.Light) },
             { Surface.Deck, () => WeatheredLook.Aboard(BoatPalette.Deck, Weathering.Timber, BoatSoot.Heavy) },

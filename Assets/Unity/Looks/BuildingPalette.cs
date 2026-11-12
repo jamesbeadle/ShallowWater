@@ -30,6 +30,7 @@ namespace ShallowWater.Unity.Looks
         public static readonly Tones RidgeTiles = new Tones(new Color(0.46f, 0.22f, 0.15f), new Color(0.3f, 0.17f, 0.13f), new Color(0.2f, 0.15f, 0.12f));
         public static readonly Tones ChimneyPot = new Tones(new Color(0.6f, 0.32f, 0.2f), new Color(0.35f, 0.25f, 0.2f), new Color(0.2f, 0.16f, 0.14f));
         public static readonly Tones Timber = new Tones(new Color(0.2f, 0.15f, 0.11f), new Color(0.28f, 0.22f, 0.16f), new Color(0.12f, 0.1f, 0.08f));
+        public static readonly Tones SignBoard = new Tones(new Color(0.32f, 0.07f, 0.05f), new Color(0.42f, 0.3f, 0.16f), new Color(0.12f, 0.05f, 0.04f));
         public static readonly Tones Iron = new Tones(new Color(0.07f, 0.07f, 0.08f), new Color(0.18f, 0.12f, 0.09f), new Color(0.05f, 0.05f, 0.05f));
     }
 }

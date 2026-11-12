@@ -25,12 +25,17 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 | Crops | worked from each field's own direction: pasture with tussocks, the old ridge and furrow of the open fields, rushy water meadow, clover ley, wheat, barley and oat stubble in drilled rows, horse-ploughed furrow slices with the open furrows between the lands, winter wheat just drilled, mangolds, swedes, sugar beet and kale in rows of plants with some rows lifted and heaped, potato ridges half lifted, the rough grass and fallen leaves at the hedge foot, and the trodden dirt of a footpath | every field within a mile of the canal, its headland, its hedge foot and its footpath |
 | Fields | a patchwork of pasture, stubble and plough with hedgerow lines | the countryside beyond the farmland, under everything |
 | Water | ripples, the sky and its clouds reflected, the banks darkening the edges, silt, fallen leaves, and *Sparrow*'s bow wave, her wake along the path she took, the prop wash and churned silt, and her wash breaking on the banks | the canal, the canals beyond the pound, the Tame |
-| Sky | the sky gradient, sun, glow and drifting cloud | the skybox |
-| Grade | exposure, October warmth, tone curve and vignette | the finished picture |
+| Sky | the sky gradient, sun, glow and a low, nearly unbroken deck of drifting cloud: grey by day, the poster's red and orange at dusk | the skybox |
+| Drizzle | thin grey streaks falling on the wind in a box of air round the eye, fading near and far | the weather, everywhere the camera goes |
+| Grade | exposure, a faint sepia warmth, muted colour, tone curve and a heavy vignette | the finished picture |
 
 The stone sills, steps and lintels take the Stone look, ridge tiles and chimney pots the Weathered look as terracotta, and fascias, bargeboards and door hoods as timber.
 
 The colours are named in the palettes beside the looks (`CountryPalette`, `RoadPalette`, `StonePalette`, `BuildingPalette`, `BoatPalette`, `WaterPalette`, `SkyPalette`), written as they would be picked, and turned into linear light by Unity.
+
+## The weather
+
+October 1938 is a dreary month in a rough, grim year, and the weather says so. The day sky is a low overcast (`SkyDome` covers four fifths of it in cloud) over flat, weak sunlight with soft shadows, and a damp brown-grey haze closes the distance (`Daylight`), so a village a mile off is a shape and not a picture. Dusk turns the horizon and the underside of the cloud the red and orange of the poster (`SkyPalette`). A fine drizzle falls round the camera all day (`Drizzle`, `DrizzleLook`, `Drizzle.shader`): one mesh of streaks that the shader places, falls and wraps through a box of air round the eye, so it costs one draw. The grade mutes the colour and darkens the edges of the picture (`GradeLook`).
 
 ## The houses
 
@@ -43,6 +48,8 @@ The villages are the houses of 1938 as Hopwas, Whittington and Fazeley had them:
 - `GabledRoof` and `HippedRoof` lay slate or tiles over a soffit, with a fascia, a cast-iron gutter and ridge tiles, and verge boards where a gable stands free (`RoofEdges`, `Gutters`, `RidgeTiles`). `Stacks` stands a chimney on every party wall and free gable, with oversailing courses (`StackCap`) and a row of pots, no two alike (`ChimneyPots`); `Downpipes` brings the gutters down every second house.
 - Behind a terraced house is its outshut, a scullery under a lean-to roof, paired with its neighbour's (`OutshutShapes`, `LeanToRoof`); cottages may have a full-width one. `DormerShapes` and `DormerRoof` build the dormers and `DoorHood` the hoods.
 - `RunFootings` gives the walker the ground each house actually stands on, so the entries between runs can be walked through.
+- The one-inch sheet drops most small buildings and draws none in Tamworth, Kettlebrook or Wilnecote, so the map tool also lines every road through a village outline with rows on both sides (`tools/map/street_frontage.py`): a town's frontage built up nearly end to end, a village's broken by gardens and paddocks.
+- The old inns stand where the story puts them (`docs/map/traced/inns.json`): the Plough at Huddlesford, the Red Lion and the Tame Otter at Hopwas bridge, the Dog and the Bell in Whittington and the Three Tuns at Fazeley. Each is a `CoachingInn`, a three-bay house twelve to fifteen metres across and taller than its neighbours, limewashed or brick under plain tiles or slate, with a timber sign post at its corner and a painted board hanging from the arm (`InnSign`). `Inns` raises them and `InnsLayer` puts them in the scene.
 
 ## The fields
 

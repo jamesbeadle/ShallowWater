@@ -18,6 +18,7 @@ namespace ShallowWater.Unity.Player
             foreach (var river in MapLines.ReadIfPresent(MapLayers.River)) water.Add(river, LineBands.RiverWidthMetres / Halved);
             var obstacles = new Obstacles();
             obstacles.AddFootprints(Buildings.Footings(MapAreas.ReadIfPresent(MapLayers.Buildings)));
+            obstacles.AddFootprints(Inns.Footings(MapAreas.ReadIfPresent(MapLayers.Inns)));
             obstacles.AddTrunks(TreeTrunks.Standing(scenery.Trees));
             obstacles.AddFootprints(scenery.Footings);
             obstacles.AddHedges(scenery.Hedges);

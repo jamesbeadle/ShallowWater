@@ -57,6 +57,7 @@ namespace ShallowWater.Unity.World
             var roads = RoadsLayer.Lay(pound);
             VillagesLayer.Turf();
             BuildingsLayer.Raise();
+            InnsLayer.Raise();
             CanalLayer.Dig(pound);
             HuddlesfordPlanks.Drop(pound);
             GlascoteLock.CloseItsBottomGates(pound);
