@@ -32,10 +32,10 @@ namespace ShallowWater.Unity.Helm
         public static double Rudder()
         {
             var keyboard = Keyboard.current;
-            var toStarboard = Buttons.IsAnyHeld(keyboard?.dKey, keyboard?.rightArrowKey);
-            var toPort = Buttons.IsAnyHeld(keyboard?.aKey, keyboard?.leftArrowKey);
-            var keys = Buttons.Axis(toStarboard, toPort);
-            return Mathf.Clamp(keys + StickAcross(), -1, 1);
+            var isTillerPushedToPort = Buttons.IsAnyHeld(keyboard?.aKey, keyboard?.leftArrowKey);
+            var isTillerPushedToStarboard = Buttons.IsAnyHeld(keyboard?.dKey, keyboard?.rightArrowKey);
+            var keys = Buttons.Axis(isTillerPushedToPort, isTillerPushedToStarboard);
+            return Mathf.Clamp(keys - StickAcross(), -1, 1);
         }
 
         private static float StickAcross()

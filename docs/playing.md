@@ -9,13 +9,15 @@ The game side lives in plain C# (`Assets/Game`); the Unity layer only reads the 
 | Lever one notch ahead | W or ↑ | right shoulder |
 | Lever one notch astern | S or ↓ | left shoulder |
 | Stop | Space | west button |
-| Tiller | A / D or ← / → | left stick |
+| Push the tiller to port / starboard | A / D or ← / → | left stick |
 | Look round | right mouse drag, scroll to zoom | right stick |
 | Step ashore | E | south button |
 | Show or hide the controls | H, or click the **H Controls** hint at the top left | select (view) button |
 | Open or put away the pocket book | Tab or I, or click the **Tab Pocket book** hint at the top left; Esc puts it away | east button |
 
 The lever stays where it is put: full astern, half astern, stop, dead slow, half ahead and full ahead. It sets the engine's revolutions, not her speed (`BoatHandling`). The Bolinder has no reverse gear, so going from ahead to astern the engine stops, pauses a second and a half, and runs the other way (`Engine`). The beat is one a second at tickover and quickens with the revolutions (`EngineSound`, from `BolinderBeat`).
+
+The tiller is worked as it is on a real boat: the keys and the stick say which way you push the tiller, and her head swings the other way. Push it to port (A, ← or the stick left) and she turns to starboard; push it to starboard and she turns to port (`HelmInput`).
 
 *Sparrow* is steered in the world, not along the canal: the bends have to be steered round. She is handled as a loaded working boat of eighteen tonnes in a shallow channel, worked out from the forces on her ahead, sideways and round (`BoatMotion`):
 
