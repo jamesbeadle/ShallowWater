@@ -8,68 +8,46 @@ namespace ShallowWater.Unity.Title
     public sealed class TitleScreen
     {
         private const string ScreenClass = "title-screen";
+        private const string ArrivingClass = "title-screen--arriving";
         private const string LeavingClass = "title-screen--leaving";
-        private const string WashClass = "title__wash";
-        private const string ShadeClass = "title__shade";
-        private const string StageClass = "title__stage";
-        private const string CoverClass = "title__cover";
-        private const string ColumnClass = "title__column";
-        private const string PanelClass = "title__panel";
+        private const string CurtainClass = "title__curtain";
+        private const string DrawnClass = "title__curtain--drawn";
         private const string CastingOffClass = "title__casting-off";
         private const string CastingOffWords = "Casting off…";
-        private const long PaintTheCastingOffMilliseconds = 80;
+        private const long DrawTheCurtainMilliseconds = 260;
         private const long FadeMilliseconds = 450;
 
-        private readonly VisualElement title = OverlayElements.Block(ScreenClass);
-        private readonly VisualElement panel = OverlayElements.Block(PanelClass);
-        private readonly SavedGames saves;
+        private readonly VisualElement title = OverlayElements.Block(ScreenClass, ArrivingClass);
+        private readonly VisualElement curtain = OverlayElements.Block(CurtainClass);
         private readonly Action<GameStart> begin;
+        private bool isCastingOff;
 
-        public TitleScreen(VisualElement screen, SavedGames savedGames, Action<GameStart> beginTheGame)
+        public TitleScreen(VisualElement screen, SavedGames saves, Action<GameStart> beginTheGame)
         {
-            saves = savedGames;
             begin = beginTheGame;
-            title.Add(OverlayElements.Block(WashClass));
-            title.Add(OverlayElements.Block(ShadeClass));
-            title.Add(Stage());
+            var pages = new TitlePages(title);
+            title.Add(TitleFooter.Of());
+            curtain.pickingMode = PickingMode.Ignore;
+            title.Add(curtain);
+            title.RegisterCallback<GeometryChangedEvent>(Arrive);
             var table = screen.parent;
             table.Add(title);
-            ShowTheMenu();
+            pages.Open(MenuPage.Of(saves, Begin, pages));
         }
 
-        private VisualElement Stage()
+        private void Arrive(GeometryChangedEvent laidOut)
         {
-            var stage = OverlayElements.Block(StageClass);
-            stage.Add(OverlayElements.Block(CoverClass));
-            var column = TitleBranding.Column(ColumnClass);
-            column.Add(panel);
-            stage.Add(column);
-            return stage;
-        }
-
-        private void ShowTheMenu()
-        {
-            Show(TitleMenu.Of(saves, Begin, ShowTheSaves));
-        }
-
-        private void ShowTheSaves()
-        {
-            Show(LoadList.Of(saves, Begin, ShowTheMenu));
-        }
-
-        private void Show(VisualElement choices)
-        {
-            panel.Clear();
-            panel.Add(choices);
-            var first = choices.Query<Button>().Where(button => button.focusable).First();
-            panel.schedule.Execute(() => first?.Focus());
+            title.UnregisterCallback<GeometryChangedEvent>(Arrive);
+            title.RemoveFromClassList(ArrivingClass);
         }
 
         private void Begin(GameStart start)
         {
-            panel.Clear();
-            panel.Add(OverlayElements.Words(CastingOffWords, CastingOffClass));
-            title.schedule.Execute(() => CastOff(start)).ExecuteLater(PaintTheCastingOffMilliseconds);
+            if (isCastingOff) return;
+            isCastingOff = true;
+            curtain.Add(OverlayElements.Words(CastingOffWords, CastingOffClass));
+            curtain.AddToClassList(DrawnClass);
+            title.schedule.Execute(() => CastOff(start)).ExecuteLater(DrawTheCurtainMilliseconds);
         }
 
         private void CastOff(GameStart start)

@@ -11,6 +11,10 @@
 @import url("Sketches.uss");
 @import url("SavedNotice.uss");
 @import url("Title.uss");
+@import url("TitleLockup.uss");
+@import url("TitleMenu.uss");
+@import url("TitlePages.uss");
+@import url("TitleFooter.uss");
 
 .hud-screen {
     position: absolute;

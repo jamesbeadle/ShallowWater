@@ -1,0 +1,73 @@
+.title__pages {
+    position: absolute;
+    left: var(--title-margin);
+    top: 104px;
+    bottom: 110px;
+    width: 700px;
+}
+
+.title-page {
+    flex-grow: 1;
+    transition-property: opacity, translate;
+    transition-duration: var(--brisk), var(--brisk);
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+}
+
+.title-page--entering {
+    opacity: 0;
+    translate: 14px 0;
+}
+
+.title__pages .hud-text.hud-eyebrow {
+    font-size: 15px;
+    letter-spacing: 4.5px;
+    color: var(--ink-soft);
+}
+
+.hud-text.title-page__heading {
+    margin-top: -12px;
+    margin-left: -2px;
+    margin-bottom: 14px;
+    font-size: 88px;
+    letter-spacing: 1.5px;
+    color: var(--sunset);
+    -unity-font-definition: var(--face-headline);
+}
+
+.title-saves {
+    flex-shrink: 0;
+    margin-bottom: 12px;
+}
+
+.title-saves .hud-text.title-button__words {
+    font-size: 28px;
+    letter-spacing: 1.5px;
+}
+
+.title-saves .title-button__mark {
+    top: 19px;
+}
+
+.title-credits {
+    flex-shrink: 0;
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+.title-credit {
+    margin-bottom: 22px;
+}
+
+.hud-text.title-credit__name {
+    font-size: 28px;
+    letter-spacing: 1.5px;
+    -unity-font-definition: var(--face-headline);
+}
+
+.hud-text.title-credit__words {
+    margin-top: 1px;
+    width: 560px;
+    font-size: 17px;
+    color: var(--ink-soft);
+    white-space: normal;
+}

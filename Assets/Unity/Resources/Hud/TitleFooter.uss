@@ -1,0 +1,30 @@
+.title__footer {
+    position: absolute;
+    left: var(--title-margin);
+    right: var(--title-margin);
+    bottom: 54px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition-property: opacity;
+    transition-duration: var(--slow);
+    transition-delay: 0.6s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.title-screen--arriving .title__footer {
+    opacity: 0;
+}
+
+.title__hints {
+    flex-direction: row;
+    align-items: center;
+}
+
+.title__hint--back {
+    opacity: 0;
+}
+
+.title-screen--inside .title__hint--back {
+    opacity: 1;
+}
