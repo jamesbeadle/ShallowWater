@@ -8,7 +8,6 @@ namespace ShallowWater.Unity.Overlay
         private const string Eyebrow = "CONTROLS";
         private const string PanelClass = "hud-controls";
         private const string HiddenClass = "hud-controls--hidden";
-        private const string HintClass = "hud-hint";
         private const string HintHiddenClass = "hud-hint--hidden";
         private const string TitleClass = "hud-title";
         private const string RowClass = "hud-row";
@@ -23,8 +22,7 @@ namespace ShallowWater.Unity.Overlay
 
         public ControlsPanel(VisualElement screen, HudPrompt open, HudPrompt close)
         {
-            hint = PromptPill.Of(open);
-            hint.AddToClassList(HintClass);
+            hint = PromptPill.Hint(open);
             hint.RegisterCallback<ClickEvent>(_ => Turn(isOpening: true));
             panel.Add(OverlayElements.Eyebrow(Eyebrow));
             panel.Add(title);

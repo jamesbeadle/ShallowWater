@@ -1,15 +1,12 @@
 .title-screen {
-    --night: #0D0806;
-    --ember: #D9692F;
-    --sunset: #E8823F;
+    --title-margin: 132px;
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--night);
     transition-property: opacity;
-    transition-duration: 0.45s;
+    transition-duration: var(--unhurried);
     transition-timing-function: ease-in-cubic;
 }
 
@@ -17,163 +14,32 @@
     opacity: 0;
 }
 
-.title__wash {
+.title__curtain {
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("Art/Cover.png");
-    -unity-background-scale-mode: scale-and-crop;
-    opacity: 0.22;
-}
-
-.title__shade {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(13, 8, 6, 0.62);
-}
-
-.title__stage {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.title__cover {
-    width: 594px;
-    height: 840px;
-    background-image: url("Art/Cover.png");
-    -unity-background-scale-mode: scale-to-fit;
-    border-width: 2px;
-    border-color: rgba(217, 105, 47, 0.45);
-    border-radius: 3px;
-}
-
-.title__column {
-    width: 660px;
-    margin-left: 110px;
-}
-
-.title-screen .hud-text.title__name {
-    margin-top: 14px;
-    font-size: 104px;
-    letter-spacing: 6px;
-    color: var(--sunset);
-    -unity-font-definition: url("Fonts/StardosStencil-Bold.ttf");
-}
-
-.title-screen .hud-text.title__chapter {
-    margin-top: -14px;
-    font-size: 60px;
-    color: var(--paper);
-    -unity-font-definition: url("Fonts/Caveat-SemiBold.ttf");
-}
-
-.title-screen .hud-text.title__tagline {
-    margin-top: 10px;
-    font-size: 22px;
-    color: var(--ink-soft);
-    -unity-font-style: italic;
-}
-
-.title__rule {
-    height: 2px;
-    width: 120px;
-    margin: 34px 0 26px 0;
-    background-color: var(--ember);
-}
-
-.title__panel {
-    min-height: 420px;
-}
-
-.title-button {
-    margin: 0 0 6px 0;
-    padding: 10px 0 10px 22px;
-    align-items: flex-start;
-    background-color: rgba(0, 0, 0, 0);
-    border-width: 0 0 0 3px;
-    border-color: rgba(0, 0, 0, 0);
-    border-radius: 0;
-    transition-property: translate, border-color;
-    transition-duration: 0.15s, 0.15s;
-    transition-timing-function: ease-out-cubic, ease-out-cubic;
-}
-
-.title-button:hover,
-.title-button:focus {
-    background-color: rgba(217, 105, 47, 0.10);
-    border-color: var(--ember);
-    translate: 6px 0;
-}
-
-.title-button:disabled {
-    opacity: 0.38;
-}
-
-.title-screen .hud-text.title-button__words {
-    font-size: 40px;
-    letter-spacing: 3px;
-    color: var(--ink);
-    -unity-font-definition: url("Fonts/StardosStencil-Regular.ttf");
-}
-
-.title-screen .title-button:hover .hud-text.title-button__words,
-.title-screen .title-button:focus .hud-text.title-button__words {
-    color: var(--sunset);
-}
-
-.title-screen .hud-text.title-button__detail {
-    margin-top: 2px;
-    font-size: 19px;
-    color: var(--ink-faint);
-}
-
-.title-saves__scroll {
-    max-height: 470px;
-    margin: 12px 0 12px 0;
-}
-
-.title-screen .title-saves .hud-text.title-button__words {
-    font-size: 28px;
-}
-
-.title-screen .hud-text.title__casting-off {
-    font-size: 34px;
-    color: var(--ink-soft);
-    -unity-font-definition: url("Fonts/Caveat-Regular.ttf");
-}
-
-.hud-saved-row {
-    position: absolute;
-    left: 0;
     right: 0;
     bottom: 0;
     align-items: center;
-}
-
-.hud-glass.hud-saved {
-    padding: 8px 22px;
-    transition-property: opacity, translate;
-    transition-duration: 0.25s, 0.25s;
-    transition-timing-function: ease-out-cubic, ease-out-cubic;
-}
-
-.hud-saved--hidden {
+    justify-content: center;
+    background-color: var(--night);
     opacity: 0;
-    translate: 0 12px;
+    transition-property: opacity;
+    transition-duration: var(--slow);
+    transition-timing-function: ease-out-cubic;
 }
 
-.title-screen .hud-text.hud-eyebrow {
-    font-size: 16px;
+.title-screen--arriving .title__curtain {
+    opacity: 1;
+}
+
+.title__curtain--drawn {
+    opacity: 1;
+    transition-duration: var(--brisk);
+}
+
+.hud-text.title__casting-off {
+    font-size: 44px;
     color: var(--ink-soft);
+    -unity-font-definition: var(--face-hand);
 }

@@ -14,7 +14,6 @@ namespace ShallowWater.Unity.Overlay
         private const string RightPageClass = "book__page--right";
         private const string SpineClass = "book__spine";
         private const string FootClass = "book__foot";
-        private const string HintClass = "hud-hint";
         private const string HintHiddenClass = "hud-hint--hidden";
         private const string ReadingClass = "hud-safe-area--reading";
 
@@ -54,8 +53,7 @@ namespace ShallowWater.Unity.Overlay
 
         private VisualElement Hint(HudPrompt open, Action takeOut)
         {
-            var pill = PromptPill.Of(open);
-            pill.AddToClassList(HintClass);
+            var pill = PromptPill.Hint(open);
             pill.RegisterCallback<ClickEvent>(_ => takeOut());
             var hints = HintsRow.On(screen);
             hints.Add(pill);

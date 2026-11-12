@@ -8,7 +8,7 @@
     justify-content: center;
     background-color: var(--table);
     transition-property: opacity;
-    transition-duration: 0.22s;
+    transition-duration: var(--brisk);
     transition-timing-function: ease-out-cubic;
 }
 
@@ -30,7 +30,7 @@
     border-color: var(--oilcloth-edge);
     border-radius: 12px;
     transition-property: translate, scale;
-    transition-duration: 0.22s, 0.22s;
+    transition-duration: var(--brisk), var(--brisk);
     transition-timing-function: ease-out-cubic, ease-out-cubic;
 }
 
@@ -85,7 +85,7 @@
 
 .hud-text.page-stencil {
     color: var(--pencil);
-    -unity-font-definition: url("Fonts/StardosStencil-Bold.ttf");
+    -unity-font-definition: var(--face-stencil-bold);
 }
 
 .hud-text.page-title {
@@ -95,7 +95,7 @@
 
 .hud-text.page-pencil {
     color: var(--pencil);
-    -unity-font-definition: url("Fonts/Caveat-SemiBold.ttf");
+    -unity-font-definition: var(--face-hand-bold);
 }
 
 .hud-text.page-aside {
@@ -116,7 +116,7 @@
     font-size: 14px;
     letter-spacing: 3.5px;
     color: var(--pencil-soft);
-    -unity-font-definition: url("Fonts/StardosStencil-Regular.ttf");
+    -unity-font-definition: var(--face-stencil);
 }
 
 .page-rule {
@@ -133,7 +133,7 @@
     border-bottom-width: 1px;
     border-bottom-color: var(--pencil-rule);
     transition-property: opacity;
-    transition-duration: 0.2s;
+    transition-duration: var(--brisk);
     transition-timing-function: ease-out-cubic;
 }
 
@@ -159,7 +159,7 @@
 .hud-text.page-entry__name {
     font-size: 21px;
     color: var(--pencil);
-    -unity-font-definition: url("Fonts/Cabin-Medium.ttf");
+    -unity-font-definition: var(--face-text-medium);
 }
 
 .hud-text.page-entry__note {
@@ -180,7 +180,7 @@
     width: 450px;
     margin: 10px 0 2px 130px;
     transition-property: opacity;
-    transition-duration: 0.2s;
+    transition-duration: var(--brisk);
     transition-timing-function: ease-out-cubic;
 }
 
@@ -216,7 +216,7 @@
     border-radius: 2px;
     rotate: -1.2deg;
     transition-property: opacity;
-    transition-duration: 0.2s;
+    transition-duration: var(--brisk);
     transition-timing-function: ease-out-cubic;
 }
 

@@ -7,7 +7,7 @@
     background-color: var(--oilskin-deep);
     border-radius: 8px;
     transition-property: opacity, translate;
-    transition-duration: 0.18s, 0.18s;
+    transition-duration: var(--brisk), var(--brisk);
     transition-timing-function: ease-out-cubic, ease-out-cubic;
 }
 
@@ -21,7 +21,7 @@
     margin-bottom: 12px;
     font-size: 26px;
     letter-spacing: 1px;
-    -unity-font-definition: url("Fonts/StardosStencil-Bold.ttf");
+    -unity-font-definition: var(--face-stencil-bold);
 }
 
 .hud-row {
@@ -57,5 +57,5 @@
     margin-left: 10px;
     font-size: 16px;
     color: var(--ink-faint);
-    -unity-font-definition: url("Fonts/Cabin-Medium.ttf");
+    -unity-font-definition: var(--face-text-medium);
 }

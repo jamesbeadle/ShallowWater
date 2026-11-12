@@ -15,7 +15,7 @@
     border-color: var(--ink);
     border-radius: 14px;
     transition-property: opacity;
-    transition-duration: 0.12s;
+    transition-duration: var(--quick);
     transition-timing-function: ease-out-cubic;
 }
 
@@ -30,7 +30,7 @@
     top: 0;
     bottom: 0;
     transition-property: opacity;
-    transition-duration: 0.12s;
+    transition-duration: var(--quick);
     transition-timing-function: ease-out-cubic;
 }
 

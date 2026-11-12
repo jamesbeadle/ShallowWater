@@ -15,3 +15,7 @@ It must be playable on every platform: web, PC, Xbox and PlayStation.
 Unity 6 LTS, targeting WebGPU for the web build. It reaches every platform above from one project.
 
 The game logic lives in plain C# classes that know nothing about Unity. Unity scripts only connect that logic to scenes, input and rendering. That boundary keeps a later move to Unreal a translation of the Unity layer, not a rewrite of the game.
+
+## Brand
+
+The interface is drawn in one brand, the title and the HUD alike. `docs/design/brand.md` gives every colour, typeface, spacing and timing its role, and what it is never for; the tokens themselves are in `Assets/Unity/Resources/Hud/Brand.uss`. A new screen or widget reads those tokens and is built from the pieces the sheet lists, and no other stylesheet states a colour, a typeface or a duration of its own. A look the brand does not yet name is added to the brand first, with its role, and then used. The palettes that light the world are not part of it: `docs/graphics.md` describes those.
