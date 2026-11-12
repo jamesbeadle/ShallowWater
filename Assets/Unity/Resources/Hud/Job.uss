@@ -16,7 +16,7 @@
     border-color: var(--paper-edge);
     border-radius: 3px;
     transition-property: opacity, translate;
-    transition-duration: 0.2s, 0.2s;
+    transition-duration: var(--brisk), var(--brisk);
     transition-timing-function: ease-out-cubic, ease-out-cubic;
 }
 
@@ -33,5 +33,5 @@
     margin-top: 2px;
     font-size: 28px;
     color: var(--pencil);
-    -unity-font-definition: url("Fonts/Caveat-SemiBold.ttf");
+    -unity-font-definition: var(--face-hand-bold);
 }

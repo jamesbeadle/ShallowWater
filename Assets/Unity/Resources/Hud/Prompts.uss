@@ -3,7 +3,7 @@
     align-items: center;
     padding: 5px 18px 5px 5px;
     transition-property: opacity, translate;
-    transition-duration: 0.2s, 0.2s;
+    transition-duration: var(--brisk), var(--brisk);
     transition-timing-function: ease-out-cubic, ease-out-cubic;
 }
 
@@ -19,7 +19,7 @@
 .hud-text.hud-prompt__words {
     margin-left: 12px;
     font-size: 20px;
-    -unity-font-definition: url("Fonts/Cabin-Medium.ttf");
+    -unity-font-definition: var(--face-text-medium);
 }
 
 .hud-prompts {
@@ -44,7 +44,7 @@
 .hud-hint {
     margin-right: 10px;
     transition-property: opacity;
-    transition-duration: 0.18s;
+    transition-duration: var(--brisk);
     transition-timing-function: ease-out-cubic;
 }
 

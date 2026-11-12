@@ -11,7 +11,7 @@
     padding: 14px 24px 16px 24px;
     background-color: var(--oilskin-deep);
     transition-property: opacity, translate;
-    transition-duration: 0.2s, 0.2s;
+    transition-duration: var(--brisk), var(--brisk);
     transition-timing-function: ease-out-cubic, ease-out-cubic;
 }
 
@@ -24,5 +24,5 @@
     margin-top: 6px;
     font-size: 22px;
     white-space: normal;
-    -unity-font-definition: url("Fonts/Cabin-Medium.ttf");
+    -unity-font-definition: var(--face-text-medium);
 }

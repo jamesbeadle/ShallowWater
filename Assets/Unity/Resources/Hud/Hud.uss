@@ -1,3 +1,4 @@
+@import url("Brand.uss");
 @import url("KeyGlyphs.uss");
 @import url("Prompts.uss");
 @import url("ControlsPanel.uss");
@@ -8,40 +9,10 @@
 @import url("Sight.uss");
 @import url("PocketBook.uss");
 @import url("Sketches.uss");
+@import url("SavedNotice.uss");
 @import url("Title.uss");
 
 .hud-screen {
-    --ink: #EFE4C8;
-    --ink-soft: rgba(239, 228, 200, 0.74);
-    --ink-faint: rgba(239, 228, 200, 0.46);
-    --rule: rgba(239, 228, 200, 0.10);
-    --oilskin: rgba(27, 25, 20, 0.93);
-    --oilskin-deep: rgba(22, 20, 16, 0.96);
-    --edge: rgba(239, 228, 200, 0.08);
-    --edge-lit: rgba(239, 228, 200, 0.18);
-    --brass: #C9A24A;
-    --signal-red: #C04F36;
-    --unlit: rgba(239, 228, 200, 0.18);
-    --key-face: #17150F;
-    --key-ring: #B8AE97;
-    --key-ink: #EFE4C8;
-    --enamel: #E6DEC7;
-    --enamel-ink: #1E1B16;
-    --enamel-ink-soft: rgba(30, 27, 22, 0.55);
-    --enamel-rim: #5A5346;
-    --paper: #E7DAB9;
-    --paper-card: #F1E8D2;
-    --paper-edge: #BFAE88;
-    --pencil: #2F2A26;
-    --pencil-soft: rgba(47, 42, 38, 0.66);
-    --pencil-faint: rgba(47, 42, 38, 0.38);
-    --pencil-rule: rgba(47, 42, 38, 0.16);
-    --oilcloth: #1C1F1A;
-    --oilcloth-edge: #3B4036;
-    --gutter: rgba(0, 0, 0, 0.38);
-    --table: rgba(6, 5, 4, 0.78);
-    --scope-field: #050403;
-    --scope-wire: #15110D;
     position: absolute;
     left: 0;
     top: 0;
@@ -52,7 +23,7 @@
 .hud-safe-area {
     position: absolute;
     transition-property: opacity;
-    transition-duration: 0.2s;
+    transition-duration: var(--brisk);
     transition-timing-function: ease-out-cubic;
 }
 
@@ -66,18 +37,18 @@
     color: var(--ink);
     white-space: nowrap;
     -unity-font-style: normal;
-    -unity-font-definition: url("Fonts/Cabin-Regular.ttf");
+    -unity-font-definition: var(--face-text);
 }
 
 .hud-text.hud-display {
-    -unity-font-definition: url("Fonts/JosefinSans-SemiBold.ttf");
+    -unity-font-definition: var(--face-figures);
 }
 
 .hud-text.hud-eyebrow {
     font-size: 13px;
     letter-spacing: 3.5px;
     color: var(--ink-faint);
-    -unity-font-definition: url("Fonts/StardosStencil-Regular.ttf");
+    -unity-font-definition: var(--face-stencil);
 }
 
 .hud-glass {

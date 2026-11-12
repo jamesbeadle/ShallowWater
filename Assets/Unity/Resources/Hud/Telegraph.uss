@@ -3,7 +3,7 @@
     bottom: 16px;
     padding: 14px 20px 16px 20px;
     transition-property: opacity, translate;
-    transition-duration: 0.2s, 0.2s;
+    transition-duration: var(--brisk), var(--brisk);
     transition-timing-function: ease-out-cubic, ease-out-cubic;
 }
 
@@ -17,7 +17,7 @@
     margin-bottom: 10px;
     font-size: 24px;
     letter-spacing: 2px;
-    -unity-font-definition: url("Fonts/StardosStencil-Bold.ttf");
+    -unity-font-definition: var(--face-stencil-bold);
 }
 
 .hud-text.hud-order--ahead {
@@ -71,5 +71,5 @@
     font-size: 11px;
     letter-spacing: 2.5px;
     color: var(--ink-faint);
-    -unity-font-definition: url("Fonts/StardosStencil-Regular.ttf");
+    -unity-font-definition: var(--face-stencil);
 }
