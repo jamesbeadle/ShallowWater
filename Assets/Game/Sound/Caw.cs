@@ -4,22 +4,15 @@ namespace ShallowWater.Game.Sound
 {
     public sealed class Caw
     {
-        private const double AttackSeconds = 0.02;
-        private const double FadeSeconds = 0.03;
-        private const double DecayFromShare = 0.6;
-        private const double DecayPerSecond = 14;
-        private const double PulseSharpness = 7;
-        private const double JitterShare = 0.04;
-        private const double RaspHertz = 55;
-        private const double RaspDepth = 0.3;
-        private const double Half = 0.5;
-        private const double BreathShare = 0.2;
-        private const double OpeningBreathShare = 0.6;
-        private const double OpeningSeconds = 0.04;
-        private const double DirectShare = 0.35;
-        private const double FullTurnRadians = 2 * Math.PI;
-        private static readonly double PulseMean = (1 - Math.Exp(-PulseSharpness)) / PulseSharpness;
-        private static readonly Formant[] Mouth = { new Formant(800, 250, 1), new Formant(1700, 350, 0.6), new Formant(2800, 500, 0.35) };
+        private const double AttackSeconds = 0.012;
+        private const double FadeSeconds = 0.04;
+        private const double DecayFromShare = 0.5;
+        private const double DecayPerSecond = 9;
+        private const double BreathShare = 0.45;
+        private const double OpeningBreathShare = 0.8;
+        private const double OpeningSeconds = 0.03;
+        private const double DirectShare = 0.06;
+        private static readonly Formant[] Beak = { new Formant(1150, 450, 1), new Formant(2050, 550, 0.75), new Formant(3300, 800, 0.45) };
 
         private readonly double lengthSeconds;
         private readonly double pitch;
@@ -35,39 +28,18 @@ namespace ShallowWater.Game.Sound
         public float[] Samples(int samplesPerSecond, Random random)
         {
             var count = (int)(lengthSeconds * samplesPerSecond);
-            var mouth = new Formants(samplesPerSecond, DirectShare, Mouth);
+            var beak = new Formants(samplesPerSecond, DirectShare, Beak);
+            var syrinx = new Syrinx(samplesPerSecond, random);
             var samples = new float[count];
-            var phase = 0.0;
-            var jitter = 1.0;
             for (var index = 0; index < count; index++)
             {
                 var time = (double)index / samplesPerSecond;
                 var share = time / lengthSeconds;
-                var pulsesSoFar = Math.Floor(phase);
-                phase += pitch * jitter * CawPitch.HertzAt(share) / samplesPerSecond;
-                var isANewPulse = Math.Floor(phase) > pulsesSoFar;
-                if (isANewPulse) jitter = 1 + Spread(random) * JitterShare;
-                var breath = Spread(random) * BreathAt(time);
-                var voiced = mouth.Shaped(Pulse(phase) + breath);
-                samples[index] = (float)(loudness * Envelope(time, share) * Rasp(time) * voiced);
+                var hertz = pitch * CawPitch.HertzAt(share);
+                var sounded = syrinx.Sounded(hertz, BreathAt(time));
+                samples[index] = (float)(loudness * Envelope(time, share) * beak.Shaped(sounded));
             }
             return samples;
-        }
-
-        private static double Spread(Random random)
-        {
-            return random.NextDouble() * 2 - 1;
-        }
-
-        private static double Pulse(double phase)
-        {
-            var sinceThePulse = phase - Math.Floor(phase);
-            return Math.Exp(-sinceThePulse * PulseSharpness) - PulseMean;
-        }
-
-        private static double Rasp(double time)
-        {
-            return 1 - RaspDepth * (Half + Half * Math.Sin(FullTurnRadians * RaspHertz * time));
         }
 
         private static double BreathAt(double time)

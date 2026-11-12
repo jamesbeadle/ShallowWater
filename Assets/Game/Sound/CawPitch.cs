@@ -2,10 +2,10 @@ namespace ShallowWater.Game.Sound
 {
     public static class CawPitch
     {
-        private const double OpeningHertz = 320;
-        private const double PeakHertz = 400;
-        private const double ClosingHertz = 270;
-        private const double PeakAtShare = 0.3;
+        private const double OpeningHertz = 560;
+        private const double PeakHertz = 660;
+        private const double ClosingHertz = 470;
+        private const double PeakAtShare = 0.25;
 
         public static double HertzAt(double share)
         {
