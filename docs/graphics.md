@@ -28,10 +28,11 @@ Every shape the game builds is filed under a `Surface` (`Assets/Game/Shapes/Surf
 | Sky | the sky gradient, sun, glow and a low, nearly unbroken deck of drifting cloud: grey by day, the poster's red and orange at dusk | the skybox |
 | Drizzle | thin grey streaks falling on the wind in a box of air round the eye, fading near and far | the weather, everywhere the camera goes |
 | Grade | exposure, a faint sepia warmth, muted colour, tone curve and a heavy vignette | the finished picture |
+| Title Backdrop | a canal at dusk as a printed poster: the low sun and its glow, bars of cloud drifting, the far ridge and woods, a telegraph line, the hump of a bridge with *Sparrow* and her steerer under its arch and her smoke rising, all of it mirrored in moving water, a chain across the cut, and paper grain over the whole | the title screen, behind the menu |
 
 The stone sills, steps and lintels take the Stone look, ridge tiles and chimney pots the Weathered look as terracotta, and fascias, bargeboards and door hoods as timber.
 
-The colours are named in the palettes beside the looks (`CountryPalette`, `RoadPalette`, `StonePalette`, `BuildingPalette`, `BoatPalette`, `WaterPalette`, `SkyPalette`), written as they would be picked, and turned into linear light by Unity.
+The colours are named in the palettes beside the looks (`CountryPalette`, `RoadPalette`, `StonePalette`, `BuildingPalette`, `BoatPalette`, `WaterPalette`, `SkyPalette`), written as they would be picked, and turned into linear light by Unity. The Title Backdrop is the one look that takes its colours from the interface instead: `DuskLook` hands it the seven dusk tones of the brand (`docs/design/brand.md`) from `Brand.uss`, so the painted picture and the lettering over it cannot drift apart. It is drawn by `TitleBackdrop` on the camera, with no scene behind it, from the `Title*.cginc` files: sky, bank and wood, bridge, boat, water, chain and print.
 
 ## The weather
 
