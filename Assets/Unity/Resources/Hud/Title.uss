@@ -1,6 +1,7 @@
 .title-screen {
     --night: #0D0806;
-    --ember: #B5532C;
+    --ember: #D9692F;
+    --sunset: #E8823F;
     position: absolute;
     left: 0;
     top: 0;
@@ -53,7 +54,7 @@
     background-image: url("Art/Cover.png");
     -unity-background-scale-mode: scale-to-fit;
     border-width: 2px;
-    border-color: rgba(201, 162, 74, 0.35);
+    border-color: rgba(217, 105, 47, 0.45);
     border-radius: 3px;
 }
 
@@ -66,14 +67,14 @@
     margin-top: 14px;
     font-size: 104px;
     letter-spacing: 6px;
-    color: var(--paper);
+    color: var(--sunset);
     -unity-font-definition: url("Fonts/StardosStencil-Bold.ttf");
 }
 
 .title-screen .hud-text.title__chapter {
     margin-top: -14px;
     font-size: 60px;
-    color: var(--brass);
+    color: var(--paper);
     -unity-font-definition: url("Fonts/Caveat-SemiBold.ttf");
 }
 
@@ -110,8 +111,8 @@
 
 .title-button:hover,
 .title-button:focus {
-    background-color: rgba(201, 162, 74, 0.08);
-    border-color: var(--brass);
+    background-color: rgba(217, 105, 47, 0.10);
+    border-color: var(--ember);
     translate: 6px 0;
 }
 
@@ -128,7 +129,7 @@
 
 .title-screen .title-button:hover .hud-text.title-button__words,
 .title-screen .title-button:focus .hud-text.title-button__words {
-    color: var(--brass);
+    color: var(--sunset);
 }
 
 .title-screen .hud-text.title-button__detail {
