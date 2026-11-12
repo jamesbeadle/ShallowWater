@@ -8,6 +8,7 @@
 @import url("Sight.uss");
 @import url("PocketBook.uss");
 @import url("Sketches.uss");
+@import url("Title.uss");
 
 .hud-screen {
     --ink: #EFE4C8;

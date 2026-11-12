@@ -5,12 +5,14 @@ namespace ShallowWater.Unity.Player
     public static class ControlsRows
     {
         private const string Space = "Space";
+        private const string SaveKey = "F5";
+        private const string SaveWords = "Save the game";
 
         public static readonly HudPrompt[] AtTheHelm =
         {
             new HudPrompt("W|S", "Lever ahead and astern"), new HudPrompt("A|D", "Tiller"), new HudPrompt(Space, "Stop"),
             new HudPrompt("E", "Step ashore, by the bank"), new HudPrompt("M", "The 1900 map"),
-            new HudPrompt("Tab", "The pocket book: kit, job and boat"),
+            new HudPrompt("Tab", "The pocket book: kit, job and boat"), new HudPrompt(SaveKey, SaveWords),
             new HudPrompt(KeyGlyphs.RightMouse, "Look round"), new HudPrompt(KeyGlyphs.Wheel, "Zoom"),
         };
 
@@ -23,6 +25,7 @@ namespace ShallowWater.Unity.Player
             new HudPrompt(KeyGlyphs.Mouse, "Lay the aim, shouldered"),
             new HudPrompt(KeyGlyphs.Either(Space, KeyGlyphs.LeftMouse), "Fire, shouldered"),
             new HudPrompt("M", "The 1900 map"), new HudPrompt("Tab", "The pocket book: kit, job and boat"),
+            new HudPrompt(SaveKey, SaveWords),
             new HudPrompt(KeyGlyphs.RightMouse, "Look round"), new HudPrompt(KeyGlyphs.Wheel, "Zoom"),
         };
 
