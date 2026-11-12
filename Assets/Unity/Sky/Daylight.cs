@@ -11,7 +11,7 @@ namespace ShallowWater.Unity.Sky
         private const float AmbientIntensity = 1f;
         private const float HazeDensity = 0.0009f;
 
-        public static DayAndNight Rise()
+        public static DayAndNight Rise(TimeOfDay start)
         {
             var light = LightOfTheScene();
             light.type = LightType.Directional;
@@ -25,7 +25,7 @@ namespace ShallowWater.Unity.Sky
             RenderSettings.fogDensity = HazeDensity;
             SkyDome.Hang();
             var dayAndNight = light.gameObject.AddComponent<DayAndNight>();
-            dayAndNight.Keep(new GameClock(GameClock.MorningAtHopwas));
+            dayAndNight.Keep(new GameClock(start));
             return dayAndNight;
         }
 
