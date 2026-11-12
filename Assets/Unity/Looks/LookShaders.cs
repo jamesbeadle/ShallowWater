@@ -17,6 +17,7 @@ namespace ShallowWater.Unity.Looks
         public const string HullPlates = "Shallow Water/Hull Plates";
         public const string Rope = "Shallow Water/Rope";
         public const string Smoke = "Shallow Water/Smoke";
+        public const string Drizzle = "Shallow Water/Drizzle";
         public const string Railway = "Shallow Water/Railway";
         public const string Fields = "Shallow Water/Fields";
         public const string Crops = "Shallow Water/Crops";

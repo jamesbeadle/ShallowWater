@@ -32,7 +32,7 @@
   ],
   "maxFileLines": 100,
   "maxFunctionLines": 30,
-  "fileLengthExemptGlobs": [],
+  "fileLengthExemptGlobs": ["Assets/Game/Shapes/Surface.cs"],
   "booleanPrefixes": [
     "is",
     "has",

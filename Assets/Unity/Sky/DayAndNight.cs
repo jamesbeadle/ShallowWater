@@ -6,7 +6,7 @@ namespace ShallowWater.Unity.Sky
 {
     public sealed class DayAndNight : MonoBehaviour
     {
-        private const float SunIntensity = 1.35f;
+        private const float SunIntensity = 0.95f;
         private const float MoonIntensity = 0.25f;
         private const float RealSecondsBetweenReflections = 2f;
 

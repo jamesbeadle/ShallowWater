@@ -95,6 +95,7 @@ namespace ShallowWater.Game.Shapes
         Beak,
         Fur,
         GunStock,
-        GunMetal
+        GunMetal,
+        SignBoard
     }
 }

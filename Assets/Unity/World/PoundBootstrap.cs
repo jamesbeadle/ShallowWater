@@ -45,6 +45,7 @@ namespace ShallowWater.Unity.World
         {
             var camera = HelmCamera.Main();
             HelmPicture.Frame(camera);
+            Drizzle.Falling(camera);
             var listening = camera.GetComponent<AudioListener>();
             if (listening == null) camera.gameObject.AddComponent<AudioListener>();
             return camera.gameObject.AddComponent<OrbitCamera>();
