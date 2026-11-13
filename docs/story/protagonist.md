@@ -1,6 +1,6 @@
-# Askew
+# Granger
 
-**Frank Askew.** Forty-five in 1938. Known on the cut as Askew, at the barracks as Sergeant, in the Tame Otter as the bloke off the boat. Nobody uses Frank.
+**Arthur Granger.** Forty-five in 1938. Known on the cut as Granger, at the barracks as Sergeant, in the Tame Otter as the bloke off the boat. Nobody uses Arthur.
 
 ## What is true
 
@@ -17,7 +17,7 @@
 
 ## Who pays him
 
-The people with money and a motive, and in 1938 that is every side at once. The British Union wants a Jewish trader off a Birmingham wharf. A Communist Party backer wants a strikebreaker to stop breaking strikes. A mill board wants a union man gone before the vote. A haulage firm wants a boatman who saw too much. A man at the Ministry wants a file, and the man carrying it. Askew has worked for all of them and none of them know about the others, and none of them would admit to knowing him.
+The people with money and a motive, and in 1938 that is every side at once. The British Union wants a Jewish trader off a Birmingham wharf. A Communist Party backer wants a strikebreaker to stop breaking strikes. A mill board wants a union man gone before the vote. A haulage firm wants a boatman who saw too much. A man at the Ministry wants a file, and the man carrying it. Granger has worked for all of them and none of them know about the others, and none of them would admit to knowing him.
 
 He has one rule and it is not a moral one: he does not take a job in the seven miles. Home stays clean. The demo is the first time he breaks it.
 

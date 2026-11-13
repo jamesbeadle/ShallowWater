@@ -1,20 +1,20 @@
 # Locked: the demo
 
-Autumn 1938, sixth week of the strike. Seven miles of water, one man, one boat, one cadet who ran, and three people with money who each want a man dead in the one place Askew never works. Six missions, each a job with a client and a fee, together the story of why the pound is shut. Played in order; the water between them is open to roam.
+Autumn 1938, sixth week of the strike. Seven miles of water, one man, one boat, one cadet who ran, and three people with money who each want a man dead in the one place Granger never works. Six missions, each a job with a client and a fee, together the story of why the pound is shut. Played in order; the water between them is open to roam.
 
 ## 1. Red Flags
 
 *Client: nobody. Fee: nothing.*
 
-The cold open (see [opening.md](opening.md)). Learn the boat on the pound: start, steer, moor, the wash complaint from a moored family that costs a favour if ignored. Learn the wood: red flags mean no landing on the wood bank, the paths, the butts. Learn the rifle on the range while Granger looks away: breathing, range, the scope, the sound carrying. Ends with Granger's job. The player now knows the pound has two ends and both are shut.
+The cold open (see [opening.md](opening.md)). Learn the boat on the pound: start, steer, moor, the wash complaint from a moored family that costs a favour if ignored. Learn the wood: red flags mean no landing on the wood bank, the paths, the butts. Learn the rifle on the range while Garner looks away: breathing, range, the scope, the sound carrying. Ends with Garner's job. The player now knows the pound has two ends and both are shut.
 
 ## 2. The Deserter
 
-*Client: Granger, for the barracks. Fee: army rate, cash, no paper.*
+*Client: Garner, for the barracks. Fee: army rate, cash, no paper.*
 
-Find Private Rudd. He is in the Hays, in a hide Askew himself dug for training in 1928, which the player finds by walking the wood Askew's way. Rudd has the rifle and will not point it. He ran because the armourer made him sign for a crate count that was short, and the men who came for the crates wore company boat clothes and came at night to the range track, where a lorry cannot go but a boat can.
+Find Private Rudd. He is in the Hays, in a hide Granger himself dug for training in 1928, which the player finds by walking the wood Granger's way. Rudd has the rifle and will not point it. He ran because the armourer made him sign for a crate count that was short, and the men who came for the crates wore company boat clothes and came at night to the range track, where a lorry cannot go but a boat can.
 
-The choice: walk him back to the guardroom for the fee, put him on a north-road boat and lie to Granger, or take the rifle and let him decide. All three pay differently and all three are remembered. The rifle stays with the player in every ending, because the book says it never existed.
+The choice: walk him back to the guardroom for the fee, put him on a north-road boat and lie to Garner, or take the rifle and let him decide. All three pay differently and all three are remembered. The rifle stays with the player in every ending, because the book says it never existed.
 
 ## 3. The Dumped Load
 
@@ -38,13 +38,13 @@ Ends with a shot, or a job refused, and Sergeant Vokes on the A5 bridge above, a
 
 Something has been moving in the arm at Huddlesford at night, past her cottage, past the planks. Walk the arm. The sunk boat in the reeds is not twenty years sunk; it was scuttled in September, and it is where the crates are kept between depot and wharf. The eerie beat: reeds, a boat with a name painted out, the north road boatmen in the Plough saying the west is worse, that Ogley is dry, that Lichfield is draining. The rumours of the west are Game 1's north map in a sentence each.
 
-Ends with Askew in the cabin of the scuttled boat, finding Ansell's strike fund receipts and Tench's hand on all of them.
+Ends with Granger in the cabin of the scuttled boat, finding Ansell's strike fund receipts and Tench's hand on all of them.
 
 ## 6. The Junction
 
-*Client: Askew. Fee: the water.*
+*Client: Granger. Fee: the water.*
 
-The player knows: the strike was let run, the pound is a yard, the money is Dunmore's, the books are Tench's, the guns are the depot's and are going south. Granger is told, or is not. Ansell is told, and the strike breaks in a night, or is not, and the player takes a windlass to the stop-planks at Fazeley under Vokes's lamp. Either way *Sparrow* goes under the roving bridge at dawn with the crate under the coal and Rudd's rifle in the locker.
+The player knows: the strike was let run, the pound is a yard, the money is Dunmore's, the books are Tench's, the guns are the depot's and are going south. Garner is told, or is not. Ansell is told, and the strike breaks in a night, or is not, and the player takes a windlass to the stop-planks at Fazeley under Vokes's lamp. Either way *Sparrow* goes under the roving bridge at dawn with the crate under the coal and Rudd's rifle in the locker.
 
 Last shot: the chain across the junction, cut, sinking. Cut to the trailer for *The Grand Union*: Glascote's two locks, the black water of Birmingham, a Grand Union motor in new paint, the Thames.
 

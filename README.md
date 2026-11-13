@@ -8,7 +8,7 @@ An open world you cross at three miles an hour, where the whole country is waiti
 
 ## The pitch
 
-You are Askew. You live on *Sparrow*, an old working boat, and you keep moving. A night here, two nights there, never long enough for anyone to learn your name. You do not talk much and nobody asks. Most days are the towpath: the engine, the water, the next bridge, the next pound, the stove lit at night with the doors shut.
+You are Granger. You live on *Sparrow*, an old working boat, and you keep moving. A night here, two nights there, never long enough for anyone to learn your name. You do not talk much and nobody asks. Most days are the towpath: the engine, the water, the next bridge, the next pound, the stove lit at night with the doors shut.
 
 Sometimes there is a job. Someone with money finds a way to reach you. You tie the boat up somewhere quiet, walk into a town, find a high place, and do what you were paid for. Then you are back on the water before the word reaches the bridges, and the boat that was there yesterday is gone.
 
@@ -41,10 +41,10 @@ Shallow Water is one story told across many games, each one a self-contained job
 | Demo | *Locked* | Huddlesford to Fazeley. Seven miles. The strike. Autumn 1938 |
 | 2 | *The Grand Union* | The chain comes off. Birmingham's black water, then the Grand Union to the edge of London |
 | 3 | *The Tidal Thames* | A canal boat on a tidal river. The docks, the ship, the estuary, and war declared on a Sunday |
-| 4 | *Shallow Water 4* (working title) | The war comes to the water, and the one thing Askew will not talk about comes with it |
+| 4 | *Shallow Water 4* (working title) | The war comes to the water, and the one thing Granger will not talk about comes with it |
 | 5 and on | Working titles | The state owns the cut. The closures. The last boat |
 
-The map only ever grows. Water opened once stays open. Time moves, people age, the wireless says what year it is. Askew does not volunteer war stories, and neither does the series: one true thing per chapter, found and never told.
+The map only ever grows. Water opened once stays open. Time moves, people age, the wireless says what year it is. Granger does not volunteer war stories, and neither does the series: one true thing per chapter, found and never told.
 
 ## The man
 
