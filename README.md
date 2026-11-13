@@ -34,15 +34,17 @@ It is a sandbox with two ends and both of them shut. Every pub, every wharf, eve
 
 ## The series
 
-Shallow Water is one story told across many games, each one a self-contained job that closes, and one spine that runs through all of them: **who is bleeding the cut, and where is it going.** Every chapter answers it for one stretch of water and one year, and the answer is always somebody higher up the bank.
+Shallow Water is one story told across many games, from 1938 to 1958: an invented history of revolution and power. Each game is a self-contained job that closes. The spine running through all of them is **who runs this country, and what would it take to run it better.** Arthur Granger starts it as a gun for hire on an old boat. Twenty years later *Sparrow* is moored outside Parliament and the outlaw is the man the country chose. He does many bad things on the way, all for the greater good, and makes friends and enemies who come back chapter after chapter.
 
 | Chapter | Title | Ground |
 | --- | --- | --- |
 | Demo | *Locked* | Huddlesford to Fazeley. Seven miles. The strike. Autumn 1938 |
 | 2 | *The Grand Union* | The chain comes off. Birmingham's black water, then the Grand Union to the edge of London |
-| 3 | *The Tidal Thames* | A canal boat on a tidal river. The docks, the ship, the estuary, and war declared on a Sunday |
-| 4 | *Shallow Water 4* (working title) | The war comes to the water, and the one thing Granger will not talk about comes with it |
-| 5 and on | Working titles | The state owns the cut. The closures. The last boat |
+| 3 | *The Tidal Thames* | A canal boat on a tidal river. The docks, the ship, Westminster from the water, and war declared on a Sunday |
+| 4 | *Shallow Water 4* (working title) | The war on the water, and the one thing Granger will not talk about |
+| 5 | *Shallow Water 5* (working title) | The peace that was promised and not kept. The Cut becomes a movement |
+| 6 | *Shallow Water 6* (working title) | The rising. The outlaw the people hide |
+| 7 | *Shallow Water 7* (working title) | Westminster. The country he builds, and what it cost |
 
 The map only ever grows. Water opened once stays open. Time moves, people age, the wireless says what year it is. Granger does not volunteer war stories, and neither does the series: one true thing per chapter, found and never told.
 

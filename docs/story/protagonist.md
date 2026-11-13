@@ -23,13 +23,15 @@ He has one rule and it is not a moral one: he does not take a job in the seven m
 
 ## What he wants
 
-To keep moving and be left alone. That is the whole of it, and he cannot afford it. He would tell you he takes the work for the money. He takes it because on a roof at four hundred yards he is the best in England at something, and in the village he is a man with a long gun and no wife.
+In 1938, to keep moving and be left alone. He would tell you he takes the work for the money. He takes it because on a roof at four hundred yards he is the best in England at something, and in the village he is a man with a long gun and no wife.
+
+What he comes to want, one chapter at a time, is for the country to work. He has seen a cadet, a boat family and a picket line look after each other better than any company or Ministry ever looked after them. He has also seen who stops that from spreading. He does not want power for itself. He wants it because nobody else who could get it would use it properly, and he is the only person he trusts to do the bad things it takes.
 
 ## What he will not say
 
-He does not volunteer war stories. He does not answer questions about the war or the medal. When he is drunk he is quieter, not louder. The series honours this: one true thing about the war per chapter, never told by him, always found. See the rule in [series.md](series.md).
+He does not volunteer war stories. He does not answer questions about the war or the medal. When he is drunk he gets quieter, not louder. The series honours this: one true thing about the war per chapter, never told by him, always found. See the rule in [series.md](series.md).
 
-What the writers know and the player does not: in the last month of the war he was ordered to shoot a man on his own side, and he did it, and the medal came a week later, and the officer who gave the order is alive and on the rise. This is the deepest water in the series and it is not reached before Game 3.
+The writers know something the player does not. In the last month of the war he was ordered to shoot a man on his own side, and he did it. The medal came a week later, and the officer who gave the order is alive and on the rise. This is the deepest water in the series. It is told in Game 4, and in Game 6 he says it himself, in public, to bring the Officer down. It is the one time in the series he volunteers anything.
 
 ## How he reads
 
@@ -41,4 +43,4 @@ What the writers know and the player does not: in the last month of the war he w
 
 ## What the player can and cannot make him do
 
-The player chooses the jobs, the client, the vantage point, the route in and the route out, and the mercy. The player cannot make him take company livery, run a fleet, join a party, join the police, or explain himself. When a choice would make him a different man, the game does not offer it.
+The player chooses the jobs, the client, the vantage point, the route in and the route out, and the mercy. Later in the series the player also chooses the allies, the sacrifices and who pays for each rise. The player cannot make him take company livery, serve another man's party, take a bribe to stop, or explain himself. He does the bad things the climb demands, and the player chooses how and to whom, never whether. When a choice would make him a different man, the game does not offer it.

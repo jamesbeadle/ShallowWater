@@ -28,12 +28,14 @@ Two lists. The people of the home pound, who carry the demo and Game 1. Then the
 
 ## The ones who outlive a chapter
 
-**Mr Tench.** The clerk keeps the books. Every chapter has a Tench: the same man, older, in a bigger office, at Braunston, at Paddington, at the Ministry after 1948. He is the series' constant because the bleeding of the cut is done through ledgers, and whoever holds them holds the story. He and Granger never like each other and never finish with each other.
+**Mr Tench.** The clerk keeps the books. Every chapter has a Tench: the same man, older, in a bigger office, at Braunston, at Paddington, at the Ministry after 1945. The country is bled through ledgers, and whoever holds them holds the story. He and Granger never like each other. In Game 5 he gives Granger the Ministry's books, and the series never says why.
 
-**The Skerritts.** Lil grows up. Reuben goes to the road. Ada dies on the boat in Game 2 and the funeral is a chapter's worth of the cut turning out. Lil is the closest thing the series has to a second protagonist, and by the war she is running her own boat.
+**The Skerritts.** Lil grows up. Reuben goes to the road. Ada dies on the boat and her funeral fills a chapter, the whole cut turning out. Lil is the closest thing the series has to a second protagonist. By the war she is running her own boat, by the peace she is the Cut's best organiser, and in the end she is the one person who can tell Granger no.
 
-**Garner.** The barracks conscience. What the army knew about Granger's last month in 1918 is in Garner's keeping, and the man who gave that order is his superior.
+**Garner.** The barracks conscience. What the army knew about Granger's last month in 1918 is in Garner's keeping, and the man who gave that order is his superior. He looks away for Granger for twenty years, until Game 4, when he finds out what Granger did and will not look away. Granger cannot let him tell, so Garner dies.
 
-**The Officer.** Unnamed until Game 3. A major in 1918, a colonel by the war, a Member of Parliament by the tideway. The road runs on money and money runs on men like him. He is the top of the spine and he is never the antagonist of any single chapter, because Granger never gets that high.
+**The Officer.** Unnamed until Game 3. A major in 1918, a Member of Parliament by the tideway, a minister's friend in the war and a senior minister in the peace. The road runs on money, and money runs on men like him. He is the top of the spine. In Game 6 Granger brings him down by telling the truth about 1918, his own part in it included.
 
-**Dunmore and his successors.** The road has a new face each chapter. Dunmore in 1938. A bigger firm in 1938 that buys his lorries. A Ministry contract in the war. The firm changes; the pressure does not.
+**Sergeant Vokes.** The policeman who never had a name for his file. An inspector by the peace and the man sent to bring Granger in. He arrests him in the end, and he makes sure Granger lives to stand trial.
+
+**Dunmore and his successors.** The road has a new face every chapter: Dunmore in 1938, then the bigger firm that buys his lorries, then a Ministry contract in the war. The firm changes, and the pressure does not.

@@ -1,6 +1,6 @@
 # Shallow Water — the story bible
 
-This folder is the source of truth for the story of Shallow Water. Every game in the series is a chapter of one story, and every chapter is written from these pages. The design brief (working title *The Grand Union*) fixed the time, the place and the man; these pages expand inside that fence and never move it.
+This folder is the source of truth for the story of Shallow Water. Every game in the series is a chapter of one story, and every chapter is written from these pages. The design brief (working title *The Grand Union*) set the time, the place and the man, and James widened it on 13 November 2026. The story now runs from 1938 to 1958, an invented history of revolution and power that ends with Arthur Granger leading the country and *Sparrow* moored outside Parliament. These pages expand inside that fence and never move it.
 
 | Page | What it holds |
 | --- | --- |
@@ -8,7 +8,7 @@ This folder is the source of truth for the story of Shallow Water. Every game in
 | [world.md](world.md) | 1938 on the cut: the water, the strike, the factions, the places |
 | [protagonist.md](protagonist.md) | Granger: who he is, what he wants, what he will not say |
 | [characters.md](characters.md) | The cast of the home pound, and the ones who outlive a single game |
-| [the-long-story.md](the-long-story.md) | The story across the chapters, from the strike to the last boat |
+| [the-long-story.md](the-long-story.md) | The story across the chapters, from the strike to Westminster |
 | [opening.md](opening.md) | The cold open, written as it plays |
 | [demo.md](demo.md) | *Locked*: the demo, mission by mission |
 | [rooks-and-rats.md](rooks-and-rats.md) | *Rooks and Rats*: the farm job that puts the first rifle in Granger's hands |
@@ -17,9 +17,10 @@ This folder is the source of truth for the story of Shallow Water. Every game in
 
 ## The fence
 
-- 1936 to 1939, default 1938: the last year before the war, with the war on every wireless and nobody on the cut doing anything about it. No Victorian golden age, no 1950s leisure, no war blackout until a chapter earns it.
+- The series runs from 1938 to 1958. The demo is set in 1938, the last year before the war, with the war on every wireless and nobody on the cut doing anything about it. No Victorian golden age, and no war blackout until a chapter earns it. From the end of the war the history is invented, and the series never winks at the real one.
+- The series ends in a Britain that works: almost a utopia, what could have been. Granger gets it there by doing bad things for the greater good, and no chapter lets him off the cost.
 - The demo is the water from Huddlesford Junction to Fazeley Junction, plus what can be walked from it: Hopwas Hays Wood, the barracks approach, Fazeley's streets.
 - Hopwas village and Hopwas Hays Wood are one home with two textures.
-- The player is a loner and a gun for hire: he takes people out from vantage points he finds, and bounty, recovery and watching work between. Hired by whoever has the money, on any side. Not a copper, not a gang boss, not a company man, not a commando.
+- At the start, the player is a loner and a gun for hire: he takes people out from vantage points he finds, and bounty, recovery and watching work between. Hired by whoever has the money, on any side. Not a copper, not a gang boss, not a company man, not a commando.
 - A scoped rifle is a veteran's gun and a social problem, never a power fantasy.
 - The junctions are shut by things a person can see and, in Game 1, remove.
