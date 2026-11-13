@@ -10,11 +10,11 @@ The player has the tiller. The pound is theirs to the chain at Fazeley and the p
 
 At the Tame Otter, Nell is scrubbing the step. She says the sergeant-major was in last night asking after him, and did not drink, which is not like him. Askew says nothing. She says the strike is going into its sixth week and the company has not sent a man to talk, which is not like them either. Askew says nothing to that too.
 
-He walks up through the wood on the path that is not on the range map, to the firing point, where Garner is standing behind a squad of cadets who cannot hit the target at two hundred yards. Garner does not turn round. He says, into the wind, that a lad called Rudd went over the wall on Tuesday with his kit and a rifle that was not his, and that the colonel wants him back in the guardroom by Sunday and nothing in the county paper, and that the army will pay what the army pays.
+He walks up through the wood on the path that is not on the range map, to the firing point, where Granger is standing behind a squad of cadets who cannot hit the target at two hundred yards. Granger does not turn round. He says, into the wind, that a lad called Rudd went over the wall on Tuesday with his kit and a rifle that was not his, and that the colonel wants him back in the guardroom by Sunday and nothing in the county paper, and that the army will pay what the army pays.
 
 Askew asks which rifle.
 
-Garner says that is the thing. The book says it never existed.
+Granger says that is the thing. The book says it never existed.
 
 The flags come down. Askew walks back to the boat. On the cabin side, under the soot, the name *Sparrow* and the roses. In a place no search would find, the stock, the barrel and the scope, apart. The engine is still running. He never turned it off.
 
