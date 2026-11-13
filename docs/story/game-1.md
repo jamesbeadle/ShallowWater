@@ -24,7 +24,7 @@ Fradley and the Trent and Mersey north are seen from Huddlesford and not opened;
 
 **The Braunston agent** is the water. A Grand Union company man who believes the guns are going to the right side in Spain and that the company's new motors are the future of the cut. He is likeable. He is wrong about both. He is the mid-game antagonist and the player's decision about him is the game's biggest choice.
 
-**Tench** is the books. He moves to Braunston in the middle of the game, one office bigger. He is never confronted and never caught. He is found, at the end, to have kept a letter with the Officer's name on it, and he gives it to Askew because a clerk keeps a copy of everything, including his own insurance.
+**Tench** is the books. He moves to Braunston in the middle of the game, one office bigger. He is never confronted and never caught. He is found, at the end, to have kept a letter with the Officer's name on it, and he gives it to Granger because a clerk keeps a copy of everything, including his own insurance.
 
 ## What the player does between the story
 
@@ -32,6 +32,6 @@ The BCN and the Grand Union are the sandbox. Bounty: deserters from the depots a
 
 ## Ending
 
-Paddington. The guns go down onto the tideway where a canal boat has no business, and Askew can stop the last lorry, or the agent, or nothing, and none of it stops the trade. The letter with the Officer's name goes in the locker with the pistol and the rifle that does not exist. *Sparrow* turns at the basin and heads back up the cut. Sixteen days to Hopwas.
+Paddington. The guns go down onto the tideway where a canal boat has no business, and Granger can stop the last lorry, or the agent, or nothing, and none of it stops the trade. The letter with the Officer's name goes in the locker with the pistol and the rifle that does not exist. *Sparrow* turns at the basin and heads back up the cut. Sixteen days to Hopwas.
 
-*One true thing about the war*, found not told: the pistol in the locker is a German officer's, and Askew did not take it from a German.
+*One true thing about the war*, found not told: the pistol in the locker is a German officer's, and Granger did not take it from a German.

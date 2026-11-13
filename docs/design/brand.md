@@ -2,7 +2,7 @@
 
 Sources: the tokens in `Assets/Unity/Resources/Hud/Brand.uss`, the HUD and title stylesheets beside it that read them, the title's painted backdrop (`Assets/Unity/Resources/Shaders/TitleBackdrop.shader`), and the poster in `docs/art/poster.png` that the dusk tones were read from; read 12 November 2026.
 
-*Shallow Water: Locked* is a working canal in the autumn of 1938, seen at dusk. The brand has two families of colour. The **dusk** is what a picture is painted in: the sky, the brick, the water. The **kit** is what Askew holds: oilskin, brass, enamel, paper and pencil. The title screen speaks in the dusk; the HUD in play speaks in the kit; ink is the words on both.
+*Shallow Water: Locked* is a working canal in the autumn of 1938, seen at dusk. The brand has two families of colour. The **dusk** is what a picture is painted in: the sky, the brick, the water. The **kit** is what Granger holds: oilskin, brass, enamel, paper and pencil. The title screen speaks in the dusk; the HUD in play speaks in the kit; ink is the words on both.
 
 Everything below is a token in `Brand.uss`, declared once on `.hud-screen`. Every other stylesheet reads the tokens and none states a colour, a typeface or a duration of its own. The painted backdrop reads the seven dusk tones from the same sheet (`DuskLook` hands them to the shader), so a change to `--sunset` moves the wordmark and the painted sun together.
 
@@ -35,7 +35,7 @@ Everything below is a token in `Brand.uss`, declared once on `.hud-screen`. Ever
 | `--enamel-ink` | Enamel ink | The clock's figures | Words on dark |
 | `--enamel-ink-soft` | Soft enamel ink | The clock's colon | Figures |
 | `--enamel-rim` | Enamel rim | The border of the clock's plate | Other borders |
-| `--paper` | Paper | Paper itself: the job label, the pocket book's pages, the light parts of a sketch. Also Askew's hand on a dark ground: the chapter name on the title | Words in the game's own voice |
+| `--paper` | Paper | Paper itself: the job label, the pocket book's pages, the light parts of a sketch. Also Granger's hand on a dark ground: the chapter name on the title | Words in the game's own voice |
 | `--paper-card` | Paper card | A card tucked into the pocket book | Pages |
 | `--paper-edge` | Paper edge | The border of anything paper | Oilskin |
 | `--pencil` | Pencil | Everything written or drawn on paper | Words on dark |
@@ -57,7 +57,7 @@ Five faces, each with one voice. All are under the SIL Open Font Licence, kept b
 | --- | --- | --- |
 | `--face-headline` (League Gothic) | 204 the wordmark · 88 a page heading · 40 a menu entry · 28 a saved game or a credit's name; one weight, capitals, tracked 1.5 to 2 | The title's voice: a condensed jobbing printer's gothic, the lettering of a canal company's notices. The wordmark, page headings and menu entries. Never for running text, never in the HUD in play |
 | `--face-stencil`, `--face-stencil-bold` (Stardos Stencil); class `hud-eyebrow` | 11 to 15 regular, capitals, tracked 2.5 to 4.5 · 24 to 36 bold | What is stencilled or stamped: eyebrows above a heading, a panel's title, the telegraph's order, section names in the book. Never for a sentence |
-| `--face-hand`, `--face-hand-bold` (Caveat) | 25 to 28 on paper · 80 the chapter name · 44 light, the words on the curtain | Askew's own hand: everything pencilled in the pocket book and on the job label, the chapter name, *Casting off…*. Never for what the game says in its own voice |
+| `--face-hand`, `--face-hand-bold` (Caveat) | 25 to 28 on paper · 80 the chapter name · 44 light, the words on the curtain | Granger's own hand: everything pencilled in the pocket book and on the job label, the chapter name, *Casting off…*. Never for what the game says in its own voice |
 | `--face-text`, `--face-text-medium`, `--face-text-bold` (Cabin); class `hud-text` | 15 to 22 · medium for prompts, speech and names · bold only on key caps, 12 to 16 | The reading face and the default of every label: prompts, speech, details, credits |
 | `--face-figures` (Josefin Sans SemiBold); class `hud-display` | 32 on the clock | Figures that must not shift as they change |
 

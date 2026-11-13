@@ -33,7 +33,7 @@ Read from the period map in `docs/map/`. North to south, Huddlesford to Fazeley,
 - **Coton**, a hamlet a quarter mile north-east across the Tame with a hall and **Hill Head** behind.
 - **Comberford** and **Comberford Hall**, a mile north-east: a mill on the Tame, old money, a lonely road.
 - **The Alders**, **Millfield House** and **Broad Meadow** between Hopwas and Tamworth, the water meadows of the Tame.
-- **Askew's mooring** is south of the village under the wood's last trees, where the towpath has no reason to go and the flags are in sight.
+- **Granger's mooring** is south of the village under the wood's last trees, where the towpath has no reason to go and the flags are in sight.
 
 ## Hopwas to Fazeley (the Birmingham and Fazeley pound)
 

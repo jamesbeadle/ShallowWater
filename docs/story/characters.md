@@ -4,9 +4,9 @@ Two lists. The people of the home pound, who carry the demo and Game 1. Then the
 
 ## The home pound
 
-**Nell Cobbett**, landlady of the Tame Otter. Widowed, forties, runs the pub and the village's information. She likes Askew and does not trust him, in that order. She is the demo's first paying client outside the barracks, and the person who tells him things he did not ask.
+**Nell Cobbett**, landlady of the Tame Otter. Widowed, forties, runs the pub and the village's information. She likes Granger and does not trust him, in that order. She is the demo's first paying client outside the barracks, and the person who tells him things he did not ask.
 
-**Company Sergeant Major Arthur Granger**, Whittington depot. Askew trained him as a cadet in 1921. Now outranks him in every way that counts and knows it does not count. Brings him the work the barracks cannot put on paper: a deserter, a missing rifle, a recruit's father who will not go away. Looks away on the butts. Will one day be asked to look away from something worse and will not.
+**Company Sergeant Major Harry Garner**, Whittington depot. Granger trained him as a cadet in 1921. Now outranks him in every way that counts and knows it does not count. Brings him the work the barracks cannot put on paper: a deserter, a missing rifle, a recruit's father who will not go away. Looks away on the butts. Will one day be asked to look away from something worse and will not.
 
 **Private Dennis Rudd**, nineteen, deserter. Ran from the depot in October with a kitbag and a reason. The reason is the demo.
 
@@ -20,20 +20,22 @@ Two lists. The people of the home pound, who carry the demo and Game 1. Then the
 
 **Captain Aubrey Dunmore**, Dunmore Motors, Tamworth. Ex-officer, ex-something else. Six lorries on the A5 and a yard by the mill. Cheerful, generous, remembers everyone's name. He is the demo's and Game 1's antagonist and the first face of the road.
 
-**Sergeant Vokes**, Staffordshire Constabulary, Tamworth. Works the A5 and the bridges. Cannot get on the water and hates it. Straight, slow, and right about Askew more often than Askew would like. He has a file of unsolved shootings across four counties, each from a high place, and no name to put on it.
+**Sergeant Vokes**, Staffordshire Constabulary, Tamworth. Works the A5 and the bridges. Cannot get on the water and hates it. Straight, slow, and right about Granger more often than Granger would like. He has a file of unsolved shootings across four counties, each from a high place, and no name to put on it.
 
-**The clients of the home pound.** Three people with money who each want a man dead in the demo and each think they are the only one who knows Askew: **Mrs Adeline Fenn**, who funds the Birmingham Blackshirts from a house outside Lichfield; **Dr Samuel Orme**, a Tamworth physician who funds the Party and the strike; and **Isaac Holland** at the mill, who funds nobody and pays best.
+**The clients of the home pound.** Three people with money who each want a man dead in the demo and each think they are the only one who knows Granger: **Mrs Adeline Fenn**, who funds the Birmingham Blackshirts from a house outside Lichfield; **Dr Samuel Orme**, a Tamworth physician who funds the Party and the strike; and **Isaac Holland** at the mill, who funds nobody and pays best.
 
-**Isaac Holland**, agent at Tolson's mill. Needs cotton moved and stock found and does not care how. Bank-sider. Will never invite Askew in through the front.
+**Isaac Holland**, agent at Tolson's mill. Needs cotton moved and stock found and does not care how. Bank-sider. Will never invite Granger in through the front.
 
 ## The ones who outlive a chapter
 
-**Mr Tench.** The clerk keeps the books. Every chapter has a Tench: the same man, older, in a bigger office, at Braunston, at Paddington, at the Ministry after 1948. He is the series' constant because the bleeding of the cut is done through ledgers, and whoever holds them holds the story. He and Askew never like each other and never finish with each other.
+**Mr Tench.** The clerk keeps the books. Every chapter has a Tench: the same man, older, in a bigger office, at Braunston, at Paddington, at the Ministry after 1945. The country is bled through ledgers, and whoever holds them holds the story. He and Granger never like each other. In Game 5 he gives Granger the Ministry's books, and the series never says why.
 
-**The Skerritts.** Lil grows up. Reuben goes to the road. Ada dies on the boat in Game 2 and the funeral is a chapter's worth of the cut turning out. Lil is the closest thing the series has to a second protagonist, and by the war she is running her own boat.
+**The Skerritts.** Lil grows up. Reuben goes to the road. Ada dies on the boat and her funeral fills a chapter, the whole cut turning out. Lil is the closest thing the series has to a second protagonist. By the war she is running her own boat, by the peace she is the Cut's best organiser, and in the end she is the one person who can tell Granger no.
 
-**Granger.** The barracks conscience. What the army knew about Askew's last month in 1918 is in Granger's keeping, and the man who gave that order is his superior.
+**Garner.** The barracks conscience. What the army knew about Granger's last month in 1918 is in Garner's keeping, and the man who gave that order is his superior. He looks away for Granger for twenty years, until Game 4, when he finds out what Granger did and will not look away. Granger cannot let him tell, so Garner dies.
 
-**The Officer.** Unnamed until Game 3. A major in 1918, a colonel by the war, a Member of Parliament by the tideway. The road runs on money and money runs on men like him. He is the top of the spine and he is never the antagonist of any single chapter, because Askew never gets that high.
+**The Officer.** Unnamed until Game 3. A major in 1918, a Member of Parliament by the tideway, a minister's friend in the war and a senior minister in the peace. The road runs on money, and money runs on men like him. He is the top of the spine. In Game 6 Granger brings him down by telling the truth about 1918, his own part in it included.
 
-**Dunmore and his successors.** The road has a new face each chapter. Dunmore in 1938. A bigger firm in 1938 that buys his lorries. A Ministry contract in the war. The firm changes; the pressure does not.
+**Sergeant Vokes.** The policeman who never had a name for his file. An inspector by the peace and the man sent to bring Granger in. He arrests him in the end, and he makes sure Granger lives to stand trial.
+
+**Dunmore and his successors.** The road has a new face every chapter: Dunmore in 1938, then the bigger firm that buys his lorries, then a Ministry contract in the war. The firm changes, and the pressure does not.

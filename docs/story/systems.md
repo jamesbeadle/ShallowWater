@@ -57,4 +57,4 @@ Not cosy heritage. Not gangster. Cramped, smoky, proud, slightly doomed. The wor
 - Dance bands and the BBC on a wireless with a bad valve. The news read in received pronunciation and turned off.
 - Lorries on Watling Street through the night.
 - A horse's shoes on a towpath, a rope creaking on a stud, water in reeds, a lock leaking through a gate nobody is tending.
-- Pubs: a piano, an argument about the strike, quiet when Askew comes in.
+- Pubs: a piano, an argument about the strike, quiet when Granger comes in.
