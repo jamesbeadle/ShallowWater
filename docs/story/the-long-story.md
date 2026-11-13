@@ -8,7 +8,7 @@ A cadet runs from Whittington with a reason. Askew is paid to bring him back and
 
 The demo also breaks his one rule: three clients, three sides, each wanting a man dead inside the seven miles he keeps clean. It ends with Askew knowing all this and holding one crate, and choosing: return the cadet, run the cadet, or bury the cadet's story with him. Then the strike breaks, or he breaks the junction. Either way the water opens. What he knows goes with him, and so does the need to be somewhere else.
 
-*One true thing about the war:* Garner, drunk, says Askew was the best shot the depot ever had and that it was not the shooting they gave him the medal for.
+*One true thing about the war:* Granger, drunk, says Askew was the best shot the depot ever had and that it was not the shooting they gave him the medal for.
 
 ## The Grand Union (Game 2, 1938 to 1939)
 
@@ -32,7 +32,7 @@ War is declared on a Sunday in September, halfway through. The docks fill with t
 
 The chapters after the Thames are numbered until their water is known. The writers hold this much:
 
-- **The war on the water.** Blackout on the cut, women crewing the boats, the barracks full, Garner's cadets going to France and coming back or not. Deserters again, black market, a saboteur who is not one. The Officer is a colonel, and Askew is asked, in the sergeants' mess he has not entered in ten years, to do the thing he did in 1918 once more, for the same reason. This is the chapter that says what he did. He says no, and the price of no is the whole chapter. After it the series cannot go back.
+- **The war on the water.** Blackout on the cut, women crewing the boats, the barracks full, Granger's cadets going to France and coming back or not. Deserters again, black market, a saboteur who is not one. The Officer is a colonel, and Askew is asked, in the sergeants' mess he has not entered in ten years, to do the thing he did in 1918 once more, for the same reason. This is the chapter that says what he did. He says no, and the price of no is the whole chapter. After it the series cannot go back.
 - **The north.** Fradley, the Trent and Mersey, the Potteries he was born in, Harecastle tunnel. Ada Skerritt dies and the funeral is the cut's last great turnout. Boats sold cheap, sunk for insurance, broken up for iron. Lil runs *Patience* with a motor she cannot afford.
 - **Nationalisation.** The cut belongs to the state and the state belongs to men like the Officer, now sitting for a Midlands seat. Tench is at the Ministry. The report that decides which canals live is being written by the people who own the lorries.
 - **The decline.** The closures of the fifties, the last coal contracts, the first hire boats laughing at the working men. Askew gets older. Lil gets the boat. One chapter is the one where he dies, and the writers know which year and have not told anyone.

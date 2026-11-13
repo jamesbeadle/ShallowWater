@@ -6,7 +6,7 @@ Two lists. The people of the home pound, who carry the demo and Game 1. Then the
 
 **Nell Cobbett**, landlady of the Tame Otter. Widowed, forties, runs the pub and the village's information. She likes Askew and does not trust him, in that order. She is the demo's first paying client outside the barracks, and the person who tells him things he did not ask.
 
-**Company Sergeant Major Arthur Garner**, Whittington depot. Askew trained him as a cadet in 1921. Now outranks him in every way that counts and knows it does not count. Brings him the work the barracks cannot put on paper: a deserter, a missing rifle, a recruit's father who will not go away. Looks away on the butts. Will one day be asked to look away from something worse and will not.
+**Company Sergeant Major Arthur Granger**, Whittington depot. Askew trained him as a cadet in 1921. Now outranks him in every way that counts and knows it does not count. Brings him the work the barracks cannot put on paper: a deserter, a missing rifle, a recruit's father who will not go away. Looks away on the butts. Will one day be asked to look away from something worse and will not.
 
 **Private Dennis Rudd**, nineteen, deserter. Ran from the depot in October with a kitbag and a reason. The reason is the demo.
 
@@ -32,7 +32,7 @@ Two lists. The people of the home pound, who carry the demo and Game 1. Then the
 
 **The Skerritts.** Lil grows up. Reuben goes to the road. Ada dies on the boat in Game 2 and the funeral is a chapter's worth of the cut turning out. Lil is the closest thing the series has to a second protagonist, and by the war she is running her own boat.
 
-**Garner.** The barracks conscience. What the army knew about Askew's last month in 1918 is in Garner's keeping, and the man who gave that order is his superior.
+**Granger.** The barracks conscience. What the army knew about Askew's last month in 1918 is in Granger's keeping, and the man who gave that order is his superior.
 
 **The Officer.** Unnamed until Game 3. A major in 1918, a colonel by the war, a Member of Parliament by the tideway. The road runs on money and money runs on men like him. He is the top of the spine and he is never the antagonist of any single chapter, because Askew never gets that high.
 
