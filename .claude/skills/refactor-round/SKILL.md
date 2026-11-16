@@ -12,11 +12,11 @@ Read, in this order, before the first change: the coding rules at the top of `CL
 ## 0. Branch
 
 ```
-git fetch origin && git switch <base> && git pull --ff-only
-git switch -c refactor/round-N
+git fetch origin +refs/heads/<base>:refs/remotes/origin/<base>
+git switch -c refactor/round-N --no-track origin/<base>
 ```
 
-`<base>` is `staging` where the repository has one (`git branch -r` lists `origin/staging`), else the default branch — the branch the pull request goes into, so the work starts from what it will merge into.
+`<base>` is `staging` where the repository has one (`git ls-remote --heads origin staging` prints a line; `git branch -r` proves nothing in a clone made to fetch one branch), else the default branch — the branch the pull request goes into, so the work starts from what it will merge into.
 
 If the working tree holds uncommitted changes, stop and ask the person what they belong to — a round starts clean.
 
@@ -28,7 +28,7 @@ python3 -m tools.refactor.audit.gate tools/refactor/baseline.json tools/refactor
 python3 -m tools.refactor.audit.plan .
 ```
 
-The gate must pass before anything is touched. If it fails, the codebase has drifted since the last baseline: adopt the current reading as the new baseline first, write why in the report ("adopted from drift: <what grew>"), and commit that as the branch's first commit, `Baseline vN: adopted from drift` — a round always starts from a green gate. The report you start from is the round's *before*. Duplication needs jscpd (`npm install -g jscpd`); a reading without it is incomplete, so install it before the first audit.
+The gate must pass before anything is touched. If it fails, the codebase has drifted since the last baseline: adopt the current reading as the new baseline first, write why in the report ("adopted from drift: <what grew>"), and commit that as the branch's first commit, `Baseline vN: adopted from drift` — a round always starts from a green gate. The report you start from is the round's *before*. Duplication is measured with jscpd, and the audit finds it for itself: the one on `PATH`, else the one version the kit names, fetched by `npx`, so nothing is installed first. Where it can be had neither way, the reading keeps the figure the baseline holds and says after the score that duplication was not measured, and the gate names it as not compared; say so in the report, since the figure is then the baseline's and not this round's.
 
 Before taking a step, read the standing of the designs from the site definition (`tools/refactor/site-definition.md`, *The widgets' designs*) and put it in the report's first lines: whether a design index exists, when the site was last checked against the brand and the widgets against their sheets — or *never*, or *not set up* — and the sentence that runs each (`widget-design`: *"Check the site against the brand"*, *"Check the widgets against their designs"*). The round reports it and does not run it: a design check is a judgement and may change a widget's look, which a round never does.
 
@@ -86,7 +86,7 @@ python3 -m tools.refactor.audit.quality_check .
 cp tools/refactor/audit-output/audit.json tools/refactor/baseline.json
 ```
 
-The quality check runs the full audit, writes the new score box at the bottom of `README.md` and rewrites `tools/refactor/refactor-plan.md` from what is left. Then rewrite `tools/refactor/baseline-report.md` in this shape and commit it with `baseline.json`, `README.md`, the plan and `audit-output/` as the round's last commit, "Baseline vN: <the round's name>":
+The quality check runs the full audit, writes the new score box at the bottom of `README.md` and rewrites `tools/refactor/refactor-plan.md` from what is left. Then rewrite `tools/refactor/baseline-report.md` in this shape and commit it with `baseline.json`, `README.md` and the plan as the round's last commit (`audit-output/` is ignored by git and never committed), "Baseline vN: <the round's name>":
 
 ```
 # Refactor audit — baseline vN, after round N-1
