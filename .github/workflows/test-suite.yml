@@ -17,5 +17,5 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run the audit's unit tests
-        run: python3 -m unittest discover -s tools/refactor/audit/tests -t .
+      - name: Run the repository's checks
+        run: bash scripts/check-before-push.sh
